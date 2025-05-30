@@ -1,6 +1,186 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F0F2F5"
+    android:padding="16dp" tools:context=".LoginActivity"> <ScrollView
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintVertical_bias="0.5"
+    android:fillViewport="true"> <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/rounded_card_background" android:padding="24dp"
+    android:elevation="4dp"
+    android:layout_gravity="center_vertical"> <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:layout_marginBottom="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="S"
+        android:textSize="40sp"
+        android:textColor="#4F46E5" /* Indigo 600 */
+    android:textStyle="bold"/>
+    <!-- Para o gradiente do logo original, seria necessário um Drawable customizado ou uma ImageView.
+         Aqui usamos uma cor sólida para simplificar. -->
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SmartServ"
+        android:textSize="32sp"
+        android:textColor="#1F2937" /* Gray 900 */
+    android:textStyle="bold"
+    android:layout_marginStart="8dp"/>
+</LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bem-vindo(a) de volta!"
+        android:textSize="22sp"
+        android:textColor="#1F2937" /* Gray 800 */
+    android:textStyle="bold"
+    android:layout_marginBottom="24dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilEmail"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="E-mail"
+        android:layout_marginBottom="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:imeOptions="actionNext"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilPassword"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Senha"
+        app:passwordToggleEnabled="true"
+        android:layout_marginBottom="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:imeOptions="actionDone"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/tvForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Esqueceu a senha?"
+        android:textColor="#4F46E5" /* Indigo 600 */
+    android:layout_gravity="end"
+    android:layout_marginBottom="20dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="?attr/selectableItemBackground"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Entrar"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:backgroundTint="#4F46E5" /* Indigo 600 */
+    app:cornerRadius="8dp"
+    android:layout_marginBottom="24dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="24dp">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="#D1D5DB"/> <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ou"
+        android:textColor="#6B7280" /* Gray 500 */
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="#D1D5DB"/> </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnGoogleLogin"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Entrar com o Google"
+        android:textColor="#4285F4" /* Google Blue */
+    app:icon="@drawable/ic_google_logo" /* Você precisará adicionar um ícone do Google (ic_google_logo.xml ou .png) na sua pasta drawable */
+    app:iconTint="#4285F4" /* Para garantir que o ícone use a cor correta */
+    app:iconGravity="textStart"
+    app:strokeColor="#DADCE0"
+    android:paddingTop="12dp"
+    android:paddingBottom="12dp"
+    app:cornerRadius="8dp"
+    android:layout_marginBottom="24dp"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Não tem uma conta? "
+            android:textColor="#374151" /* Gray 700 */
+        android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/tvSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cadastre-se"
+            android:textColor="#4F46E5" /* Indigo 600 */
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground"/>
+    </LinearLayout>
+
+</LinearLayout>
+</ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
