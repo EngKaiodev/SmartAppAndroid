@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="indigo_600">#4F46E5</color>
+    <color name="light_gray">#F0F2F5</color>
+    <color name="notification_yellow">#FFDE00</color>
+    <color name="indigo_600">#4F46E5</color>
+    <color name="light_gray">#F0F2F5</color>
+    <color name="success_green">#16A34A</color>
 </resources>

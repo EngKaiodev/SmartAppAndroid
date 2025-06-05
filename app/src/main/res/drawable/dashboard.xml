@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- circle_border_white.xml -->
+    <shape xmlns:android="http://schemas.android.com/apk/res/android"
+        android:shape="oval">
+        <stroke android:width="2dp" android:color="@android:color/white"/>
+        <solid android:color="@android:color/transparent"/>
+    </shape>
+
+    <!-- circle_border_indigo.xml -->
+    <shape xmlns:android="http://schemas.android.com/apk/res/android"
+        android:shape="oval">
+        <stroke android:width="2dp" android:color="#C7D2FE"/>
+        <solid android:color="@android:color/transparent"/>
+    </shape>
+
+    <!-- edittext_rounded.xml -->
+    <shape xmlns:android="http://schemas.android.com/apk/res/android">
+        <solid android:color="@android:color/white"/>
+        <corners android:radius="12dp"/>
+        <stroke android:width="1dp" android:color="#D1D5DB"/>
+    </shape>
+
+    <!-- category_background.xml -->
+    <shape xmlns:android="http://schemas.android.com/apk/res/android">
+        <solid android:color="@android:color/white"/>
+        <corners android:radius="8dp"/>
+    </shape>
+
+    <!-- red_circle.xml -->
+    <shape xmlns:android="http://schemas.android.com/apk/res/android"
+        android:shape="oval">
+        <solid android:color="#EF4444"/>
+        <size android:width="16dp" android:height="16dp"/>
+    </shape>
+</selector>
