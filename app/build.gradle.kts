@@ -1,11 +1,9 @@
-import org.gradle.kotlin.dsl.support.kotlinCompilerOptions
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.navigation.safe.args)
-    id ("org.jetbrains.kotlin.android")
-    id("com.google.devtools.ksp")
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.kotlin.application)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.dagger.hilt.android)
 }
 
 android {
@@ -45,7 +43,7 @@ android {
 dependencies {
 
     implementation(libs.kotlin.stdlib)
-    implementation(libs.kotlin.stdlib.jdk8) // Opcional, mas recomendado
+    implementation(libs.kotlin.stdlib.jdk8)
     implementation(libs.androidx.core.ktx)
 
     implementation(libs.appcompat)
@@ -59,6 +57,10 @@ dependencies {
     implementation (libs.navigation.fragment)
     implementation (libs.navigation.ui)
 
-    implementation("com.google.dagger:hilt-android:2.56.2")
-    ksp("com.google.dagger:hilt-android-compiler:2.56.2")
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
+    androidTestImplementation(libs.room.testing)
 }
