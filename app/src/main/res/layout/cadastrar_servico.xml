@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F0F2F5"
-    android:padding="16dp"
-    tools:context=".ServicesRegisterActivity"> <!-- Substitua pelo nome da sua Activity -->
+    android:padding="16dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,91 +16,86 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:background="@drawable/rounded_card_background"
-            android:padding="24dp"
+            android:layout_gravity="top"
             android:elevation="4dp"
-            android:layout_gravity="top">
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="24dp">
 
-            <!-- Logo Container -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
+                android:layout_marginBottom="24dp"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="24dp">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="S"
+                    android:textColor="#4F46E5"
                     android:textSize="40sp"
-                    android:textColor="#4F46E5" /* @color/indigo_600 */
-                android:textStyle="bold"/>
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:text="SmartServ"
+                    android:textColor="#1F2937"
                     android:textSize="32sp"
-                    android:textColor="#1F2937" /* @color/gray_900 */
-                android:textStyle="bold"
-                android:layout_marginStart="8dp"/>
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 android:text="Cadastre Seus Serviços"
+                android:textColor="#1F2937"
                 android:textSize="22sp"
-                android:textColor="#1F2937" /* @color/gray_800 */
-            android:textStyle="bold"
-            android:layout_marginBottom="8dp"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
                 android:text="Etapa 2 de 2: Adicione os serviços que você oferece"
-                android:textSize="14sp"
-                android:textColor="#6B7280" /* @color/gray_500 */
-            android:layout_marginBottom="24dp"/>
+                android:textColor="#6B7280"
+                android:textSize="14sp" />
 
             <!-- Seção Seus Serviços -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
                 android:orientation="vertical"
-                android:background="@drawable/light_gray_rounded_background"
-                android:padding="16dp"
-                android:layout_marginBottom="24dp">
+                android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
                     android:text="Seus Serviços"
+                    android:textColor="#1F2937"
                     android:textSize="20sp"
-                    android:textColor="#1F2937" /* @color/gray_800 */
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp"/>
+                    android:textStyle="bold" />
 
-                <!-- Container para os itens de serviço (será preenchido dinamicamente) -->
                 <LinearLayout
                     android:id="@+id/servicesContainerXml"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <!-- Modelo de um item de serviço (o primeiro é fixo no XML) -->
                     <LinearLayout
+                        android:id="@+id/service_item_0"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:background="@android:color/white"
-                        android:padding="16dp"
                         android:layout_marginBottom="16dp"
+                        android:background="@android:color/white"
                         android:elevation="2dp"
-                        android:id="@+id/service_item_0"> <!-- ID para referência, se necessário -->
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -112,25 +106,24 @@
                                 android:id="@+id/tvServiceNameLabel_0"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Serviço 1"
-                                android:textColor="#374151"
-                                android:textStyle="bold"
                                 android:layout_alignParentStart="true"
                                 android:layout_centerVertical="true"
+                                android:layout_marginEnd="8dp"
                                 android:layout_toStartOf="@+id/btnRemoveService_0"
-                                android:layout_marginEnd="8dp"/>
+                                android:text="Serviço 1"
+                                android:textColor="#374151"
+                                android:textStyle="bold" />
 
                             <ImageButton
                                 android:id="@+id/btnRemoveService_0"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
-                                android:src="@drawable/ic_remove_service"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
                                 android:background="?attr/selectableItemBackgroundBorderless"
                                 android:contentDescription="Remover Serviço"
                                 android:padding="8dp"
-                                android:scaleType="fitCenter"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"/>
+                                android:scaleType="fitCenter" />
                         </RelativeLayout>
 
 
@@ -139,14 +132,15 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Nome do Serviço"
-                            android:layout_marginBottom="12dp">
+                            android:layout_marginBottom="12dp"
+                            android:hint="Nome do Serviço">
+
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etServiceName_0"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="textCapSentences"
-                                android:imeOptions="actionNext"/>
+                                android:imeOptions="actionNext"
+                                android:inputType="textCapSentences" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -154,16 +148,17 @@
                             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Descrição do Serviço (Opcional)"
-                            android:layout_marginBottom="12dp">
+                            android:layout_marginBottom="12dp"
+                            android:hint="Descrição do Serviço (Opcional)">
+
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etServiceDescription_0"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="textMultiLine|textCapSentences"
-                                android:minLines="2"
                                 android:gravity="top"
-                                android:imeOptions="actionNext"/>
+                                android:imeOptions="actionNext"
+                                android:inputType="textMultiLine|textCapSentences"
+                                android:minLines="2" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -173,15 +168,15 @@
                             android:layout_height="wrap_content"
                             android:hint="Preço (R$)"
                             app:prefixText="R$ ">
+
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/etServicePrice_0"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="numberDecimal"
-                                android:imeOptions="actionDone"/>
+                                android:imeOptions="actionDone"
+                                android:inputType="numberDecimal" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
-                    <!-- Novos itens de serviço serão adicionados aqui programaticamente -->
                 </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
@@ -189,29 +184,28 @@
                     style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:backgroundTint="#E0E7FF"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
                     android:text="Adicionar Mais Serviço"
-                    android:textColor="#4F46E5" /* @color/indigo_600 */
-                app:icon="@drawable/ic_add_service" /* Ícone de adicionar (+) */
-                app:iconTint="#4F46E5"
-                android:backgroundTint="#E0E7FF" /* indigo-100 */
-                app:cornerRadius="8dp"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:layout_marginTop="8dp"/>
+                    android:textColor="#4F46E5"
+                    app:cornerRadius="8dp"
+                    app:iconTint="#4F46E5" />
 
-            </LinearLayout> <!-- Fim da Seção Seus Serviços -->
+            </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnFinalizeRegistration"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Finalizar Cadastro"
+                android:layout_marginBottom="24dp"
+                android:backgroundTint="#16A34A"
                 android:paddingTop="14dp"
                 android:paddingBottom="14dp"
+                android:text="Finalizar Cadastro"
                 android:textSize="16sp"
-                android:backgroundTint="#16A34A" /* @color/green_600 */
-            app:cornerRadius="8dp"
-            android:layout_marginBottom="24dp"/>
+                app:cornerRadius="8dp" />
 
         </LinearLayout>
     </ScrollView>
