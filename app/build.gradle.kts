@@ -68,4 +68,7 @@ dependencies {
     ksp(libs.room.compiler)
     implementation(libs.androidx.room.paging)
     implementation(libs.androidx.room.rxjava2)
+
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
 }
