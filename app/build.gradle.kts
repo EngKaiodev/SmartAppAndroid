@@ -1,6 +1,11 @@
+import org.gradle.kotlin.dsl.support.kotlinCompilerOptions
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.navigation.safe.args)
+    id ("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -31,12 +36,17 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
+
     buildFeatures {
         viewBinding = true
     }
 }
 
 dependencies {
+
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.kotlin.stdlib.jdk8) // Opcional, mas recomendado
+    implementation(libs.androidx.core.ktx)
 
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -48,4 +58,7 @@ dependencies {
 
     implementation (libs.navigation.fragment)
     implementation (libs.navigation.ui)
+
+    implementation("com.google.dagger:hilt-android:2.56.2")
+    ksp("com.google.dagger:hilt-android-compiler:2.56.2")
 }
