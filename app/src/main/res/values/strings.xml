@@ -1,3 +1,51 @@
 <resources>
     <string name="app_name">SmartApp</string>
+    <!-- Existing strings -->
+    <string name="schedule_title">Agendar Serviço</string>
+    <string name="scheduling_with">Agendando com:</string>
+    <string name="select_service_hint">Selecione o serviço, a data e o horário desejados</string>
+    <string name="select_service_title">1. Selecione o Serviço</string>
+    <string name="select_date_title">2. Selecione a Data</string>
+    <string name="select_time_title">3. Selecione o Horário</string>
+    <string name="summary_title">Resumo do Agendamento</string>
+    <string name="confirm_button">Confirmar Agendamento</string>
+
+    <string name="service_label">Serviço:</string>
+    <string name="date_label">Data:</string>
+    <string name="time_label">Horário:</string>
+    <string name="total_label">Total:</string>
+
+    <string name="service_error">Por favor, selecione um serviço</string>
+    <string name="date_error">Por favor, selecione uma data</string>
+    <string name="time_error">Por favor, selecione um horário</string>
+    <string name="no_times_message">Nenhum horário disponível para a data selecionada</string>
+
+    <!-- Day names -->
+    <string name="sun">Dom</string>
+    <string name="mon">Seg</string>
+    <string name="tue">Ter</string>
+    <string name="wed">Qua</string>
+    <string name="thu">Qui</string>
+    <string name="fri">Sex</string>
+    <string name="sat">Sáb</string>
+
+    <!-- Month names -->
+    <string-array name="month_names">
+        <item>Janeiro</item>
+        <item>Fevereiro</item>
+        <item>Março</item>
+        <item>Abril</item>
+        <item>Maio</item>
+        <item>Junho</item>
+        <item>Julho</item>
+        <item>Agosto</item>
+        <item>Setembro</item>
+        <item>Outubro</item>
+        <item>Novembro</item>
+        <item>Dezembro</item>
+    </string-array>
 </resources>
+
+
+
+
