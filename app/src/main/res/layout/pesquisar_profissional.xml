@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f2f5"
+    android:padding="16dp">
+
+    <!-- Header -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#4F46E5"
+        android:padding="16dp"
+        android:layout_alignParentTop="true">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@android:color/white" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Pesquisar Prestadores"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <!-- Search Input -->
+    <RelativeLayout
+        android:id="@+id/searchContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/white"
+        android:padding="16dp">
+
+        <EditText
+            android:id="@+id/searchInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Buscar por nome, serviço ou especialidade..."
+            android:paddingStart="48dp"
+            android:background="@drawable/edittext_background"
+            android:textSize="16sp"/>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_search"
+            android:layout_alignStart="@id/searchInput"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp"
+            android:tint="#9CA3AF"/>
+    </RelativeLayout>
+
+    <!-- Filter Section -->
+    <RelativeLayout
+        android:id="@+id/filterSection"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/searchContainer"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/white"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/filterTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Refinar Busca:"
+            android:textColor="#1F2937"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/filterTitle"
+            android:layout_marginTop="16dp"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:alignmentMode="alignBounds"
+            android:columnOrderPreserved="false"
+            android:useDefaultMargins="true">
+
+            <Button
+                android:id="@+id/filterCategoryBtn"
+                style="@style/FilterButton"
+                android:text="Categoria"
+                android:drawableStart="@drawable/ic_tag"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"/>
+
+            <Button
+                android:id="@+id/filterLocationBtn"
+                style="@style/FilterButton"
+                android:text="Localização"
+                android:drawableStart="@drawable/ic_location"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"/>
+
+            <Button
+                android:id="@+id/filterRatingBtn"
+                style="@style/FilterButton"
+                android:text="Avaliação"
+                android:drawableStart="@drawable/ic_star"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1"/>
+
+            <Button
+                android:id="@+id/clearFiltersBtn"
+                style="@style/FilterButton"
+                android:text="Limpar Filtros"
+                android:drawableStart="@drawable/ic_clear"
+                app:layout_columnWeight="2"
+                app:layout_rowWeight="1"
+                android:layout_columnSpan="2"/>
+        </GridLayout>
+    </RelativeLayout>
+
+    <!-- Results Section -->
+    <RelativeLayout
+        android:id="@+id/resultsSection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/filterSection"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/resultsTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Prestadores Encontrados:"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#1F2937"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/resultsTitle"
+            android:layout_marginTop="8dp">
+
+            <LinearLayout
+                android:id="@+id/resultsList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingBottom="32dp">
+
+                <!-- Professional Card 1 -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp"
+                    app:cardUseCompatPadding="true"
+                    android:layout_marginBottom="16dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="16dp"
+                        android:background="@android:color/white">
+
+                        <ImageView
+                            android:id="@+id/professionalImage"
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:src="@drawable/placeholder"
+                            android:scaleType="centerCrop"
+                            android:background="@drawable/image_border"/>
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toEndOf="@id/professionalImage"
+                            android:layout_marginStart="16dp"
+                            android:layout_toStartOf="@id/chevron">
+
+                            <TextView
+                                android:id="@+id/professionalName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Ana Beleza"
+                                android:textColor="#1F2937"
+                                android:textSize="18sp"
+                                android:textStyle="bold"/>
+
+                            <TextView
+                                android:id="@+id/professionalSpecialty"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/professionalName"
+                                android:text="Cabeleireira"
+                                android:textColor="#4B5563"
+                                android:textSize="14sp"
+                                android:layout_marginTop="4dp"/>
+
+                            <LinearLayout
+                                android:id="@+id/ratingContainer"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/professionalSpecialty"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="4dp">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_star"
+                                    android:tint="#F59E0B"/>
+
+                                <TextView
+                                    android:id="@+id/professionalRating"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="4.8"
+                                    android:textColor="#F59E0B"
+                                    android:textStyle="bold"
+                                    android:layout_marginStart="4dp"/>
+
+                                <TextView
+                                    android:id="@+id/professionalReviews"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="(120 avaliações)"
+                                    android:textColor="#6B7280"
+                                    android:layout_marginStart="8dp"/>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/ratingContainer"
+                                android:orientation="horizontal"
+                                android:layout_marginTop="4dp">
+
+                                <ImageView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:src="@drawable/ic_location"
+                                    android:tint="#6B7280"/>
+
+                                <TextView
+                                    android:id="@+id/professionalLocation"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Centro, Araçatuba"
+                                    android:textColor="#6B7280"
+                                    android:layout_marginStart="4dp"/>
+                            </LinearLayout>
+                        </RelativeLayout>
+
+                        <ImageView
+                            android:id="@+id/chevron"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_chevron_right"
+                            android:tint="#9CA3AF"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"/>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Repeat for other professional cards -->
+            </LinearLayout>
+        </ScrollView>
+
+        <TextView
+            android:id="@+id/noResultsMessage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Nenhum prestador encontrado com os filtros aplicados."
+            android:textColor="#6B7280"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:visibility="gone"/>
+    </RelativeLayout>
+</RelativeLayout>

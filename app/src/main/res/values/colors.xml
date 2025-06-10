@@ -21,5 +21,14 @@
     <color name="gray_100">#F3F4F6</color>
     <color name="gray_200">#E5E7EB</color>
     <color name="gray_300">#D1D5DB</color>
+    <color name="indigo_600">#4F46E5</color>
+    <color name="yellow_400">#FBBF24</color>
+    <color name="gray_800">#1F2937</color>
+    <color name="gray_600">#4B5563</color>
+    <color name="gray_400">#9CA3AF</color>
+    <color name="success">#10B981</color>
+    <color name="switch_thumb">#FFFFFF</color>
+    <color name="switch_track">#CCCCCC</color>
+    <color name="switch_track_checked">#4F46E5</color>
 
 </resources>
