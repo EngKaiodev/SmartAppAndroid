@@ -2,6 +2,11 @@
     <size android:height="1dp" />
     <solid android:color="@color/gray_200" />
     <solid android:color="#E5E7EB" />
+    <size android:height="1dp" />
+    <solid android:color="#E5E7EB" />
+    <size android:height="1dp" />
+    <solid android:color="#E5E7EB" />
+
 </shape>
 
 
