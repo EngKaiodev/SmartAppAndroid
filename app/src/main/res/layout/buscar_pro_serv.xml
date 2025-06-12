@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F2F5">
+
+    <!-- Header com botão de voltar -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#4F46E5"
+        android:padding="16dp"
+        android:layout_alignParentTop="true">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="12dp"
+            app:srcCompat="@drawable/ic_arrow_left"
+            android:tint="@android:color/white"/>
+
+        <TextView
+            android:id="@+id/logoTextHeader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/backButton"
+            android:layout_marginStart="8dp"
+            android:text="SmartServ"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/headerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:text="O que você busca?"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:maxLines="1"
+            android:ellipsize="end"/>
+    </RelativeLayout>
+
+    <!-- Card Principal -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@android:color/white">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="24dp">
+
+            <!-- Título e subtítulo -->
+            <LinearLayout
+                android:id="@+id/headerText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:orientation="vertical"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Encontre o que precisa"
+                    android:textColor="#1F2937"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Escolha uma opção para iniciar sua busca."
+                    android:textColor="#6B7280"
+                    android:textSize="14sp"/>
+            </LinearLayout>
+
+            <!-- Opções -->
+            <LinearLayout
+                android:id="@+id/optionsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/headerText"
+                android:orientation="vertical">
+
+                <!-- Opção Buscar Profissional -->
+                <RelativeLayout
+                    android:id="@+id/searchProfessionalOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/option_background"
+                    android:padding="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <!-- Ícone do Profissional -->
+                    <RelativeLayout
+                        android:id="@+id/professionalIconBg"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="#E0E7FF"
+                        android:gravity="center"
+                        android:backgroundTint="#E0E7FF">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_user_tie"
+                            android:tint="#4F46E5"/>
+                    </RelativeLayout>
+
+                    <!-- Textos -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/professionalIconBg"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toStartOf="@+id/arrowProfessional"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Buscar por Profissional"
+                            android:textColor="#1F2937"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:maxLines="1"
+                            android:ellipsize="end"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Encontre um profissional específico pelo nome ou especialidade."
+                            android:textColor="#6B7280"
+                            android:textSize="12sp"
+                            android:maxLines="2"/>
+                    </LinearLayout>
+
+                    <!-- Seta -->
+                    <ImageView
+                        android:id="@+id/arrowProfessional"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_chevron_right"
+                        android:tint="#9CA3AF"/>
+                </RelativeLayout>
+
+                <!-- Opção Buscar Serviço -->
+                <RelativeLayout
+                    android:id="@+id/searchServiceOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/option_background"
+                    android:padding="16dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <!-- Ícone do Serviço -->
+                    <RelativeLayout
+                        android:id="@+id/serviceIconBg"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="#E0E7FF"
+                        android:gravity="center"
+                        android:backgroundTint="#E0E7FF">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_scissors"
+                            android:tint="#4F46E5"/>
+                    </RelativeLayout>
+
+                    <!-- Textos -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@id/serviceIconBg"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="12dp"
+                        android:layout_toStartOf="@+id/arrowService"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Buscar por Serviço"
+                            android:textColor="#1F2937"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:maxLines="1"
+                            android:ellipsize="end"/>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Procure por um tipo de serviço, como 'corte de cabelo' ou 'manicure'."
+                            android:textColor="#6B7280"
+                            android:textSize="12sp"
+                            android:maxLines="2"/>
+                    </LinearLayout>
+
+                    <!-- Seta -->
+                    <ImageView
+                        android:id="@+id/arrowService"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_chevron_right"
+                        android:tint="#9CA3AF"/>
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

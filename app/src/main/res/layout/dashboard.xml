@@ -1,700 +1,655 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F0F2F5">
 
-    <LinearLayout
+    <!-- Header -->
+    <RelativeLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:background="#4F46E5"
+        android:padding="16dp"
+        android:layout_alignParentTop="true">
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/logoTextHeader"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#4F46E5"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:padding="16dp">
+            android:layout_centerVertical="true"
+            android:text="SmartServ"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"/>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:gravity="center_vertical">
+
+            <ImageButton
+                android:id="@+id/notificationBell"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/ic_bell"
+                android:tint="@android:color/white"/>
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="start"
-                android:text="SmartServ"
+                android:id="@+id/notificationCount"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignTop="@id/notificationBell"
+                android:layout_alignEnd="@id/notificationBell"
+                android:background="@drawable/notification_badge"
+                android:gravity="center"
                 android:textColor="@android:color/white"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+                android:textSize="12sp"
+                android:visibility="gone"/>
 
             <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp">
-
-                <ImageView
-                    android:id="@+id/notificationBell"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    app:tint="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/notificationCount"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_alignTop="@id/notificationBell"
-                    android:layout_alignEnd="@id/notificationBell"
-                    android:layout_marginTop="-4dp"
-                    android:layout_marginEnd="-4dp"
-                    android:gravity="center"
-                    android:text="1"
-                    android:textColor="@android:color/white"
-                    android:textSize="10sp"
-                    android:visibility="gone" />
-            </RelativeLayout>
-
-            <LinearLayout
                 android:id="@+id/profileMenuToggle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_toEndOf="@id/notificationBell"
+                android:layout_marginStart="16dp"
+                android:gravity="center_vertical">
 
                 <ImageView
+                    android:id="@+id/profileImage"
                     android:layout_width="32dp"
                     android:layout_height="32dp"
-                    android:scaleType="centerCrop" />
+                    android:src="@drawable/profile_placeholder"
+                    android:contentDescription="Foto de perfil"
+                    android:scaleType="centerCrop"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/circle_border"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/profileImage"
+                    android:layout_centerVertical="true"
                     android:layout_marginStart="8dp"
                     android:text="Olá, João!"
-                    android:textColor="@android:color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </LinearLayout>
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"/>
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
 
-        <LinearLayout
+    <!-- Banner de Notificação (inicialmente oculto) -->
+    <RelativeLayout
+        android:id="@+id/upcomingAppointmentNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/header"
+        android:background="#FFDE00"
+        android:padding="12dp"
+        android:visibility="gone"
+        android:layout_margin="16dp"
+        android:elevation="4dp"
+        android:backgroundTint="#FFDE00">
+
+        <TextView
+            android:id="@+id/notificationText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
-            android:elevation="4dp"
-            android:padding="16dp">
+            android:layout_toStartOf="@id/notificationCloseBtn"
+            android:text="**Lembrete:** Seu agendamento de **Corte Feminino** com **Maria Cabeleireira** é às **14:00**."
+            android:textColor="#000000"
+            android:textSize="14sp"/>
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawablePadding="8dp"
-                android:hint="Buscar serviços ou profissionais..."
-                android:padding="12dp" />
-        </LinearLayout>
+        <ImageButton
+            android:id="@+id/notificationCloseBtn"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            app:srcCompat="@drawable/ic_close"
+            android:tint="#000000"/>
+    </RelativeLayout>
 
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:fillViewport="true"
-            android:padding="16dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <LinearLayout
-                    android:id="@+id/upcomingAppointmentNotification"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:background="#FFDE00"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="12dp"
-                    android:visibility="gone">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:drawablePadding="8dp"
-                        android:text="Lembrete: Seu agendamento de Corte Feminino com Maria Cabeleireira é às 14:00."
-                        android:textColor="#333333"
-                        android:textSize="12sp" />
-
-                    <ImageButton
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:background="?selectableItemBackgroundBorderless"
-                        android:onClick="hideNotificationBanner" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:text="Categorias Populares"
-                    android:textColor="#1F2937"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    android:scrollbars="none">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="96dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="16dp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="8dp">
-
-                            <ImageView
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                app:tint="#4F46E5" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:gravity="center"
-                                android:text="Cabeleireiro"
-                                android:textColor="#374151"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <!-- Estética -->
-                        <LinearLayout
-                            android:layout_width="96dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="16dp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="8dp">
-
-                            <ImageView
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                app:tint="#4F46E5" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:gravity="center"
-                                android:text="Estética"
-                                android:textColor="#374151"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <!-- Personal Trainer -->
-                        <LinearLayout
-                            android:layout_width="96dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="16dp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="8dp">
-
-                            <ImageView
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                app:tint="#4F46E5" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:gravity="center"
-                                android:text="Personal Trainer"
-                                android:textColor="#374151"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <!-- Manicure -->
-                        <LinearLayout
-                            android:layout_width="96dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="16dp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="8dp">
-
-                            <ImageView
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                app:tint="#4F46E5" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:gravity="center"
-                                android:text="Manicure"
-                                android:textColor="#374151"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <!-- Mecânico -->
-                        <LinearLayout
-                            android:layout_width="96dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="16dp"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="8dp">
-
-                            <ImageView
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                app:tint="#4F46E5" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:gravity="center"
-                                android:text="Mecânico"
-                                android:textColor="#374151"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
-                        <!-- Outros -->
-                        <LinearLayout
-                            android:layout_width="96dp"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="8dp">
-
-                            <ImageView
-                                android:layout_width="32dp"
-                                android:layout_height="32dp"
-                                app:tint="#4F46E5" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:gravity="center"
-                                android:text="Outros"
-                                android:textColor="#374151"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </HorizontalScrollView>
-
-                <!-- Featured Professionals -->
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:text="Profissionais em Destaque"
-                    android:textColor="#1F2937"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-                <GridLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:alignmentMode="alignMargins"
-                    android:columnCount="2"
-                    android:columnOrderPreserved="false"
-                    android:rowCount="2"
-                    android:useDefaultMargins="true">
-
-                    <!-- Profissional 1 -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <ImageView
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:scaleType="centerCrop" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:gravity="center"
-                                android:text="Ana Esteticista"
-                                android:textColor="#1F2937"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:gravity="center"
-                                android:text="Especialista em Limpeza de Pele"
-                                android:textColor="#6B7280"
-                                android:textSize="12sp" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:gravity="center">
-
-                                <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    app:tint="#FFD700" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:text="4.9 (120)"
-                                    android:textColor="#FFD700"
-                                    android:textSize="12sp" />
-                            </LinearLayout>
-
-                            <Button
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="16dp"
-                                android:backgroundTint="#4F46E5"
-                                android:text="Agendar"
-                                android:textColor="@android:color/white" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <!-- Profissional 2 -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <ImageView
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:scaleType="centerCrop" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:gravity="center"
-                                android:text="Carlos Personal"
-                                android:textColor="#1F2937"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:gravity="center"
-                                android:text="Treinamento Funcional"
-                                android:textColor="#6B7280"
-                                android:textSize="12sp" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:gravity="center">
-
-                                <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    app:tint="#FFD700" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:text="4.8 (95)"
-                                    android:textColor="#FFD700"
-                                    android:textSize="12sp" />
-                            </LinearLayout>
-
-                            <Button
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="16dp"
-                                android:backgroundTint="#4F46E5"
-                                android:text="Agendar"
-                                android:textColor="@android:color/white" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                    <!-- Profissional 3 -->
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_rowWeight="1"
-                        android:layout_columnWeight="1"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="8dp"
-                        app:cardElevation="4dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:orientation="vertical"
-                            android:padding="16dp">
-
-                            <ImageView
-                                android:layout_width="80dp"
-                                android:layout_height="80dp"
-                                android:scaleType="centerCrop" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:gravity="center"
-                                android:text="Beatriz Nails"
-                                android:textColor="#1F2937"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="4dp"
-                                android:gravity="center"
-                                android:text="Manicure e Pedicure Gel"
-                                android:textColor="#6B7280"
-                                android:textSize="12sp" />
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:gravity="center">
-
-                                <ImageView
-                                    android:layout_width="16dp"
-                                    android:layout_height="16dp"
-                                    app:tint="#FFD700" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginStart="4dp"
-                                    android:text="5.0 (210)"
-                                    android:textColor="#FFD700"
-                                    android:textSize="12sp" />
-                            </LinearLayout>
-
-                            <Button
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="16dp"
-                                android:backgroundTint="#4F46E5"
-                                android:text="Agendar"
-                                android:textColor="@android:color/white" />
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-                </GridLayout>
-            </LinearLayout>
-        </ScrollView>
-    </LinearLayout>
-
-    <!-- Profile Dropdown -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/profileDropdown"
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|end"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="16dp"
-        android:visibility="gone"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp">
+    <!-- Conteúdo Principal -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header"
+        android:padding="16dp"
+        android:layout_above="@+id/bottomNav">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Categorias Populares -->
             <TextView
-                android:id="@+id/profileLink"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawablePadding="8dp"
-                android:gravity="start"
-                android:padding="16dp"
-                android:text="Meu Perfil" />
+                android:text="Categorias Populares"
+                android:textColor="#1F2937"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"/>
 
-            <TextView
-                android:id="@+id/settingsLink"
+            <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawablePadding="8dp"
-                android:gravity="start"
-                android:padding="16dp"
-                android:text="Configurações" />
+                android:scrollbars="none"
+                android:layout_marginBottom="24dp">
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#E5E7EB" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
+                    <!-- Categoria 1 -->
+                    <LinearLayout
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:background="@drawable/category_background"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp"
+                        android:layout_marginEnd="16dp">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_scissors"
+                            android:tint="#4F46E5"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Cabeleireiro"
+                            android:textColor="#1F2937"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <!-- Categoria 2 -->
+                    <LinearLayout
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:background="@drawable/category_background"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp"
+                        android:layout_marginEnd="16dp">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_spa"
+                            android:tint="#4F46E5"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Estética"
+                            android:textColor="#1F2937"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <!-- Categoria 3 -->
+                    <LinearLayout
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:background="@drawable/category_background"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp"
+                        android:layout_marginEnd="16dp">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_dumbbell"
+                            android:tint="#4F46E5"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Personal"
+                            android:textColor="#1F2937"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <!-- Categoria 4 -->
+                    <LinearLayout
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:background="@drawable/category_background"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp"
+                        android:layout_marginEnd="16dp">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_paint"
+                            android:tint="#4F46E5"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Manicure"
+                            android:textColor="#1F2937"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <!-- Categoria 5 -->
+                    <LinearLayout
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:background="@drawable/category_background"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp"
+                        android:layout_marginEnd="16dp">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_car"
+                            android:tint="#4F46E5"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Mecânico"
+                            android:textColor="#1F2937"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+
+                    <!-- Categoria 6 -->
+                    <LinearLayout
+                        android:layout_width="96dp"
+                        android:layout_height="96dp"
+                        android:background="@drawable/category_background"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="8dp">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_ellipsis"
+                            android:tint="#4F46E5"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Outros"
+                            android:textColor="#1F2937"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Profissionais em Destaque -->
             <TextView
-                android:id="@+id/logoutButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawablePadding="8dp"
-                android:gravity="start"
-                android:padding="16dp"
-                android:text="Sair"
-                android:textColor="#FF0000" />
+                android:text="Profissionais em Destaque"
+                android:textColor="#1F2937"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="16dp"/>
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="2"
+                android:alignmentMode="alignBounds"
+                android:columnOrderPreserved="false"
+                android:useDefaultMargins="true"
+                android:padding="4dp">
+
+                <!-- Profissional 1 -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/profile_placeholder"
+                            android:background="@drawable/circle_border"
+                            android:scaleType="centerCrop"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ana Esteticista"
+                            android:textColor="#1F2937"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="8dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Especialista em Limpeza de Pele"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginTop="8dp">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_star"
+                                android:tint="#FFD700"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="4.9 (120)"
+                                android:textColor="#FFD700"
+                                android:textSize="12sp"
+                                android:layout_marginStart="4dp"/>
+                        </LinearLayout>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Agendar"
+                            android:textColor="@android:color/white"
+                            android:backgroundTint="#4F46E5"
+                            android:background="@drawable/rounded_button"
+                            android:layout_marginTop="16dp"
+                            android:minHeight="36dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Profissional 2 -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/profile_placeholder"
+                            android:background="@drawable/circle_border"
+                            android:scaleType="centerCrop"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Carlos Personal"
+                            android:textColor="#1F2937"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="8dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Treinamento Funcional"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginTop="8dp">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_star"
+                                android:tint="#FFD700"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="4.8 (95)"
+                                android:textColor="#FFD700"
+                                android:textSize="12sp"
+                                android:layout_marginStart="4dp"/>
+                        </LinearLayout>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Agendar"
+                            android:textColor="@android:color/white"
+                            android:backgroundTint="#4F46E5"
+                            android:background="@drawable/rounded_button"
+                            android:layout_marginTop="16dp"
+                            android:minHeight="36dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Profissional 3 -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_rowWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
+
+                        <ImageView
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/profile_placeholder"
+                            android:background="@drawable/circle_border"
+                            android:scaleType="centerCrop"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Beatriz Nails"
+                            android:textColor="#1F2937"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="8dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Manicure e Pedicure Gel"
+                            android:textColor="#6B7280"
+                            android:textSize="12sp"
+                            android:layout_marginTop="4dp"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginTop="8dp">
+
+                            <ImageView
+                                android:layout_width="16dp"
+                                android:layout_height="16dp"
+                                android:src="@drawable/ic_star"
+                                android:tint="#FFD700"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="5.0 (210)"
+                                android:textColor="#FFD700"
+                                android:textSize="12sp"
+                                android:layout_marginStart="4dp"/>
+                        </LinearLayout>
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Agendar"
+                            android:textColor="@android:color/white"
+                            android:backgroundTint="#4F46E5"
+                            android:background="@drawable/rounded_button"
+                            android:layout_marginTop="16dp"
+                            android:minHeight="36dp"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </GridLayout>
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+    </ScrollView>
 
     <!-- Bottom Navigation -->
     <LinearLayout
+        android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
         android:background="@android:color/white"
-        android:elevation="8dp"
         android:orientation="horizontal"
+        android:elevation="8dp"
         android:paddingVertical="8dp">
 
         <LinearLayout
-            android:id="@+id/nav_home"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="?selectableItemBackgroundBorderless"
-            android:gravity="center"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:gravity="center"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true">
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                app:tint="#4F46E5" />
+                android:src="@drawable/ic_home"
+                android:tint="#4F46E5"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
                 android:text="Início"
                 android:textColor="#4F46E5"
                 android:textSize="12sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="4dp"/>
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/nav_search"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="?selectableItemBackgroundBorderless"
-            android:gravity="center"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:gravity="center"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true">
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                app:tint="#9CA3AF" />
+                android:src="@drawable/ic_search"
+                android:tint="#6B7280"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
                 android:text="Buscar"
-                android:textColor="#9CA3AF"
-                android:textSize="12sp" />
+                android:textColor="#6B7280"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp"/>
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/nav_appointments"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="?selectableItemBackgroundBorderless"
-            android:gravity="center"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:gravity="center"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true">
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                app:tint="#9CA3AF" />
+                android:src="@drawable/ic_calendar"
+                android:tint="#6B7280"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
                 android:text="Agendamentos"
-                android:textColor="#9CA3AF"
-                android:textSize="12sp" />
+                android:textColor="#6B7280"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp"/>
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/nav_profile"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="?selectableItemBackgroundBorderless"
-            android:gravity="center"
             android:orientation="vertical"
-            android:padding="8dp">
+            android:gravity="center"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true">
 
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                app:tint="#9CA3AF" />
+                android:src="@drawable/ic_profile"
+                android:tint="#6B7280"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
                 android:text="Perfil"
-                android:textColor="#9CA3AF"
-                android:textSize="12sp" />
+                android:textColor="#6B7280"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp"/>
         </LinearLayout>
     </LinearLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</RelativeLayout>

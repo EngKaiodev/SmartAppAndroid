@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f2f5">
+
+    <!-- Header reorganizado -->
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#4F46E5"
+        android:padding="16dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@android:color/white"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true" />
+
+        <TextView
+            android:id="@+id/tvSmartServ"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SmartServ"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_toEndOf="@id/btnBack"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="16dp" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gerenciamento"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="16dp" />
+    </RelativeLayout>
+
+    <!-- Main Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/header"
+        android:paddingTop="24dp"
+        android:paddingHorizontal="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_background"
+            android:elevation="8dp"
+            android:outlineProvider="background"
+            android:padding="24dp">
+
+            <!-- Título e descrição -->
+            <TextView
+                android:id="@+id/tvPanelTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Painel de Controle"
+                android:textAlignment="center"
+                android:textColor="#1F2937"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvPanelSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPanelTitle"
+                android:layout_marginTop="8dp"
+                android:text="Acesse e gerencie suas informações e atividades."
+                android:textAlignment="center"
+                android:textColor="#6B7280"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:id="@+id/optionsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPanelSubtitle"
+                android:layout_marginTop="24dp"
+                android:orientation="vertical"
+                android:divider="@drawable/divider"
+                android:showDividers="middle">
+
+                <!-- Editar Perfil -->
+                <RelativeLayout
+                    android:id="@+id/editProfileOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/option_selector"
+                    android:padding="16dp">
+
+                    <RelativeLayout
+                        android:id="@+id/iconContainer1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/icon_background_selector"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/icon1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="#4B5563"
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_toEndOf="@id/iconContainer1"
+                        android:text="Editar Perfil"
+                        android:textColor="#111827"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/arrow1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="#9CA3AF"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <!-- Gerenciar Agendamentos -->
+                <RelativeLayout
+                    android:id="@+id/manageAppointmentsOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/option_selector"
+                    android:padding="16dp">
+
+                    <RelativeLayout
+                        android:id="@+id/iconContainer2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/icon_background_selector"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/icon2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="#4B5563"
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_toEndOf="@id/iconContainer2"
+                        android:text="Gerenciar Agendamentos"
+                        android:textColor="#111827"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/arrow2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="#9CA3AF"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <!-- Gerenciar Serviços -->
+                <RelativeLayout
+                    android:id="@+id/manageServicesOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/option_selector"
+                    android:padding="16dp">
+
+                    <RelativeLayout
+                        android:id="@+id/iconContainer3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/icon_background_selector"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/icon3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="#4B5563"
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_toEndOf="@id/iconContainer3"
+                        android:text="Gerenciar Serviços"
+                        android:textColor="#111827"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/arrow3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="#9CA3AF"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <!-- Histórico de Serviços -->
+                <RelativeLayout
+                    android:id="@+id/serviceHistoryOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/option_selector"
+                    android:padding="16dp">
+
+                    <RelativeLayout
+                        android:id="@+id/iconContainer4"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/icon_background_selector"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/icon4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="#4B5563"
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_toEndOf="@id/iconContainer4"
+                        android:text="Histórico de Serviços"
+                        android:textColor="#111827"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/arrow4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="#9CA3AF"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <!-- Gerenciar Notificações -->
+                <RelativeLayout
+                    android:id="@+id/manageNotificationsOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/option_selector"
+                    android:padding="16dp">
+
+                    <RelativeLayout
+                        android:id="@+id/iconContainer5"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/icon_background_selector"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/icon5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="#4B5563"
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_toEndOf="@id/iconContainer5"
+                        android:text="Gerenciar Notificações"
+                        android:textColor="#111827"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/arrow5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="#9CA3AF"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <!-- Configurações -->
+                <RelativeLayout
+                    android:id="@+id/settingsOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/option_selector"
+                    android:padding="16dp">
+
+                    <RelativeLayout
+                        android:id="@+id/iconContainer6"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/icon_background_selector"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/icon6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="#4B5563"
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_toEndOf="@id/iconContainer6"
+                        android:text="Configurações"
+                        android:textColor="#111827"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/arrow6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="#9CA3AF"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+
+                <!-- Sair -->
+                <RelativeLayout
+                    android:id="@+id/logoutOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/logout_selector"
+                    android:padding="16dp">
+
+                    <RelativeLayout
+                        android:id="@+id/logoutIconContainer"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/logout_icon_selector"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/iconLogout"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text=""
+                            android:textColor="#4B5563"
+                            android:textSize="18sp" />
+                    </RelativeLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:layout_toEndOf="@id/logoutIconContainer"
+                        android:text="Sair"
+                        android:textColor="#DC2626"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/arrowLogout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:text=""
+                        android:textColor="#9CA3AF"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

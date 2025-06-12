@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0F2F5"
+    android:padding="16dp">
+
+    <!-- Card Principal -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="8dp"
+        app:cardBackgroundColor="@android:color/white"
+        android:layout_margin="16dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="32dp">
+
+            <!-- Logo Container -->
+            <RelativeLayout
+                android:id="@+id/logoContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="32dp">
+
+                <!-- Letra S com gradiente -->
+                <TextView
+                    android:id="@+id/logoIcon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:text="S"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:textColor="#4F46E5"/>
+
+                <!-- Texto SmartServ -->
+                <TextView
+                    android:id="@+id/logoText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SmartServ"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:textColor="#1F2937"
+                    android:layout_toEndOf="@id/logoIcon"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="8dp"/>
+            </RelativeLayout>
+
+            <!-- Título -->
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Como você quer começar?"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#1F2937"
+                android:gravity="center"
+                android:layout_below="@id/logoContainer"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Subtítulo -->
+            <TextView
+                android:id="@+id/subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Escolha seu tipo de perfil para continuar."
+                android:textSize="14sp"
+                android:textColor="#6B7280"
+                android:gravity="center"
+                android:layout_below="@id/title"
+                android:layout_marginBottom="32dp"/>
+
+            <!-- Container das Opções -->
+            <LinearLayout
+                android:id="@+id/optionsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_below="@id/subtitle"
+                android:layout_marginBottom="32dp">
+
+                <!-- Opção Cliente -->
+                <RelativeLayout
+                    android:id="@+id/registerClientOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/option_background"
+                    android:padding="24dp"
+                    android:layout_marginBottom="24dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <!-- Ícone do Usuário -->
+                    <RelativeLayout
+                        android:id="@+id/clientIconBg"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="#E0E7FF"
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:backgroundTint="#E0E7FF"
+                        android:backgroundTintMode="multiply">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_user"
+                            android:tint="#4F46E5"/>
+                    </RelativeLayout>
+
+                    <!-- Textos -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_toEndOf="@id/clientIconBg"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sou Cliente"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="#1F2937"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Quero encontrar e agendar serviços com os melhores profissionais."
+                            android:textSize="12sp"
+                            android:textColor="#6B7280"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+
+                    <!-- Seta -->
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_chevron_right"
+                        android:tint="#9CA3AF"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+
+                <!-- Opção Profissional -->
+                <RelativeLayout
+                    android:id="@+id/registerProfessionalOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/option_background"
+                    android:padding="24dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <!-- Ícone da Maleta -->
+                    <RelativeLayout
+                        android:id="@+id/professionalIconBg"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="#E0E7FF"
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:backgroundTint="#E0E7FF"
+                        android:backgroundTintMode="multiply">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_briefcase"
+                            android:tint="#4F46E5"/>
+                    </RelativeLayout>
+
+                    <!-- Textos -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_toEndOf="@id/professionalIconBg"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sou Profissional"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="#1F2937"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Quero divulgar meu trabalho, gerenciar minha agenda e encontrar clientes."
+                            android:textSize="12sp"
+                            android:textColor="#6B7280"
+                            android:layout_marginTop="4dp"/>
+                    </LinearLayout>
+
+                    <!-- Seta -->
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_chevron_right"
+                        android:tint="#9CA3AF"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"/>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <!-- Rodapé -->
+            <TextView
+                android:id="@+id/loginLink"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Já tem uma conta? Faça login aqui"
+                android:textSize="14sp"
+                android:textColor="#6B7280"
+                android:gravity="center"
+                android:layout_below="@id/optionsContainer"
+                android:clickable="true"
+                android:focusable="true"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>
