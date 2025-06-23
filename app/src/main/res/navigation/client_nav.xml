@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/client_nav">
+
+    <fragment
+        android:id="@+id/home_fragment"
+        android:name="com.example.smartapp.fragments.registro.DashboardFragment"
+        android:label="HomeFragment"
+        tools:layout="@layout/dashboard">
+        <action
+            android:id="@+id/action_Home_to_criar_produto"
+            app:destination="@id/buscar_produto_fragment" />
+        <action
+            android:id="@+id/action_home_to_perfil_prestador"
+            app:destination="@id/perfil_prestador_fragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/buscar_produto_fragment"
+        android:name="com.example.smartapp.fragments.registro.BuscarProServFragment"
+        android:label="BuscarProdutoFragment"
+        tools:layout="@layout/buscar_pro_serv">
+        <action
+            android:id="@+id/action_buscar_produto_to_buscar_profissional"
+            app:destination="@id/buscar_profissional_fragment" />
+        <action
+            android:id="@+id/action_buscar_produto_to_buscar_servico"
+            app:destination="@id/buscar_servico_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/buscar_profissional_fragment"
+        android:label="BuscarProfissionalFragment"
+        tools:layout="@layout/pesquisar_profissional">
+        <action
+            android:id="@+id/action_buscar_prestador_to_perfil_prestador"
+            app:destination="@id/perfil_prestador_fragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/perfil_prestador_fragment"
+        android:label="PerfilPrestadorFragment"
+        tools:layout="@layout/perfil_prestador" />
+
+    <fragment
+        android:id="@+id/buscar_servico_fragment"
+        android:name="com.example.smartapp.fragments.registro.BuscarServicoFragment"
+        android:label="BuscarServicoFragment"
+        tools:layout="@layout/buscar_servico" />
+
+</navigation>
