@@ -40,8 +40,38 @@
 
     <fragment
         android:id="@+id/perfil_prestador_fragment"
+        android:name="com.example.smartapp.fragments.registro.AgendarServicoFragment"
         android:label="PerfilPrestadorFragment"
-        tools:layout="@layout/perfil_prestador" />
+        tools:layout="@layout/perfil_prestador" >
+        <action
+            android:id="@+id/agendar_servico_fragment"
+            app:destination="@id/agendar_servico_fragment"/>
+        <action
+            android:id="@+id/avaliar_prestardor_fragment"
+            app:destination="@id/avaliar_prestardor_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@id/avaliar_prestardor_fragment"
+        android:name="com.example.smartapp.fragments.registro.AvaliarServicoFragment"
+        android:label="AvaliarPrestadorFragment"
+        tools:layout="@layout/avaliar_servico"/>
+
+    <fragment
+        android:id="@+id/agendar_servico_fragment"
+        android:name="com.example.smartapp.fragments.registro.AgendarServicoFragment"
+        android:label="AgendarServicoFragment"
+        tools:layout="@layout/agendar_servico">
+        <action
+            android:id="@+id/confirmar_agendamento_fragment"
+            app:destination="@+id/confimar_agendamento_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/confimar_agendamento_fragment"
+        android:name="com.example.smartapp.fragments.registro.ConfirmarAgendamentoFragment"
+        android:label="ConfirmarAgendamentoFragment"
+        tools:layout="@layout/confirmar_agendamento"/>
 
     <fragment
         android:id="@+id/buscar_servico_fragment"

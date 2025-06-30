@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/perfil_nav.xml">
+
+    <fragment
+        android:id="@+id/dashboard_fragment"
+        android:name="com.example.smartapp.fragments.registro.DashboardFragment"
+        android:label="DashboardFragment"
+        tools:layout="@layout/dashboard">
+        <action
+            android:id="@+id/perfil_fragment"
+            app:destination="@id/perfil_fragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/perfil_fragment"
+        android:name="com.example.smartapp.fragments.registro.PerfilFragment"
+        android:label="PerfilFragment"
+        tools:layout="@layout/perfil">
+        <action
+            android:id="@+id/editar_cliente_fragment"
+            app:destination="@id/editar_cliente_fragment"/>
+        <action
+            android:id="@+id/editar_profissional_fragment"
+            app:destination="@id/editar_profissional_fragment"/>
+
+    </fragment>
+
+    <fragment
+        android:id="@id/editar_cliente_fragment"
+        android:name="com.example.smartapp.fragments.registro.EditarClienteFragment"
+        android:label="EditarClienteFragment"
+        tools:layout="@layout/editar_cliente"/>
+
+    <fragment
+        android:id="@id/editar_profissional_fragment"
+        android:name="com.example.smartapp.fragments.registro.EditarProfissionalFragment"
+        android:label="EditarProfissionalFragment"
+        tools:layout="@layout/editar_profissional"/>
+
+</navigation>
