@@ -25,6 +25,16 @@
         <action
             android:id="@+id/editar_profissional_fragment"
             app:destination="@id/editar_profissional_fragment"/>
+        <action
+            android:id="@+id/gerenciar_servico_fragment"
+            app:destination="@+id/gerenciar_servico_fragment"/>
+        <action
+            android:id="@+id/historico_servico_fragment"
+            app:destination="@+id/historico_servico_fragment"/>
+        <action
+            android:id="@+id/gerenciar_notificacoes_fragment"
+            app:destination="@+id/gerenciar_notificacoes_fragment"/>
+
 
     </fragment>
 
@@ -39,5 +49,23 @@
         android:name="com.example.smartapp.fragments.registro.EditarProfissionalFragment"
         android:label="EditarProfissionalFragment"
         tools:layout="@layout/editar_profissional"/>
+
+    <fragment
+        android:id="@+id/gerenciar_servico_fragment"
+        android:name="com.example.smartapp.fragments.registro.GerenciarServicoFragment"
+        android:label="GerenciarServicoFragment"
+        tools:layout="@layout/gerenciar_servico"/>
+
+    <fragment
+        android:id="@id/historico_servico_fragment"
+        android:name="com.example.smartapp.fragments.registro.HistoricoServicoFragment"
+        android:label="HistoricoServicoFragment"
+        tools:layout="@layout/historico_servico"/>
+
+    <fragment
+        android:id="@+id/gerenciar_notificacoes_fragment"
+        android:name="com.example.smartapp.fragments.registro.GerenciarNotificacoesFragment"
+        android:label="GerenciarNotificacoesFragment"
+        tools:layout="@layout/gerenciar_notificacoes"/>
 
 </navigation>
