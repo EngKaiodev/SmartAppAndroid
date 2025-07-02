@@ -5,23 +5,13 @@
     <color name="indigo_600">#4F46E5</color>
     <color name="light_gray">#F0F2F5</color>
     <color name="notification_yellow">#FFDE00</color>
-    <color name="indigo_600">#4F46E5</color>
-    <color name="light_gray">#F0F2F5</color>
-    <color name="success_green">#16A34A</color>
-    <color name="indigo_600">#4F46E5</color>
-    <color name="light_gray">#F0F2F5</color>
     <color name="success_green">#16A34A</color>
     <color name="text_gray">#6B7280</color>
     <color name="text_dark">#1F2937</color>
     <color name="red_500">#EF4444</color>
-    <color name="indigo_600">#4F46E5</color>
-    <color name="light_gray">#F0F2F5</color>
-    <color name="text_dark">#1F2937</color>
-    <color name="text_gray">#6B7280</color>
     <color name="gray_100">#F3F4F6</color>
     <color name="gray_200">#E5E7EB</color>
     <color name="gray_300">#D1D5DB</color>
-    <color name="indigo_600">#4F46E5</color>
     <color name="yellow_400">#FBBF24</color>
     <color name="gray_800">#1F2937</color>
     <color name="gray_600">#4B5563</color>
@@ -30,6 +20,4 @@
     <color name="switch_thumb">#FFFFFF</color>
     <color name="switch_track">#CCCCCC</color>
     <color name="switch_track_checked">#4F46E5</color>
-
-
 </resources>

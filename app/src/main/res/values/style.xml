@@ -1,8 +1,0 @@
-<style name="CustomSwitch" parent="Widget.AppCompat.CompoundButton.Switch">
-    <item name="android:track">@color/switch_track</item>
-    <item name="android:thumb">@drawable/custom_thumb</item>
-    <item name="android:switchMinWidth">44dp</item>
-    <item name="android:switchPadding">8dp</item>
-    <item name="android:windowEnterAnimation">@anim/slide_in_bottom</item>
-    <item name="android:windowExitAnimation">@anim/slide_out_bottom</item>
-</style>
