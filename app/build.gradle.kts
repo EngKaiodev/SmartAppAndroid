@@ -56,8 +56,8 @@ dependencies {
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
 
-    implementation (libs.navigation.fragment)
-    implementation (libs.navigation.ui)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
 
     implementation(libs.hilt.android)
     ksp(libs.hilt.android.compiler)
@@ -73,4 +73,10 @@ dependencies {
 
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+
+    // Retrofit + RxJava
+    implementation(libs.adapter.rxjava2)
+    // RxJava
+    implementation(libs.rxjava)
+    implementation(libs.rxandroid)
 }

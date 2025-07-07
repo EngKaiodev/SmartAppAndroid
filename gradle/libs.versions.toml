@@ -18,8 +18,11 @@ ksp = "2.1.10-1.0.31"
 dagger = "2.56.2"
 navigationFragmentKtx = "2.9.1"
 navigationUiKtx = "2.9.0"
+rxandroid = "2.1.1"
+rxjava = "2.2.21"
 
 [libraries]
+adapter-rxjava2 = { module = "com.squareup.retrofit2:adapter-rxjava2", version.ref = "converterGson" }
 androidx-room-paging = { module = "androidx.room:room-paging", version.ref = "room" }
 androidx-room-rxjava2 = { module = "androidx.room:room-rxjava2", version.ref = "room" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
@@ -43,6 +46,8 @@ room-compiler = { group = "androidx.room", name = "room-compiler", version.ref =
 room-testing = { group = "androidx.room", name = "room-testing", version.ref = "room" }
 androidx-navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigationUiKtx" }
+rxandroid = { module = "io.reactivex.rxjava2:rxandroid", version.ref = "rxandroid" }
+rxjava = { module = "io.reactivex.rxjava2:rxjava", version.ref = "rxjava" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
