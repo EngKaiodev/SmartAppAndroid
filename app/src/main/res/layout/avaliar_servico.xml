@@ -20,12 +20,12 @@
 
         <ImageButton
             android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="btnvoltar"
             android:padding="8dp"
-            android:src="@drawable/ic_arrow_back"
-            android:tint="@android:color/white" />
+            android:src="@drawable/ic_arrow_back"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -109,31 +109,31 @@
                     android:id="@+id/star1"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:src="@drawable/ic_star_empty" />
+                     />
 
                 <ImageView
                     android:id="@+id/star2"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:src="@drawable/ic_star_empty" />
+                     />
 
                 <ImageView
                     android:id="@+id/star3"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:src="@drawable/ic_star_empty" />
+                     />
 
                 <ImageView
                     android:id="@+id/star4"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:src="@drawable/ic_star_empty" />
+                     />
 
                 <ImageView
                     android:id="@+id/star5"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:src="@drawable/ic_star_empty" />
+                     />
             </LinearLayout>
 
             <TextView
@@ -166,7 +166,6 @@
                 android:layout_below="@id/etComment"
                 android:layout_marginTop="24dp"
                 android:background="@drawable/button_primary"
-                android:drawableStart="@drawable/ic_send"
                 android:drawablePadding="8dp"
                 android:paddingVertical="12dp"
                 android:text="Enviar Avaliação"
@@ -194,8 +193,7 @@
                 android:id="@+id/ivModalIcon"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/ic_success" />
+                android:layout_centerHorizontal="true"/>
 
             <TextView
                 android:id="@+id/tvModalTitle"

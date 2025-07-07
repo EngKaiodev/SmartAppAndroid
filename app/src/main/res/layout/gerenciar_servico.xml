@@ -21,9 +21,10 @@
             android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="image2"
             android:padding="12dp"
             app:srcCompat="@drawable/ic_arrow_left"
-            android:tint="@android:color/white"/>
+            />
 
         <TextView
             android:id="@+id/logoTextHeader"
@@ -106,8 +107,8 @@
 
                     <Button
                         android:id="@+id/addNewServiceBtn"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:layout_weight="0.3"
                         android:layout_marginStart="16dp"
                         android:drawableStart="@drawable/ic_add"
@@ -188,16 +189,18 @@
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="image5"
                             app:srcCompat="@drawable/ic_edit"
-                            android:tint="#3B82F6"/>
+                            />
 
                         <ImageButton
                             android:id="@+id/deleteButton1"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="image1"
                             app:srcCompat="@drawable/ic_delete"
-                            android:tint="#EF4444"/>
+                            />
                     </LinearLayout>
                 </RelativeLayout>
 
@@ -256,16 +259,18 @@
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="image4"
                             app:srcCompat="@drawable/ic_edit"
-                            android:tint="#3B82F6"/>
+                            />
 
                         <ImageButton
                             android:id="@+id/deleteButton2"
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="image3"
                             app:srcCompat="@drawable/ic_delete"
-                            android:tint="#EF4444"/>
+                            />
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>

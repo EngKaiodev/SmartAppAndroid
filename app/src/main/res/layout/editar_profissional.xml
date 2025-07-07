@@ -23,11 +23,12 @@
 
             <ImageButton
                 android:id="@+id/backButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:background="?selectableItemBackgroundBorderless"
+                android:contentDescription="btnvoltar2"
                 android:padding="8dp"
-                android:tint="@android:color/white" />
+                 />
 
             <TextView
                 android:layout_width="0dp"

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#f0f2f5">
@@ -15,11 +16,11 @@
 
         <ImageButton
             android:id="@+id/backButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="gere2"
             android:src="@drawable/ic_arrow_back"
-            android:tint="@android:color/white"
             android:layout_alignParentStart="true"/>
 
         <TextView
@@ -84,8 +85,8 @@
 
                         <Switch
                             android:id="@+id/toggleAll"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:layout_alignParentEnd="true"
                             android:checked="true"
                             android:thumbTint="@color/switch_thumb"
@@ -108,8 +109,8 @@
 
                         <Switch
                             android:id="@+id/toggleSound"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:layout_alignParentEnd="true"
                             android:checked="true"
                             android:thumbTint="@color/switch_thumb"
@@ -131,12 +132,13 @@
 
                         <Switch
                             android:id="@+id/toggleVibrate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:layout_alignParentEnd="true"
                             android:checked="false"
                             android:thumbTint="@color/switch_thumb"
-                            android:trackTint="@color/switch_track"/>
+                            android:trackTint="@color/switch_track"
+                            tools:ignore="UseSwitchCompatOrMaterialXml" />
                     </RelativeLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -180,8 +182,8 @@
 
                         <Switch
                             android:id="@+id/toggleConfirmed"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:layout_alignParentEnd="true"
                             android:checked="true"
                             android:thumbTint="@color/switch_thumb"
@@ -203,8 +205,8 @@
 
                         <Switch
                             android:id="@+id/toggleReminder1Day"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:layout_alignParentEnd="true"
                             android:checked="true"
                             android:thumbTint="@color/switch_thumb"
@@ -226,8 +228,8 @@
 
                         <Switch
                             android:id="@+id/toggleReminder1Hour"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:layout_alignParentEnd="true"
                             android:checked="true"
                             android:thumbTint="@color/switch_thumb"
@@ -248,8 +250,8 @@
 
                         <Switch
                             android:id="@+id/toggleCancelled"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:layout_alignParentEnd="true"
                             android:checked="true"
                             android:thumbTint="@color/switch_thumb"

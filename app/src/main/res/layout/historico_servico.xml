@@ -15,9 +15,10 @@
 
         <ImageButton
             android:id="@+id/backButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="bntvl"
             android:src="@drawable/ic_arrow_back"
             android:layout_alignParentStart="true"
             app:tint="@android:color/white" />
@@ -70,8 +71,8 @@
 
                     <Spinner
                         android:id="@+id/sortBySpinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
                         android:background="@drawable/spinner_background"
                         android:padding="12dp"/>
 
@@ -195,32 +196,30 @@
                                 <ImageView
                                     android:layout_width="16dp"
                                     android:layout_height="16dp"
-                                    android:src="@drawable/ic_star_filled"
-                                    android:tint="#FBBF24"/>
+                                    android:contentDescription="imgs"
+
+                                    />
 
                                 <ImageView
                                     android:layout_width="16dp"
                                     android:layout_height="16dp"
-                                    android:src="@drawable/ic_star_filled"
-                                    android:tint="#FBBF24"/>
+
+                                   />
 
                                 <ImageView
                                     android:layout_width="16dp"
                                     android:layout_height="16dp"
-                                    android:src="@drawable/ic_star_filled"
-                                    android:tint="#FBBF24"/>
+                                    />
 
                                 <ImageView
                                     android:layout_width="16dp"
                                     android:layout_height="16dp"
-                                    android:src="@drawable/ic_star_filled"
-                                    android:tint="#FBBF24"/>
+                                    />
 
                                 <ImageView
                                     android:layout_width="16dp"
                                     android:layout_height="16dp"
-                                    android:src="@drawable/ic_star_filled"
-                                    android:tint="#FBBF24"/>
+                                    />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -247,7 +246,7 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:id="@+id/serviceName"
+                                android:id="@+id/serviceName4"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -257,7 +256,7 @@
                                 android:textStyle="bold"/>
 
                             <TextView
-                                android:id="@+id/serviceDate"
+                                android:id="@+id/serviceDate3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="22/04/2024"
@@ -266,7 +265,7 @@
                         </LinearLayout>
 
                         <TextView
-                            android:id="@+id/professionalName"
+                            android:id="@+id/professionalName2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
@@ -275,7 +274,7 @@
                             android:textSize="14sp"/>
 
                         <TextView
-                            android:id="@+id/servicePrice"
+                            android:id="@+id/servicePrice5"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
@@ -298,7 +297,7 @@
                                 android:textSize="14sp"/>
 
                             <LinearLayout
-                                android:id="@+id/ratingStars"
+                                android:id="@+id/ratingStars1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="4dp"
@@ -307,32 +306,27 @@
                                 <ImageView
                                     android:layout_width="16dp"
                                     android:layout_height="16dp"
-                                    android:src="@drawable/ic_star_filled"
-                                    android:tint="#FBBF24"/>
+                                    />
 
                                 <ImageView
                                     android:layout_width="16dp"
                                     android:layout_height="16dp"
-                                    android:src="@drawable/ic_star_filled"
-                                    android:tint="#FBBF24"/>
+                                    />
 
                                 <ImageView
                                     android:layout_width="16dp"
                                     android:layout_height="16dp"
-                                    android:src="@drawable/ic_star_filled"
-                                    android:tint="#FBBF24"/>
+                                    />
 
                                 <ImageView
                                     android:layout_width="16dp"
                                     android:layout_height="16dp"
-                                    android:src="@drawable/ic_star_filled"
-                                    android:tint="#FBBF24"/>
+                                    />
 
                                 <ImageView
                                     android:layout_width="16dp"
                                     android:layout_height="16dp"
-                                    android:src="@drawable/ic_star_empty"
-                                    android:tint="#FBBF24"/>
+                                   />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>

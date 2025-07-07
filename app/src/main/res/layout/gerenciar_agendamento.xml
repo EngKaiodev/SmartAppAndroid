@@ -97,8 +97,8 @@
 
                         <Spinner
                             android:id="@+id/statusFilter"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:layout_columnWeight="1"
                             android:layout_row="0"
                             android:layout_column="0"
@@ -107,8 +107,8 @@
 
                         <Spinner
                             android:id="@+id/periodFilter"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:layout_columnWeight="1"
                             android:layout_row="0"
                             android:layout_column="1"

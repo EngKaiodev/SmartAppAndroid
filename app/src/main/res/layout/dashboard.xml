@@ -36,8 +36,9 @@
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="dashboard2"
                 app:srcCompat="@drawable/ic_bell"
-                android:tint="@android:color/white"/>
+               />
 
             <TextView
                 android:id="@+id/notificationCount"
@@ -112,7 +113,7 @@
             android:layout_centerVertical="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             app:srcCompat="@drawable/ic_close"
-            android:tint="#000000"/>
+            />
     </RelativeLayout>
 
     <!-- Conteúdo Principal -->
@@ -162,8 +163,9 @@
                         <ImageView
                             android:layout_width="40dp"
                             android:layout_height="40dp"
+                            android:contentDescription="dashboard3"
                             android:src="@drawable/ic_scissors"
-                            android:tint="#4F46E5"/>
+                            />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -188,7 +190,7 @@
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:src="@drawable/ic_spa"
-                            android:tint="#4F46E5"/>
+                            />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -213,7 +215,7 @@
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:src="@drawable/ic_dumbbell"
-                            android:tint="#4F46E5"/>
+                            />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -238,7 +240,7 @@
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:src="@drawable/ic_paint"
-                            android:tint="#4F46E5"/>
+                            />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -263,7 +265,7 @@
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:src="@drawable/ic_car"
-                            android:tint="#4F46E5"/>
+                            />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -287,7 +289,7 @@
                             android:layout_width="40dp"
                             android:layout_height="40dp"
                             android:src="@drawable/ic_ellipsis"
-                            android:tint="#4F46E5"/>
+                           />
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -371,7 +373,7 @@
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
                                 android:src="@drawable/ic_star"
-                                android:tint="#FFD700"/>
+                                />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -383,8 +385,8 @@
                         </LinearLayout>
 
                         <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:text="Agendar"
                             android:textColor="@android:color/white"
                             android:backgroundTint="#4F46E5"
@@ -445,7 +447,7 @@
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
                                 android:src="@drawable/ic_star"
-                                android:tint="#FFD700"/>
+                                />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -457,8 +459,8 @@
                         </LinearLayout>
 
                         <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:text="Agendar"
                             android:textColor="@android:color/white"
                             android:backgroundTint="#4F46E5"
@@ -519,7 +521,7 @@
                                 android:layout_width="16dp"
                                 android:layout_height="16dp"
                                 android:src="@drawable/ic_star"
-                                android:tint="#FFD700"/>
+                                />
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -557,8 +559,8 @@
         android:paddingVertical="8dp">
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
@@ -569,7 +571,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_home"
-                android:tint="#4F46E5"/>
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -581,8 +583,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
@@ -593,7 +595,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_search"
-                android:tint="#6B7280"/>
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -617,7 +619,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:src="@drawable/ic_calendar"
-                android:tint="#6B7280"/>
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -629,8 +631,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_weight="1"
             android:orientation="vertical"
             android:gravity="center"
@@ -640,8 +642,9 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
+                android:contentDescription="dashboard1"
                 android:src="@drawable/ic_profile"
-                android:tint="#6B7280"/>
+                />
 
             <TextView
                 android:layout_width="wrap_content"

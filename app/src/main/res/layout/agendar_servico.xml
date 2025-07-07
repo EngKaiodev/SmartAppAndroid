@@ -19,10 +19,10 @@
 
         <ImageButton
             android:id="@+id/backButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:contentDescription="btnvoltar"
             android:src="@drawable/ic_arrow_back"
-            android:tint="@android:color/white"
             android:background="?selectableItemBackgroundBorderless"
             android:padding="8dp"/>
 
@@ -176,11 +176,12 @@
 
                         <ImageButton
                             android:id="@+id/prevMonthBtn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:contentDescription="btnmes2"
                             android:src="@drawable/ic_chevron_left"
                             android:background="?selectableItemBackgroundBorderless"
-                            android:tint="@color/text_dark"/>
+                            />
 
                         <TextView
                             android:id="@+id/currentMonthYear"
@@ -195,11 +196,12 @@
 
                         <ImageButton
                             android:id="@+id/nextMonthBtn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:contentDescription="btnmes"
                             android:src="@drawable/ic_chevron_right"
                             android:background="?selectableItemBackgroundBorderless"
-                            android:tint="@color/text_dark"/>
+                            />
                     </LinearLayout>
 
                     <!-- Day Names -->

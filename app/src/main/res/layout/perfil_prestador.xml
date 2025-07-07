@@ -16,12 +16,12 @@
 
         <ImageButton
             android:id="@+id/backButton"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="btn2"
             android:src="@drawable/ic_arrow_back"
-            android:tint="@android:color/white"
-            android:layout_alignParentStart="true"/>
+           android:layout_alignParentStart="true"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -90,7 +90,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/ic_star"
-                            android:tint="#F59E0B"/>
+                            />
 
                         <TextView
                             android:id="@+id/professionalRating"
@@ -122,8 +122,7 @@
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_location"
-                            android:tint="#6B7280"/>
+                            />
 
                         <TextView
                             android:id="@+id/professionalLocation"
@@ -386,31 +385,31 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:src="@drawable/ic_star"
-                                        android:tint="#F59E0B"/>
+                                        />
 
                                     <ImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:src="@drawable/ic_star"
-                                        android:tint="#F59E0B"/>
+                                       />
 
                                     <ImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:src="@drawable/ic_star"
-                                        android:tint="#F59E0B"/>
+                                        />
 
                                     <ImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:src="@drawable/ic_star"
-                                        android:tint="#F59E0B"/>
+                                        />
 
                                     <ImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:src="@drawable/ic_star"
-                                        android:tint="#F59E0B"/>
+                                        />
                                 </LinearLayout>
                             </LinearLayout>
 
@@ -461,31 +460,30 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:src="@drawable/ic_star"
-                                        android:tint="#F59E0B"/>
+                                       />
 
                                     <ImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:src="@drawable/ic_star"
-                                        android:tint="#F59E0B"/>
+                                        />
 
                                     <ImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:src="@drawable/ic_star"
-                                        android:tint="#F59E0B"/>
+                                        />
 
                                     <ImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:src="@drawable/ic_star"
-                                        android:tint="#F59E0B"/>
+                                        />
 
                                     <ImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:src="@drawable/ic_star_half"
-                                        android:tint="#F59E0B"/>
+                                        />
                                 </LinearLayout>
                             </LinearLayout>
 

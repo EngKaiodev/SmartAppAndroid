@@ -21,9 +21,10 @@
             android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="image3"
             android:padding="12dp"
             app:srcCompat="@drawable/ic_arrow_left"
-            android:tint="@android:color/white"/>
+            />
 
         <TextView
             android:id="@+id/logoTextHeader"
@@ -124,7 +125,7 @@
                             android:layout_width="20dp"
                             android:layout_height="20dp"
                             android:src="@drawable/ic_user_tie"
-                            android:tint="#4F46E5"/>
+                            />
                     </RelativeLayout>
 
                     <!-- Textos -->
@@ -164,8 +165,9 @@
                         android:layout_height="24dp"
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
+                        android:contentDescription="image2"
                         android:src="@drawable/ic_chevron_right"
-                        android:tint="#9CA3AF"/>
+                        />
                 </RelativeLayout>
 
                 <!-- Opção Buscar Serviço -->
@@ -190,8 +192,9 @@
                         <ImageView
                             android:layout_width="20dp"
                             android:layout_height="20dp"
+                            android:contentDescription="image1"
                             android:src="@drawable/ic_scissors"
-                            android:tint="#4F46E5"/>
+                            />
                     </RelativeLayout>
 
                     <!-- Textos -->
@@ -232,7 +235,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:src="@drawable/ic_chevron_right"
-                        android:tint="#9CA3AF"/>
+                        />
                 </RelativeLayout>
             </LinearLayout>
         </RelativeLayout>
