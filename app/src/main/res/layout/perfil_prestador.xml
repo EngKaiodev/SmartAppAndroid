@@ -65,7 +65,7 @@
                         android:id="@+id/professionalImage"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:src="@drawable/placeholder"
+                        android:src="@drawable/profile_placeholder"
                         android:scaleType="centerCrop"
                         android:background="@drawable/profile_image_border"/>
 

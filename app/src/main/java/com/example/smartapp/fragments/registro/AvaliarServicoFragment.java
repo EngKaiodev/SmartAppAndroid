@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.smartapp.databinding.AvaliarServicoBinding;
+
 public class AvaliarServicoFragment extends Fragment {
 
     private AvaliarServicoBinding binding;
@@ -17,7 +19,7 @@ public class AvaliarServicoFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = AvaliarServicoBinding.inflate(inflater, container, false);
-        return binding.getRoot;
+        return binding.getRoot();
     }
 
     @Override

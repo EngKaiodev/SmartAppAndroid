@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.smartapp.databinding.GerenciarAgendamentoBinding;
+
 public class GerenciarAgendamentoFragment extends Fragment {
 
     private GerenciarAgendamentoBinding binding;

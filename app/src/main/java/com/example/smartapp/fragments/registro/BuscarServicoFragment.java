@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.smartapp.databinding.BuscarServicoBinding;
+
 public class BuscarServicoFragment extends Fragment {
 
     private BuscarServicoBinding binding;

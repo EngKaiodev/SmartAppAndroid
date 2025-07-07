@@ -29,6 +29,14 @@
     <string name="fri">Sex</string>
     <string name="sat">Sáb</string>
 
+    <string name="back_button">Voltar</string>
+    <string name="search_icon">Buscar</string>
+    <string name="professional_photo">Foto do profissional</string>
+    <string name="rating_star">Estrela de avaliação</string>
+    <string name="location_icon">Ícone de localização</string>
+    <string name="chevron_icon">Ícone de navegação</string>
+
+
     <!-- Month names -->
     <string-array name="month_names">
         <item>Janeiro</item>

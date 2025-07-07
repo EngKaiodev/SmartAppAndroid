@@ -9,6 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.smartapp.databinding.CadastrarClienteBinding;
+import com.example.smartapp.databinding.CadastrarServicoBinding;
+
 public class CadastrarClienteFragment extends Fragment {
 
     private CadastrarClienteBinding binding;
@@ -16,7 +19,7 @@ public class CadastrarClienteFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = CadastrarClienteBiding.inflate(inflater, container, false);
+        binding = CadastrarClienteBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 

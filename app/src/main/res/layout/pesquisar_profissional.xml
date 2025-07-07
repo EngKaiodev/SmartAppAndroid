@@ -11,9 +11,9 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:background="#4F46E5"
-        android:padding="16dp"
-        android:layout_alignParentTop="true">
+        android:padding="16dp">
 
         <ImageButton
             android:id="@+id/backButton"
@@ -22,9 +22,8 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="bntvl"
-            android:src="@drawable/ic_arrow_back"
-             />
+            android:contentDescription="@string/back_button"
+            android:src="@drawable/ic_arrow_back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,21 +47,22 @@
 
         <EditText
             android:id="@+id/searchInput"
-            android:layout_width="48dp"
+            android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:hint="Buscar por nome, serviço ou especialidade..."
-            android:paddingStart="48dp"
             android:background="@drawable/edittext_background"
-            android:textSize="16sp"/>
+            android:hint="Buscar por nome, serviço ou especialidade..."
+            android:textSize="16sp"
+            android:paddingStart="48dp"
+            android:paddingEnd="16dp" />
 
         <ImageView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@drawable/ic_search"
             android:layout_alignStart="@id/searchInput"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
-            />
+            android:contentDescription="@string/search_icon"
+            android:src="@drawable/ic_search" />
     </RelativeLayout>
 
     <!-- Filter Section -->
@@ -82,44 +82,42 @@
             android:text="Refinar Busca:"
             android:textColor="#1F2937"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/filterTitle"
             android:layout_marginTop="16dp"
+            android:alignmentMode="alignBounds"
             android:columnCount="2"
             android:rowCount="2"
-            android:alignmentMode="alignBounds"
-            android:columnOrderPreserved="false"
             android:useDefaultMargins="true">
 
             <Button
                 android:id="@+id/filterCategoryBtn"
-               android:text="Categoria"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"/>
+                android:layout_row="0"
+                android:layout_column="0"
+                android:text="Categoria" />
 
             <Button
                 android:id="@+id/filterLocationBtn"
-                android:text="Localização"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"/>
+                android:layout_row="0"
+                android:layout_column="1"
+                android:text="Localização" />
 
             <Button
                 android:id="@+id/filterRatingBtn"
-                android:text="Avaliação"
+                android:layout_row="1"
+                android:layout_column="0"
                 android:drawableStart="@drawable/ic_star"
-                app:layout_columnWeight="1"
-                app:layout_rowWeight="1"/>
+                android:text="Avaliação" />
 
             <Button
                 android:id="@+id/clearFiltersBtn"
-                android:text="Limpar Filtros"
-                app:layout_columnWeight="2"
-                app:layout_rowWeight="1"
-                android:layout_columnSpan="2"/>
+                android:layout_row="1"
+                android:layout_column="1"
+                android:text="Limpar Filtros" />
         </GridLayout>
     </RelativeLayout>
 
@@ -136,9 +134,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Prestadores Encontrados:"
+            android:textColor="#1F2937"
             android:textSize="18sp"
-            android:textStyle="bold"
-            android:textColor="#1F2937"/>
+            android:textStyle="bold" />
 
         <ScrollView
             android:layout_width="match_parent"
@@ -157,29 +155,30 @@
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="4dp"
-                    app:cardUseCompatPadding="true"
-                    android:layout_marginBottom="16dp">
+                    app:cardUseCompatPadding="true">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="16dp"
-                        android:background="@android:color/white">
+                        android:background="@android:color/white"
+                        android:padding="16dp">
 
                         <ImageView
                             android:id="@+id/professionalImage"
                             android:layout_width="60dp"
                             android:layout_height="60dp"
                             android:scaleType="centerCrop"
-                            />
+                            android:src="@drawable/profile_placeholder"
+                            android:contentDescription="@string/professional_photo" />
 
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_toEndOf="@id/professionalImage"
                             android:layout_marginStart="16dp"
+                            android:layout_toEndOf="@id/professionalImage"
                             android:layout_toStartOf="@id/chevron">
 
                             <TextView
@@ -189,69 +188,70 @@
                                 android:text="Ana Beleza"
                                 android:textColor="#1F2937"
                                 android:textSize="18sp"
-                                android:textStyle="bold"/>
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/professionalSpecialty"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/professionalName"
+                                android:layout_marginTop="4dp"
                                 android:text="Cabeleireira"
                                 android:textColor="#4B5563"
-                                android:textSize="14sp"
-                                android:layout_marginTop="4dp"/>
+                                android:textSize="14sp" />
 
                             <LinearLayout
                                 android:id="@+id/ratingContainer"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/professionalSpecialty"
-                                android:orientation="horizontal"
-                                android:layout_marginTop="4dp">
+                                android:layout_marginTop="4dp"
+                                android:orientation="horizontal">
 
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:src="@drawable/ic_star"
-                                    />
+                                    android:contentDescription="@string/rating_star" />
 
                                 <TextView
                                     android:id="@+id/professionalRating"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="4dp"
                                     android:text="4.8"
                                     android:textColor="#F59E0B"
-                                    android:textStyle="bold"
-                                    android:layout_marginStart="4dp"/>
+                                    android:textStyle="bold" />
 
                                 <TextView
                                     android:id="@+id/professionalReviews"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
                                     android:text="(120 avaliações)"
-                                    android:textColor="#6B7280"
-                                    android:layout_marginStart="8dp"/>
+                                    android:textColor="#6B7280" />
                             </LinearLayout>
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_below="@id/ratingContainer"
-                                android:orientation="horizontal"
-                                android:layout_marginTop="4dp">
+                                android:layout_marginTop="4dp"
+                                android:orientation="horizontal">
 
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    />
+                                    android:src="@drawable/ic_local"
+                                    android:contentDescription="@string/location_icon" />
 
                                 <TextView
                                     android:id="@+id/professionalLocation"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_marginStart="4dp"
                                     android:text="Centro, Araçatuba"
-                                    android:textColor="#6B7280"
-                                    android:layout_marginStart="4dp"/>
+                                    android:textColor="#6B7280" />
                             </LinearLayout>
                         </RelativeLayout>
 
@@ -259,13 +259,12 @@
                             android:id="@+id/chevron"
                             android:layout_width="24dp"
                             android:layout_height="24dp"
-                            android:src="@drawable/ic_chevron_right"
                             android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"/>
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_chevron_right"
+                            android:contentDescription="@string/chevron_icon" />
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
-
-                <!-- Repeat for other professional cards -->
             </LinearLayout>
         </ScrollView>
 
@@ -273,10 +272,10 @@
             android:id="@+id/noResultsMessage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Nenhum prestador encontrado com os filtros aplicados."
-            android:textColor="#6B7280"
-            android:textAlignment="center"
             android:gravity="center"
-            android:visibility="gone"/>
+            android:text="Nenhum prestador encontrado com os filtros aplicados."
+            android:textAlignment="center"
+            android:textColor="#6B7280"
+            android:visibility="gone" />
     </RelativeLayout>
 </RelativeLayout>
