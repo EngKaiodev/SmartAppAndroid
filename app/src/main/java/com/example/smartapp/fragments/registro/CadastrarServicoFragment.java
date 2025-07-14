@@ -8,18 +8,35 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.smartapp.databinding.CadastrarServicoBinding;
+import com.example.smartapp.viewmodels.CadastrarServicoViewModel;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class CadastrarServicoFragment extends Fragment {
 
     private CadastrarServicoBinding binding;
+    private CadastrarServicoViewModel viewModel;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = CadastrarServicoBinding.inflate(inflater, container, false);
+        viewModel = new ViewModelProvider(this).get(CadastrarServicoViewModel.class);
         return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        setupListeners();
+    }
+
+    private void setupListeners() {
     }
 
     @Override
