@@ -9,25 +9,21 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.smartapp.databinding.DashboardBinding;
 import com.example.smartapp.viewmodels.DashboardViewModel;
 
+import com.example.smartapp.fragments.registro.DashboardFragmentDirections;
+
 import dagger.hilt.android.AndroidEntryPoint;
 
-@AndroidEntryPoint // 3
+@AndroidEntryPoint
 public class DashboardFragment extends Fragment {
-
-    /**
-     * 1 - CRIAR VIEWMODEL
-     * 2 - ANOTAR VIEWMODEL
-     * 3 - NO FRAGMENT ANOTAR COM ANDROIDENTRYPOINT
-     * 4 - CRIAR VARIAVEL VIEWMODEL
-     * 5 - INICIAR VARIAVEL VIEWMODEL
-     */
-
     private DashboardBinding binding;
-    private DashboardViewModel viewModel; // 4
+    private DashboardViewModel viewModel;
+    private NavController navController; // 1 CRIA NAV CONTROLLER
 
     @Nullable
     @Override
@@ -41,10 +37,29 @@ public class DashboardFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        navController = NavHostFragment.findNavController(this); // 2 INSTACIA NAV CONTROLER
+
         setupListeners();
     }
 
+    /**
+     * COLOCA TODAS AS NAVEGAÇÕES PELO NOME DA ACTION.
+     * SE NÃO APARECER A ACTION, PROCURE PARA VER SE NÃO ESTÁ DUPLICADO ENTRE OS NAVS
+     */
     private void setupListeners() {
+        binding.btnPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(DashboardFragmentDirections.actionHomeToPerfilPrestador());
+            }
+        });
+
+        binding.btnAgendamento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(DashboardFragmentDirections.actionHomeToAgendamentos());
+            }
+        });
     }
 
     @Override
