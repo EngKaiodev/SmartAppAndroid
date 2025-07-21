@@ -44,12 +44,49 @@ public class PerfilFragment extends Fragment {
     }
 
     private void setupListeners() {
-        binding.btnBack.setOnClickListener(new View.OnClickListener() {
+        binding.btnvoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 navController.popBackStack();
             }
         });
+
+        binding.btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(PerfilFragmentDirections.editarClienteFragment());
+                navController.navigate(PerfilFragmentDirections.editarProfissionalFragment());
+            }
+        });
+
+        binding.btnGerenciarServicos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(PerfilFragmentDirections.gerenciarServicoFragment());
+            }
+        });
+
+        binding.btnHistoricoServico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(PerfilFragmentDirections.historicoServicoFragment());
+            }
+        });
+
+        binding.btnGerenciarNotificacoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(PerfilFragmentDirections.gerenciarNotificacoesFragment());
+            }
+        });
+
+        binding.btnConfiguracoes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
 
     @Override

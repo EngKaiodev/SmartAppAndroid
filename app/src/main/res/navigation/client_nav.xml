@@ -30,19 +30,13 @@
         android:name="com.example.smartapp.fragments.registro.GerenciarNotificacoesFragment"
         android:label="GerenciarNotificacoesFragment"
         tools:layout="@layout/gerenciar_notificacoes" />
-    <action
-        android:id="@+id/editar_cliente_fragment"
-        app:destination="@id/editar_cliente_fragment" />
-    <fragment
-        android:id="@+id/editar_cliente_fragment3"
-        android:name="com.example.smartapp.fragments.registro.EditarClienteFragment"
-        android:label="EditarClienteFragment"
-        tools:layout="@layout/editar_cliente" />
+
     <fragment
         android:id="@id/editar_profissional_fragment"
         android:name="com.example.smartapp.fragments.registro.EditarProfissionalFragment"
         android:label="EditarProfissionalFragment"
         tools:layout="@layout/editar_profissional" />
+
     <fragment
         android:id="@+id/perfil_fragment"
         android:name="com.example.smartapp.fragments.registro.PerfilFragment"
@@ -76,18 +70,9 @@
         android:name="com.example.smartapp.fragments.registro.GerenciarServicoFragment"
         android:label="GerenciarServicoFragment"
         tools:layout="@layout/gerenciar_servico" />
-    <action
-        android:id="@+id/gerenciar_notificacoes_fragment3"
-        app:destination="@+id/gerenciar_notificacoes_fragment" />
-    <action
-        android:id="@+id/gerenciar_servico_fragment3"
-        app:destination="@+id/gerenciar_servico_fragment" />
-    <action
-        android:id="@+id/editar_profissional_fragment3"
-        app:destination="@id/editar_profissional_fragment" />
-    <action
-        android:id="@+id/historico_servico_fragment3"
-        app:destination="@+id/historico_servico_fragment" />
+
+
+
     <fragment
         android:id="@+id/home_fragment"
         android:name="com.example.smartapp.fragments.registro.DashboardFragment"
@@ -102,7 +87,15 @@
         <action
             android:id="@+id/action_home_to_agendamentos"
             app:destination="@id/gerenciar_agendamento_fragment" />
+
     </fragment>
+
+    <fragment
+        android:id="@+id/editar_cliente_fragment"
+        android:name="com.example.smartapp.fragments.registro.EditarClienteFragment"
+        android:label="EditarProdutoFragment"
+        tools:layout="@layout/editar_cliente"/>
+
     <fragment
         android:id="@+id/buscar_produto_fragment"
         android:name="com.example.smartapp.fragments.registro.BuscarProServFragment"
@@ -119,6 +112,7 @@
     <fragment
         android:id="@+id/buscar_profissional_fragment"
         android:label="BuscarProfissionalFragment"
+        android:name="com.example.smartapp.fragments.registro.PesquisarProfissionaisFragment"
         tools:layout="@layout/pesquisar_profissional">
         <action
             android:id="@+id/action_buscar_prestador_to_perfil_prestador"
@@ -146,16 +140,16 @@
 
     <fragment
         android:id="@+id/agendar_servico_fragment"
-        android:name="com.example.smartapp.fragments.registro.AgendarServicoFragment"
+        android:name="com.example.smartapp.fragments.registro.ConfirmarAgendamentoFragment"
         android:label="AgendarServicoFragment"
         tools:layout="@layout/agendar_servico">
         <action
-            android:id="@+id/confirmar_agendamento_fragment"
-            app:destination="@+id/confimar_agendamento_fragment" />
+            android:id="@+id/confirmaragendamentofragment"
+            app:destination="@+id/confirmaragendamentofragment" />
     </fragment>
 
     <fragment
-        android:id="@+id/confimar_agendamento_fragment"
+        android:id="@+id/confirmaragendamentofragment"
         android:name="com.example.smartapp.fragments.registro.ConfirmarAgendamentoFragment"
         android:label="ConfirmarAgendamentoFragment"
         tools:layout="@layout/confirmar_agendamento" />

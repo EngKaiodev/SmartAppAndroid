@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.smartapp.databinding.EditarProfissionalBinding;
 import com.example.smartapp.viewmodels.EditarProfissionalViewModel;
@@ -21,6 +23,8 @@ public class EditarProfissionalFragment extends Fragment {
     private EditarProfissionalBinding binding;
     private EditarProfissionalViewModel viewModel;
 
+    private NavController navController;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,13 +35,19 @@ public class EditarProfissionalFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
 
         setupListeners();
     }
 
     private void setupListeners() {
-
+        binding.btnvoltarProfisional.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.popBackStack();
+            }
+        });
     }
 
     @Override

@@ -8,50 +8,41 @@
     android:padding="16dp">
 
     <!-- Header -->
+
+    <!-- Main Content -->
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#4F46E5"
+        android:elevation="4dp"
         android:padding="16dp"
-        android:elevation="4dp">
+        >
 
-        <Button
-            android:id="@+id/backButton"
+        <ImageButton
+            android:id="@+id/btnvoltaragendamento"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentStart="true"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:gravity="center"
-            android:text="←"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+            android:contentDescription="gere2"
+            android:src="@drawable/ic_arrow_back" />
 
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@id/backButton"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp"
             android:text="Meus Agendamentos"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            />
 
-        <Button
-            android:id="@+id/reportButton"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:layout_alignParentEnd="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:gravity="center"
-            android:text="📊"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp" />
+
     </RelativeLayout>
 
-    <!-- Main Content -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

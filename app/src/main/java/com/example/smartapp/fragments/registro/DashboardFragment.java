@@ -29,7 +29,7 @@ public class DashboardFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DashboardBinding.inflate(inflater, container, false);
-        viewModel = new ViewModelProvider(this).get(DashboardViewModel.class); // 5
+        viewModel = new ViewModelProvider(this).get(DashboardViewModel.class);
         return binding.getRoot();
     }
 
@@ -60,6 +60,16 @@ public class DashboardFragment extends Fragment {
                 navController.navigate(DashboardFragmentDirections.actionHomeToAgendamentos());
             }
         });
+
+       binding.btnBuscar.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               navController.navigate(DashboardFragmentDirections.actionHomeToCriarProduto());
+           }
+       });
+
+
+
     }
 
     @Override

@@ -15,7 +15,7 @@
         android:padding="16dp">
 
         <ImageButton
-            android:id="@+id/btnBack"
+            android:id="@+id/btnvoltar"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
@@ -33,7 +33,6 @@
             android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:layout_toEndOf="@id/btnBack"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp" />
 
@@ -99,12 +98,13 @@
 
                 <!-- Editar Perfil -->
                 <RelativeLayout
-                    android:id="@+id/editProfileOption"
+                    android:id="@+id/btn_Editar_perfil"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/option_selector"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:clickable="true">
 
                     <RelativeLayout
                         android:id="@+id/iconContainer1"
@@ -144,56 +144,9 @@
                         android:textSize="16sp" />
                 </RelativeLayout>
 
-                <!-- Gerenciar Agendamentos -->
-                <RelativeLayout
-                    android:id="@+id/manageAppointmentsOption"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/option_selector"
-                    android:padding="16dp">
-
-                    <RelativeLayout
-                        android:id="@+id/iconContainer2"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/icon_background_selector"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/icon2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textColor="#4B5563"
-                            android:textSize="18sp" />
-                    </RelativeLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="16dp"
-                        android:layout_toEndOf="@id/iconContainer2"
-                        android:text="Gerenciar Agendamentos"
-                        android:textColor="#111827"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/arrow2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:text=""
-                        android:textColor="#9CA3AF"
-                        android:textSize="16sp" />
-                </RelativeLayout>
-
                 <!-- Gerenciar Serviços -->
                 <RelativeLayout
-                    android:id="@+id/manageServicesOption"
+                    android:id="@+id/btnGerenciarServicos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
@@ -240,7 +193,7 @@
 
                 <!-- Histórico de Serviços -->
                 <RelativeLayout
-                    android:id="@+id/serviceHistoryOption"
+                    android:id="@+id/btnHistoricoServico"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
@@ -287,7 +240,7 @@
 
                 <!-- Gerenciar Notificações -->
                 <RelativeLayout
-                    android:id="@+id/manageNotificationsOption"
+                    android:id="@+id/btnGerenciarNotificacoes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
@@ -334,7 +287,7 @@
 
                 <!-- Configurações -->
                 <RelativeLayout
-                    android:id="@+id/settingsOption"
+                    android:id="@+id/btnConfiguracoes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"

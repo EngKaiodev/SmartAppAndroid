@@ -16,7 +16,7 @@
         android:elevation="4dp">
 
         <ImageButton
-            android:id="@+id/backButton"
+            android:id="@+id/btnvoltaragendaconf"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
@@ -30,7 +30,6 @@
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_toRightOf="@id/backButton"
             android:layout_centerVertical="true"
             android:layout_marginStart="16dp" />
     </RelativeLayout>
@@ -149,7 +148,7 @@
                         android:layout_marginTop="8dp">
 
                         <Button
-                            android:id="@+id/confirmButton"
+                            android:id="@+id/btnconfirmar"
                             style="?android:attr/buttonBarButtonStyle"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -167,7 +166,7 @@
                             android:layout_marginEnd="8dp" />
 
                         <Button
-                            android:id="@+id/rejectButton"
+                            android:id="@+id/btnrejeitar"
                             style="?android:attr/buttonBarButtonStyle"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"

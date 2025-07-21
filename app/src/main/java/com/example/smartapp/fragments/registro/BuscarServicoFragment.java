@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.smartapp.databinding.BuscarServicoBinding;
 import com.example.smartapp.viewmodels.BuscarServicoViewModel;
@@ -21,6 +23,8 @@ public class BuscarServicoFragment extends Fragment {
     private BuscarServicoBinding binding;
     private BuscarServicoViewModel viewModel;
 
+    private NavController navController;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,12 +35,19 @@ public class BuscarServicoFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
 
         setupListeners();
     }
 
     private void setupListeners() {
+        binding.btnvoltarbs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.popBackStack();
+            }
+        });
 
     }
 

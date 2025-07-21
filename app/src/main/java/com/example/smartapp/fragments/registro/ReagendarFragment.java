@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.smartapp.databinding.ReagendarBinding;
 import com.example.smartapp.viewmodels.ReagendarViewModel;
@@ -21,6 +23,8 @@ public class ReagendarFragment extends Fragment {
     private ReagendarBinding binding;
     private ReagendarViewModel viewModel;
 
+    private NavController navController;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,12 +35,33 @@ public class ReagendarFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
 
         setupListeners();
     }
 
     private void setupListeners() {
+        binding.btnvoltardetalheag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.popBackStack();
+            }
+        });
+
+        binding.btnreagendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(ReagendarFragmentDirections.agendarServicoFragment());
+            }
+        });
+
+        binding.btncancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // cancelar agendamento
+            }
+        });
     }
 
     @Override

@@ -16,7 +16,7 @@
         android:padding="16dp">
 
         <ImageButton
-            android:id="@+id/backButton"
+            android:id="@+id/btnvoltarprest"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_alignParentStart="true"
@@ -153,6 +153,7 @@
 
                 <!-- Professional Card 1 -->
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/btnprestardorEncontrado"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"

@@ -9,6 +9,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.NavHostController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.smartapp.databinding.BuscarProServBinding;
 import com.example.smartapp.viewmodels.BuscarProServViewModel;
@@ -21,6 +24,8 @@ public class BuscarProServFragment extends Fragment {
     private BuscarProServBinding binding;
    private BuscarProServViewModel viewModel;
 
+   private NavController navController;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,12 +36,33 @@ public class BuscarProServFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
         
         setupListeners();
     }
 
     private void setupListeners() {
+        binding.btnbuscapro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(BuscarProServFragmentDirections.actionBuscarProdutoToBuscarProfissional());
+            }
+        });
+
+        binding.btnbuscaserv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(BuscarProServFragmentDirections.actionBuscarProdutoToBuscarServico());
+            }
+        });
+
+        binding.btnvoltarpesquisar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.popBackStack();
+            }
+        });
 
     }
 

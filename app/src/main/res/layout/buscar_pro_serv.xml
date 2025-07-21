@@ -15,7 +15,7 @@
         android:layout_alignParentTop="true">
 
         <ImageButton
-            android:id="@+id/backButton"
+            android:id="@+id/btnvoltarpesquisar"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_centerVertical="true"
@@ -103,7 +103,7 @@
 
                 <!-- Opção Buscar Profissional -->
                 <RelativeLayout
-                    android:id="@+id/searchProfessionalOption"
+                    android:id="@+id/btnbuscapro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/option_background"
@@ -172,7 +172,7 @@
 
                 <!-- Opção Buscar Serviço -->
                 <RelativeLayout
-                    android:id="@+id/searchServiceOption"
+                    android:id="@+id/btnbuscaserv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/option_background"

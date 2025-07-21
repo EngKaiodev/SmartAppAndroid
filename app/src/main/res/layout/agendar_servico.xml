@@ -18,7 +18,7 @@
         android:layout_alignParentTop="true">
 
         <ImageButton
-            android:id="@+id/backButton"
+            android:id="@+id/btnvoltaragendconfirma"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:contentDescription="btnvoltar"
@@ -50,7 +50,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/header"
-        android:layout_above="@id/confirmAppointmentBtn"
         android:padding="16dp"
         android:fillViewport="true">
 
@@ -503,16 +502,16 @@
 
     <!-- Fixed Bottom Button -->
     <Button
-        android:id="@+id/confirmAppointmentBtn"
+        android:id="@+id/btnconfirmarAgendamento2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:text="Confirmar Agendamento"
-        android:textColor="@android:color/white"
+        android:backgroundTint="@color/success_green"
         android:drawableStart="@drawable/ic_calendar_check"
         android:drawablePadding="8dp"
-        android:backgroundTint="@color/success_green"
+        android:elevation="8dp"
         android:paddingVertical="16dp"
-        android:textSize="18sp"
-        android:elevation="8dp"/>
+        android:text="Confirmar Agendamento"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
 </RelativeLayout>

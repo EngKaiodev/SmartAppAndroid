@@ -22,13 +22,13 @@
             android:padding="16dp">
 
             <ImageButton
-                android:id="@+id/backButton"
+                android:id="@+id/btnvoltarProfisional"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:background="?selectableItemBackgroundBorderless"
-                android:contentDescription="btnvoltar2"
-                android:padding="8dp"
-                 />
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="gere2"
+                android:src="@drawable/ic_arrow_back"
+                android:layout_alignParentStart="true"/>
 
             <TextView
                 android:layout_width="0dp"

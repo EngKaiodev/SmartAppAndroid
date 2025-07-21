@@ -15,16 +15,13 @@
         android:layout_alignParentTop="true">
 
         <ImageButton
-            android:id="@+id/backButton"
+            android:id="@+id/btnVoltarServico"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentStart="true"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="image2"
-            android:padding="12dp"
-            app:srcCompat="@drawable/ic_arrow_left"
-            />
+            android:contentDescription="gere2"
+            android:src="@drawable/ic_arrow_back"
+            android:layout_alignParentStart="true"/>
 
         <TextView
             android:id="@+id/logoTextHeader"
