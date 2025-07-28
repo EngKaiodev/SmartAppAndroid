@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="#F0F2F5">
 
     <!-- Header -->
@@ -139,168 +140,15 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="16dp"/>
 
-            <HorizontalScrollView
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategorias"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="none"
-                android:layout_marginBottom="24dp">
+                tools:layoutManager="LinearLayoutManager"
+                tools:orientation="horizontal"
+                tools:listitem="@layout/item_category"
+                tools:itemCount="5"/>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <!-- Categoria 1 -->
-                    <LinearLayout
-                        android:layout_width="96dp"
-                        android:layout_height="96dp"
-                        android:background="@drawable/category_background"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="8dp"
-                        android:layout_marginEnd="16dp">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:contentDescription="dashboard3"
-                            android:src="@drawable/ic_scissors"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Cabeleireiro"
-                            android:textColor="#1F2937"
-                            android:textSize="14sp"/>
-                    </LinearLayout>
-
-                    <!-- Categoria 2 -->
-                    <LinearLayout
-                        android:layout_width="96dp"
-                        android:layout_height="96dp"
-                        android:background="@drawable/category_background"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="8dp"
-                        android:layout_marginEnd="16dp">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_spa"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Estética"
-                            android:textColor="#1F2937"
-                            android:textSize="14sp"/>
-                    </LinearLayout>
-
-                    <!-- Categoria 3 -->
-                    <LinearLayout
-                        android:layout_width="96dp"
-                        android:layout_height="96dp"
-                        android:background="@drawable/category_background"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="8dp"
-                        android:layout_marginEnd="16dp">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_dumbbell"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Personal"
-                            android:textColor="#1F2937"
-                            android:textSize="14sp"/>
-                    </LinearLayout>
-
-                    <!-- Categoria 4 -->
-                    <LinearLayout
-                        android:layout_width="96dp"
-                        android:layout_height="96dp"
-                        android:background="@drawable/category_background"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="8dp"
-                        android:layout_marginEnd="16dp">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_paint"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Manicure"
-                            android:textColor="#1F2937"
-                            android:textSize="14sp"/>
-                    </LinearLayout>
-
-                    <!-- Categoria 5 -->
-                    <LinearLayout
-                        android:layout_width="96dp"
-                        android:layout_height="96dp"
-                        android:background="@drawable/category_background"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="8dp"
-                        android:layout_marginEnd="16dp">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_car"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Mecânico"
-                            android:textColor="#1F2937"
-                            android:textSize="14sp"/>
-                    </LinearLayout>
-
-                    <!-- Categoria 6 -->
-                    <LinearLayout
-                        android:layout_width="96dp"
-                        android:layout_height="96dp"
-                        android:background="@drawable/category_background"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="8dp">
-
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/ic_ellipsis"
-                           />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="Outros"
-                            android:textColor="#1F2937"
-                            android:textSize="14sp"/>
-                    </LinearLayout>
-                </LinearLayout>
-            </HorizontalScrollView>
 
             <!-- Profissionais em Destaque -->
             <TextView
