@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/backButton"
+            android:layout_toEndOf="@id/btnvoltarpesquisar"
             android:layout_marginStart="8dp"
             android:text="SmartServ"
             android:textColor="#FFFFFF"
