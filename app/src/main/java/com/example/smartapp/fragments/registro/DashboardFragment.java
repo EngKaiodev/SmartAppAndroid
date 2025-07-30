@@ -14,8 +14,10 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.smartapp.adapters.CategoryAdapter;
+import com.example.smartapp.adapters.ProfissionalAdapter;
 import com.example.smartapp.databinding.DashboardBinding;
 import com.example.smartapp.domain.models.CategoryModel;
+import com.example.smartapp.domain.models.ProfissionalModel;
 import com.example.smartapp.viewmodels.DashboardViewModel;
 
 import com.example.smartapp.fragments.registro.DashboardFragmentDirections;
@@ -32,6 +34,9 @@ public class DashboardFragment extends Fragment {
 
     private CategoryAdapter categoryAdapter;
     private List<CategoryModel> categoryList;
+
+    private List<ProfissionalModel> profissionalList;
+    private ProfissionalAdapter profissionalAdapter;
 
     @Nullable
     @Override
@@ -64,6 +69,11 @@ public class DashboardFragment extends Fragment {
                 new CategoryModel(8, "Maquiagem"),
                 new CategoryModel(9, "Barbearia")
         );
+
+        profissionalList = List.of(
+                new ProfissionalModel(1, "joao tonho", "cabelereiro","5")
+
+        );
     }
 
     private void setupAdapters() {
@@ -71,7 +81,13 @@ public class DashboardFragment extends Fragment {
 
         binding.rvCategorias.setAdapter(categoryAdapter);
         binding.rvCategorias.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
+        profissionalAdapter = new ProfissionalAdapter(profissionalList);
+        binding.rvCatProfissional.setAdapter(profissionalAdapter);
+        binding.rvCatProfissional.setLayoutManager(new LinearLayoutManager(getContext()));
+
     }
+
 
     private void setupListeners() {
         binding.btnPerfil.setOnClickListener(new View.OnClickListener() {

@@ -39,7 +39,7 @@
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="dashboard2"
                 app:srcCompat="@drawable/ic_bell"
-               />
+                />
 
             <TextView
                 android:id="@+id/notificationCount"
@@ -149,7 +149,6 @@
                 tools:listitem="@layout/item_category"
                 tools:itemCount="5"/>
 
-
             <!-- Profissionais em Destaque -->
             <TextView
                 android:layout_width="match_parent"
@@ -160,238 +159,33 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="16dp"/>
 
-            <GridLayout
+            <!-- Container para o único card -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:columnCount="2"
-                android:rowCount="2"
-                android:alignmentMode="alignBounds"
-                android:columnOrderPreserved="false"
-                android:useDefaultMargins="true"
-                android:padding="4dp">
+                android:gravity="center"
+                android:orientation="vertical">
 
-                <!-- Profissional 1 -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCatProfissional"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
                     android:layout_margin="8dp"
                     app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
+                    app:cardElevation="4dp"
+                    tools:listitem="@layout/profissional_category"
+                    tools:itemCount="2"
+                    tools:layoutManager="LinearLayoutManager"
+                    tools:orientation="vertical">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:padding="16dp">
 
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/profile_placeholder"
-                            android:background="@drawable/circle_border"
-                            android:scaleType="centerCrop"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Ana Esteticista"
-                            android:textColor="#1F2937"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:layout_marginTop="8dp"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Especialista em Limpeza de Pele"
-                            android:textColor="#6B7280"
-                            android:textSize="12sp"
-                            android:layout_marginTop="4dp"/>
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:layout_marginTop="8dp">
 
-                            <ImageView
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:src="@drawable/ic_star"
-                                />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="4.9 (120)"
-                                android:textColor="#FFD700"
-                                android:textSize="12sp"
-                                android:layout_marginStart="4dp"/>
-                        </LinearLayout>
-
-                        <Button
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:text="Agendar"
-                            android:textColor="@android:color/white"
-                            android:backgroundTint="#4F46E5"
-                            android:background="@drawable/rounded_button"
-                            android:layout_marginTop="16dp"
-                            android:minHeight="36dp"/>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <!-- Profissional 2 -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/profile_placeholder"
-                            android:background="@drawable/circle_border"
-                            android:scaleType="centerCrop"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Carlos Personal"
-                            android:textColor="#1F2937"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:layout_marginTop="8dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Treinamento Funcional"
-                            android:textColor="#6B7280"
-                            android:textSize="12sp"
-                            android:layout_marginTop="4dp"/>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:layout_marginTop="8dp">
-
-                            <ImageView
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:src="@drawable/ic_star"
-                                />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="4.8 (95)"
-                                android:textColor="#FFD700"
-                                android:textSize="12sp"
-                                android:layout_marginStart="4dp"/>
-                        </LinearLayout>
-
-                        <Button
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:text="Agendar"
-                            android:textColor="@android:color/white"
-                            android:backgroundTint="#4F46E5"
-                            android:background="@drawable/rounded_button"
-                            android:layout_marginTop="16dp"
-                            android:minHeight="36dp"/>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-
-                <!-- Profissional 3 -->
-                <androidx.cardview.widget.CardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_rowWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            android:src="@drawable/profile_placeholder"
-                            android:background="@drawable/circle_border"
-                            android:scaleType="centerCrop"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Beatriz Nails"
-                            android:textColor="#1F2937"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:layout_marginTop="8dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Manicure e Pedicure Gel"
-                            android:textColor="#6B7280"
-                            android:textSize="12sp"
-                            android:layout_marginTop="4dp"/>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:layout_marginTop="8dp">
-
-                            <ImageView
-                                android:layout_width="16dp"
-                                android:layout_height="16dp"
-                                android:src="@drawable/ic_star"
-                                />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="5.0 (210)"
-                                android:textColor="#FFD700"
-                                android:textSize="12sp"
-                                android:layout_marginStart="4dp"/>
-                        </LinearLayout>
-
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Agendar"
-                            android:textColor="@android:color/white"
-                            android:backgroundTint="#4F46E5"
-                            android:background="@drawable/rounded_button"
-                            android:layout_marginTop="16dp"
-                            android:minHeight="36dp"/>
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
-            </GridLayout>
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
