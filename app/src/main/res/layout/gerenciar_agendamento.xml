@@ -139,7 +139,7 @@
                     android:layout_marginBottom="16dp"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="4dp"
-                    tools:listitem="@layout/agendamento_category"
+                    tools:listitem="@layout/item_agendamento"
                     tools:itemCount="1"
                     tools:layoutManager="LinearLayoutManager"
                     tools:orientation="vertical">

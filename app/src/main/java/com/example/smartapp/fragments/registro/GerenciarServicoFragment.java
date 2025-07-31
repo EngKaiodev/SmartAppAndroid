@@ -28,8 +28,6 @@ public class GerenciarServicoFragment extends Fragment {
     private GerenciarServicoBinding binding;
     private GerenciarServicoViewModel viewModel;
     private NavController navController;
-    private AgendamentoAdapter agendamentoAdapter;
-    private List<AgendamentoModel> agendamentoList;
 
 
     @Nullable
@@ -45,24 +43,10 @@ public class GerenciarServicoFragment extends Fragment {
         navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
 
-        mockedList();
         setupListeners();
-        setupAdapters();
     }
 
-    private void mockedList() {
-        agendamentoList = List.of(
-                new AgendamentoModel(1, "jose carlos", "Corte e Barba", "22/07/25", "14:35", "R$60,00")
 
-        );
-    }
-
-    private void setupAdapters() {
-        agendamentoAdapter = new AgendamentoAdapter(agendamentoList);
-
-
-
-    }
 
     private void setupListeners() {
         binding.btnVoltarServico.setOnClickListener(new View.OnClickListener() {

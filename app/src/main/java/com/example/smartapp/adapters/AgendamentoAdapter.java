@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartapp.databinding.AgendamentoCategoryBinding;
+import com.example.smartapp.databinding.ItemAgendamentoBinding;
 import com.example.smartapp.domain.models.AgendamentoModel;
 
 import java.util.List;
@@ -20,9 +20,9 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        AgendamentoCategoryBinding binding = AgendamentoCategoryBinding.inflate(inflater, parent, false);
+        ItemAgendamentoBinding binding = ItemAgendamentoBinding.inflate(inflater, parent, false);
         return new ViewHolder(binding);
     }
 
@@ -35,9 +35,9 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.
 
     static class ViewHolder extends RecyclerView.ViewHolder{
 
-        private AgendamentoCategoryBinding binding;
+        private ItemAgendamentoBinding binding;
 
-        public ViewHolder(AgendamentoCategoryBinding binding){
+        public ViewHolder(ItemAgendamentoBinding binding){
             super(binding.getRoot());
             this.binding = binding;
         }
