@@ -12,8 +12,13 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.smartapp.adapters.AgendamentoAdapter;
 import com.example.smartapp.databinding.GerenciarServicoBinding;
+import com.example.smartapp.domain.models.AgendamentoModel;
+import com.example.smartapp.domain.models.CategoryModel;
 import com.example.smartapp.viewmodels.GerenciarServicoViewModel;
+
+import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -22,8 +27,10 @@ public class GerenciarServicoFragment extends Fragment {
 
     private GerenciarServicoBinding binding;
     private GerenciarServicoViewModel viewModel;
-
     private NavController navController;
+    private AgendamentoAdapter agendamentoAdapter;
+    private List<AgendamentoModel> agendamentoList;
+
 
     @Nullable
     @Override
@@ -38,7 +45,23 @@ public class GerenciarServicoFragment extends Fragment {
         navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
 
+        mockedList();
         setupListeners();
+        setupAdapters();
+    }
+
+    private void mockedList() {
+        agendamentoList = List.of(
+                new AgendamentoModel(1, "jose carlos", "Corte e Barba", "22/07/25", "14:35", "R$60,00")
+
+        );
+    }
+
+    private void setupAdapters() {
+        agendamentoAdapter = new AgendamentoAdapter(agendamentoList);
+
+
+
     }
 
     private void setupListeners() {

@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 
 import com.example.smartapp.databinding.CadastrarProfissionalBinding;
 import com.example.smartapp.viewmodels.CadastrarProfissionalViewModel;
@@ -20,6 +21,8 @@ public class CadastrarProfissionalFragment extends Fragment {
 
     private CadastrarProfissionalBinding binding;
     private CadastrarProfissionalViewModel viewModel;
+
+    private NavController navController;
 
     @Nullable
     @Override
@@ -37,6 +40,12 @@ public class CadastrarProfissionalFragment extends Fragment {
     }
 
     private void setupListeners() {
+        binding.btnproximoPro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(CadastrarProfissionalFragmentDirections.cadastrarServicoFragment());
+            }
+        });
 
     }
 

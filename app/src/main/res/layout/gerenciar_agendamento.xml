@@ -8,16 +8,13 @@
     android:padding="16dp">
 
     <!-- Header -->
-
-    <!-- Main Content -->
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#4F46E5"
         android:elevation="4dp"
-        android:padding="16dp"
-        >
+        android:padding="16dp">
 
         <ImageButton
             android:id="@+id/btnvoltaragendamento"
@@ -37,10 +34,7 @@
             android:text="Meus Agendamentos"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:textStyle="bold"
-            />
-
-
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <ScrollView
@@ -54,7 +48,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Filter Card -->
+            <!-- Filter Card - Mantido conforme solicitado -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -135,7 +129,25 @@
                 android:orientation="vertical"
                 android:divider="@drawable/divider"
                 android:showDividers="middle"
-                android:padding="8dp"/>
+                android:padding="8dp">
+
+                <!-- Card de Agendamento Único -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvAgendamentosCategories"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="4dp"
+                    tools:listitem="@layout/agendamento_category"
+                    tools:itemCount="1"
+                    tools:layoutManager="LinearLayoutManager"
+                    tools:orientation="vertical">
+
+
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/emptyMessage"

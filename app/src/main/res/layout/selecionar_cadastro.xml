@@ -90,7 +90,7 @@
 
                 <!-- Opção Cliente -->
                 <RelativeLayout
-                    android:id="@+id/registerClientOption"
+                    android:id="@+id/btnCliente"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/option_background"
@@ -154,7 +154,7 @@
 
                 <!-- Opção Profissional -->
                 <RelativeLayout
-                    android:id="@+id/registerProfessionalOption"
+                    android:id="@+id/btnProfissioanl"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/option_background"
@@ -218,7 +218,7 @@
 
             <!-- Rodapé -->
             <TextView
-                android:id="@+id/loginLink"
+                android:id="@+id/bntLogin"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:text="Já tem uma conta? Faça login aqui"

@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
 
 import com.example.smartapp.databinding.CadastrarClienteBinding;
 import com.example.smartapp.databinding.CadastrarServicoBinding;
@@ -21,6 +22,8 @@ public class CadastrarClienteFragment extends Fragment {
 
     private CadastrarClienteBinding binding;
     private CadastrarClienteViewModel viewModel;
+
+    private NavController navController;
 
     @Nullable
     @Override
@@ -38,6 +41,12 @@ public class CadastrarClienteFragment extends Fragment {
     }
 
     private void setupListeners() {
+        binding.btnfinalizarCliente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(CadastrarServicoFragmentDirections.dashboardFragment());
+            }
+        });
 
     }
 
