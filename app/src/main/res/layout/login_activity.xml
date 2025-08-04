@@ -172,7 +172,7 @@
                     android:textSize="14sp" />
 
                 <TextView
-                    android:id="@+id/tvSignUp"
+                    android:id="@+id/btnRegister"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:background="?attr/selectableItemBackground"

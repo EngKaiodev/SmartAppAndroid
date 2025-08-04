@@ -40,8 +40,8 @@ public class GerenciarServicoFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
+        navController = NavHostFragment.findNavController(this);
 
         setupListeners();
     }

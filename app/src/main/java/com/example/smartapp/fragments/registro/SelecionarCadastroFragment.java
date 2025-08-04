@@ -1,5 +1,6 @@
 package com.example.smartapp.fragments.registro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,7 +11,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.smartapp.activities.LoginActivity;
 import com.example.smartapp.databinding.SelecionarCadastroBinding;
 import com.example.smartapp.viewmodels.SelecionarCadastroViewModel;
 
@@ -35,6 +38,7 @@ public class SelecionarCadastroFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        navController = NavHostFragment.findNavController(this);
 
         setupListeners();
     }
@@ -51,6 +55,14 @@ public class SelecionarCadastroFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 navController.navigate(SelecionarCadastroFragmentDirections.cadastrarProfissionalFragment());
+            }
+        });
+
+        binding.bntLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), LoginActivity.class);
+                startActivity(intent);
             }
         });
     }

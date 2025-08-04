@@ -2,7 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/login_nav.xml">
+    android:id="@+id/login_nav.xml"
+    app:startDestination="@id/selecionar_cadastro_fragment">
 
     <fragment
         android:id="@+id/selecionar_cadastro_fragment"
@@ -11,10 +12,10 @@
         tools:layout="@layout/selecionar_cadastro">
         <action
             android:id="@+id/cadastrar_cliente_fragment"
-            app:destination="@id/cadastrar_cliente_fragment"/>
+            app:destination="@id/cadastrar_cliente_fragment" />
         <action
             android:id="@+id/cadastrar_profissional_fragment"
-            app:destination="@id/cadastrar_profissional_fragment"/>
+            app:destination="@id/cadastrar_profissional_fragment" />
 
     </fragment>
 
@@ -22,18 +23,7 @@
         android:id="@+id/cadastrar_cliente_fragment"
         android:name="com.example.smartapp.fragments.registro.CadastrarClienteFragment"
         android:label="CadastrarClienteFragment"
-        tools:layout="@layout/cadastrar_cliente">
-        <action
-            android:id="@+id/dashboard_fragment"
-            app:destination="@id/dashboard_fragment"/>
-
-    </fragment>
-
-    <fragment
-        android:id="@+id/dashboard_fragment"
-        android:name="com.example.smartapp.fragments.registro.DashboardFragment"
-        android:label="DashboardFragment"
-        tools:layout="@layout/dashboard"/>
+        tools:layout="@layout/cadastrar_cliente" />
 
     <fragment
         android:id="@+id/cadastrar_profissional_fragment"
@@ -42,7 +32,7 @@
         tools:layout="@layout/cadastrar_profissional">
         <action
             android:id="@id/cadastrar_servico_fragment"
-            app:destination="@id/cadastrar_servico_fragment"/>
+            app:destination="@id/cadastrar_servico_fragment" />
 
     </fragment>
 
@@ -50,14 +40,7 @@
         android:id="@+id/cadastrar_servico_fragment"
         android:name="com.example.smartapp.fragments.registro.CadastrarServicoFragment"
         android:label="CadastrarServicoFragment"
-        tools:layout="@layout/cadastrar_servico">
-        <action
-            android:id="@+id/dashboard_fragment"
-            app:destination="@id/dashboard_fragment"/>
-
-    </fragment>
-
-
+        tools:layout="@layout/cadastrar_servico" />
 
 
 </navigation>
