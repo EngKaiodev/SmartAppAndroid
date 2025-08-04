@@ -73,7 +73,6 @@
                         android:id="@+id/sortBySpinner"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:background="@drawable/spinner_background"
                         android:padding="12dp"/>
 
                     <EditText
