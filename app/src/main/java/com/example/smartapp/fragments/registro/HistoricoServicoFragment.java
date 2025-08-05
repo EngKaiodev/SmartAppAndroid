@@ -11,9 +11,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.smartapp.adapters.HistoricoAdapter;
 import com.example.smartapp.databinding.HistoricoServicoBinding;
+import com.example.smartapp.domain.models.HistoricoModel;
 import com.example.smartapp.viewmodels.HistoricoServicoViewModel;
+
+import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -24,6 +29,9 @@ public class HistoricoServicoFragment extends Fragment {
     private HistoricoServicoViewModel viewModel;
 
     private NavController navController;
+
+    private List<HistoricoModel> historicoList;
+    private HistoricoAdapter historicoAdapter;
 
     @Nullable
     @Override
@@ -38,7 +46,21 @@ public class HistoricoServicoFragment extends Fragment {
         navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
 
+        mockedList();
         setupListeners();
+        setupAdapters();
+    }
+
+    private void mockedList(){
+        historicoList = List.of(
+                new HistoricoModel(1, "corte e barba", "joao","R$80,00", "14/07/2025", "5")
+        );
+    }
+
+    private void setupAdapters(){
+        historicoAdapter = new HistoricoAdapter(historicoList);
+        binding.rvhistoricoServico.setAdapter(historicoAdapter);
+        binding.rvhistoricoServico.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     }
 
     private void setupListeners() {
