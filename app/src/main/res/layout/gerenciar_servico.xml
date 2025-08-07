@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="#F0F2F5">
 
     <!-- Header com botão de voltar -->
@@ -130,146 +131,28 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
                 <!-- Item de Serviço 1 -->
-                <RelativeLayout
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvServico"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/service_item_background"
                     android:padding="16dp"
                     android:layout_marginBottom="16dp"
                     android:clickable="true"
-                    android:focusable="true">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_alignParentStart="true"
-                        android:layout_toStartOf="@+id/actionButtons">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Corte de Cabelo Feminino"
-                            android:textColor="#1F2937"
-                            android:textSize="16sp"
-                            android:textStyle="bold"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Inclui lavagem, corte e secagem."
-                            android:textColor="#6B7280"
-                            android:textSize="14sp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="R$ 70,00"
-                            android:textColor="#4F46E5"
-                            android:textSize="16sp"
-                            android:textStyle="bold"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/actionButtons"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true">
-
-                        <ImageButton
-                            android:id="@+id/editButton1"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="image5"
-                            app:srcCompat="@drawable/ic_edit"
-                            />
-
-                        <ImageButton
-                            android:id="@+id/deleteButton1"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="image1"
-                            app:srcCompat="@drawable/ic_delete"
-                            />
-                    </LinearLayout>
-                </RelativeLayout>
+                    android:focusable="true"
+                    tools:listitem="@layout/servico_category"
+                    app:spanCount="1"
+                    tools:itemCount="1"
+                    />
+            </ScrollView>
 
                 <!-- Item de Serviço 2 -->
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/service_item_background"
-                    android:padding="16dp"
-                    android:clickable="true"
-                    android:focusable="true">
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_alignParentStart="true"
-                        android:layout_toStartOf="@+id/actionButtons2">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Manicure e Pedicure"
-                            android:textColor="#1F2937"
-                            android:textSize="16sp"
-                            android:textStyle="bold"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Esmaltação completa de mãos e pés."
-                            android:textColor="#6B7280"
-                            android:textSize="14sp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="R$ 50,00"
-                            android:textColor="#4F46E5"
-                            android:textSize="16sp"
-                            android:textStyle="bold"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/actionButtons2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true">
-
-                        <ImageButton
-                            android:id="@+id/editButton2"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="image4"
-                            app:srcCompat="@drawable/ic_edit"
-                            />
-
-                        <ImageButton
-                            android:id="@+id/deleteButton2"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:background="?attr/selectableItemBackgroundBorderless"
-                            android:contentDescription="image3"
-                            app:srcCompat="@drawable/ic_delete"
-                            />
-                    </LinearLayout>
-                </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

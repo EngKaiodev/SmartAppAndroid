@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f0f2f5">
+    android:background="#f0f2f5"
+    android:orientation="vertical">
 
-    <!-- Header reorganizado -->
-    <RelativeLayout
+    <!-- Header corrigido -->
+    <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#4F46E5"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:padding="16dp">
 
         <ImageButton
@@ -21,20 +25,18 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="bntvoltar2"
             android:padding="8dp"
-            android:src="@drawable/ic_arrow_back"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true" />
+            android:src="@drawable/ic_arrow_back" />
 
         <TextView
             android:id="@+id/tvSmartServ"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:text="SmartServ"
             android:textColor="@android:color/white"
             android:textSize="24sp"
             android:textStyle="bold"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="16dp" />
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/tvTitle"
@@ -42,26 +44,23 @@
             android:layout_height="wrap_content"
             android:text="Gerenciamento"
             android:textColor="@android:color/white"
-            android:textSize="20sp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="16dp" />
-    </RelativeLayout>
+            android:textSize="20sp" />
+    </LinearLayout>
 
     <!-- Main Content -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/header"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:paddingTop="24dp"
         android:paddingHorizontal="16dp">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/card_background"
             android:elevation="8dp"
-            android:outlineProvider="background"
+            android:orientation="vertical"
             android:padding="24dp">
 
             <!-- Título e descrição -->
@@ -79,7 +78,6 @@
                 android:id="@+id/tvPanelSubtitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvPanelTitle"
                 android:layout_marginTop="8dp"
                 android:text="Acesse e gerencie suas informações e atividades."
                 android:textAlignment="center"
@@ -90,44 +88,34 @@
                 android:id="@+id/optionsContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvPanelSubtitle"
                 android:layout_marginTop="24dp"
                 android:orientation="vertical"
                 android:divider="@drawable/divider"
                 android:showDividers="middle">
 
                 <!-- Editar Perfil -->
-                <RelativeLayout
+                <LinearLayout
                     android:id="@+id/btn_Editar_perfil"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/option_selector"
                     android:padding="16dp"
-                    android:clickable="true">
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/iconContainer1"
+                    <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/icon_background_selector"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/icon1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textColor="#4B5563"
-                            android:textSize="18sp" />
-                    </RelativeLayout>
+                        android:src="@drawable/ic_edit_profile"
+                        android:contentDescription="Editar Perfil" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
                         android:layout_marginStart="16dp"
-                        android:layout_toEndOf="@id/iconContainer1"
                         android:text="Editar Perfil"
                         android:textColor="#111827"
                         android:textSize="16sp"
@@ -137,44 +125,34 @@
                         android:id="@+id/arrow1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
                         android:text=""
                         android:textColor="#9CA3AF"
                         android:textSize="16sp" />
-                </RelativeLayout>
+                </LinearLayout>
 
                 <!-- Gerenciar Serviços -->
-                <RelativeLayout
+                <LinearLayout
                     android:id="@+id/btnGerenciarServicos"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/option_selector"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/iconContainer3"
+                    <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/icon_background_selector"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/icon3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textColor="#4B5563"
-                            android:textSize="18sp" />
-                    </RelativeLayout>
+                        android:src="@drawable/ic_manage_services"
+                        android:contentDescription="Gerenciar Serviços" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
                         android:layout_marginStart="16dp"
-                        android:layout_toEndOf="@id/iconContainer3"
                         android:text="Gerenciar Serviços"
                         android:textColor="#111827"
                         android:textSize="16sp"
@@ -184,44 +162,34 @@
                         android:id="@+id/arrow3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
                         android:text=""
                         android:textColor="#9CA3AF"
                         android:textSize="16sp" />
-                </RelativeLayout>
+                </LinearLayout>
 
                 <!-- Histórico de Serviços -->
-                <RelativeLayout
+                <LinearLayout
                     android:id="@+id/btnHistoricoServico"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/option_selector"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/iconContainer4"
+                    <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/icon_background_selector"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/icon4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textColor="#4B5563"
-                            android:textSize="18sp" />
-                    </RelativeLayout>
+                        android:src="@drawable/ic_history"
+                        android:contentDescription="Histórico de Serviços" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
                         android:layout_marginStart="16dp"
-                        android:layout_toEndOf="@id/iconContainer4"
                         android:text="Histórico de Serviços"
                         android:textColor="#111827"
                         android:textSize="16sp"
@@ -231,92 +199,35 @@
                         android:id="@+id/arrow4"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
                         android:text=""
                         android:textColor="#9CA3AF"
                         android:textSize="16sp" />
-                </RelativeLayout>
-
-                <!-- Gerenciar Notificações -->
-                <RelativeLayout
-                    android:id="@+id/btnGerenciarNotificacoes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/option_selector"
-                    android:padding="16dp">
-
-                    <RelativeLayout
-                        android:id="@+id/iconContainer5"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/icon_background_selector"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/icon5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textColor="#4B5563"
-                            android:textSize="18sp" />
-                    </RelativeLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="16dp"
-                        android:layout_toEndOf="@id/iconContainer5"
-                        android:text="Gerenciar Notificações"
-                        android:textColor="#111827"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/arrow5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:text=""
-                        android:textColor="#9CA3AF"
-                        android:textSize="16sp" />
-                </RelativeLayout>
+                </LinearLayout>
 
                 <!-- Configurações -->
-                <RelativeLayout
-                    android:id="@+id/btnConfiguracoes"
+                <LinearLayout
+                    android:id="@+id/btnNotificoes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:background="@drawable/option_selector"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/iconContainer6"
+                    <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/icon_background_selector"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/icon6"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textColor="#4B5563"
-                            android:textSize="18sp" />
-                    </RelativeLayout>
+                        android:src="@drawable/ic_settings"
+                        android:contentDescription="Configurações" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
                         android:layout_marginStart="16dp"
-                        android:layout_toEndOf="@id/iconContainer6"
-                        android:text="Configurações"
+                        android:text="Gerenciar notificações"
                         android:textColor="#111827"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -325,43 +236,33 @@
                         android:id="@+id/arrow6"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
                         android:text=""
                         android:textColor="#9CA3AF"
                         android:textSize="16sp" />
-                </RelativeLayout>
+                </LinearLayout>
 
                 <!-- Sair -->
-                <RelativeLayout
+                <LinearLayout
                     android:id="@+id/logoutOption"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/logout_selector"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
 
-                    <RelativeLayout
-                        android:id="@+id/logoutIconContainer"
+                    <ImageView
                         android:layout_width="40dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/logout_icon_selector"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/iconLogout"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text=""
-                            android:textColor="#4B5563"
-                            android:textSize="18sp" />
-                    </RelativeLayout>
+                        android:src="@drawable/ic_settings"
+                        android:contentDescription="Sair" />
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
+                        android:layout_weight="1"
                         android:layout_marginStart="16dp"
-                        android:layout_toEndOf="@id/logoutIconContainer"
                         android:text="Sair"
                         android:textColor="#DC2626"
                         android:textSize="16sp"
@@ -371,13 +272,11 @@
                         android:id="@+id/arrowLogout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
                         android:text=""
                         android:textColor="#9CA3AF"
                         android:textSize="16sp" />
-                </RelativeLayout>
+                </LinearLayout>
             </LinearLayout>
-        </RelativeLayout>
+        </LinearLayout>
     </ScrollView>
-</RelativeLayout>
+</LinearLayout>

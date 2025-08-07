@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#f0f2f5">
+    android:background="@color/white"
+    android:orientation="vertical">
+    <!-- ALTERAR TODAS AS CORES PARA CORES EXISTENTE
+    android:background="?android:attr/colorBackground"
+    POR
+        android:background="@color/white"
+    -->
+
+
 
     <!-- Header -->
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="#4F46E5"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:padding="16dp">
 
         <ImageButton
@@ -21,24 +31,26 @@
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="gere2"
             android:src="@drawable/ic_arrow_back"
-            android:layout_alignParentStart="true"/>
+            app:tint="@android:color/white" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
+            android:layout_weight="1"
+            android:gravity="center"
             android:text="Configurações de Notificações"
             android:textColor="@android:color/white"
             android:textSize="20sp"
             android:textStyle="bold"/>
-    </RelativeLayout>
+    </LinearLayout>
 
     <!-- Conteúdo Principal -->
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/header"
-        android:padding="16dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -51,7 +63,7 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
-                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="@color/light_gray"
                 android:layout_marginBottom="16dp">
 
                 <LinearLayout
@@ -64,82 +76,81 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Notificações Gerais"
-                        android:textColor="#1F2937"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="16dp"/>
 
                     <!-- Receber todas as notificações -->
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp">
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center_vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="Receber todas as notificações"
-                            android:textColor="#374151"
+                            android:textColor="?android:attr/textColorPrimary"
                             android:textSize="16sp"
                             android:textStyle="bold"/>
 
-                        <Switch
+                        <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/toggleAll"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_alignParentEnd="true"
-                            android:checked="true"
-                            android:thumbTint="@color/switch_thumb"
-                            android:trackTint="@color/switch_track"/>
-                    </RelativeLayout>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"/>
+                    </LinearLayout>
 
                     <!-- Som de notificação -->
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp">
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center_vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="Som de notificação"
-                            android:textColor="#374151"
+                            android:textColor="?android:attr/textColorPrimary"
                             android:textSize="16sp"
                             android:textStyle="bold"/>
 
-                        <Switch
+                        <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/toggleSound"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_alignParentEnd="true"
-                            android:checked="true"
-                            android:thumbTint="@color/switch_thumb"
-                            android:trackTint="@color/switch_track"/>
-                    </RelativeLayout>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"/>
+                    </LinearLayout>
 
                     <!-- Vibrar -->
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="Vibrar"
-                            android:textColor="#374151"
+                            android:textColor="?android:attr/textColorPrimary"
                             android:textSize="16sp"
                             android:textStyle="bold"/>
 
-                        <Switch
+                        <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/toggleVibrate"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_alignParentEnd="true"
-                            android:checked="false"
-                            android:thumbTint="@color/switch_thumb"
-                            android:trackTint="@color/switch_track"
-                            tools:ignore="UseSwitchCompatOrMaterialXml" />
-                    </RelativeLayout>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"/>
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -149,7 +160,7 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
-                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="?android:attr/colorBackground"
                 android:layout_marginBottom="16dp">
 
                 <LinearLayout
@@ -162,101 +173,101 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Notificações de Agendamento"
-                        android:textColor="#1F2937"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="16dp"/>
 
                     <!-- Agendamento Confirmado -->
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp">
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center_vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="Agendamento Confirmado"
-                            android:textColor="#374151"
+                            android:textColor="?android:attr/textColorPrimary"
                             android:textSize="16sp"/>
 
-                        <Switch
+                        <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/toggleConfirmed"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_alignParentEnd="true"
-                            android:checked="true"
-                            android:thumbTint="@color/switch_thumb"
-                            android:trackTint="@color/switch_track"/>
-                    </RelativeLayout>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"/>
+                    </LinearLayout>
 
                     <!-- Lembrete de Agendamento (1 dia antes) -->
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp">
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center_vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="Lembrete de Agendamento (1 dia antes)"
-                            android:textColor="#374151"
+                            android:textColor="?android:attr/textColorPrimary"
                             android:textSize="16sp"/>
 
-                        <Switch
+                        <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/toggleReminder1Day"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_alignParentEnd="true"
-                            android:checked="true"
-                            android:thumbTint="@color/switch_thumb"
-                            android:trackTint="@color/switch_track"/>
-                    </RelativeLayout>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"/>
+                    </LinearLayout>
 
                     <!-- Lembrete de Agendamento (1 hora antes) -->
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp">
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center_vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="Lembrete de Agendamento (1 hora antes)"
-                            android:textColor="#374151"
+                            android:textColor="?android:attr/textColorPrimary"
                             android:textSize="16sp"/>
 
-                        <Switch
+                        <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/toggleReminder1Hour"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_alignParentEnd="true"
-                            android:checked="true"
-                            android:thumbTint="@color/switch_thumb"
-                            android:trackTint="@color/switch_track"/>
-                    </RelativeLayout>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"/>
+                    </LinearLayout>
 
                     <!-- Agendamento Cancelado/Reagendado -->
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="Agendamento Cancelado/Reagendado"
-                            android:textColor="#374151"
+                            android:textColor="?android:attr/textColorPrimary"
                             android:textSize="16sp"/>
 
-                        <Switch
+                        <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/toggleCancelled"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_alignParentEnd="true"
-                            android:checked="true"
-                            android:thumbTint="@color/switch_thumb"
-                            android:trackTint="@color/switch_track"/>
-                    </RelativeLayout>
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"/>
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -266,7 +277,7 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
-                app:cardUseCompatPadding="true">
+                app:cardBackgroundColor="?android:attr/colorBackground">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -278,57 +289,57 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Outras Notificações"
-                        android:textColor="#1F2937"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="16dp"/>
 
                     <!-- Novas Mensagens -->
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp">
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center_vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="Novas Mensagens"
-                            android:textColor="#374151"
+                            android:textColor="?android:attr/textColorPrimary"
                             android:textSize="16sp"/>
 
-                        <Switch
+                        <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/toggleMessages"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:checked="true"
-                            android:thumbTint="@color/switch_thumb"
-                            android:trackTint="@color/switch_track"/>
-                    </RelativeLayout>
+                            android:checked="true"/>
+                    </LinearLayout>
 
                     <!-- Atualizações de Serviços/Promoções -->
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_weight="1"
                             android:text="Atualizações de Serviços/Promoções"
-                            android:textColor="#374151"
+                            android:textColor="?android:attr/textColorPrimary"
                             android:textSize="16sp"/>
 
-                        <Switch
+                        <androidx.appcompat.widget.SwitchCompat
                             android:id="@+id/togglePromotions"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:checked="false"
-                            android:thumbTint="@color/switch_thumb"
-                            android:trackTint="@color/switch_track"/>
-                    </RelativeLayout>
+                            android:checked="false"/>
+                    </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
     </ScrollView>
-</RelativeLayout>
+</LinearLayout>

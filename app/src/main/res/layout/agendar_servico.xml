@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_gray">
+    android:background="?android:attr/colorBackground">
 
     <!-- Header -->
     <LinearLayout
@@ -45,11 +45,13 @@
             android:textStyle="bold"/>
     </LinearLayout>
 
-    <!-- Main Content -->
+    <!-- Main Content - ScrollView corrigido -->
     <ScrollView
+        android:id="@+id/mainScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/header"
+        android:layout_above="@id/btnconfirmarAgendamento2"
         android:padding="16dp"
         android:fillViewport="true">
 
@@ -64,7 +66,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="4dp">
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="?android:attr/colorBackground">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -76,7 +79,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Agendando com:"
-                        android:textColor="@color/text_dark"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="18sp"
                         android:textStyle="bold"/>
 
@@ -93,7 +96,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Selecione o serviço, a data e o horário desejados."
-                        android:textColor="@color/text_gray"
+                        android:textColor="?android:attr/textColorSecondary"
                         android:textSize="14sp"
                         android:layout_marginTop="8dp"/>
                 </LinearLayout>
@@ -105,7 +108,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="4dp">
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="?android:attr/colorBackground">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -117,7 +121,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="1. Selecione o Serviço"
-                        android:textColor="@color/text_dark"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="8dp"/>
@@ -148,7 +152,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="4dp">
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="?android:attr/colorBackground">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -160,7 +165,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="2. Selecione a Data"
-                        android:textColor="@color/text_dark"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="8dp"/>
@@ -179,8 +184,7 @@
                             android:layout_height="48dp"
                             android:contentDescription="btnmes2"
                             android:src="@drawable/ic_chevron_left"
-                            android:background="?selectableItemBackgroundBorderless"
-                            />
+                            android:background="?selectableItemBackgroundBorderless"/>
 
                         <TextView
                             android:id="@+id/currentMonthYear"
@@ -188,7 +192,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Junho 2025"
-                            android:textColor="@color/text_dark"
+                            android:textColor="?android:attr/textColorPrimary"
                             android:textSize="16sp"
                             android:textStyle="bold"
                             android:gravity="center"/>
@@ -199,8 +203,7 @@
                             android:layout_height="48dp"
                             android:contentDescription="btnmes"
                             android:src="@drawable/ic_chevron_right"
-                            android:background="?selectableItemBackgroundBorderless"
-                            />
+                            android:background="?selectableItemBackgroundBorderless"/>
                     </LinearLayout>
 
                     <!-- Day Names -->
@@ -316,7 +319,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="4dp">
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="?android:attr/colorBackground">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -328,7 +332,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="3. Selecione o Horário"
-                        android:textColor="@color/text_dark"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="8dp"/>
@@ -360,7 +364,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Nenhum horário disponível para a data selecionada."
-                        android:textColor="@color/text_gray"
+                        android:textColor="?android:attr/textColorSecondary"
                         android:textSize="14sp"
                         android:visibility="gone"
                         android:gravity="center"
@@ -373,7 +377,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="4dp">
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="?android:attr/colorBackground">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -385,7 +390,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Resumo do Agendamento"
-                        android:textColor="@color/text_dark"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="8dp"/>
@@ -400,7 +405,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Serviço:"
-                            android:textColor="@color/text_dark"
+                            android:textColor="?android:attr/textColorPrimary"
                             android:textSize="16sp"/>
 
                         <TextView
@@ -425,7 +430,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Data:"
-                            android:textColor="@color/text_dark"
+                            android:textColor="?android:attr/textColorPrimary"
                             android:textSize="16sp"/>
 
                         <TextView
@@ -450,7 +455,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Horário:"
-                            android:textColor="@color/text_dark"
+                            android:textColor="?android:attr/textColorPrimary"
                             android:textSize="16sp"/>
 
                         <TextView
@@ -468,7 +473,7 @@
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="@color/gray_200"/>
+                        android:background="?android:attr/dividerHorizontal"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -480,7 +485,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Total:"
-                            android:textColor="@color/text_dark"
+                            android:textColor="?android:attr/textColorPrimary"
                             android:textSize="18sp"
                             android:textStyle="bold"/>
 

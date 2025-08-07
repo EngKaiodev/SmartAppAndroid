@@ -91,17 +91,19 @@
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- Corrigido: "Esqueceu a senha" em linha completa -->
             <TextView
                 android:id="@+id/tvForgotPassword"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginBottom="20dp"
+                android:gravity="end"
+                android:text="Esqueceu a senha?"
+                android:textColor="#4F46E5"
                 android:background="?attr/selectableItemBackground"
                 android:clickable="true"
-                android:focusable="true"
-                android:text="Esqueceu a senha?"
-                android:textColor="#4F46E5" />
+                android:focusable="true" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnLogin"
@@ -158,34 +160,37 @@
                 app:iconTint="#4285F4"
                 app:strokeColor="#DADCE0" />
 
+            <!-- Corrigido: "Cadastre-se" na linha debaixo de "Não tem uma conta?" -->
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Não tem uma conta? "
+                    android:text="Não tem uma conta?"
                     android:textColor="#374151"
-                    android:textSize="14sp" />
+                    android:textSize="14sp"
+                    android:layout_gravity="center"/>
 
                 <TextView
                     android:id="@+id/btnRegister"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:background="?attr/selectableItemBackground"
                     android:clickable="true"
                     android:focusable="true"
                     android:text="Cadastre-se"
                     android:textColor="#4F46E5"
                     android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_gravity="center"/>
             </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

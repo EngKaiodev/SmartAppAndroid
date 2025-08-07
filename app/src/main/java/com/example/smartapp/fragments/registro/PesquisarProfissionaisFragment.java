@@ -52,7 +52,7 @@ public class PesquisarProfissionaisFragment extends Fragment {
         binding.btnprestardorEncontrado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(PesquisarProfissionaisFragmentDirections.actionBuscarPrestadorToPerfilPrestador());
+                navController.navigate(PesquisarProfissionaisFragmentDirections.toPerfil());
             }
         });
 

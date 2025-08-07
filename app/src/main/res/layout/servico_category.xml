@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/service_item_background"
+    android:padding="16dp"
+    android:layout_marginBottom="16dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Container de informações -->
+    <LinearLayout
+        android:id="@+id/infoContainer"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@+id/actionButtons"
+        android:layout_alignParentStart="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/servicoNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Corte de Cabelo Feminino"
+            android:textColor="#1F2937"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:ellipsize="end"
+            android:maxLines="1"/>
+
+        <TextView
+            android:id="@+id/tiposervico"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Inclui lavagem, corte e secagem."
+            android:textColor="#6B7280"
+            android:textSize="14sp"
+            android:ellipsize="end"
+            android:maxLines="2"/>
+
+        <TextView
+            android:id="@+id/servicovalor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="R$ 70,00"
+            android:textColor="#4F46E5"
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <!-- Botões de ação -->
+    <LinearLayout
+        android:id="@+id/actionButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/editarservico"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Editar serviço"
+            app:srcCompat="@drawable/ic_edit"/>
+
+        <ImageButton
+            android:id="@+id/excluirservico"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Excluir serviço"
+            app:srcCompat="@drawable/ic_delete"/>
+    </LinearLayout>
+</RelativeLayout>

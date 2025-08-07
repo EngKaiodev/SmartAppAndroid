@@ -1,5 +1,6 @@
 package com.example.smartapp.fragments.registro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.smartapp.activities.MainActivity;
 import com.example.smartapp.databinding.CadastrarClienteBinding;
 import com.example.smartapp.databinding.CadastrarServicoBinding;
 import com.example.smartapp.viewmodels.CadastrarClienteViewModel;
@@ -46,7 +48,8 @@ public class CadastrarClienteFragment extends Fragment {
         binding.btnfinalizarCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(getContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
 

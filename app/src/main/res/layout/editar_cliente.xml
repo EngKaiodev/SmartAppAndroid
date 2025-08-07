@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F2F5"
     android:fillViewport="true">
 
     <LinearLayout
@@ -56,7 +54,8 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             app:cardCornerRadius="12dp"
-            app:cardElevation="4dp">
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -77,7 +76,8 @@
                         android:layout_width="100dp"
                         android:layout_height="100dp"
                         android:contentDescription="Foto de perfil"
-                        android:scaleType="centerCrop" />
+                        android:scaleType="centerCrop"
+                        android:src="?android:attr/textSelectHandle" /> <!-- Placeholder -->
 
                     <Button
                         android:id="@+id/changePhotoButton"
@@ -103,17 +103,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
                         android:text="Nome Completo"
-                        android:textColor="#374151"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/nameEditText"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:background="@drawable/edittext_background"
+                        android:background="?android:attr/editTextBackground"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:text="João Silva"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="16sp" />
 
                     <!-- E-mail -->
@@ -123,18 +124,18 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
                         android:text="E-mail"
-                        android:textColor="#374151"
+                        android:textColor="@color/black"
                         android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/emailEditText"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:background="@drawable/edittext_background"
                         android:inputType="textEmailAddress"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:text="joao.silva@exemplo.com"
+                        android:textColor="@color/black"
                         android:textSize="16sp" />
 
                     <!-- Telefone -->
@@ -144,18 +145,19 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
                         android:text="Telefone"
-                        android:textColor="#374151"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/phoneEditText"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:background="@drawable/edittext_background"
+                        android:background="?android:attr/editTextBackground"
                         android:inputType="phone"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:text="(11) 98765-4321"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="16sp" />
 
                     <!-- CPF/CNPJ -->
@@ -165,17 +167,18 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
                         android:text="CPF ou CNPJ"
-                        android:textColor="#374151"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/cpfCnpjEditText"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:background="@drawable/edittext_background"
+                        android:background="?android:attr/editTextBackground"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:text="123.456.789-00"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="16sp" />
 
                     <TextView
@@ -183,7 +186,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Para pessoa física (CPF) ou jurídica (CNPJ)."
-                        android:textColor="#6B7280"
+                        android:textColor="?android:attr/textColorSecondary"
                         android:textSize="12sp" />
 
                     <!-- Endereço -->
@@ -193,17 +196,18 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
                         android:text="Endereço Completo"
-                        android:textColor="#374151"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/addressEditText"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:background="@drawable/edittext_background"
+                        android:background="?android:attr/editTextBackground"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:text="Rua Exemplo, 123, Bairro Centro, Cidade, SP, 12345-678"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="16sp" />
 
                     <!-- Alterar Senha Section -->
@@ -212,14 +216,14 @@
                         android:layout_height="1dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginBottom="16dp"
-                        android:background="#E5E7EB" />
+                        android:background="?android:attr/dividerVertical" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
                         android:text="Alterar Senha"
-                        android:textColor="#1F2937"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -229,18 +233,19 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
                         android:text="Nova Senha"
-                        android:textColor="#374151"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/newPasswordEditText"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:background="@drawable/edittext_background"
+                        android:background="?android:attr/editTextBackground"
                         android:hint="••••••••"
                         android:inputType="textPassword"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="16sp" />
 
                     <TextView
@@ -248,7 +253,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Mínimo de 6 caracteres."
-                        android:textColor="#6B7280"
+                        android:textColor="?android:attr/textColorSecondary"
                         android:textSize="12sp" />
 
                     <!-- Confirmar Nova Senha -->
@@ -258,18 +263,19 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
                         android:text="Confirmar Nova Senha"
-                        android:textColor="#374151"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="14sp" />
 
                     <EditText
                         android:id="@+id/confirmNewPasswordEditText"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
-                        android:background="@drawable/edittext_background"
+                        android:background="?android:attr/editTextBackground"
                         android:hint="••••••••"
                         android:inputType="textPassword"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
+                        android:textColor="?android:attr/textColorPrimary"
                         android:textSize="16sp" />
 
                     <!-- Buttons -->
@@ -285,13 +291,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="16dp"
-                            android:backgroundTint="#E5E7EB"
+                            android:backgroundTint="?android:attr/colorButtonNormal"
                             android:paddingStart="24dp"
                             android:paddingTop="12dp"
                             android:paddingEnd="24dp"
                             android:paddingBottom="12dp"
                             android:text="Voltar"
-                            android:textColor="#374151" />
+                            android:textColor="?android:attr/textColorPrimary" />
 
                         <Button
                             android:id="@+id/saveButton"

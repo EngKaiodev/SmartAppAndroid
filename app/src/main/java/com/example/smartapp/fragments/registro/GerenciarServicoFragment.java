@@ -11,11 +11,14 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.smartapp.adapters.AgendamentoAdapter;
+import com.example.smartapp.adapters.ServicoAdapter;
 import com.example.smartapp.databinding.GerenciarServicoBinding;
 import com.example.smartapp.domain.models.AgendamentoModel;
 import com.example.smartapp.domain.models.CategoryModel;
+import com.example.smartapp.domain.models.ServicoModel;
 import com.example.smartapp.viewmodels.GerenciarServicoViewModel;
 
 import java.util.List;
@@ -28,6 +31,9 @@ public class GerenciarServicoFragment extends Fragment {
     private GerenciarServicoBinding binding;
     private GerenciarServicoViewModel viewModel;
     private NavController navController;
+
+    private List<ServicoModel> servicoList;
+    private ServicoAdapter servicoAdapter;
 
 
     @Nullable
@@ -43,7 +49,21 @@ public class GerenciarServicoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         navController = NavHostFragment.findNavController(this);
 
+        mockedList();
         setupListeners();
+        setupAdapters();
+    }
+
+    private void mockedList(){
+        servicoList = List.of(
+                new ServicoModel(1, "Paula","manicure", "R$30,00")
+        );
+    }
+
+    private void setupAdapters(){
+        servicoAdapter = new ServicoAdapter(servicoList);
+        binding.rvServico.setAdapter(servicoAdapter);
+        binding.rvServico.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     }
 
 

@@ -73,17 +73,11 @@ public class PerfilFragment extends Fragment {
             }
         });
 
-        binding.btnGerenciarNotificacoes.setOnClickListener(new View.OnClickListener() {
+
+        binding.btnNotificoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 navController.navigate(PerfilFragmentDirections.gerenciarNotificacoesFragment());
-            }
-        });
-
-        binding.btnConfiguracoes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
             }
         });
 

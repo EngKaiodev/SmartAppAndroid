@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="#F0F2F5">
 
     <!-- Header -->
@@ -53,13 +53,15 @@
                 android:textSize="12sp"
                 android:visibility="gone"/>
 
+            <!-- Correção: Centralização vertical do perfil -->
             <RelativeLayout
                 android:id="@+id/profileMenuToggle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toEndOf="@id/notificationBell"
                 android:layout_marginStart="16dp"
-                android:gravity="center_vertical">
+                android:gravity="center_vertical"
+                android:layout_centerVertical="true">
 
                 <ImageView
                     android:id="@+id/profileImage"
@@ -79,7 +81,8 @@
                     android:layout_marginStart="8dp"
                     android:text="Olá, João!"
                     android:textColor="#FFFFFF"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp"
+                    android:gravity="center_vertical"/>
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>
@@ -166,25 +169,19 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <!-- Correção: Cor fixa para evitar problemas no modo escuro -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvCatProfissional"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="8dp"
+                    android:background="@android:color/white"
                     app:cardCornerRadius="8dp"
                     app:cardElevation="4dp"
                     tools:listitem="@layout/profissional_category"
                     tools:itemCount="2"
-                    tools:layoutManager="LinearLayoutManager"
-                    tools:orientation="vertical">
-
-
-
-
-
-
-
-                </androidx.recyclerview.widget.RecyclerView>
+                    tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    tools:spanCount="2"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

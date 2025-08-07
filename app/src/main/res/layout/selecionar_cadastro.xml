@@ -97,7 +97,8 @@
                     android:padding="24dp"
                     android:layout_marginBottom="24dp"
                     android:clickable="true"
-                    android:focusable="true">
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
 
                     <!-- Ícone do Usuário -->
                     <RelativeLayout
@@ -114,7 +115,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_user"
-                           />
+                            app:tint="#4F46E5" />
                     </RelativeLayout>
 
                     <!-- Textos -->
@@ -124,7 +125,8 @@
                         android:orientation="vertical"
                         android:layout_toEndOf="@id/clientIconBg"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="16dp">
+                        android:layout_marginStart="16dp"
+                        android:layout_toStartOf="@+id/chevronClient">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -145,11 +147,13 @@
 
                     <!-- Seta -->
                     <ImageView
+                        android:id="@+id/chevronClient"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_chevron_right"
                         android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"/>
+                        android:layout_centerVertical="true"
+                        app:tint="#6B7280" />
                 </RelativeLayout>
 
                 <!-- Opção Profissional -->
@@ -160,7 +164,8 @@
                     android:background="@drawable/option_background"
                     android:padding="24dp"
                     android:clickable="true"
-                    android:focusable="true">
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground">
 
                     <!-- Ícone da Maleta -->
                     <RelativeLayout
@@ -177,7 +182,7 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_briefcase"
-                            />
+                            app:tint="#4F46E5" />
                     </RelativeLayout>
 
                     <!-- Textos -->
@@ -187,7 +192,8 @@
                         android:orientation="vertical"
                         android:layout_toEndOf="@id/professionalIconBg"
                         android:layout_centerVertical="true"
-                        android:layout_marginStart="16dp">
+                        android:layout_marginStart="16dp"
+                        android:layout_toStartOf="@+id/chevronProfessional">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -208,26 +214,30 @@
 
                     <!-- Seta -->
                     <ImageView
+                        android:id="@+id/chevronProfessional"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_chevron_right"
                         android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"/>
+                        android:layout_centerVertical="true"
+                        app:tint="#6B7280" />
                 </RelativeLayout>
             </LinearLayout>
 
-            <!-- Rodapé -->
+            <!-- Rodapé Corrigido -->
             <TextView
                 android:id="@+id/bntLogin"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Já tem uma conta? Faça login aqui"
                 android:textSize="14sp"
-                android:textColor="#6B7280"
+                android:textColor="#4F46E5"
                 android:gravity="center"
                 android:layout_below="@id/optionsContainer"
                 android:clickable="true"
-                android:focusable="true"/>
+                android:focusable="true"
+                android:paddingVertical="12dp"
+                android:background="?attr/selectableItemBackground"/>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
