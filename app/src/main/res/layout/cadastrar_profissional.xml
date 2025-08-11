@@ -4,14 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F2F5"
+    android:background="@color/white"
     android:padding="16dp">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
-        android:scrollbars="vertical">
+        android:scrollbars="vertical"
+        android:background="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,7 +21,8 @@
             android:elevation="4dp"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="24dp"
+            android:background="@color/white">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -42,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="SmartServ"
-                    android:textColor="#1F2937"
+                    android:textColor="@android:color/black"
                     android:textSize="32sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -52,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:text="Cadastre-se como Profissional"
-                android:textColor="#1F2937"
+                android:textColor="@android:color/black"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -61,7 +63,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:text="Etapa 1 de 2: Suas informações"
-                android:textColor="#6B7280"
+                android:textColor="@android:color/black"
                 android:textSize="14sp" />
 
             <LinearLayout
@@ -69,145 +71,157 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="16dp"
+                android:background="@color/white">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:text="Suas Informações"
-                    android:textColor="#1F2937"
+                    android:textColor="@android:color/black"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <LinearLayout
+                <!-- Stacked vertically - Name -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilProfName"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="0dp"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal">
+                    android:layout_marginBottom="16dp"
+                    android:hint="Nome Completo"
+                    android:textColorHint="@color/black"
+                    app:hintTextColor="@android:color/black"
+                    app:boxStrokeColor="@android:color/black">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilProfName"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etProfName"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="16dp"
-                        android:layout_weight="1"
-                        android:hint="Nome Completo">
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName|textCapWords"
+                        android:textColor="@android:color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etProfName"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:imeOptions="actionNext"
-                            android:inputType="textPersonName|textCapWords" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilProfEmail"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginBottom="16dp"
-                        android:layout_weight="1"
-                        android:hint="E-mail">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etProfEmail"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:imeOptions="actionNext"
-                            android:inputType="textEmailAddress" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-
-                <LinearLayout
+                <!-- Stacked vertically - Email -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilProfEmail"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="0dp"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal">
+                    android:layout_marginBottom="16dp"
+                    android:hint="E-mail"
+                    android:textColorHint="@color/black"
+                    app:hintTextColor="@android:color/black"
+                    app:boxStrokeColor="@android:color/black">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilProfPhone"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etProfEmail"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="16dp"
-                        android:layout_weight="1"
-                        android:hint="Telefone">
+                        android:imeOptions="actionNext"
+                        android:inputType="textEmailAddress"
+                        android:textColor="@android:color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etProfPhone"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:imeOptions="actionNext"
-                            android:inputType="phone" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <!-- Stacked vertically - Phone -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilProfPhone"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:hint="Telefone"
+                    android:textColorHint="@color/black"
+                    app:hintTextColor="@android:color/black"
+                    app:boxStrokeColor="@android:color/black">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilProfCpfCnpj"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etProfPhone"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginBottom="16dp"
-                        android:layout_weight="1"
-                        android:hint="CPF ou CNPJ"
-                        app:helperText="Pessoa física ou jurídica">
+                        android:imeOptions="actionNext"
+                        android:inputType="phone"
+                        android:textColor="@android:color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etProfCpfCnpj"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:imeOptions="actionNext"
-                            android:inputType="text" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
+                <!-- Stacked vertically - CPF/CNPJ -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilProfCpfCnpj"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:hint="CPF ou CNPJ"
+                    android:textColorHint="@color/black"
+                    app:helperText="Pessoa física ou jurídica"
+                    app:helperTextTextColor="@android:color/black"
+                    app:hintTextColor="@android:color/black"
+                    app:boxStrokeColor="@android:color/black">
 
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etProfCpfCnpj"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:textColor="@android:color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Stacked vertically - Address -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilProfAddress"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="Endereço Completo">
+                    android:hint="Endereço Completo"
+                    android:textColorHint="@color/black"
+                    app:hintTextColor="@android:color/black"
+                    app:boxStrokeColor="@android:color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etProfAddress"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:imeOptions="actionNext"
-                        android:inputType="textPostalAddress|textCapSentences" />
+                        android:inputType="textPostalAddress|textCapSentences"
+                        android:textColor="@android:color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- Stacked vertically - Razão Social -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilProfRazaoSocial"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="Razão Social (Opcional, se CNPJ)">
+                    android:hint="Razão Social (Opcional, se CNPJ)"
+                    android:textColorHint="@color/black"
+                    app:hintTextColor="@android:color/black"
+                    app:boxStrokeColor="@android:color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etProfRazaoSocial"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:imeOptions="actionNext"
-                        android:inputType="textCapSentences" />
+                        android:inputType="textCapSentences"
+                        android:textColor="@android:color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- Stacked vertically - Description -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilProfDescription"
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="Sobre Você/Sua Empresa">
+                    android:hint="Sobre Você/Sua Empresa"
+                    android:textColorHint="@color/black"
+                    app:hintTextColor="@android:color/black"
+                    app:boxStrokeColor="@android:color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/etProfDescription"
@@ -216,55 +230,57 @@
                         android:gravity="top"
                         android:imeOptions="actionNext"
                         android:inputType="textMultiLine|textCapSentences"
-                        android:minLines="3" />
+                        android:minLines="3"
+                        android:textColor="@android:color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <LinearLayout
+                <!-- Stacked vertically - Password -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilProfPassword"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="0dp"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal">
+                    android:layout_marginBottom="16dp"
+                    android:hint="Senha"
+                    android:textColorHint="@color/black"
+                    app:helperText="Mínimo 6 caracteres"
+                    app:helperTextTextColor="@android:color/black"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@android:color/black"
+                    app:hintTextColor="@android:color/black"
+                    app:boxStrokeColor="@android:color/black">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilProfPassword"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etProfPassword"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="16dp"
-                        android:layout_weight="1"
-                        android:hint="Senha"
-                        app:helperText="Mínimo 6 caracteres"
-                        app:passwordToggleEnabled="true">
+                        android:imeOptions="actionNext"
+                        android:inputType="textPassword"
+                        android:textColor="@android:color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etProfPassword"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:imeOptions="actionNext"
-                            android:inputType="textPassword" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                <!-- Stacked vertically - Confirm Password -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilProfConfirmPassword"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:hint="Confirmar Senha"
+                    android:textColorHint="@color/black"
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@android:color/black"
+                    app:hintTextColor="@android:color/black"
+                    app:boxStrokeColor="@android:color/black">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/tilProfConfirmPassword"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_width="0dp"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etProfConfirmPassword"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginBottom="16dp"
-                        android:layout_weight="1"
-                        android:hint="Confirmar Senha"
-                        app:passwordToggleEnabled="true">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etProfConfirmPassword"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:imeOptions="actionDone"
-                            android:inputType="textPassword" />
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
+                        android:imeOptions="actionDone"
+                        android:inputType="textPassword"
+                        android:textColor="@android:color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -276,6 +292,7 @@
                 android:paddingTop="14dp"
                 android:paddingBottom="14dp"
                 android:text="Próximo (Cadastrar Serviços)"
+                android:textColor="@android:color/white"
                 android:textSize="16sp"
                 app:cornerRadius="8dp" />
 
@@ -289,7 +306,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Já tem uma conta? "
-                    android:textColor="#374151"
+                    android:textColor="@android:color/black"
                     android:textSize="14sp" />
 
                 <TextView
@@ -300,7 +317,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:text="Faça login"
-                    android:textColor="#4F46E5"
+                    android:textColor="@android:color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
             </LinearLayout>

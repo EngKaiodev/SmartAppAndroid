@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground"
+    android:background="@color/white"
     android:orientation="vertical">
 
-    <!-- Header -->
+    <!-- Header (mantido inalterado) -->
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -43,12 +43,14 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="16dp"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:background="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/white">
 
             <!-- Card de Filtros -->
             <androidx.cardview.widget.CardView
@@ -56,20 +58,21 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
-                app:cardBackgroundColor="?android:attr/colorBackground"
+                app:cardBackgroundColor="@color/white"
                 android:layout_marginBottom="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp">
+                    android:padding="16dp"
+                    android:background="@color/light_gray">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Filtrar Histórico:"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="12dp"/>
@@ -79,7 +82,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Prestador:"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp"/>
 
                     <EditText
@@ -91,14 +94,15 @@
                         android:hint="Digite o nome do prestador..."
                         android:background="?android:attr/editTextBackground"
                         android:padding="12dp"
-                        android:textColor="?android:attr/textColorPrimary"/>
+                        android:textColorHint="@color/black"
+                        android:textColor="@android:color/black"/>
 
                     <!-- Filtro por serviço -->
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Serviço:"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp"/>
 
                     <EditText
@@ -108,16 +112,16 @@
                         android:layout_marginTop="4dp"
                         android:layout_marginBottom="8dp"
                         android:hint="Digite o nome do serviço..."
-                        android:background="?android:attr/editTextBackground"
+                        android:textColorHint="@color/black"
                         android:padding="12dp"
-                        android:textColor="?android:attr/textColorPrimary"/>
+                        android:textColor="@android:color/black"/>
 
                     <!-- Filtro por data -->
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Período:"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp"/>
 
                     <LinearLayout
@@ -135,7 +139,7 @@
                             android:layout_marginEnd="8dp"
                             android:background="?android:attr/editTextBackground"
                             android:text="Data inicial"
-                            android:textColor="?android:attr/textColorPrimary"/>
+                            android:textColor="@android:color/black"/>
 
                         <Button
                             android:id="@+id/endDateButton"
@@ -145,7 +149,7 @@
                             android:layout_marginStart="8dp"
                             android:background="?android:attr/editTextBackground"
                             android:text="Data final"
-                            android:textColor="?android:attr/textColorPrimary"/>
+                            android:textColor="@android:color/black"/>
                     </LinearLayout>
 
                     <!-- Botão Aplicar Filtros -->
@@ -167,7 +171,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Seus Serviços Anteriores:"
-                android:textColor="?android:attr/textColorPrimary"
+                android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:layout_marginBottom="16dp"/>
@@ -177,7 +181,8 @@
                 android:id="@+id/serviceHistoryList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:background="@color/white">
 
                 <!-- RecyclerView para lista de histórico -->
                 <androidx.recyclerview.widget.RecyclerView
@@ -185,6 +190,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
+                    android:background="@color/white"
                     tools:listitem="@layout/historico_category"/>
             </LinearLayout>
 
@@ -194,7 +200,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Nenhum serviço encontrado no seu histórico."
-                android:textColor="?android:attr/textColorSecondary"
+                android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:gravity="center"
                 android:padding="32dp"

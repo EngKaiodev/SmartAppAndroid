@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F0F2F5"
+    android:background="@color/white"
     android:padding="16dp">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:background="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,7 +20,8 @@
             android:elevation="4dp"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="24dp">
+            android:padding="24dp"
+            android:background="@color/white">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -41,7 +43,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="SmartServ"
-                    android:textColor="#1F2937"
+                    android:textColor="@android:color/black"
                     android:textSize="32sp"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -51,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:text="Cadastre-se como Cliente"
-                android:textColor="#1F2937"
+                android:textColor="@android:color/black"
                 android:textSize="22sp"
                 android:textStyle="bold" />
 
@@ -61,14 +63,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:hint="Nome Completo">
+                android:hint="Nome Completo"
+                app:hintTextColor="@android:color/black"
+                app:boxStrokeColor="@android:color/black"
+                android:textColorHint="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etFullName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
-                    android:inputType="textPersonName|textCapWords" />
+                    android:inputType="textPersonName|textCapWords"
+                    android:textColor="@android:color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -77,14 +83,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:hint="E-mail">
+                android:hint="E-mail"
+                android:textColorHint="@color/black"
+                app:hintTextColor="@android:color/black"
+                app:boxStrokeColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEmailRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -93,14 +103,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:hint="Telefone (XX) XXXXX-XXXX">
+                android:hint="Telefone (XX) XXXXX-XXXX"
+                android:textColorHint="@color/black"
+                app:hintTextColor="@android:color/black"
+                app:boxStrokeColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
-                    android:inputType="phone" />
+                    android:inputType="phone"
+                    android:textColor="@android:color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -110,14 +124,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:hint="CPF ou CNPJ"
-                app:helperText="Para pessoa física (CPF) ou jurídica (CNPJ)">
+                android:textColorHint="@color/black"
+                app:helperText="Para pessoa física (CPF) ou jurídica (CNPJ)"
+                app:helperTextTextColor="@android:color/black"
+                app:hintTextColor="@android:color/black"
+                app:boxStrokeColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etCpfCnpj"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
-                    android:inputType="text" />
+                    android:inputType="text"
+                    android:textColor="@android:color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -127,14 +146,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:hint="Endereço Completo"
-                app:helperText="Rua, número, bairro, cidade, estado, CEP">
+                android:textColorHint="@color/black"
+                app:helperText="Rua, número, bairro, cidade, estado, CEP"
+                app:helperTextTextColor="@android:color/black"
+                app:hintTextColor="@android:color/black"
+                app:boxStrokeColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etAddress"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
-                    android:inputType="textPostalAddress|textCapSentences" />
+                    android:inputType="textPostalAddress|textCapSentences"
+                    android:textColor="@android:color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -144,15 +168,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:hint="Senha"
+                android:textColorHint="@color/black"
                 app:helperText="Mínimo de 6 caracteres"
-                app:passwordToggleEnabled="true">
+                app:helperTextTextColor="@android:color/black"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@android:color/black"
+                app:hintTextColor="@android:color/black"
+                app:boxStrokeColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etPasswordRegister"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textColor="@android:color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -162,16 +192,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:hint="Confirmar Senha"
-                app:passwordToggleEnabled="true">
+                android:textColorHint="@color/black"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@android:color/black"
+                app:hintTextColor="@android:color/black"
+                app:boxStrokeColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etConfirmPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:textColor="@android:color/black" />
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnfinalizarCliente"
@@ -182,6 +216,7 @@
                 android:paddingTop="12dp"
                 android:paddingBottom="12dp"
                 android:text="Cadastrar"
+                android:textColor="@android:color/white"
                 app:cornerRadius="8dp" />
 
             <LinearLayout
@@ -194,7 +229,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Já tem uma conta? "
-                    android:textColor="#374151"
+                    android:textColor="@android:color/black"
                     android:textSize="14sp" />
 
                 <TextView
@@ -205,7 +240,7 @@
                     android:clickable="true"
                     android:focusable="true"
                     android:text="Faça login"
-                    android:textColor="#4F46E5"
+                    android:textColor="@android:color/black"
                     android:textSize="14sp"
                     android:textStyle="bold" />
             </LinearLayout>

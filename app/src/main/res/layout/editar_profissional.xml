@@ -3,15 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground"
+    android:background="@color/white"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/white">
 
-        <!-- Header -->
+        <!-- Header (unchanged as requested) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -55,13 +56,14 @@
             android:layout_margin="16dp"
             app:cardCornerRadius="12dp"
             app:cardElevation="4dp"
-            app:cardBackgroundColor="?android:attr/colorBackground">
+            app:cardBackgroundColor="@color/white">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="24dp">
+                android:padding="24dp"
+                android:background="@color/light_gray">
 
                 <!-- Profile Photo -->
                 <LinearLayout
@@ -87,7 +89,7 @@
                         android:layout_marginTop="8dp"
                         android:drawablePadding="8dp"
                         android:text="Alterar Foto"
-                        android:textColor="#4F46E5"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp" />
                 </LinearLayout>
 
@@ -103,7 +105,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
                         android:text="Nome Completo"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
                     <EditText
@@ -114,7 +116,7 @@
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:text="Maria Cabeleireira"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="16sp" />
 
                     <!-- E-mail -->
@@ -124,7 +126,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
                         android:text="E-mail"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
                     <EditText
@@ -136,7 +138,7 @@
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:text="maria.cabelos@exemplo.com"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="16sp" />
 
                     <!-- Telefone -->
@@ -146,7 +148,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
                         android:text="Telefone"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
                     <EditText
@@ -158,7 +160,7 @@
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:text="(11) 91234-5678"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="16sp" />
 
                     <!-- CPF/CNPJ -->
@@ -168,7 +170,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
                         android:text="CPF ou CNPJ"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
                     <EditText
@@ -179,7 +181,7 @@
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:text="XX.XXX.XXX/XXXX-XX"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="16sp" />
 
                     <TextView
@@ -187,7 +189,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Para pessoa física (CPF) ou jurídica (CNPJ)."
-                        android:textColor="?android:attr/textColorSecondary"
+                        android:textColor="@android:color/black"
                         android:textSize="12sp" />
 
                     <!-- Endereço -->
@@ -197,7 +199,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
                         android:text="Endereço Completo"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
                     <EditText
@@ -208,7 +210,7 @@
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:text="Rua da Beleza, 456, Bairro Estilo, Cidade, SP, 98765-432"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="16sp" />
 
                     <!-- Razão Social -->
@@ -218,7 +220,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
                         android:text="Razão Social (Opcional, se CNPJ)"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
                     <EditText
@@ -229,7 +231,7 @@
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:text="Salão da Maria LTDA"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="16sp" />
 
                     <!-- Descrição -->
@@ -239,7 +241,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
                         android:text="Sobre Você/Sua Empresa"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
                     <EditText
@@ -251,7 +253,7 @@
                         android:inputType="textMultiLine"
                         android:padding="16dp"
                         android:text="Cabeleireira com mais de 10 anos de experiência, especialista em cortes modernos e coloração. Atendimento personalizado e ambiente acolhedor."
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="16sp" />
 
                     <!-- Alterar Senha Section -->
@@ -267,7 +269,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="16dp"
                         android:text="Alterar Senha"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
@@ -277,7 +279,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="4dp"
                         android:text="Nova Senha"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
                     <EditText
@@ -289,7 +291,7 @@
                         android:inputType="textPassword"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="16sp" />
 
                     <TextView
@@ -297,7 +299,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:text="Mínimo de 6 caracteres."
-                        android:textColor="?android:attr/textColorSecondary"
+                        android:textColor="@android:color/black"
                         android:textSize="12sp" />
 
                     <!-- Confirmar Nova Senha -->
@@ -307,7 +309,7 @@
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
                         android:text="Confirmar Nova Senha"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
                     <EditText
@@ -319,7 +321,7 @@
                         android:inputType="textPassword"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="16sp" />
 
                     <!-- Buttons -->
@@ -341,7 +343,7 @@
                             android:paddingEnd="24dp"
                             android:paddingBottom="12dp"
                             android:text="Voltar"
-                            android:textColor="?android:attr/textColorPrimary" />
+                            android:textColor="@android:color/black" />
 
                         <Button
                             android:id="@+id/saveButton"
@@ -353,7 +355,7 @@
                             android:paddingEnd="24dp"
                             android:paddingBottom="12dp"
                             android:text="Salvar Alterações"
-                            android:textColor="@android:color/white" />
+                            android:textColor="@android:color/black" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

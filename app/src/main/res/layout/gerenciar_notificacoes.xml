@@ -6,15 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical">
-    <!-- ALTERAR TODAS AS CORES PARA CORES EXISTENTE
-    android:background="?android:attr/colorBackground"
-    POR
-        android:background="@color/white"
-    -->
 
-
-
-    <!-- Header -->
+    <!-- Header (unchanged as requested) -->
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -50,12 +43,14 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="16dp"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:background="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/white">
 
             <!-- Card Notificações Gerais -->
             <androidx.cardview.widget.CardView
@@ -63,20 +58,21 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/light_gray"
+                app:cardBackgroundColor="@color/white"
                 android:layout_marginBottom="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="24dp">
+                    android:padding="24dp"
+                    android:background="@color/light_gray">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Notificações Gerais"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="16dp"/>
@@ -94,7 +90,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Receber todas as notificações"
-                            android:textColor="?android:attr/textColorPrimary"
+                            android:textColor="@android:color/black"
                             android:textSize="16sp"
                             android:textStyle="bold"/>
 
@@ -118,7 +114,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Som de notificação"
-                            android:textColor="?android:attr/textColorPrimary"
+                            android:textColor="@android:color/black"
                             android:textSize="16sp"
                             android:textStyle="bold"/>
 
@@ -141,7 +137,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Vibrar"
-                            android:textColor="?android:attr/textColorPrimary"
+                            android:textColor="@android:color/black"
                             android:textSize="16sp"
                             android:textStyle="bold"/>
 
@@ -160,20 +156,21 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
-                app:cardBackgroundColor="?android:attr/colorBackground"
+                app:cardBackgroundColor="@color/white"
                 android:layout_marginBottom="16dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="24dp">
+                    android:padding="24dp"
+                    android:background="@color/light_gray">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Notificações de Agendamento"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="16dp"/>
@@ -191,7 +188,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Agendamento Confirmado"
-                            android:textColor="?android:attr/textColorPrimary"
+                            android:textColor="@android:color/black"
                             android:textSize="16sp"/>
 
                         <androidx.appcompat.widget.SwitchCompat
@@ -214,7 +211,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Lembrete de Agendamento (1 dia antes)"
-                            android:textColor="?android:attr/textColorPrimary"
+                            android:textColor="@android:color/black"
                             android:textSize="16sp"/>
 
                         <androidx.appcompat.widget.SwitchCompat
@@ -237,7 +234,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Lembrete de Agendamento (1 hora antes)"
-                            android:textColor="?android:attr/textColorPrimary"
+                            android:textColor="@android:color/black"
                             android:textSize="16sp"/>
 
                         <androidx.appcompat.widget.SwitchCompat
@@ -259,7 +256,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Agendamento Cancelado/Reagendado"
-                            android:textColor="?android:attr/textColorPrimary"
+                            android:textColor="@android:color/black"
                             android:textSize="16sp"/>
 
                         <androidx.appcompat.widget.SwitchCompat
@@ -277,19 +274,20 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
-                app:cardBackgroundColor="?android:attr/colorBackground">
+                app:cardBackgroundColor="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="24dp">
+                    android:padding="24dp"
+                    android:background="@color/light_gray">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Outras Notificações"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="16dp"/>
@@ -307,7 +305,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Novas Mensagens"
-                            android:textColor="?android:attr/textColorPrimary"
+                            android:textColor="@android:color/black"
                             android:textSize="16sp"/>
 
                         <androidx.appcompat.widget.SwitchCompat
@@ -329,7 +327,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:text="Atualizações de Serviços/Promoções"
-                            android:textColor="?android:attr/textColorPrimary"
+                            android:textColor="@android:color/black"
                             android:textSize="16sp"/>
 
                         <androidx.appcompat.widget.SwitchCompat

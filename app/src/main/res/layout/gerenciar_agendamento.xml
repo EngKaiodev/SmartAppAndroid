@@ -1,46 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F0F2F5"
+    android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Header -->
-    <RelativeLayout
+    <!-- Header corrigido com LinearLayout -->
+    <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#4F46E5"
         android:elevation="4dp"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:gravity="center_vertical">
 
         <ImageButton
             android:id="@+id/btnvoltaragendamento"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:layout_alignParentStart="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="gere2"
-            android:src="@drawable/ic_arrow_back" />
+            android:src="@drawable/ic_arrow_back"
+            app:tint="#FFFFFF" />
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:layout_weight="1"
             android:layout_marginStart="16dp"
             android:text="Meus Agendamentos"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:textStyle="bold" />
-    </RelativeLayout>
+    </LinearLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/header"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:paddingTop="16dp">
 
         <LinearLayout
@@ -48,13 +50,14 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Filter Card - Mantido conforme solicitado -->
+            <!-- Filter Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="8dp">
+                app:cardElevation="8dp"
+                app:cardBackgroundColor="#FFFFFF">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -71,43 +74,44 @@
                         android:textStyle="bold"
                         android:layout_marginBottom="12dp"/>
 
-                    <GridLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:columnCount="2"
-                        android:rowCount="2"
-                        android:alignmentMode="alignMargins"
-                        android:columnOrderPreserved="false"
-                        android:useDefaultMargins="true">
+                        android:orientation="horizontal"
+                        android:weightSum="2">
 
                         <Spinner
                             android:id="@+id/statusFilter"
-                            android:layout_width="48dp"
+                            android:layout_width="0dp"
                             android:layout_height="48dp"
-                            android:layout_columnWeight="1"
-                            android:layout_row="0"
-                            android:layout_column="0"
-                            android:padding="12dp"/>
+                            android:layout_weight="1"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown"/>
 
                         <Spinner
                             android:id="@+id/periodFilter"
-                            android:layout_width="48dp"
+                            android:layout_width="0dp"
                             android:layout_height="48dp"
-                            android:layout_columnWeight="1"
-                            android:layout_row="0"
-                            android:layout_column="1"
-                            android:padding="12dp"/>
-                    </GridLayout>
+                            android:layout_weight="1"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown"/>
+                    </LinearLayout>
 
                     <Button
                         android:id="@+id/clearFilterButton"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="48dp"
                         android:layout_marginTop="8dp"
-                        android:background="@drawable/button_secondary"
+                        android:background="#E5E7EB"
                         android:text="Limpar Filtros"
-                        android:textColor="#4B5563"
+                        android:textColor="@color/white"
                         android:drawableStart="@drawable/ic_eraser"
+                        android:drawableTint="#4B5563"
                         android:drawablePadding="8dp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -127,11 +131,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:divider="@drawable/divider"
-                android:showDividers="middle"
                 android:padding="8dp">
 
-                <!-- Card de Agendamento Único -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvAgendamentosCategories"
                     android:layout_width="match_parent"
@@ -142,11 +143,7 @@
                     tools:listitem="@layout/item_agendamento"
                     tools:itemCount="1"
                     tools:layoutManager="LinearLayoutManager"
-                    tools:orientation="vertical">
-
-
-
-                </androidx.recyclerview.widget.RecyclerView>
+                    tools:orientation="vertical"/>
             </LinearLayout>
 
             <TextView
@@ -166,10 +163,11 @@
         android:id="@+id/messageModal"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_gravity="center"
         android:visibility="gone"
         app:cardCornerRadius="16dp"
-        app:cardElevation="24dp">
+        app:cardElevation="24dp"
+        app:cardBackgroundColor="#FFFFFF">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -183,7 +181,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="48sp"
-                android:layout_marginBottom="16dp"/>
+                android:layout_marginBottom="16dp"
+                android:textColor="#4F46E5"/>
 
             <TextView
                 android:id="@+id/messageTitle"
@@ -192,6 +191,7 @@
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:gravity="center"
+                android:textColor="#374151"
                 android:layout_marginBottom="8dp"/>
 
             <TextView
@@ -200,14 +200,16 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:gravity="center"
+                android:textColor="#6B7280"
                 android:layout_marginBottom="24dp"/>
 
             <Button
                 android:id="@+id/okButton"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:text="OK"
-                android:background="@drawable/button_primary"/>
+                android:background="#4F46E5"
+                android:textColor="#FFFFFF"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-</RelativeLayout>
+</LinearLayout>
