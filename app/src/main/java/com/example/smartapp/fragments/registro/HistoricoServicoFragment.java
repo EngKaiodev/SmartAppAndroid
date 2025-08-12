@@ -53,7 +53,7 @@ public class HistoricoServicoFragment extends Fragment {
 
     private void mockedList(){
         historicoList = List.of(
-                new HistoricoModel(1, "corte e barba", "joao","R$80,00", "14/07/2025", "5")
+                new HistoricoModel(1, "jõao", "corte e barba","R$80,00", "14/07/2025", "5")
         );
     }
 

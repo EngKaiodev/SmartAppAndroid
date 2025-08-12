@@ -142,6 +142,7 @@
                     app:cardElevation="4dp"
                     tools:listitem="@layout/item_agendamento"
                     tools:itemCount="1"
+                    app:spanCount="1"
                     tools:layoutManager="LinearLayoutManager"
                     tools:orientation="vertical"/>
             </LinearLayout>

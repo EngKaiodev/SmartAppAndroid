@@ -53,6 +53,6 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.
 
     @Override
     public int getItemCount() {
-        return 0;
+        return aList != null ? aList.size() : 0;
     }
 }

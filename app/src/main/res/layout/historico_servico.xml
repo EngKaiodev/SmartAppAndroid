@@ -191,6 +191,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:background="@color/white"
+                    app:spanCount="2"
+                    tools:itemCount="2"
                     tools:listitem="@layout/historico_category"/>
             </LinearLayout>
 

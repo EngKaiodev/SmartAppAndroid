@@ -34,7 +34,7 @@ public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.View
     }
 
     @Override
-    public int getItemCount() {return 0;}
+    public int getItemCount() {return hList != null ? hList.size(): 0; }
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         private HistoricoCategoryBinding binding;

@@ -115,7 +115,7 @@
         android:name="com.example.smartapp.fragments.registro.PesquisarProfissionaisFragment"
         tools:layout="@layout/pesquisar_profissional">
         <action
-            android:id="@+id/toPerfil"
+            android:id="@+id/perfil_prestador_fragment"
             app:destination="@id/perfil_prestador_fragment" />
     </fragment>
 
