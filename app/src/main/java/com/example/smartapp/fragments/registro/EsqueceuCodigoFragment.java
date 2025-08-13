@@ -1,5 +1,6 @@
 package com.example.smartapp.fragments.registro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.smartapp.activities.LoginActivity;
 import com.example.smartapp.databinding.EsqueceuSenhaCodigoBinding;
 import com.example.smartapp.viewmodels.EsqueceuCodigoViewModel;
 
@@ -46,6 +48,14 @@ public class EsqueceuCodigoFragment extends Fragment {
                 navController.popBackStack();
             }
         });
+
+        binding.btnVerificarCodigo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        }) ;
     }
 
     @Override

@@ -24,6 +24,7 @@
         </activity>
         <activity android:name="com.example.smartapp.activities.MainActivity" />
         <activity android:name="com.example.smartapp.activities.RegisterActivity" />
+        <activity android:name="com.example.smartapp.activities.ForgotActivity" />
     </application>
 
 </manifest>

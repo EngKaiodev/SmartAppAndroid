@@ -43,7 +43,7 @@ public class EsqueceuTelefoneFragment extends Fragment {
         binding.btnVoltarsenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.popBackStack();
+                requireActivity().finish();
             }
         });
 
