@@ -72,7 +72,12 @@ public class GerenciarAgendamentoFragment extends Fragment {
             }
         });
 
-        //falta colocar uma lista para continuar para as proximas telas
+        binding.btnReagendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(GerenciarAgendamentoFragmentDirections.reagendarFragment());
+            }
+        });
     }
 
     @Override

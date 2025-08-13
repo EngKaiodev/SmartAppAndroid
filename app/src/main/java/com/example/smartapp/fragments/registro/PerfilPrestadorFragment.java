@@ -54,14 +54,14 @@ public class PerfilPrestadorFragment extends Fragment {
         binding.btnAgendarServ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(AgendarServicoFragmentDirections.agendarServicoFragment());
+                navController.navigate(PerfilPrestadorFragmentDirections.agendarServicoFragment());
             }
         });
 
         binding.btnAvaliar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(AgendarServicoFragmentDirections.avaliarPrestardorFragment());
+                navController.navigate(PerfilPrestadorFragmentDirections.avaliarPrestardorFragment());
             }
         });
 

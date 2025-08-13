@@ -121,7 +121,7 @@
 
     <fragment
         android:id="@+id/perfil_prestador_fragment"
-        android:name="com.example.smartapp.fragments.registro.AgendarServicoFragment"
+        android:name="com.example.smartapp.fragments.registro.PerfilPrestadorFragment"
         android:label="PerfilPrestadorFragment"
         tools:layout="@layout/perfil_prestador">
         <action
@@ -140,7 +140,7 @@
 
     <fragment
         android:id="@+id/agendar_servico_fragment"
-        android:name="com.example.smartapp.fragments.registro.ConfirmarAgendamentoFragment"
+        android:name="com.example.smartapp.fragments.registro.AgendarServicoFragment"
         android:label="AgendarServicoFragment"
         tools:layout="@layout/agendar_servico">
         <action

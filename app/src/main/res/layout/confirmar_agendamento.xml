@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground">
+    android:background="@color/white">
 
     <!-- Header corrigido com posicionamento adequado -->
     <LinearLayout
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
-                app:cardBackgroundColor="?android:attr/colorBackground">
+                app:cardBackgroundColor="@color/white">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -67,7 +67,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Detalhes do Agendamento"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="16dp"/>
@@ -84,35 +84,35 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Cliente: Nome do Cliente"
-                            android:textColor="?android:attr/textColorSecondary"
+                            android:textColor="@android:color/black"
                             android:layout_marginBottom="8dp"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Serviço: Nome do Serviço"
-                            android:textColor="?android:attr/textColorSecondary"
+                            android:textColor="@android:color/black"
                             android:layout_marginVertical="8dp"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Data: DD/MM/AAAA"
-                            android:textColor="?android:attr/textColorSecondary"
+                            android:textColor="@android:color/black"
                             android:layout_marginVertical="8dp"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Horário: HH:MM"
-                            android:textColor="?android:attr/textColorSecondary"
+                            android:textColor="@android:color/black"
                             android:layout_marginVertical="8dp"/>
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Valor: R$ 0,00"
-                            android:textColor="?android:attr/textColorSecondary"
+                            android:textColor="@android:color/black"
                             android:layout_marginTop="8dp"/>
                     </LinearLayout>
                 </LinearLayout>
@@ -124,7 +124,7 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
-                app:cardBackgroundColor="?android:attr/colorBackground"
+                app:cardBackgroundColor="@color/white"
                 android:layout_marginTop="16dp">
 
                 <LinearLayout
@@ -137,7 +137,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Ações"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="18sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="16dp"/>
@@ -149,6 +149,7 @@
                         android:weightSum="2"
                         android:gravity="center">
 
+                        <!-- Botões mantidos com cores originais -->
                         <Button
                             android:id="@+id/btnconfirmar"
                             android:layout_width="0dp"
@@ -202,7 +203,7 @@
             android:layout_margin="32dp"
             app:cardCornerRadius="16dp"
             app:cardElevation="8dp"
-            app:cardBackgroundColor="?android:attr/colorBackground"
+            app:cardBackgroundColor="@color/white"
             android:layout_gravity="center">
 
             <LinearLayout
@@ -215,7 +216,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Rejeitar Agendamento"
-                    android:textColor="?android:attr/textColorPrimary"
+                    android:textColor="@android:color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="16dp"/>
@@ -224,7 +225,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Por favor, forneça um motivo para a rejeição (opcional):"
-                    android:textColor="?android:attr/textColorSecondary"
+                    android:textColor="@android:color/black"
                     android:layout_marginBottom="12dp"/>
 
                 <EditText
@@ -236,7 +237,7 @@
                     android:gravity="top"
                     android:hint="Digite o motivo..."
                     android:inputType="textMultiLine"
-                    android:textColor="?android:attr/textColorPrimary" />
+                    android:textColor="@android:color/black" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -245,13 +246,14 @@
                     android:gravity="end"
                     android:layout_marginTop="16dp">
 
+                    <!-- Botões mantidos com cores originais -->
                     <Button
                         android:id="@+id/cancelRejectionButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Cancelar"
                         android:backgroundTint="#E5E7EB"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="#1F2937"
                         android:paddingHorizontal="16dp"
                         android:paddingVertical="8dp"
                         android:layout_marginEnd="8dp"/>
@@ -285,7 +287,7 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="16dp"
             app:cardElevation="8dp"
-            app:cardBackgroundColor="?android:attr/colorBackground"
+            app:cardBackgroundColor="@color/white"
             android:layout_gravity="center">
 
             <LinearLayout
@@ -307,7 +309,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Título"
-                    android:textColor="?android:attr/textColorPrimary"
+                    android:textColor="@android:color/black"
                     android:textSize="20sp"
                     android:textStyle="bold"
                     android:gravity="center"
@@ -318,10 +320,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Mensagem de exemplo"
-                    android:textColor="?android:attr/textColorSecondary"
+                    android:textColor="@android:color/black"
                     android:gravity="center"
                     android:layout_marginBottom="16dp"/>
 
+                <!-- Botão mantido com cor original -->
                 <Button
                     android:id="@+id/okButton"
                     android:layout_width="match_parent"

@@ -52,7 +52,7 @@ public class AgendarServicoFragment extends Fragment {
         binding.btnconfirmarAgendamento2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(ConfirmarAgendamentoFragmentDirections.confirmaragendamentofragment());
+                navController.navigate(AgendarServicoFragmentDirections.confirmaragendamentofragment());
             }
         });
     }

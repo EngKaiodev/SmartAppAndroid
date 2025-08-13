@@ -93,7 +93,7 @@
 
             <!-- Corrigido: "Esqueceu a senha" em linha completa -->
             <TextView
-                android:id="@+id/tvForgotPassword"
+                android:id="@+id/esqueceusenha"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
