@@ -14,8 +14,12 @@ import java.util.List;
 public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.ViewHolder> {
 
     private final List<AgendamentoModel> aList;
+    private java.util.function.Consumer<AgendamentoModel> onAgendarClick; //Criar variavel
 
-    public AgendamentoAdapter(List<AgendamentoModel> aList){this.aList = aList;}
+    public AgendamentoAdapter(List<AgendamentoModel> aList, java.util.function.Consumer<AgendamentoModel> onAgendarClick) {
+        this.aList = aList;
+        this.onAgendarClick = onAgendarClick; // Colocar no construtor
+    }
 
 
     @NonNull
@@ -26,10 +30,18 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.
         return new ViewHolder(binding);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull AgendamentoAdapter.ViewHolder holder, int position) {
         AgendamentoModel aitem = aList.get(position);
         holder.binding(aitem);
+
+        //Colocar o click no botão aqui
+        holder.binding.btnReagendar.setOnClickListener(v -> {
+            if (onAgendarClick != null) {
+                onAgendarClick.accept(aitem);
+            }
+        });
 
     }
 
@@ -48,6 +60,7 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.
             binding.data.setText(agendamento.getData());
             binding.hora.setText(agendamento.getHora());
             binding.valor.setText(agendamento.getValor());
+
         }
     }
 

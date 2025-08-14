@@ -107,6 +107,20 @@
                 android:text="Confirmado"
                 android:textColor="@android:color/black"
                 android:textSize="14sp"/>
+
+            <Button
+                android:id="@+id/btnReagendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Reagendar"
+                android:background="#4CAF50"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:padding="16dp"
+                android:drawableStart="@drawable/ic_calendar"
+                android:drawablePadding="8dp"
+                android:stateListAnimator="@null"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

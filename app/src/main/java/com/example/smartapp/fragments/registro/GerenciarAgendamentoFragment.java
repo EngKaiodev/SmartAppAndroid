@@ -52,13 +52,17 @@ public class GerenciarAgendamentoFragment extends Fragment {
 
     private void mockedList() {
         agendamentoList = List.of(
+                new AgendamentoModel(1, "jose carlos", "Corte e Barba", "22/07/25", "14:35", "R$60,00"),
+                new AgendamentoModel(1, "jose carlos", "Corte e Barba", "22/07/25", "14:35", "R$60,00"),
                 new AgendamentoModel(1, "jose carlos", "Corte e Barba", "22/07/25", "14:35", "R$60,00")
 
         );
     }
 
     private void setupAdapters() {
-        agendamentoAdapter = new AgendamentoAdapter(agendamentoList);
+        agendamentoAdapter = new AgendamentoAdapter(agendamentoList, agendamentoModel -> {
+            navController.navigate(GerenciarAgendamentoFragmentDirections.reagendarFragment());
+        });
 
         binding.rvAgendamentosCategories.setAdapter(agendamentoAdapter);
         binding.rvAgendamentosCategories.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -72,12 +76,7 @@ public class GerenciarAgendamentoFragment extends Fragment {
             }
         });
 
-        binding.btnReagendar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(GerenciarAgendamentoFragmentDirections.reagendarFragment());
-            }
-        });
+
     }
 
     @Override

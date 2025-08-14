@@ -151,22 +151,7 @@
                 app:cardCornerRadius="50dp"
                 app:cardElevation="2dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp">
-
-                <Button
-                    android:id="@+id/btnReagendar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Reagendar"
-                    android:background="#4CAF50"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:padding="16dp"
-                    android:drawableStart="@drawable/ic_calendar"
-                    android:drawablePadding="8dp"
-                    android:stateListAnimator="@null"/>
-            </androidx.cardview.widget.CardView>
+                android:layout_marginBottom="8dp"/>
 
             <TextView
                 android:id="@+id/emptyMessage"
