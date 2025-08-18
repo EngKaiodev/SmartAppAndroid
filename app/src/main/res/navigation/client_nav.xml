@@ -164,7 +164,7 @@
         tools:layout="@layout/buscar_servico">
         <action
             android:id="@+id/action_ir_prestador"
-            app:destination="@id/perfil_prestador_fragment"/>
+            app:destination="@id/buscar_profissional_fragment"/>
     </fragment>
 
 

@@ -55,14 +55,18 @@ public class BuscarServicoFragment extends Fragment {
 
     private void mockedList(){
        historicoList= List.of(
+                new HistoricoModel(1,"Joao terceiro", "massagem", "11/05/2025", "R$ 130,00", "5" ),
+                new HistoricoModel(1,"Joao terceiro", "massagem", "11/05/2025", "R$ 130,00", "5" ),
+                new HistoricoModel(1,"Joao terceiro", "massagem", "11/05/2025", "R$ 130,00", "5" ),
                 new HistoricoModel(1,"Joao terceiro", "massagem", "11/05/2025", "R$ 130,00", "5" )
         );
     }
 
     private void setupAdapters(){
-        historicoAdapter = new HistoricoAdapter(historicoList);
+        historicoAdapter = new HistoricoAdapter(historicoList, historicoModel -> {
+            navController.navigate(BuscarServicoFragmentDirections.actionIrPrestador());
+        });
 
-        historicoAdapter = new HistoricoAdapter(historicoList);
         binding.rvtlistaservico.setAdapter(historicoAdapter);
         binding.rvtlistaservico.setLayoutManager(new LinearLayoutManager(getContext()));
     }

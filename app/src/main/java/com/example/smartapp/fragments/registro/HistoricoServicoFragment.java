@@ -58,7 +58,9 @@ public class HistoricoServicoFragment extends Fragment {
     }
 
     private void setupAdapters(){
-        historicoAdapter = new HistoricoAdapter(historicoList);
+        historicoAdapter = new HistoricoAdapter(historicoList, historicoModel -> {
+            //todo inserir aqui onde vai
+        });
         binding.rvhistoricoServico.setAdapter(historicoAdapter);
         binding.rvhistoricoServico.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     }

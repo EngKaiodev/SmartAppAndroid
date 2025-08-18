@@ -1,6 +1,7 @@
 package com.example.smartapp.adapters;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -11,12 +12,17 @@ import com.example.smartapp.domain.models.ProfissionalModel;
 
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class ProfissionalAdapter extends RecyclerView.Adapter<ProfissionalAdapter.ViewHolder>{
 
     private final List<ProfissionalModel> pList;
+    private Consumer<ProfissionalModel> onProfissionalClick;
 
-    public ProfissionalAdapter(List<ProfissionalModel> pList){this.pList = pList;}
+    public ProfissionalAdapter(List<ProfissionalModel> pList, Consumer<ProfissionalModel> onProfissionalClick){
+        this.pList = pList;
+        this.onProfissionalClick = onProfissionalClick;
+    }
 
     @NonNull
     @Override
@@ -31,6 +37,12 @@ public class ProfissionalAdapter extends RecyclerView.Adapter<ProfissionalAdapte
         ProfissionalModel pitem = pList.get(position);
         holder.bind(pitem);
 
+        holder.binding.btnirparaagendamento.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onProfissionalClick.accept(pitem);
+            }
+        });
     }
 
     @Override

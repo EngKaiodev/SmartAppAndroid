@@ -31,10 +31,6 @@ public class DashboardFragment extends Fragment {
     private DashboardBinding binding;
     private DashboardViewModel viewModel;
     private NavController navController;
-
-    private CategoryAdapter categoryAdapter;
-    private List<CategoryModel> categoryList;
-
     private List<ProfissionalModel> profissionalList;
     private ProfissionalAdapter profissionalAdapter;
 
@@ -58,30 +54,20 @@ public class DashboardFragment extends Fragment {
     }
     //Lista de exemplos para testar
     private void mockedList() {
-        categoryList = List.of(
-                new CategoryModel(1, "Cabelereiro"),
-                new CategoryModel(2, "Estético"),
-                new CategoryModel(3, "Personal"),
-                new CategoryModel(4, "Manicure"),
-                new CategoryModel(5, "Pedicure"),
-                new CategoryModel(6, "Massagem"),
-                new CategoryModel(7, "Depilação"),
-                new CategoryModel(8, "Maquiagem"),
-                new CategoryModel(9, "Barbearia")
-        );
 
         profissionalList = List.of(
+                new ProfissionalModel(1, "joao tonho", "cabelereiro","5"),
+                new ProfissionalModel(1, "joao tonho", "cabelereiro","5"),
+                new ProfissionalModel(1, "joao tonho", "cabelereiro","5"),
                 new ProfissionalModel(1, "joao tonho", "cabelereiro","5")
 
         );
     }
 
     private void setupAdapters() {
-        categoryAdapter = new CategoryAdapter(categoryList);
-
-
-
-        profissionalAdapter = new ProfissionalAdapter(profissionalList);
+        profissionalAdapter = new ProfissionalAdapter(profissionalList, profissionalModel -> {
+            navController.navigate(DashboardFragmentDirections.actionAgendarServico());
+        });
         binding.rvCatProfissional.setAdapter(profissionalAdapter);
         binding.rvCatProfissional.setLayoutManager(new LinearLayoutManager(getContext()));
 

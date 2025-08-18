@@ -1,6 +1,7 @@
 package com.example.smartapp.adapters;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -10,12 +11,17 @@ import com.example.smartapp.databinding.HistoricoCategoryBinding;
 import com.example.smartapp.domain.models.HistoricoModel;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.ViewHolder> {
 
     private final List<HistoricoModel> hList;
+    private Consumer<HistoricoModel> onHistoryClick;
 
-    public HistoricoAdapter(List<HistoricoModel> hList){this.hList = hList;}
+    public HistoricoAdapter(List<HistoricoModel> hList, Consumer<HistoricoModel> onHistoryClick){
+        this.hList = hList;
+        this.onHistoryClick = onHistoryClick;
+    }
 
 
     @NonNull
@@ -30,6 +36,13 @@ public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         HistoricoModel hitem = hList.get(position);
         holder.bind(hitem);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onHistoryClick.accept(hitem);
+            }
+        });
 
     }
 

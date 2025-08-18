@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartapp.databinding.ItemCategoryBinding;
+import com.example.smartapp.domain.models.AgendamentoModel;
 import com.example.smartapp.domain.models.CategoryModel;
 
 import java.util.List;
@@ -14,8 +15,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
     private final List<CategoryModel> mList;
 
-    public CategoryAdapter(List<CategoryModel> mList) {
+    private java.util.function.Consumer<CategoryModel> onClientClick;
+
+    public CategoryAdapter(List<CategoryModel> mList, java.util.function.Consumer<CategoryModel> onClientClick) {
         this.mList = mList;
+        this.onClientClick = onClientClick;
     }
 
     @Override
