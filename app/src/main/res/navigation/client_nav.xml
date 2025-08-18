@@ -87,6 +87,9 @@
         <action
             android:id="@+id/action_home_to_agendamentos"
             app:destination="@id/gerenciar_agendamento_fragment" />
+        <action
+            android:id="@+id/action_agendar_servico"
+            app:destination="@id/agendar_servico_fragment"/>
 
     </fragment>
 
@@ -158,7 +161,11 @@
         android:id="@+id/buscar_servico_fragment"
         android:name="com.example.smartapp.fragments.registro.BuscarServicoFragment"
         android:label="BuscarServicoFragment"
-        tools:layout="@layout/buscar_servico" />
+        tools:layout="@layout/buscar_servico">
+        <action
+            android:id="@+id/action_ir_prestador"
+            app:destination="@id/perfil_prestador_fragment"/>
+    </fragment>
 
 
 </navigation>

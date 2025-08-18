@@ -38,8 +38,7 @@
                 android:layout_height="48dp"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="dashboard2"
-                app:srcCompat="@drawable/ic_bell"
-                />
+                app:srcCompat="@drawable/ic_bell" />
 
             <TextView
                 android:id="@+id/notificationCount"
@@ -116,8 +115,7 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:background="?attr/selectableItemBackgroundBorderless"
-            app:srcCompat="@drawable/ic_close"
-            />
+            app:srcCompat="@drawable/ic_close"/>
     </RelativeLayout>
 
     <!-- Conteúdo Principal -->
@@ -132,25 +130,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <!-- Categorias Populares -->
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Categorias Populares"
-                android:textColor="#1F2937"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvCategorias"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:layoutManager="LinearLayoutManager"
-                tools:orientation="horizontal"
-                tools:listitem="@layout/item_category"
-                tools:itemCount="5"/>
 
             <!-- Profissionais em Destaque -->
             <TextView
@@ -197,31 +176,7 @@
         android:elevation="8dp"
         android:paddingVertical="4dp">
 
-        <LinearLayout
-            android:id="@+id/btn_inicio"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:clickable="true"
-            android:padding="4dp">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_home" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Início"
-                android:textColor="#4F46E5"
-                android:textSize="12sp"
-                android:layout_marginTop="2dp"/>
-        </LinearLayout>
-
+        <!-- Buscar -->
         <LinearLayout
             android:id="@+id/btn_buscar"
             android:layout_width="0dp"
@@ -247,6 +202,7 @@
                 android:layout_marginTop="2dp"/>
         </LinearLayout>
 
+        <!-- Agendamentos -->
         <LinearLayout
             android:id="@+id/btn_agendamento"
             android:layout_width="0dp"
@@ -274,6 +230,7 @@
                 android:layout_marginTop="2dp"/>
         </LinearLayout>
 
+        <!-- Perfil -->
         <LinearLayout
             android:id="@+id/btn_perfil"
             android:layout_width="0dp"

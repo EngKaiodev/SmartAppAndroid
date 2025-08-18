@@ -48,6 +48,7 @@ public class ServicoAdapter extends RecyclerView.Adapter<ServicoAdapter.ViewHold
             binding.servicoNome.setText(servico.getName());
             binding.servicovalor.setText(servico.getValor());
             binding.tiposervico.setText(servico.getServico());
+
         }
     }
 }

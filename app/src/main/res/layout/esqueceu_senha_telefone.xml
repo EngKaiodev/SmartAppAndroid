@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground"
+    android:background="@color/white"
     android:orientation="vertical">
 
-    <!-- Header -->
+    <!-- Header (unchanged as requested) -->
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -42,13 +42,15 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:padding="16dp"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:background="@color/white">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:background="@color/white">
 
             <!-- Card Principal -->
             <androidx.cardview.widget.CardView
@@ -56,21 +58,22 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
-                app:cardBackgroundColor="?android:attr/colorBackground"
+                app:cardBackgroundColor="@color/white"
                 android:layout_marginTop="32dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="32dp">
+                    android:padding="32dp"
+                    android:background="@color/white">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Recuperação de Senha"
                         android:textAlignment="center"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         android:layout_marginBottom="24dp"/>
@@ -79,7 +82,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Digite seu telefone ou e-mail para receber um código de verificação:"
-                        android:textColor="?android:attr/textColorSecondary"
+                        android:textColor="@android:color/black"
                         android:textSize="16sp"
                         android:textAlignment="center"
                         android:layout_marginBottom="24dp"/>
@@ -93,7 +96,8 @@
                         android:inputType="textEmailAddress|phone"
                         android:background="?android:attr/editTextBackground"
                         android:padding="16dp"
-                        android:textColor="?android:attr/textColorPrimary"
+                        android:textColor="@android:color/black"
+                        android:textColorHint="@android:color/black"
                         android:textSize="16sp"
                         android:layout_marginBottom="24dp"/>
 

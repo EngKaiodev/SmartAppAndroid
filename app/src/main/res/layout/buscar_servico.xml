@@ -209,9 +209,20 @@
                 android:divider="@drawable/divider"
                 android:showDividers="middle"
                 android:dividerPadding="16dp"
-                android:background="@color/white">
+                android:background="@color/light_gray">
 
-                <!-- Professionals will be added here dynamically -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvtlistaservico"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:listitem="@layout/historico_category"
+                    android:layout_margin="8dp"
+                    android:background="@color/light_gray"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="4dp"
+                    tools:itemCount="2"
+                    tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    tools:spanCount="2"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

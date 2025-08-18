@@ -79,8 +79,7 @@ public class DashboardFragment extends Fragment {
     private void setupAdapters() {
         categoryAdapter = new CategoryAdapter(categoryList);
 
-        binding.rvCategorias.setAdapter(categoryAdapter);
-        binding.rvCategorias.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+
 
         profissionalAdapter = new ProfissionalAdapter(profissionalList);
         binding.rvCatProfissional.setAdapter(profissionalAdapter);
