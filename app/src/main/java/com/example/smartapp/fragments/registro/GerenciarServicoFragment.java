@@ -75,6 +75,13 @@ public class GerenciarServicoFragment extends Fragment {
                 navController.popBackStack();
             }
         });
+
+        binding.btnAdcionarServico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(GerenciarServicoFragmentDirections.actionCriarServicoFragment());
+            }
+        });
     }
 
     @Override
