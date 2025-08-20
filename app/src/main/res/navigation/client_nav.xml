@@ -1,4 +1,3 @@
-
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -72,9 +71,8 @@
         tools:layout="@layout/gerenciar_servico">
         <action
             android:id="@+id/action_criar_servico_fragment"
-            app:destination="@+id/action_criar_servico_fragment"/>
+            app:destination="@+id/action_criar_servico_fragment" />
     </fragment>
-
 
 
     <fragment
@@ -93,7 +91,10 @@
             app:destination="@id/gerenciar_agendamento_fragment" />
         <action
             android:id="@+id/action_agendar_servico"
-            app:destination="@id/agendar_servico_fragment"/>
+            app:destination="@id/agendar_servico_fragment" />
+        <action
+            android:id="@+id/action_home_to_prestador_perfil"
+            app:destination="@id/perfil_prestador_fragment" />
 
     </fragment>
 
@@ -101,7 +102,7 @@
         android:id="@+id/editar_cliente_fragment"
         android:name="com.example.smartapp.fragments.registro.EditarClienteFragment"
         android:label="EditarProdutoFragment"
-        tools:layout="@layout/editar_cliente"/>
+        tools:layout="@layout/editar_cliente" />
 
     <fragment
         android:id="@+id/buscar_produto_fragment"
@@ -118,8 +119,8 @@
 
     <fragment
         android:id="@+id/buscar_profissional_fragment"
-        android:label="BuscarProfissionalFragment"
         android:name="com.example.smartapp.fragments.registro.PesquisarProfissionaisFragment"
+        android:label="BuscarProfissionalFragment"
         tools:layout="@layout/pesquisar_profissional">
         <action
             android:id="@+id/perfil_prestador_fragment"
@@ -139,7 +140,7 @@
             app:destination="@id/avaliar_prestardor_fragment" />
         <action
             android:id="@+id/action_avaliar_tela"
-            app:destination="@id/action_avaliar_tela"/>
+            app:destination="@id/action_avaliar_tela" />
     </fragment>
 
     <fragment
@@ -171,7 +172,7 @@
         tools:layout="@layout/buscar_servico">
         <action
             android:id="@+id/action_ir_prestador"
-            app:destination="@id/buscar_profissional_fragment"/>
+            app:destination="@id/buscar_profissional_fragment" />
     </fragment>
 
     <fragment

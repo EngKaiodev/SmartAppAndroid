@@ -4,6 +4,7 @@ import com.example.smartapp.core.network.service.EnderecoService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -36,6 +37,7 @@ public class NetworkModule {
 
     @Provides
     @Singleton
+    @Named("defaultRetrofit")
     public static Retrofit provideRetrofit(Gson gson, OkHttpClient client) {
         return new Retrofit.Builder()
                 .baseUrl(BASE_URL)

@@ -14,13 +14,15 @@ import com.example.smartapp.domain.models.ProfissionalModel;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class ProfissionalAdapter extends RecyclerView.Adapter<ProfissionalAdapter.ViewHolder>{
+public class ProfissionalAdapter extends RecyclerView.Adapter<ProfissionalAdapter.ViewHolder> {
 
     private final List<ProfissionalModel> pList;
+    private Consumer<ProfissionalModel> onAgendarClick;
     private Consumer<ProfissionalModel> onProfissionalClick;
 
-    public ProfissionalAdapter(List<ProfissionalModel> pList, Consumer<ProfissionalModel> onProfissionalClick){
+    public ProfissionalAdapter(List<ProfissionalModel> pList, Consumer<ProfissionalModel> onAgendarClick, Consumer<ProfissionalModel> onProfissionalClick) {
         this.pList = pList;
+        this.onAgendarClick = onAgendarClick;
         this.onProfissionalClick = onProfissionalClick;
     }
 
@@ -40,6 +42,13 @@ public class ProfissionalAdapter extends RecyclerView.Adapter<ProfissionalAdapte
         holder.binding.btnirparaagendamento.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                onAgendarClick.accept(pitem);
+            }
+        });
+
+        holder.binding.perfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 onProfissionalClick.accept(pitem);
             }
         });
@@ -50,15 +59,15 @@ public class ProfissionalAdapter extends RecyclerView.Adapter<ProfissionalAdapte
         return pList != null ? pList.size() : 0;
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder {
         private ProfissionalCategoryBinding binding;
 
-        public ViewHolder(ProfissionalCategoryBinding binding){
+        public ViewHolder(ProfissionalCategoryBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
-        public void bind(ProfissionalModel profissional){
+        public void bind(ProfissionalModel profissional) {
             binding.avaliacao.setText(profissional.getAvaliacao());
             binding.especialidade.setText(profissional.getEspecialidade());
             binding.nome.setText(profissional.getName());
@@ -66,7 +75,6 @@ public class ProfissionalAdapter extends RecyclerView.Adapter<ProfissionalAdapte
 
 
     }
-
 
 
 }

@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.smartapp.adapters.CategoryAdapter;
@@ -52,24 +53,35 @@ public class DashboardFragment extends Fragment {
         setupListeners();
         setupAdapters();
     }
+
     //Lista de exemplos para testar
     private void mockedList() {
 
         profissionalList = List.of(
-                new ProfissionalModel(1, "joao tonho", "cabelereiro","5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro","5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro","5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro","5")
+                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
+                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
+                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
+                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
+                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
+                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
+                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
+                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
+                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5")
 
         );
     }
 
     private void setupAdapters() {
-        profissionalAdapter = new ProfissionalAdapter(profissionalList, profissionalModel -> {
-            navController.navigate(DashboardFragmentDirections.actionAgendarServico());
-        });
+        profissionalAdapter = new ProfissionalAdapter(
+                profissionalList,
+                profissionalModel -> {
+                    navController.navigate(DashboardFragmentDirections.actionAgendarServico());
+                },
+                s -> {
+                    navController.navigate(DashboardFragmentDirections.actionHomeToPrestadorPerfil());
+                });
         binding.rvCatProfissional.setAdapter(profissionalAdapter);
-        binding.rvCatProfissional.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.rvCatProfissional.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
     }
 
@@ -89,13 +101,12 @@ public class DashboardFragment extends Fragment {
             }
         });
 
-       binding.btnBuscar.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               navController.navigate(DashboardFragmentDirections.actionHomeToCriarProduto());
-           }
-       });
-
+        binding.btnBuscar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(DashboardFragmentDirections.actionHomeToCriarProduto());
+            }
+        });
 
 
     }

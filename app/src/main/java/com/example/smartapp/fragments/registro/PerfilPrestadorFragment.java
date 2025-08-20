@@ -58,10 +58,10 @@ public class PerfilPrestadorFragment extends Fragment {
             }
         });
 
-        binding.btnAvaliar.setOnClickListener(new View.OnClickListener() {
+        binding.btnAvaliacao.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                navController.navigate(PerfilPrestadorFragmentDirections.avaliarPrestardorFragment());
+            public void onClick(View view) {
+                navController.navigate(PerfilPrestadorFragmentDirections.actionAvaliarTela());
             }
         });
 

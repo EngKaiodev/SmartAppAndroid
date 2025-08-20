@@ -352,6 +352,7 @@
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="2dp"
+                    android:background="@color/light_gray"
                     app:cardUseCompatPadding="true"
                     android:layout_marginBottom="16dp">
 
@@ -359,6 +360,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
+                        android:background="@color/light_gray"
                         android:padding="16dp">
 
                         <LinearLayout
@@ -431,6 +433,7 @@
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="2dp"
+                    android:background="@color/light_gray"
                     app:cardUseCompatPadding="true"
                     android:layout_marginBottom="16dp">
 
@@ -438,6 +441,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
+                        android:background="@color/light_gray"
                         android:padding="16dp">
 
                         <LinearLayout
@@ -457,6 +461,7 @@
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:background="@color/light_gray"
                                 android:orientation="horizontal"
                                 android:layout_marginStart="8dp">
 
@@ -483,7 +488,7 @@
                                 <ImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:src="@drawable/ic_star_outline"/>
+                                    android:src="@drawable/ic_star"/>
                             </LinearLayout>
                         </LinearLayout>
 
