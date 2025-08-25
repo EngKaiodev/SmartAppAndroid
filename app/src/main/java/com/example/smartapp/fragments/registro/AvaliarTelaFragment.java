@@ -11,19 +11,26 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 
 import com.example.smartapp.databinding.AvaliarTelaBinding;
 
+import com.example.smartapp.domain.models.AvaliacaoModel;
 import com.example.smartapp.viewmodels.AvaliarTelaViewModel;
+
+import com.example.smartapp.adapters.AvalicaoAdapter;
+
+import java.util.List;
 
 public class AvaliarTelaFragment extends Fragment {
 
     private AvaliarTelaBinding binding;
-
     private AvaliarTelaViewModel viewModel;
-
     private NavController navController;
+    private List<AvaliacaoModel> avaliacaoList;
+    private AvalicaoAdapter avalicaoAdapter;
+
 
 
     @Nullable
@@ -39,7 +46,23 @@ public class AvaliarTelaFragment extends Fragment {
         navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
 
+        mockedList();
         setupListeners();
+        setupAdapters();
+    }
+
+    private void mockedList(){
+
+         avaliacaoList = List.of(
+                new AvaliacaoModel(1,"Clara santaos","", "Serviço mal feito","15/07/2025"),
+                new AvaliacaoModel(1,"Clara santos","", "Very Good","15/07/2025")
+        );
+    }
+
+    private void setupAdapters(){
+        avalicaoAdapter = new AvalicaoAdapter(avaliacaoList);
+        binding.rvAvaliacliente.setAdapter(avalicaoAdapter);
+        binding.rvAvaliacliente.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     }
 
     private void setupListeners(){

@@ -192,13 +192,35 @@
                         android:textColor="@android:color/black"
                         android:textSize="12sp" />
 
+                    <!-- CEP -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="CEP"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/cepEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="?android:attr/editTextBackground"
+                        android:inputType="number"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="12345-678"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
                     <!-- Endereço -->
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
-                        android:text="Endereço Completo"
+                        android:text="Endereço"
                         android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
@@ -209,7 +231,29 @@
                         android:background="?android:attr/editTextBackground"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
-                        android:text="Rua Exemplo, 123, Bairro Centro, Cidade, SP, 12345-678"
+                        android:text="Rua Exemplo, Bairro Centro, Cidade, SP"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
+                    <!-- Número -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="Número"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/numberEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="?android:attr/editTextBackground"
+                        android:inputType="number"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="123"
                         android:textColor="@android:color/black"
                         android:textSize="16sp" />
 

@@ -169,6 +169,27 @@
                         android:textColor="@android:color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
+                <!-- Campo CEP adicionado acima do endereço -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilProfCep"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:hint="CEP"
+                    android:textColorHint="@color/black"
+                    app:hintTextColor="@android:color/black"
+                    app:boxStrokeColor="@android:color/black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etProfCep"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:textColor="@android:color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
+
                 <!-- Stacked vertically - Address -->
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/tilProfAddress"
@@ -176,8 +197,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:hint="Endereço Completo"
+                    android:hint="Endereço"
                     android:textColorHint="@color/black"
+                    app:helperText="Rua, bairro, cidade, estado"
+                    app:helperTextTextColor="@android:color/black"
                     app:hintTextColor="@android:color/black"
                     app:boxStrokeColor="@android:color/black">
 
@@ -187,6 +210,27 @@
                         android:layout_height="wrap_content"
                         android:imeOptions="actionNext"
                         android:inputType="textPostalAddress|textCapSentences"
+                        android:textColor="@android:color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <!-- Campo Número adicionado abaixo do endereço -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilProfNumber"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:hint="Número"
+                    android:textColorHint="@color/black"
+                    app:hintTextColor="@android:color/black"
+                    app:boxStrokeColor="@android:color/black">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etProfNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
                         android:textColor="@android:color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 

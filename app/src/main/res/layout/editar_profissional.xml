@@ -192,13 +192,35 @@
                         android:textColor="@android:color/black"
                         android:textSize="12sp" />
 
+                    <!-- CEP -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="CEP"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/cepEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="?android:attr/editTextBackground"
+                        android:inputType="number"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="98765-432"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
                     <!-- Endereço -->
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
-                        android:text="Endereço Completo"
+                        android:text="Endereço"
                         android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
@@ -209,7 +231,29 @@
                         android:background="?android:attr/editTextBackground"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
-                        android:text="Rua da Beleza, 456, Bairro Estilo, Cidade, SP, 98765-432"
+                        android:text="Rua da Beleza, Bairro Estilo, Cidade, SP"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp" />
+
+                    <!-- Número -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="4dp"
+                        android:text="Número"
+                        android:textColor="@android:color/black"
+                        android:textSize="14sp" />
+
+                    <EditText
+                        android:id="@+id/numberEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:background="?android:attr/editTextBackground"
+                        android:inputType="number"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="456"
                         android:textColor="@android:color/black"
                         android:textSize="16sp" />
 
@@ -287,7 +331,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
-                        android:hint="••••••••"
+                        android:hoint="••••••••"
                         android:inputType="textPassword"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
