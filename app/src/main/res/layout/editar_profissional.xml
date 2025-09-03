@@ -331,7 +331,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
-                        android:hoint="••••••••"
+                        android:hint="••••••••"
                         android:inputType="textPassword"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
