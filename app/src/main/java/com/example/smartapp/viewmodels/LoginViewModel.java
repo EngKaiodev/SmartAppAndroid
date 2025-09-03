@@ -12,7 +12,7 @@ public class LoginViewModel extends ViewModel {
     public LoginViewModel() {
     }
 
-    public Boolean validateFieds(){
-        return true;
+    public Boolean validateFieds( String email, String password){
+        return email != null && password != null && !email.isEmpty() && !password.isEmpty();
     }
 }

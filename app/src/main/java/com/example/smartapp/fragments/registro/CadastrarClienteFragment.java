@@ -48,8 +48,14 @@ public class CadastrarClienteFragment extends Fragment {
         binding.btnfinalizarCliente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                startActivity(intent);
+                if (viewModel.validatedField(
+                        binding.etFullName.getText().toString(),
+                        binding.etEmailRegister.getText().toString()
+                        //continuar
+                )){
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 

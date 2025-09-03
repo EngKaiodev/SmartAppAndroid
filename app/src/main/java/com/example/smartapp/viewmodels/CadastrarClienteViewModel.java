@@ -13,4 +13,24 @@ public class CadastrarClienteViewModel extends ViewModel {
     public CadastrarClienteViewModel(){
 
     }
+
+    public Boolean validatedField(
+        String nome,
+        String email,
+        String telefone,
+        String documento,
+        String Cep,
+        String endereco,
+        String Numero,
+        String password,
+        String verifyPassword
+    ){
+
+
+        if (password != verifyPassword){
+            return false;
+        }
+
+        return true;
+    }
 }
