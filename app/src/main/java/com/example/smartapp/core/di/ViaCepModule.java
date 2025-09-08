@@ -21,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @InstallIn(SingletonComponent.class)
 public class ViaCepModule {
 
-    private static final String VIA_CEP_URL = "";
+    private static final String VIA_CEP_URL = "viacep.com.br/ws/";
 
     @Provides
     @Singleton

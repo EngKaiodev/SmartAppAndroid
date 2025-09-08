@@ -1,5 +1,7 @@
 package com.example.smartapp.activities;
 
+import static android.view.View.VISIBLE;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -41,6 +43,8 @@ public class LoginActivity extends AppCompatActivity {
                     //Chamaria API pra logar
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
+                } else {
+                    binding.erroContainer.setVisibility(VISIBLE);
                 }
             }
         });
