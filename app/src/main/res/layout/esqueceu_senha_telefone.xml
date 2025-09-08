@@ -89,7 +89,7 @@
 
                     <!-- Campo Telefone/E-mail -->
                     <EditText
-                        android:id="@+id/etRecoveryEmailPhone"
+                        android:id="@+id/edtTelefoneEmail"
                         android:layout_width="match_parent"
                         android:layout_height="56dp"
                         android:hint="Telefone ou E-mail"

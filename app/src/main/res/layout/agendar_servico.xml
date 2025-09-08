@@ -85,7 +85,7 @@
                         android:textStyle="bold"/>
 
                     <TextView
-                        android:id="@+id/professionalNameDisplay"
+                        android:id="@+id/edtnomeagend"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Maria Cabeleireira"
@@ -128,7 +128,7 @@
                         android:layout_marginBottom="8dp"/>
 
                     <LinearLayout
-                        android:id="@+id/servicesList"
+                        android:id="@+id/edtlistaservico"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
@@ -147,7 +147,7 @@
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Date Selection Card -->
+            <!-- Date Selection Card - CALENDÁRIO ADICIONADO AQUI -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -169,138 +169,17 @@
                         android:textColor="@android:color/black"
                         android:textSize="18sp"
                         android:textStyle="bold"
+                        android:layout_marginBottom="16dp"/>
+
+                    <!-- Calendário (DatePicker) adicionado -->
+                    <DatePicker
+                        android:id="@+id/edtpickerdata"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:datePickerMode="spinner"
+                        android:calendarViewShown="false"
+                        android:spinnersShown="true"
                         android:layout_marginBottom="8dp"/>
-
-                    <!-- Calendar Header -->
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical"
-                        android:layout_marginBottom="16dp">
-
-                        <ImageButton
-                            android:id="@+id/prevMonthBtn"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:contentDescription="btnmes2"
-                            android:src="@drawable/ic_chevron_left"
-                            android:background="?selectableItemBackgroundBorderless"/>
-
-                        <TextView
-                            android:id="@+id/currentMonthYear"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="Junho 2025"
-                            android:textColor="@android:color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:gravity="center"/>
-
-                        <ImageButton
-                            android:id="@+id/nextMonthBtn"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:contentDescription="btnmes"
-                            android:src="@drawable/ic_chevron_right"
-                            android:background="?selectableItemBackgroundBorderless"/>
-                    </LinearLayout>
-
-                    <!-- Day Names -->
-                    <GridLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:columnCount="7"
-                        android:rowCount="1"
-                        android:alignmentMode="alignMargins"
-                        android:columnOrderPreserved="false"
-                        android:useDefaultMargins="true"
-                        android:layout_marginBottom="8dp">
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_columnWeight="1"
-                            android:text="Dom"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:gravity="center"/>
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_columnWeight="1"
-                            android:text="Seg"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:gravity="center"/>
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_columnWeight="1"
-                            android:text="Ter"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:gravity="center"/>
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_columnWeight="1"
-                            android:text="Qua"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:gravity="center"/>
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_columnWeight="1"
-                            android:text="Qui"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:gravity="center"/>
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_columnWeight="1"
-                            android:text="Sex"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:gravity="center"/>
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_columnWeight="1"
-                            android:text="Sáb"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            android:gravity="center"/>
-                    </GridLayout>
-
-                    <!-- Calendar Grid -->
-                    <GridLayout
-                        android:id="@+id/calendarGrid"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:columnCount="7"
-                        android:rowCount="6"
-                        android:alignmentMode="alignMargins"
-                        android:columnOrderPreserved="false"
-                        android:useDefaultMargins="true">
-                        <!-- Days will be added dynamically -->
-                    </GridLayout>
 
                     <TextView
                         android:id="@+id/dateError"
@@ -330,6 +209,7 @@
                     android:padding="16dp">
 
                     <TextView
+                        android:id="@+id/edtdata"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="3. Selecione o Horário"
@@ -339,7 +219,7 @@
                         android:layout_marginBottom="8dp"/>
 
                     <GridLayout
-                        android:id="@+id/timeSlotsGrid"
+                        android:id="@+id/edthora"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:columnCount="3"
@@ -410,7 +290,7 @@
                             android:textSize="16sp"/>
 
                         <TextView
-                            android:id="@+id/summaryService"
+                            android:id="@+id/edtagendaServiconome"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
@@ -491,7 +371,7 @@
                             android:textStyle="bold"/>
 
                         <TextView
-                            android:id="@+id/summaryPrice"
+                            android:id="@+id/edtagendaPreco"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"

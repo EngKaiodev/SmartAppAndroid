@@ -50,7 +50,13 @@ public class EsqueceuTelefoneFragment extends Fragment {
         binding.btnEnviarCodigo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(EsqueceuTelefoneFragmentDirections.actionRecuperarCodigo());
+                if (viewModel.validateField(
+                        binding.edtTelefoneEmail.getText().toString()
+                )){
+                    navController.navigate(EsqueceuTelefoneFragmentDirections.actionRecuperarCodigo());
+                }
+
+
             }
         });
     }

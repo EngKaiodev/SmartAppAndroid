@@ -72,6 +72,8 @@ public class AvaliarTelaFragment extends Fragment {
                 navController.popBackStack();
             }
         });
+
+
     }
 
     @Override

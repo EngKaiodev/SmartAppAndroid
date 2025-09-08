@@ -13,4 +13,10 @@ public class AvaliarTelaViewModel extends ViewModel {
     public AvaliarTelaViewModel(){
 
     }
+
+    public boolean validateField(
+
+    ){
+        return true;
+    }
 }

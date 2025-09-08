@@ -48,6 +48,29 @@ public class EditarProfissionalFragment extends Fragment {
                 navController.popBackStack();
             }
         });
+
+        binding.btnSalvarPro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(viewModel.validateField(
+                        binding.edtNomePro.getText().toString(),
+                        binding.edtEmailPro.getText().toString(),
+                        binding.edtTelefonePro.getText().toString(),
+                        binding.edtCpfCnpjPro.getText().toString(),
+                        binding.edtCepPro.getText().toString(),
+                        binding.edtEnderecoPro.getText().toString(),
+                        binding.edtNumeroPro.getText().toString(),
+                        binding.edtRazaoSocialPro.getText().toString(),
+                        binding.edtDescricaoPro.getText().toString(),
+                        binding.edtNovasenhaPro.getText().toString(),
+                        binding.edtConfimaNovaSenhaPro.getText().toString()
+
+
+                )){
+
+                }
+            }
+        });
     }
 
     @Override

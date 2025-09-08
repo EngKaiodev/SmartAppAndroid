@@ -108,8 +108,9 @@
                         android:textColor="@android:color/black"
                         android:textSize="14sp" />
 
+                    <!-- E-mail -->
                     <EditText
-                        android:id="@+id/nameEditText"
+                        android:id="@+id/edtNomePro"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -119,7 +120,6 @@
                         android:textColor="@android:color/black"
                         android:textSize="16sp" />
 
-                    <!-- E-mail -->
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/emailEditText"
+                        android:id="@+id/edtEmailPro"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -152,7 +152,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/phoneEditText"
+                        android:id="@+id/edtTelefonePro"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -174,7 +174,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/cpfCnpjEditText"
+                        android:id="@+id/edtCpfCnpjPro"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -203,7 +203,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/cepEditText"
+                        android:id="@+id/edtCepPro"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -225,7 +225,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/addressEditText"
+                        android:id="@+id/edtEnderecoPro"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -246,7 +246,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/numberEditText"
+                        android:id="@+id/edtNumeroPro"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -268,7 +268,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/razaoSocialEditText"
+                        android:id="@+id/edtRazaoSocialPro"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -289,7 +289,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/descriptionEditText"
+                        android:id="@+id/edtDescricaoPro"
                         android:layout_width="match_parent"
                         android:layout_height="120dp"
                         android:background="?android:attr/editTextBackground"
@@ -327,7 +327,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/newPasswordEditText"
+                        android:id="@+id/edtNovasenhaPro"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -357,7 +357,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/confirmNewPasswordEditText"
+                        android:id="@+id/edtConfimaNovaSenhaPro"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -377,7 +377,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/cancelButton"
+                            android:id="@+id/btnCancelarpro"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="16dp"
@@ -390,7 +390,7 @@
                             android:textColor="@android:color/black" />
 
                         <Button
-                            android:id="@+id/saveButton"
+                            android:id="@+id/btnSalvarPro"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:backgroundTint="#16A34A"

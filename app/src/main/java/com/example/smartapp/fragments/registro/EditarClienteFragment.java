@@ -49,6 +49,25 @@ public class EditarClienteFragment extends Fragment {
             }
         });
 
+        binding.btnSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(viewModel.validateFragment(
+                        binding.edtNomecliente.getText().toString(),
+                        binding.edtEmailcliente.getText().toString(),
+                        binding.edtTelefonecliente.getText().toString(),
+                        binding.edtCfpCnpjCliente.getText().toString(),
+                        binding.edtCepcliente.getText().toString(),
+                        binding.edtEnderecocliente.getText().toString(),
+                        binding.edtNomecliente.getText().toString(),
+                        binding.edtnovasenha.getText().toString(),
+                        binding.edtConfimarnovasenha.getText().toString()
+                )){
+
+                }
+            }
+        });
+
     }
 
     @Override

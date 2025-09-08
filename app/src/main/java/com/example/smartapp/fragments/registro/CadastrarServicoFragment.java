@@ -47,8 +47,16 @@ public class CadastrarServicoFragment extends Fragment {
         binding.btnfinalizarPro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                startActivity(intent);
+                if(viewModel.validateField(
+                        binding.edtNomeservico.getText().toString(),
+                        binding.edtDescricaoServico.getText().toString(),
+                        binding.edtPrecoServico.getText().toString()
+
+                )){
+                    Intent intent = new Intent(getContext(), MainActivity.class);
+                    startActivity(intent);
+                }
+
             }
         });
     }

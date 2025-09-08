@@ -52,8 +52,17 @@ public class EsqueceuCodigoFragment extends Fragment {
         binding.btnVerificarCodigo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getContext(), LoginActivity.class);
-                startActivity(intent);
+                if (viewModel.validateField(
+                        binding.edtCode1.getText().toString(),
+                        binding.edtCode2.getText().toString(),
+                        binding.edtCode3.getText().toString(),
+                        binding.edtCode4.getText().toString()
+                )){
+                    Intent intent = new Intent(getContext(), LoginActivity.class);
+                    startActivity(intent);
+                }
+
+                //
             }
         }) ;
     }

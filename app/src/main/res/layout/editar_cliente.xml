@@ -110,7 +110,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/nameEditText"
+                        android:id="@+id/edtNomecliente"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -131,7 +131,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/emailEditText"
+                        android:id="@+id/edtEmailcliente"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:inputType="textEmailAddress"
@@ -152,7 +152,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/phoneEditText"
+                        android:id="@+id/edtTelefonecliente"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -174,7 +174,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/cpfCnpjEditText"
+                        android:id="@+id/edtCfpCnpjCliente"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -203,7 +203,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/cepEditText"
+                        android:id="@+id/edtCepcliente"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -225,7 +225,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/addressEditText"
+                        android:id="@+id/edtEnderecocliente"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -246,7 +246,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/numberEditText"
+                        android:id="@+id/edtNumerocliente"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -284,7 +284,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/newPasswordEditText"
+                        android:id="@+id/edtnovasenha"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -314,7 +314,7 @@
                         android:textSize="14sp" />
 
                     <EditText
-                        android:id="@+id/confirmNewPasswordEditText"
+                        android:id="@+id/edtConfimarnovasenha"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
@@ -334,7 +334,7 @@
                         android:orientation="horizontal">
 
                         <Button
-                            android:id="@+id/cancelButton"
+                            android:id="@+id/btncancelar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="16dp"
@@ -347,7 +347,7 @@
                             android:textColor="@android:color/black" />
 
                         <Button
-                            android:id="@+id/saveButton"
+                            android:id="@+id/btnSalvar"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:backgroundTint="#16A34A"

@@ -109,7 +109,7 @@
                 app:boxStrokeColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPhone"
+                    android:id="@+id/edttelefone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
@@ -131,7 +131,7 @@
                 app:boxStrokeColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etCpfCnpj"
+                    android:id="@+id/edtCpfCnpj"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
@@ -152,7 +152,7 @@
                 app:boxStrokeColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etCep"
+                    android:id="@+id/edtCep"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
@@ -174,7 +174,7 @@
                 app:boxStrokeColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etAddress"
+                    android:id="@+id/edtEndenreco"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
@@ -195,7 +195,7 @@
                 app:boxStrokeColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etNumber"
+                    android:id="@+id/edtNumero"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
@@ -219,7 +219,7 @@
                 app:boxStrokeColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etPasswordRegister"
+                    android:id="@+id/edtSenha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
@@ -241,7 +241,7 @@
                 app:boxStrokeColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/etConfirmPassword"
+                    android:id="@+id/edtConfirmarSenha"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:imeOptions="actionDone"

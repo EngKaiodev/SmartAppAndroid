@@ -35,8 +35,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (loginViewModel.validateFieds(
-                        binding.etEmail.getText().toString(),
-                        binding.etPassword.getText().toString()
+                        binding.edtEmail.getText().toString(),
+                        binding.edtPassword.getText().toString()
                 )) {
                     //Chamaria API pra logar
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);

@@ -47,6 +47,21 @@ public class CriarServicoFragment extends Fragment {
             }
         });
 
+        binding.btnconfirmarServico.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(viewModel.validateField(
+                        binding.edtNomeServico.getText().toString(),
+                        binding.edtDescricaoSer.getText().toString(),
+                        binding.edtSerpreco.getText().toString(),
+                        binding.edtTempo.getText().toString()
+
+                )){
+
+                }
+            }
+        });
+
 
     }
 

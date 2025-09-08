@@ -48,6 +48,21 @@ public class AvaliarServicoFragment extends Fragment {
                 navController.popBackStack();
             }
         });
+
+        binding.btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               if (viewModel.validateField(
+                       binding.tvProfessionalName.getText().toString(),
+                       binding.tvServiceName.getText().toString(),
+                       binding.tvServiceDate.getText().toString(),
+                       binding.etComment.getText().toString()
+               )){
+
+               }
+            }
+        });
+
     }
 
 

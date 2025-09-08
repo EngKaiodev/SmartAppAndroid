@@ -82,7 +82,7 @@
                         app:boxStrokeColor="@android:color/black">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etServiceName"
+                            android:id="@+id/edtNomeServico"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:imeOptions="actionNext"
@@ -103,7 +103,7 @@
                         app:boxStrokeColor="@android:color/black">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etServiceDescription"
+                            android:id="@+id/edtDescricaoSer"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:gravity="top"
@@ -128,7 +128,7 @@
                         app:boxStrokeColor="@android:color/black">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etServicePrice"
+                            android:id="@+id/edtSerpreco"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:imeOptions="actionDone"
@@ -151,7 +151,7 @@
                         app:suffixTextColor="@android:color/black">
 
                         <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/etServiceDuration"
+                            android:id="@+id/edtTempo"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:imeOptions="actionDone"
@@ -161,7 +161,7 @@
 
                     <!-- Botão Adicionar Serviço -->
                     <Button
-                        android:id="@+id/btnAddService"
+                        android:id="@+id/btnconfirmarServico"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"

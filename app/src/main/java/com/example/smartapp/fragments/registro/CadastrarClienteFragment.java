@@ -50,8 +50,16 @@ public class CadastrarClienteFragment extends Fragment {
             public void onClick(View v) {
                 if (viewModel.validatedField(
                         binding.etFullName.getText().toString(),
-                        binding.etEmailRegister.getText().toString()
-                        //continuar
+                        binding.etEmailRegister.getText().toString(),
+                        binding.edttelefone.getText().toString(),
+                        binding.edtCpfCnpj.getText().toString(),
+                        binding.edtCep.getText().toString(),
+                        binding.edtEndenreco.getText().toString(),
+                        binding.edtSenha.getText().toString(),
+                        binding.edtConfirmarSenha.getText().toString()
+
+
+
                 )){
                     Intent intent = new Intent(getContext(), MainActivity.class);
                     startActivity(intent);

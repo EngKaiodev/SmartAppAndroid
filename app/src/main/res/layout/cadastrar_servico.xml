@@ -142,7 +142,7 @@
                             app:boxStrokeColor="@android:color/black">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etServiceName_0"
+                                android:id="@+id/edtNomeservico"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:imeOptions="actionNext"
@@ -162,7 +162,7 @@
                             app:boxStrokeColor="@android:color/black">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etServiceDescription_0"
+                                android:id="@+id/edtDescricaoServico"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="top"
@@ -185,7 +185,7 @@
                             app:boxStrokeColor="@android:color/black">
 
                             <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/etServicePrice_0"
+                                android:id="@+id/edtPrecoServico"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:imeOptions="actionDone"
@@ -196,7 +196,7 @@
                 </LinearLayout>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnAddServiceXml"
+                    android:id="@+id/btnAdcionarServico"
                     style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

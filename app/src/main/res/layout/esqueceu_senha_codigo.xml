@@ -107,7 +107,7 @@
                         android:layout_marginBottom="32dp">
 
                         <EditText
-                            android:id="@+id/etCode1"
+                            android:id="@+id/edtCode1"
                             android:hint="4"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
@@ -121,7 +121,7 @@
                             android:layout_margin="8dp"/>
 
                         <EditText
-                            android:id="@+id/etCode2"
+                            android:id="@+id/edtCode2"
                             android:hint="2"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
@@ -135,7 +135,7 @@
                             android:layout_margin="8dp"/>
 
                         <EditText
-                            android:id="@+id/etCode3"
+                            android:id="@+id/edtCode3"
                             android:hint="3"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
@@ -150,7 +150,7 @@
                             />
 
                         <EditText
-                            android:id="@+id/etCode4"
+                            android:id="@+id/edtCode4"
                             android:hint="5"
                             android:layout_width="64dp"
                             android:layout_height="64dp"
