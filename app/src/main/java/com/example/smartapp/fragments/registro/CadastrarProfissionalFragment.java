@@ -62,8 +62,11 @@ public class CadastrarProfissionalFragment extends Fragment {
 
                 )){
                     navController.navigate(CadastrarProfissionalFragmentDirections.cadastrarServicoFragment());
+                }else {
+                    binding.erroContainer.setVisibility(View.VISIBLE);
+                    binding.erroContainer.setVisibility(View.GONE);
                 }
-                //
+
             }
         });
 

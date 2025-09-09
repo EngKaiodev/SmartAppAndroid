@@ -56,10 +56,15 @@ public class CadastrarClienteFragment extends Fragment {
                         binding.edtCep.getText().toString(),
                         binding.edtEndenreco.getText().toString(),
                         binding.edtSenha.getText().toString(),
-                        binding.edtConfirmarSenha.getText().toString()
+                        binding.edtConfirmarSenha.getText().toString(),
+                        binding.edtNumero.getText().toString()
                 )){
                     Intent intent = new Intent(getContext(), MainActivity.class);
                     startActivity(intent);
+                }else {
+                    binding.erroContainer.setVisibility(View.VISIBLE);
+                    binding.erroContainer.setVisibility(View.GONE);
+
                 }
             }
         });

@@ -139,7 +139,6 @@
                     android:textColor="@android:color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Campo CEP adicionado acima do endereço -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilCep"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -182,7 +181,6 @@
                     android:textColor="@android:color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <!-- Campo Número adicionado abaixo do endereço -->
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/tilNumber"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -232,8 +230,8 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:hint="Confirmar Senha"
+                android:layout_marginBottom="16dp"
+                android:huit="Confirmar Senha"
                 android:textColorHint="@color/black"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTint="@android:color/black"
@@ -248,6 +246,25 @@
                     android:inputType="textPassword"
                     android:textColor="@android:color/black" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Container de erro adicionado acima do botão -->
+            <LinearLayout
+                android:id="@+id/erro_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:padding="8dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/tvError"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="center"
+                    android:textColor="#F44336"
+                    android:text="verifique os campos novamente"/>
+            </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnfinalizarCliente"

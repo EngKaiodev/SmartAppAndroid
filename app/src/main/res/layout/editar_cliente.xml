@@ -188,7 +188,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="Para pessoa física (CPF) ou jurídica (CNPJ)."
+                        android:text="Para pessoa física (CPF) или jurídica (CNPJ)."
                         android:textColor="@android:color/black"
                         android:textSize="12sp" />
 
@@ -324,6 +324,26 @@
                         android:paddingEnd="16dp"
                         android:textColor="@android:color/black"
                         android:textSize="16sp" />
+
+                    <!-- Container de erro para mostrar as mensagens de erro -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/erro_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:text="Verifique os campos novamente"
+                            android:textColor="@color/red_500"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <!-- Buttons -->
                     <LinearLayout

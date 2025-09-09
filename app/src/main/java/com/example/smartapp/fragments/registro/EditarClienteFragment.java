@@ -64,6 +64,9 @@ public class EditarClienteFragment extends Fragment {
                         binding.edtConfimarnovasenha.getText().toString()
                 )){
 
+                }else {
+                    binding.erroContainer.setVisibility(View.VISIBLE);
+                    binding.erroContainer.setVisibility(View.GONE);
                 }
             }
         });

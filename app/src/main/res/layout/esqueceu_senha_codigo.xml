@@ -164,6 +164,25 @@
                             android:layout_margin="8dp"/>
                     </LinearLayout>
 
+                    <!-- Container de erro para mostrar as mensagens de erro -->
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/erro_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:text="Insira o código novamente"
+                            android:textColor="@color/red_500"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
                     <!-- Botão Verificar -->
                     <Button
                         android:id="@+id/btnVerificarCodigo"

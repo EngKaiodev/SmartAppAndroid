@@ -68,6 +68,9 @@ public class EditarProfissionalFragment extends Fragment {
 
                 )){
 
+                }else {
+                    binding.erroContainer.setVisibility(View.VISIBLE);
+                    binding.erroContainer.setVisibility(View.GONE);
                 }
             }
         });

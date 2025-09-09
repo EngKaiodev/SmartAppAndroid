@@ -55,6 +55,9 @@ public class CadastrarServicoFragment extends Fragment {
                 )){
                     Intent intent = new Intent(getContext(), MainActivity.class);
                     startActivity(intent);
+                }else {
+                    binding.erroContainer.setVisibility(View.VISIBLE);
+                    binding.erroContainer.setVisibility(View.GONE);
                 }
 
             }

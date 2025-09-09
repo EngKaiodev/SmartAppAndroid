@@ -54,6 +54,10 @@ public class EsqueceuTelefoneFragment extends Fragment {
                         binding.edtTelefoneEmail.getText().toString()
                 )){
                     navController.navigate(EsqueceuTelefoneFragmentDirections.actionRecuperarCodigo());
+                }else {
+                    binding.erroContainer.setVisibility(View.VISIBLE);
+                    binding.erroContainer.setVisibility(View.GONE);
+
                 }
 
 
