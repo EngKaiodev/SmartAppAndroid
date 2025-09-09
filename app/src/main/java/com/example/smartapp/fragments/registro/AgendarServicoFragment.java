@@ -52,6 +52,8 @@ public class AgendarServicoFragment extends Fragment {
         binding.btnconfirmarAgendamento2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Recuperar valor selecionado do spinner para validar
+                //Criar validação se selecionou serviço, data, horário
                 navController.navigate(AgendarServicoFragmentDirections.confirmaragendamentofragment());
             }
         });

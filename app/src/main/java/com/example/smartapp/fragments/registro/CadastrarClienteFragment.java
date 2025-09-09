@@ -63,8 +63,6 @@ public class CadastrarClienteFragment extends Fragment {
                     startActivity(intent);
                 }else {
                     binding.erroContainer.setVisibility(View.VISIBLE);
-                    binding.erroContainer.setVisibility(View.GONE);
-
                 }
             }
         });

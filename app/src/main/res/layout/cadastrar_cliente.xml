@@ -231,7 +231,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:huit="Confirmar Senha"
+                android:hint="Confirmar Senha"
                 android:textColorHint="@color/black"
                 app:passwordToggleEnabled="true"
                 app:passwordToggleTint="@android:color/black"
@@ -263,7 +263,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textColor="#F44336"
-                    android:text="verifique os campos novamente"/>
+                    android:text="Verifique os campos novamente"/>
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton
