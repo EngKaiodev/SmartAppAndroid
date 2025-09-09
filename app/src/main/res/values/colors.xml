@@ -20,4 +20,6 @@
     <color name="switch_thumb">#FFFFFF</color>
     <color name="switch_track">#CCCCCC</color>
     <color name="switch_track_checked">#4F46E5</color>
+    <color name="error_red">#FF0000</color>
+
 </resources>

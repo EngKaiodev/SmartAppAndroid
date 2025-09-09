@@ -1,15 +1,22 @@
 package com.example.smartapp.viewmodels;
 
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.example.smartapp.core.domain.response.ViaCepResponse;
+import com.example.smartapp.domain.repository.ViaCepRepository;
 
 import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
+import io.reactivex.disposables.CompositeDisposable;
 
 @HiltViewModel
 public class CadastrarClienteViewModel extends ViewModel {
+
+
 
     // Padrões de regex para validação
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
@@ -23,6 +30,10 @@ public class CadastrarClienteViewModel extends ViewModel {
     public CadastrarClienteViewModel(){
 
     }
+
+
+
+
 
     public Boolean validatedField(
             String nome,

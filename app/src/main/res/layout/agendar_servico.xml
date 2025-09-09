@@ -127,27 +127,28 @@
                         android:textStyle="bold"
                         android:layout_marginBottom="8dp"/>
 
-                    <LinearLayout
-                        android:id="@+id/edtlistaservico"
+                    <!-- Spinner para seleção de serviços -->
+                    <Spinner
+                        android:id="@+id/servicosSpinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
-                        <!-- Services will be added here -->
-                    </LinearLayout>
+                        android:background="@drawable/spinner_border"
+                        android:spinnerMode="dropdown"
+                        android:padding="12dp"/>
 
                     <TextView
                         android:id="@+id/serviceError"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Por favor, selecione um serviço."
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/error_red"
                         android:textSize="14sp"
                         android:visibility="gone"
                         android:layout_marginTop="8dp"/>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
-            <!-- Date Selection Card - CALENDÁRIO ADICIONADO AQUI -->
+            <!-- Date Selection Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -171,7 +172,7 @@
                         android:textStyle="bold"
                         android:layout_marginBottom="16dp"/>
 
-                    <!-- Calendário (DatePicker) adicionado -->
+                    <!-- Calendário (DatePicker) com cores melhoradas -->
                     <DatePicker
                         android:id="@+id/edtpickerdata"
                         android:layout_width="match_parent"
@@ -179,14 +180,15 @@
                         android:datePickerMode="spinner"
                         android:calendarViewShown="false"
                         android:spinnersShown="true"
-                        android:layout_marginBottom="8dp"/>
+                        android:layout_marginBottom="8dp"
+                        android:theme="@style/DatePickerStyle"/>
 
                     <TextView
                         android:id="@+id/dateError"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Por favor, selecione uma data."
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/error_red"
                         android:textSize="14sp"
                         android:visibility="gone"
                         android:layout_marginTop="8dp"/>
@@ -218,24 +220,22 @@
                         android:textStyle="bold"
                         android:layout_marginBottom="8dp"/>
 
-                    <GridLayout
-                        android:id="@+id/edthora"
+                    <!-- Spinner para seleção de horário -->
+                    <Spinner
+                        android:id="@+id/horarioSpinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:columnCount="3"
-                        android:rowCount="4"
-                        android:alignmentMode="alignMargins"
-                        android:columnOrderPreserved="false"
-                        android:useDefaultMargins="true">
-                        <!-- Time slots will be added dynamically -->
-                    </GridLayout>
+                        android:background="@drawable/spinner_border"
+                        android:spinnerMode="dropdown"
+                        android:padding="12dp"
+                        android:layout_marginBottom="8dp"/>
 
                     <TextView
                         android:id="@+id/timeError"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Por favor, selecione um horário."
-                        android:textColor="@android:color/black"
+                        android:textColor="@color/error_red"
                         android:textSize="14sp"
                         android:visibility="gone"
                         android:layout_marginTop="8dp"/>
@@ -330,7 +330,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
-                        android:layout_marginBottom="16dp">
+                        android:layout_marginBottom="4dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -341,6 +341,31 @@
 
                         <TextView
                             android:id="@+id/summaryTime"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="N/A"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:gravity="end"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Duração:"
+                            android:textColor="@android:color/black"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:id="@+id/summaryDuration"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
