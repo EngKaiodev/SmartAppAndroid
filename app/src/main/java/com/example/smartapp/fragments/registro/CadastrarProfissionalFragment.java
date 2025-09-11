@@ -2,9 +2,12 @@ package com.example.smartapp.fragments.registro;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +21,9 @@ import com.example.smartapp.databinding.CadastrarProfissionalBinding;
 import com.example.smartapp.viewmodels.CadastrarProfissionalViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 @AndroidEntryPoint
 public class CadastrarProfissionalFragment extends Fragment {
@@ -65,6 +71,42 @@ public class CadastrarProfissionalFragment extends Fragment {
                 }else {
                     binding.erroContainer.setVisibility(View.VISIBLE);
                 }
+
+            }
+        });
+
+        binding.edtProfCep.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() > 7){
+                    Disposable disposable = viewModel.buscarCep(charSequence.toString())
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(viaCepResponse -> {
+
+                                String logradouro = viaCepResponse.getLogradouro();
+                                String bairro = viaCepResponse.getBairro();
+                                String cidade = viaCepResponse.getLocalidade();
+                                String uf = viaCepResponse.getUf();
+
+                                String endereco = logradouro + " - " + bairro + " - " + cidade + " / " + uf;
+
+                                binding.edtProfendereco.setText(endereco);
+
+                            }, throwable -> {
+                                Toast.makeText(getContext(), "Erro ao buscar CEP", Toast.LENGTH_SHORT).show();
+                                throwable.printStackTrace();
+                            });
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
 
             }
         });

@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.navigation.safe.args)
@@ -10,6 +12,12 @@ android {
     namespace = "com.example.smartapp"
     compileSdk = 35
 
+    val localProperties = Properties()
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        localProperties.load(localPropertiesFile.inputStream())
+    }
+
     defaultConfig {
         applicationId = "com.example.smartapp"
         minSdk = 25
@@ -18,6 +26,16 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField(
+            "String",
+            "LOCAL_HOST_IP",
+            "\"${localProperties["LOCAL_HOST_IP"] ?: "127.0.0.1"}\""
+        )
+    }
+
+    buildFeatures {
+        buildConfig = true
     }
 
     buildTypes {

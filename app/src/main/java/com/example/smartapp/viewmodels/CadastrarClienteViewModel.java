@@ -11,11 +11,13 @@ import java.util.regex.Pattern;
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
+import io.reactivex.Single;
 import io.reactivex.disposables.CompositeDisposable;
 
 @HiltViewModel
 public class CadastrarClienteViewModel extends ViewModel {
 
+    private final ViaCepRepository viaCepRepository;
 
 
     // Padrões de regex para validação
@@ -27,14 +29,9 @@ public class CadastrarClienteViewModel extends ViewModel {
     private static final Pattern CNPJ_PATTERN = Pattern.compile("^[0-9]{14}$");
 
     @Inject
-    public CadastrarClienteViewModel(){
-
+    public CadastrarClienteViewModel(ViaCepRepository viaCepRepository){
+        this.viaCepRepository = viaCepRepository;
     }
-
-
-
-
-
     public Boolean validatedField(
             String nome,
             String email,
@@ -158,5 +155,9 @@ public class CadastrarClienteViewModel extends ViewModel {
         // Verifica se os dígitos calculados coincidem com os informados
         return (primeiroDigito == Character.getNumericValue(cnpj.charAt(12)) &&
                 segundoDigito == Character.getNumericValue(cnpj.charAt(13)));
+    }
+
+    public Single<ViaCepResponse> buscarCep(String cep) {
+        return viaCepRepository.buscarEnderecoPorCep(cep);
     }
 }

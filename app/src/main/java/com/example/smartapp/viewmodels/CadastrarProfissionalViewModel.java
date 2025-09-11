@@ -2,14 +2,20 @@ package com.example.smartapp.viewmodels;
 
 import androidx.lifecycle.ViewModel;
 
+import com.example.smartapp.core.domain.response.ViaCepResponse;
+import com.example.smartapp.domain.repository.ViaCepRepository;
+
 import java.util.regex.Pattern;
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
+import io.reactivex.Single;
 
 @HiltViewModel
 public class CadastrarProfissionalViewModel extends ViewModel {
+
+    private final ViaCepRepository viaCepRepository;
 
     // Padrões de regex para validação
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
@@ -20,8 +26,8 @@ public class CadastrarProfissionalViewModel extends ViewModel {
     private static final Pattern SENHA_PATTERN = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
 
     @Inject
-    public CadastrarProfissionalViewModel(){
-
+    public CadastrarProfissionalViewModel(ViaCepRepository viaCepRepository){
+        this.viaCepRepository = viaCepRepository;
     }
 
     public boolean validateField(
@@ -104,6 +110,10 @@ public class CadastrarProfissionalViewModel extends ViewModel {
 
 
         return true;
+    }
+
+    public Single<ViaCepResponse> buscarCep(String cep) {
+        return viaCepRepository.buscarEnderecoPorCep(cep);
     }
 
 

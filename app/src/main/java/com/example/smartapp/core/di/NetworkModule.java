@@ -21,7 +21,7 @@ import okhttp3.OkHttpClient;
 @InstallIn(SingletonComponent.class)
 public class NetworkModule {
 
-    private static final String BASE_URL = "https://localhost:8080/";
+    private static final String BASE_URL = "http://${BuildConfig.LOCAL_HOST_IP}:8080/api/";
 
     @Provides
     @Singleton
