@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
-    <!-- Header Fixo no Topo (mantido inalterado) -->
+    <!-- Header Fixo no Topo -->
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -46,7 +46,7 @@
             android:textStyle="bold"/>
     </LinearLayout>
 
-    <!-- Conteúdo Principal (abaixo do cabeçalho) -->
+    <!-- Conteúdo Principal -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -62,18 +62,34 @@
             android:background="@color/white">
 
             <!-- Search Bar -->
-            <EditText
-                android:id="@+id/searchQuery"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Buscar por nome, serviço ou especialidade..."
-                android:padding="16dp"
-                android:textColorHint="@color/black"
-                android:background="@drawable/edittext_rounded"
-                android:drawableStart="@drawable/ic_search"
-                android:drawablePadding="8dp"
-                android:textColor="@android:color/black"
-                android:layout_marginBottom="16dp"/>
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <EditText
+                    android:id="@+id/searchQuery"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Buscar por nome, serviço ou especialidade..."
+                    android:padding="16dp"
+                    android:textColorHint="@color/gray_600"
+                    android:background="@drawable/edittext_rounded"
+                    android:drawableStart="@drawable/ic_search"
+                    android:drawablePadding="8dp"
+                    android:textColor="@android:color/black"
+                    android:imeOptions="actionSearch"/>
+
+                <ImageButton
+                    android:id="@+id/btnSearch"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_search"
+                    android:background="?selectableItemBackgroundBorderless"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
 
             <!-- Filter Section -->
             <androidx.cardview.widget.CardView
@@ -88,8 +104,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="16dp"
-                    android:background="@color/light_gray">
+                    android:padding="16dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -118,7 +133,8 @@
                         <Spinner
                             android:id="@+id/categoryFilter"
                             android:layout_width="match_parent"
-                            android:layout_height="48dp"/>
+                            android:layout_height="48dp"
+                            android:background="@drawable/spinner_border"/>
 
                         <!-- Location Filter -->
                         <TextView
@@ -135,9 +151,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:hint="Ex: Centro, Araçatuba"
-                            android:textColorHint="@color/black"
+                            android:textColorHint="@color/gray_600"
                             android:background="@drawable/edittext_background"
-                            android:textColor="@android:color/black"/>
+                            android:textColor="@android:color/black"
+                            android:padding="12dp"/>
 
                         <!-- Rating Filter -->
                         <TextView
@@ -152,7 +169,8 @@
                         <Spinner
                             android:id="@+id/ratingFilter"
                             android:layout_width="match_parent"
-                            android:layout_height="48dp"/>
+                            android:layout_height="48dp"
+                            android:background="@drawable/spinner_border"/>
                     </LinearLayout>
 
                     <!-- Filter Buttons -->
@@ -192,6 +210,7 @@
 
             <!-- Results Section -->
             <TextView
+                android:id="@+id/resultsTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Resultados da Busca"
@@ -200,30 +219,51 @@
                 android:textStyle="bold"
                 android:layout_marginBottom="16dp"/>
 
-            <!-- Professionals List -->
+            <!-- Empty State -->
             <LinearLayout
-                android:id="@+id/professionalListings"
+                android:id="@+id/emptyState"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:divider="@drawable/divider"
-                android:showDividers="middle"
-                android:dividerPadding="16dp"
-                android:background="@color/light_gray">
+                android:gravity="center"
+                android:padding="32dp"
+                android:visibility="gone">
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvtlistaservico"
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/ic_search_empty"
+                    android:contentDescription="Nenhum resultado encontrado"
+                    android:layout_marginBottom="16dp"/>
+
+                <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    tools:listitem="@layout/historico_category"
-                    android:layout_margin="8dp"
-                    android:background="@color/light_gray"
-                    app:cardCornerRadius="8dp"
-                    app:cardElevation="4dp"
-                    tools:itemCount="2"
-                    tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    tools:spanCount="2"/>
+                    android:layout_height="wrap_content"
+                    android:text="Nenhum resultado encontrado"
+                    android:textColor="@color/gray_600"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:layout_marginBottom="8dp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tente ajustar os filtros ou usar termos de busca diferentes"
+                    android:textColor="@color/gray_500"
+                    android:textSize="14sp"
+                    android:gravity="center"/>
             </LinearLayout>
+
+            <!-- Professionals List -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvtlistaservico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:listitem="@layout/historico_category"
+                android:background="@color/light_gray"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="4dp"
+                tools:itemCount="2"/>
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

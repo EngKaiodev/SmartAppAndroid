@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +20,8 @@ import com.example.smartapp.databinding.GerenciarAgendamentoBinding;
 import com.example.smartapp.domain.models.AgendamentoModel;
 import com.example.smartapp.viewmodels.GerenciarAgendamentoViewModel;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -29,6 +33,7 @@ public class GerenciarAgendamentoFragment extends Fragment {
     private GerenciarAgendamentoViewModel viewModel;
     private AgendamentoAdapter agendamentoAdapter;
     private List<AgendamentoModel> agendamentoList;
+    private List<AgendamentoModel> filteredList;
 
     private NavController navController;
 
@@ -46,21 +51,57 @@ public class GerenciarAgendamentoFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         mockedList();
-        setupListeners();
+        setupSpinners();
         setupAdapters();
+        setupListeners();
+        updateEmptyState();
     }
 
     private void mockedList() {
-        agendamentoList = List.of(
+        agendamentoList = Arrays.asList(
                 new AgendamentoModel(1, "jose carlos", "Corte e Barba", "22/07/25", "14:35", "R$60,00"),
-                new AgendamentoModel(1, "jose carlos", "Corte e Barba", "22/07/25", "14:35", "R$60,00"),
-                new AgendamentoModel(1, "jose carlos", "Corte e Barba", "22/07/25", "14:35", "R$60,00")
-
+                new AgendamentoModel(2, "maria silva", "Manicure", "23/07/25", "10:00", "R$25,00"),
+                new AgendamentoModel(3, "joão santos", "Corte de Cabelo", "24/07/25", "15:30", "R$30,00")
         );
+        filteredList = new ArrayList<>(agendamentoList);
+    }
+
+    private void setupSpinners() {
+        // Configurar spinner de status (simplificado sem status)
+        List<String> statusOptions = Arrays.asList(
+                "Todos os agendamentos",
+                "Agendamentos ativos",
+                "Agendamentos concluídos"
+        );
+
+        ArrayAdapter<String> statusAdapter = new ArrayAdapter<>(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                statusOptions
+        );
+        statusAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.statusFilter.setAdapter(statusAdapter);
+
+        // Configurar spinner de período
+        List<String> periodOptions = Arrays.asList(
+                "Todos os períodos",
+                "Próximos 7 dias",
+                "Próximos 30 dias",
+                "Agendamentos passados"
+        );
+
+        ArrayAdapter<String> periodAdapter = new ArrayAdapter<>(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                periodOptions
+        );
+        periodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        binding.periodFilter.setAdapter(periodAdapter);
     }
 
     private void setupAdapters() {
-        agendamentoAdapter = new AgendamentoAdapter(agendamentoList, agendamentoModel -> {
+        agendamentoAdapter = new AgendamentoAdapter(filteredList, agendamentoModel -> {
+            // Navegar para a tela de reagendamento
             navController.navigate(GerenciarAgendamentoFragmentDirections.reagendarFragment());
         });
 
@@ -69,14 +110,73 @@ public class GerenciarAgendamentoFragment extends Fragment {
     }
 
     private void setupListeners() {
-        binding.btnvoltaragendamento.setOnClickListener(new View.OnClickListener() {
+        binding.btnvoltaragendamento.setOnClickListener(v -> navController.popBackStack());
+
+        binding.clearFilterButton.setOnClickListener(v -> clearFilters());
+
+        binding.statusFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onClick(View v) {
-                navController.popBackStack();
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                applyFilters();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
             }
         });
 
+        binding.periodFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                applyFilters();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
+
+    private void applyFilters() {
+        String statusSelecionado = binding.statusFilter.getSelectedItem().toString();
+        String periodoSelecionado = binding.periodFilter.getSelectedItem().toString();
+
+        filteredList.clear();
+
+        // Filtro simplificado já que não temos status no modelo
+        for (AgendamentoModel agendamento : agendamentoList) {
+            boolean matchesFilter = true;
+
+            // Filtro por período (exemplo simplificado)
+            if (!periodoSelecionado.equals("Todos os períodos")) {
+                // Aqui você implementaria a lógica real de filtro por data
+                // Por enquanto, vamos apenas incluir todos os itens
+                matchesFilter = true;
+            }
+
+            if (matchesFilter) {
+                filteredList.add(agendamento);
+            }
+        }
+
+        agendamentoAdapter.notifyDataSetChanged();
+        updateEmptyState();
+    }
+
+    private void clearFilters() {
+        binding.statusFilter.setSelection(0);
+        binding.periodFilter.setSelection(0);
+        applyFilters();
+    }
+
+    private void updateEmptyState() {
+        if (filteredList.isEmpty()) {
+            binding.emptyState.setVisibility(View.VISIBLE);
+            binding.rvAgendamentosCategories.setVisibility(View.GONE);
+        } else {
+            binding.emptyState.setVisibility(View.GONE);
+            binding.rvAgendamentosCategories.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
