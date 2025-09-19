@@ -56,7 +56,13 @@ public class CadastrarClienteFragment extends Fragment {
     private void setupListeners() {
         binding.btnfinalizarCliente.setOnClickListener(v -> {
             if (fieldToValidated()) {
-                Disposable disposable = viewModel.register(binding.etFullName.getText().toString(), binding.edtSenha.getText().toString(), binding.edttelefone.getText().toString(), binding.etEmailRegister.getText().toString(), binding.edtCpfCnpj.getText().toString(), 2).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(response -> {
+                Disposable disposable = viewModel.register(
+                        binding.etFullName.getText().toString(),
+                        binding.edtSenha.getText().toString(),
+                        binding.edttelefone.getText().toString(),
+                        binding.etEmailRegister.getText().toString(),
+                        binding.edtCpfCnpj.getText().toString(),
+                        2).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(response -> {
                     if (response.isSuccessful()) {
                         Intent intent = new Intent(getContext(), MainActivity.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

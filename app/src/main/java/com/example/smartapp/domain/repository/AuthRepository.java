@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.smartapp.core.ErroHelper;
 import com.example.smartapp.core.Preferences;
+import com.example.smartapp.core.domain.request.LoginRequest;
 import com.example.smartapp.core.domain.request.UserRequest;
 import com.example.smartapp.core.domain.response.UserResponse;
 import com.example.smartapp.core.network.service.AuthService;
@@ -39,5 +40,17 @@ public class AuthRepository {
         }).doOnError(error -> {
             Log.e("AuthRepository", "Erro ao registrar: " + error);
         });
+    }
+
+    public Single<Response<UserResponse>> login (LoginRequest request){
+        return authService.login(request)
+                .doOnSuccess(response -> {
+                    if (response.isSuccessful() && response.body() != null) {
+                        preferences.createSession(response.body());
+                    }
+                })
+                .doOnError(error -> {
+                    Log.e("AuthRepository", "Erro ao logar: " + error);
+                });
     }
 }
