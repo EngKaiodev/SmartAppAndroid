@@ -1,5 +1,7 @@
 package com.example.smartapp.core.di;
 
+import com.example.smartapp.BuildConfig;
+import com.example.smartapp.core.network.service.AuthService;
 import com.example.smartapp.core.network.service.EnderecoService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -21,7 +23,8 @@ import okhttp3.OkHttpClient;
 @InstallIn(SingletonComponent.class)
 public class NetworkModule {
 
-    private static final String BASE_URL = "http://${BuildConfig.LOCAL_HOST_IP}:8080/api/";
+    private static final String BASE_URL = "http://" + BuildConfig.LOCAL_HOST_IP + ":8080/";
+
 
     @Provides
     @Singleton
@@ -51,5 +54,11 @@ public class NetworkModule {
     @Singleton
     public static EnderecoService provideEnderecoService(Retrofit retrofit) {
         return retrofit.create(EnderecoService.class);
+    }
+
+    @Provides
+    @Singleton
+    public static AuthService provideAuthService(@Named("defaultRetrofit") Retrofit retrofit) {
+        return retrofit.create(AuthService.class);
     }
 }

@@ -1,6 +1,5 @@
 package com.example.smartapp.fragments.registro;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,8 +15,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
-import com.example.smartapp.activities.MainActivity;
+import com.example.smartapp.core.ErroHelper;
 import com.example.smartapp.databinding.CadastrarProfissionalBinding;
+import com.example.smartapp.domain.models.ErrorModel;
 import com.example.smartapp.viewmodels.CadastrarProfissionalViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -53,25 +53,30 @@ public class CadastrarProfissionalFragment extends Fragment {
         binding.btnproximoPro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(viewModel.validateField(
-                        binding.edtProfNome.getText().toString(),
-                        binding.edtProfEmail.getText().toString(),
-                        binding.edtProftelefone.getText().toString(),
-                        binding.edtProfCpfCnpj.getText().toString(),
-                        binding.edtProfCep.getText().toString(),
-                        binding.edtProfendereco.getText().toString(),
-                        binding.edtProfnumero.getText().toString(),
-                        binding.edtProfRazaoSocial.getText().toString(),
-                        binding.edtProfdescricao.getText().toString(),
-                        binding.edtSenha.getText().toString(),
-                        binding.edtProfConfSenha.getText().toString()
-
-                )){
-                    navController.navigate(CadastrarProfissionalFragmentDirections.cadastrarServicoFragment());
-                }else {
+                if (fieldsToValidade()) {
+                    Disposable disposable = viewModel.register(
+                            binding.edtProfNome.getText().toString(),
+                            binding.edtSenha.getText().toString(),
+                            binding.edtProftelefone.getText().toString(),
+                            binding.edtProfEmail.getText().toString(),
+                            binding.edtProfCpfCnpj.getText().toString(),
+                            1)
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe(response -> {
+                        if (response.isSuccessful()) {
+                            navController.navigate(CadastrarProfissionalFragmentDirections.cadastrarServicoFragment());
+                        } else {
+                            ErrorModel error = ErroHelper.getErrorModel(response);
+                            binding.tvError.setText(error.getMessage());
+                            binding.erroContainer.setVisibility(View.VISIBLE);
+                        }
+                    }, throwable -> {
+                        Toast.makeText(getContext(), "Erro ao registrar", Toast.LENGTH_SHORT).show();
+                    });
+                } else {
                     binding.erroContainer.setVisibility(View.VISIBLE);
                 }
-
             }
         });
 
@@ -83,7 +88,7 @@ public class CadastrarProfissionalFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() > 7){
+                if (charSequence.length() > 7) {
                     Disposable disposable = viewModel.buscarCep(charSequence.toString())
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
@@ -117,5 +122,20 @@ public class CadastrarProfissionalFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         binding = null;
+    }
+
+    public boolean fieldsToValidade() {
+        return viewModel.validateField(
+                binding.edtProfNome.getText().toString(),
+                binding.edtProfEmail.getText().toString(),
+                binding.edtProftelefone.getText().toString(),
+                binding.edtProfCpfCnpj.getText().toString(),
+                binding.edtProfCep.getText().toString(),
+                binding.edtProfendereco.getText().toString(),
+                binding.edtProfnumero.getText().toString(),
+                binding.edtProfRazaoSocial.getText().toString(),
+                binding.edtProfdescricao.getText().toString(),
+                binding.edtSenha.getText().toString(),
+                binding.edtProfConfSenha.getText().toString());
     }
 }

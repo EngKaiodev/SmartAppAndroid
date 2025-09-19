@@ -2,7 +2,10 @@ package com.example.smartapp.viewmodels;
 
 import androidx.lifecycle.ViewModel;
 
+import com.example.smartapp.core.domain.request.UserRequest;
+import com.example.smartapp.core.domain.response.UserResponse;
 import com.example.smartapp.core.domain.response.ViaCepResponse;
+import com.example.smartapp.domain.repository.AuthRepository;
 import com.example.smartapp.domain.repository.ViaCepRepository;
 
 import java.util.regex.Pattern;
@@ -11,23 +14,26 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import io.reactivex.Single;
+import retrofit2.Response;
 
 @HiltViewModel
 public class CadastrarProfissionalViewModel extends ViewModel {
 
     private final ViaCepRepository viaCepRepository;
+    private final AuthRepository authRepository;
 
     // Padrões de regex para validação
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
-    private static final Pattern TELEFONE_PATTERN = Pattern.compile("^\\([0-9]{2}\\) [0-9]{4,5}-[0-9]{4}$");
+    private static final Pattern TELEFONE_PATTERN = Pattern.compile("^[+]?[0-9]{10,13}$");
     private static final Pattern CPF_PATTERN = Pattern.compile("^[0-9]{3}\\.[0-9]{3}\\.[0-9]{3}-[0-9]{2}$");
     private static final Pattern CNPJ_PATTERN = Pattern.compile("^[0-9]{2}\\.[0-9]{3}\\.[0-9]{3}/[0-9]{4}-[0-9]{2}$");
-    private static final Pattern CEP_PATTERN = Pattern.compile("^[0-9]{5}-[0-9]{3}$");
+    private static final Pattern CEP_PATTERN = Pattern.compile("^\\d{8}$");
     private static final Pattern SENHA_PATTERN = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
 
     @Inject
-    public CadastrarProfissionalViewModel(ViaCepRepository viaCepRepository){
+    public CadastrarProfissionalViewModel(ViaCepRepository viaCepRepository, AuthRepository authRepository){
         this.viaCepRepository = viaCepRepository;
+        this.authRepository = authRepository;
     }
 
     public boolean validateField(
@@ -97,23 +103,36 @@ public class CadastrarProfissionalViewModel extends ViewModel {
             }
         }
 
-        // Validação de Descrição (opcional, se informado exige mínimo de 10 chars)
-        if (descricao != null && !descricao.trim().isEmpty() && descricao.trim().length() < 10) {
-            return false;
-        }
-
         // Validação de Senha (mínimo 6 caracteres, igual à confirmação)
         if (password == null || password.length() < 6 || !password.equals(verifyPassword)) {
             return false;
         }
-
-
 
         return true;
     }
 
     public Single<ViaCepResponse> buscarCep(String cep) {
         return viaCepRepository.buscarEnderecoPorCep(cep);
+    }
+
+    public Single<Response<UserResponse>> register(
+            String completeName,
+            String password,
+            String phone,
+            String email,
+            String document,
+            Integer type
+    ) {
+        return authRepository.register(
+                new UserRequest(
+                        completeName,
+                        password,
+                        phone,
+                        email,
+                        document,
+                        type
+                )
+        );
     }
 
 

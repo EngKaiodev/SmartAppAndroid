@@ -1,9 +1,14 @@
 package com.example.smartapp.viewmodels;
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.smartapp.core.domain.request.UserRequest;
+import com.example.smartapp.core.domain.response.UserResponse;
 import com.example.smartapp.core.domain.response.ViaCepResponse;
+import com.example.smartapp.domain.repository.AuthRepository;
 import com.example.smartapp.domain.repository.ViaCepRepository;
 
 import java.util.regex.Pattern;
@@ -12,25 +17,31 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
+import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Response;
 
 @HiltViewModel
 public class CadastrarClienteViewModel extends ViewModel {
 
     private final ViaCepRepository viaCepRepository;
+    private final AuthRepository authRepository;
 
 
     // Padrões de regex para validação
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
     private static final Pattern TELEFONE_PATTERN = Pattern.compile("^[+]?[0-9]{10,13}$");
-    private static final Pattern CEP_PATTERN = Pattern.compile("^[0-9]{8}$");
+    private static final Pattern CEP_PATTERN = Pattern.compile("^\\d{8}$");
     private static final Pattern NUMERO_PATTERN = Pattern.compile("^[0-9]+$");
     private static final Pattern CPF_PATTERN = Pattern.compile("^[0-9]{11}$");
     private static final Pattern CNPJ_PATTERN = Pattern.compile("^[0-9]{14}$");
 
     @Inject
-    public CadastrarClienteViewModel(ViaCepRepository viaCepRepository){
+    public CadastrarClienteViewModel(ViaCepRepository viaCepRepository, AuthRepository authRepository){
         this.viaCepRepository = viaCepRepository;
+        this.authRepository = authRepository;
     }
     public Boolean validatedField(
             String nome,
@@ -43,44 +54,36 @@ public class CadastrarClienteViewModel extends ViewModel {
             String verifyPassword,
             String CpfCnpj
     ){
-        // Validação de Nome
-        if (nome == null || nome.trim().isEmpty() || nome.length() < 3) {
+        if (nome == null || nome.isBlank() || nome.length() < 3) {
             return false;
         }
 
-        // Validação de Email
         if (email == null || !EMAIL_PATTERN.matcher(email.trim()).matches()) {
             return false;
         }
 
-        // Validação de Telefone (mínimo 10 dígitos, máximo 13 com código do país)
         String telLimpo = telefone.replaceAll("[^0-9+]", "");
         if (telLimpo.isEmpty() || !TELEFONE_PATTERN.matcher(telLimpo).matches()) {
             return false;
         }
 
-        // Validação de CEP (apenas 8 dígitos)
         String cepLimpo = Cep.replaceAll("[^0-9]", "");
         if (cepLimpo.isEmpty() || !CEP_PATTERN.matcher(cepLimpo).matches()) {
             return false;
         }
 
-        // Validação de Endereço
-        if (endereco == null || endereco.trim().isEmpty() || endereco.length() < 5) {
+        if (endereco == null || endereco.isBlank() || endereco.length() < 5) {
             return false;
         }
 
-        // Validação de Número
-        if (Numero == null || Numero.trim().isEmpty() || !NUMERO_PATTERN.matcher(Numero.trim()).matches()) {
+        if (Numero == null || Numero.isBlank() || !NUMERO_PATTERN.matcher(Numero.trim()).matches()) {
             return false;
         }
 
-        // Validação de Senha
         if (password == null || password.length() < 6 || !password.equals(verifyPassword)) {
             return false;
         }
 
-        // Validação de CPF/CNPJ
         String cpfCnpjLimpo = CpfCnpj.replaceAll("[^0-9]", "");
         if (cpfCnpjLimpo.length() == 11) {
             if (!validarCPF(cpfCnpjLimpo)) return false;
@@ -98,12 +101,10 @@ public class CadastrarClienteViewModel extends ViewModel {
             return false;
         }
 
-        // Verifica se todos os dígitos são iguais (CPF inválido)
         if (cpf.matches("(\\d)\\1{10}")) {
             return false;
         }
 
-        // Cálculo do primeiro dígito verificador
         int soma = 0;
         for (int i = 0; i < 9; i++) {
             soma += Character.getNumericValue(cpf.charAt(i)) * (10 - i);
@@ -111,7 +112,6 @@ public class CadastrarClienteViewModel extends ViewModel {
         int primeiroDigito = 11 - (soma % 11);
         if (primeiroDigito > 9) primeiroDigito = 0;
 
-        // Cálculo do segundo dígito verificador
         soma = 0;
         for (int i = 0; i < 10; i++) {
             soma += Character.getNumericValue(cpf.charAt(i)) * (11 - i);
@@ -119,7 +119,6 @@ public class CadastrarClienteViewModel extends ViewModel {
         int segundoDigito = 11 - (soma % 11);
         if (segundoDigito > 9) segundoDigito = 0;
 
-        // Verifica se os dígitos calculados coincidem com os informados
         return (primeiroDigito == Character.getNumericValue(cpf.charAt(9)) &&
                 segundoDigito == Character.getNumericValue(cpf.charAt(10)));
     }
@@ -160,4 +159,25 @@ public class CadastrarClienteViewModel extends ViewModel {
     public Single<ViaCepResponse> buscarCep(String cep) {
         return viaCepRepository.buscarEnderecoPorCep(cep);
     }
+
+    public Single<Response<UserResponse>> register(
+            String completeName,
+            String password,
+            String phone,
+            String email,
+            String document,
+            Integer type
+    ) {
+        return authRepository.register(
+                new UserRequest(
+                        completeName,
+                        password,
+                        phone,
+                        email,
+                        document,
+                        type
+                )
+        );
+    }
+
 }
