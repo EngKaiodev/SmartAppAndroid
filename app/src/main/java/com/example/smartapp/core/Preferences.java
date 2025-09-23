@@ -30,6 +30,7 @@ public class Preferences {
     private static final String IS_LOGGIN = "IS_LOGGIN";
     private static final String KEY_TYPE = "TYPE";
     private static final String KEY_ID = "ID";
+    private static final String KEY_NAME = "NAME";
 
     public void createSession (UserResponse response){
         editor.putBoolean(IS_LOGGIN, true);
@@ -37,6 +38,7 @@ public class Preferences {
         editor.putInt(KEY_ID, response.getId());
         editor.putString(KEY_TOKEN, response.getToken());
         editor.putString(KEY_REFRESH_TOKEN, response.getRefreshToken());
+        editor.putString(KEY_NAME, response.getName());
         editor.commit();
         editor.apply();
     }
@@ -63,6 +65,10 @@ public class Preferences {
 
     public String getToken(){
         return preferences.getString(KEY_TOKEN, "Sem token");
+    }
+
+    public String getName(){
+        return preferences.getString(KEY_NAME, "Sem nome");
     }
 
     public int getType(){

@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.smartapp.core.Preferences;
 import com.example.smartapp.core.domain.response.ProfissionalResponse;
 import com.example.smartapp.domain.repository.ProfissionalRepository;
 
@@ -19,10 +20,12 @@ import io.reactivex.disposables.CompositeDisposable;
 public class DashboardViewModel extends ViewModel {
 
     private final ProfissionalRepository profissionalRepository;
+    private final Preferences prefs;
 
     @Inject
-    public DashboardViewModel(ProfissionalRepository profissionalRepository) {
+    public DashboardViewModel(ProfissionalRepository profissionalRepository, Preferences preferences) {
         this.profissionalRepository = profissionalRepository;
+        this.prefs = preferences;
     }
 
     private final MutableLiveData<List<ProfissionalResponse>> _profissionais = new MutableLiveData<>();
@@ -46,5 +49,9 @@ public class DashboardViewModel extends ViewModel {
     protected void onCleared() {
         super.onCleared();
         disposables.clear();
+    }
+
+    public String getUserName() {
+        return prefs.getName();
     }
 }

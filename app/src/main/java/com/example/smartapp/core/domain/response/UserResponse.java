@@ -4,15 +4,25 @@ import java.io.Serializable;
 
 public class UserResponse implements Serializable {
     private int id;
+    private String name;
     private int type;
     private String token;
     private String refreshToken;
 
-    public UserResponse(int id, int type, String token, String refreshToken){
+    public UserResponse(int id, String name, int type, String token, String refreshToken) {
         this.id = id;
+        this.name = name;
         this.type = type;
         this.token = token;
         this.refreshToken = refreshToken;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getRefreshToken() {

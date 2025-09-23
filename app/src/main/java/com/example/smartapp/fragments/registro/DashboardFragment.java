@@ -48,6 +48,12 @@ public class DashboardFragment extends Fragment {
 
         setupObservers();
         setupListeners();
+        setupView();
+
+    }
+
+    private void setupView() {
+        binding.name.setText(viewModel.getUserName());
     }
 
     private void setupObservers() {
