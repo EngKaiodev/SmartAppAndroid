@@ -5,13 +5,16 @@ import android.util.Log;
 import com.example.smartapp.core.ErroHelper;
 import com.example.smartapp.core.Preferences;
 import com.example.smartapp.core.domain.request.LoginRequest;
+import com.example.smartapp.core.domain.request.RefreshRequest;
 import com.example.smartapp.core.domain.request.UserRequest;
+import com.example.smartapp.core.domain.response.RefreshResponse;
 import com.example.smartapp.core.domain.response.UserResponse;
 import com.example.smartapp.core.network.service.AuthService;
 
 import org.json.JSONObject;
 
 import java.io.Console;
+import java.io.IOException;
 import java.util.Iterator;
 
 import javax.inject.Inject;
@@ -52,5 +55,9 @@ public class AuthRepository {
                 .doOnError(error -> {
                     Log.e("AuthRepository", "Erro ao logar: " + error);
                 });
+    }
+
+    public Response<RefreshResponse> refresh(String token) throws IOException {
+        return authService.refresh(new RefreshRequest(token)).execute();
     }
 }

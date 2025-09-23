@@ -1,14 +1,26 @@
 package com.example.smartapp.core.domain.response;
 
-public class UserResponse {
+import java.io.Serializable;
+
+public class UserResponse implements Serializable {
     private int id;
     private int type;
     private String token;
+    private String refreshToken;
 
-    public UserResponse(int id, int type, String token) {
+    public UserResponse(int id, int type, String token, String refreshToken){
         this.id = id;
         this.type = type;
         this.token = token;
+        this.refreshToken = refreshToken;
+    }
+
+    public String getRefreshToken() {
+        return refreshToken;
+    }
+
+    public void setRefreshToken(String refreshToken) {
+        this.refreshToken = refreshToken;
     }
 
     public String getToken() {

@@ -1,5 +1,7 @@
 package com.example.smartapp.domain.repository;
 
+import android.util.Log;
+
 import com.example.smartapp.core.domain.request.ProfissionalRequest;
 import com.example.smartapp.core.domain.response.ProfissionalResponse;
 import com.example.smartapp.core.network.service.ProfissionalService;
@@ -8,25 +10,35 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import io.reactivex.Single;
+import io.reactivex.schedulers.Schedulers;
+import retrofit2.Response;
+
 public class ProfissionalRepository {
 
     private final ProfissionalService profissionalService;
 
     @Inject
-    public ProfissionalRepository(ProfissionalService profissionalService){
+    public ProfissionalRepository(ProfissionalService profissionalService) {
         this.profissionalService = profissionalService;
     }
 
-    public List<ProfissionalResponse> getAll(){return profissionalService.getAll();}
+    public Single<Response<List<ProfissionalResponse>>> getAll() {
+        return profissionalService.getAll().subscribeOn(Schedulers.io()).doOnSuccess(response -> {
+            Log.i("ProfissionalRepository", "Lista recuperada com sucesso, com " + response.body());
+        }).doOnError(error -> {
+            Log.i("ProfissionalRepository", "Erro ao recuperar lista: " + error.getLocalizedMessage());
+        });
+    }
 
-    public ProfissionalResponse getById(int id) throws Exception{
-        if (id <= 0 ){
+    public ProfissionalResponse getById(int id) throws Exception {
+        if (id <= 0) {
             throw new Exception("O id deve ser maior que 0");
         }
         return profissionalService.GetById(id);
     }
 
-    public ProfissionalResponse insert(ProfissionalRequest profissionalRequest) throws Exception{
+    public ProfissionalResponse insert(ProfissionalRequest profissionalRequest) throws Exception {
         // Validação se o objeto request é nulo
         if (profissionalRequest == null) {
             throw new IllegalArgumentException("Request não pode ser nulo");
@@ -139,8 +151,8 @@ public class ProfissionalRepository {
         return email.matches(emailRegex);
     }
 
-    public void delete(int id) throws Exception{
-        if (id <= 0 ){
+    public void delete(int id) throws Exception {
+        if (id <= 0) {
             throw new Exception("O id deve ser maior que 0");
         }
         // Verifica se o profissional existe antes de tentar deletar

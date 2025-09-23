@@ -7,8 +7,13 @@ import com.example.smartapp.core.domain.response.UserResponse;
 
 import javax.inject.Inject;
 
+import dagger.Module;
+import dagger.hilt.InstallIn;
 import dagger.hilt.android.qualifiers.ApplicationContext;
+import dagger.hilt.components.SingletonComponent;
 
+@Module
+@InstallIn(SingletonComponent.class)
 public class Preferences {
 
     private final SharedPreferences preferences;
@@ -21,6 +26,7 @@ public class Preferences {
         editor = preferences.edit();
     }
     private static final String KEY_TOKEN = "TOKEN";
+    private static final String KEY_REFRESH_TOKEN = "REFRESH_TOKEN";
     private static final String IS_LOGGIN = "IS_LOGGIN";
     private static final String KEY_TYPE = "TYPE";
     private static final String KEY_ID = "ID";
@@ -30,14 +36,19 @@ public class Preferences {
         editor.putInt(KEY_TYPE, response.getType());
         editor.putInt(KEY_ID, response.getId());
         editor.putString(KEY_TOKEN, response.getToken());
+        editor.putString(KEY_REFRESH_TOKEN, response.getRefreshToken());
         editor.commit();
         editor.apply();
     }
 
-    public void insertToken (String token){
-
+    public void updateToken (String token){
+        editor.putString(KEY_TOKEN, token);
         editor.commit();
         editor.apply();
+    }
+
+    public String getRefreshToken(){
+        return preferences.getString(KEY_REFRESH_TOKEN, "Sem refresh token");
     }
 
     public void logout(){

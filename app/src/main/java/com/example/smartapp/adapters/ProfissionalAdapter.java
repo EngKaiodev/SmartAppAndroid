@@ -17,8 +17,8 @@ import java.util.function.Consumer;
 public class ProfissionalAdapter extends RecyclerView.Adapter<ProfissionalAdapter.ViewHolder> {
 
     private final List<ProfissionalModel> pList;
-    private Consumer<ProfissionalModel> onAgendarClick;
-    private Consumer<ProfissionalModel> onProfissionalClick;
+    private final Consumer<ProfissionalModel> onAgendarClick;
+    private final Consumer<ProfissionalModel> onProfissionalClick;
 
     public ProfissionalAdapter(List<ProfissionalModel> pList, Consumer<ProfissionalModel> onAgendarClick, Consumer<ProfissionalModel> onProfissionalClick) {
         this.pList = pList;

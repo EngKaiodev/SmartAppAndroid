@@ -1,8 +1,12 @@
 package com.example.smartapp.core.di;
 
 import com.example.smartapp.BuildConfig;
+import com.example.smartapp.core.Preferences;
+import com.example.smartapp.core.network.AuthInterceptor;
 import com.example.smartapp.core.network.service.AuthService;
 import com.example.smartapp.core.network.service.EnderecoService;
+import com.example.smartapp.core.network.service.ProfissionalService;
+import com.example.smartapp.domain.repository.AuthRepository;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -14,6 +18,7 @@ import dagger.Provides;
 import dagger.hilt.InstallIn;
 import dagger.hilt.components.SingletonComponent;
 import io.reactivex.schedulers.Schedulers;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -34,8 +39,20 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    public static OkHttpClient provideOkHttpClient() {
-        return new OkHttpClient.Builder().build();
+    public static AuthInterceptor providesAuthInterceptor(Preferences preferences, AuthRepository authRepository){
+        return new AuthInterceptor(preferences, authRepository);
+    }
+
+    @Provides
+    @Singleton
+    public static OkHttpClient provideOkHttpClient(AuthInterceptor authInterceptor) {
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        return new OkHttpClient.Builder()
+                .addInterceptor(authInterceptor)
+                .addInterceptor(loggingInterceptor)
+                .build();
     }
 
     @Provides
@@ -52,13 +69,30 @@ public class NetworkModule {
 
     @Provides
     @Singleton
+    @Named("refreshRetrofit")
+    Retrofit provideRefreshRetrofit() {
+        return new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(Schedulers.io()))
+                .build();
+    }
+
+    @Provides
+    @Singleton
     public static EnderecoService provideEnderecoService(Retrofit retrofit) {
         return retrofit.create(EnderecoService.class);
     }
 
     @Provides
     @Singleton
-    public static AuthService provideAuthService(@Named("defaultRetrofit") Retrofit retrofit) {
+    public static AuthService provideAuthService(@Named("refreshRetrofit") Retrofit retrofit) {
         return retrofit.create(AuthService.class);
+    }
+
+    @Provides
+    @Singleton
+    public static ProfissionalService provideProfissionalService(@Named("defaultRetrofit") Retrofit retrofit){
+        return retrofit.create(ProfissionalService.class);
     }
 }

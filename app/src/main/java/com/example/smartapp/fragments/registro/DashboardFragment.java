@@ -12,18 +12,14 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.smartapp.adapters.CategoryAdapter;
 import com.example.smartapp.adapters.ProfissionalAdapter;
 import com.example.smartapp.databinding.DashboardBinding;
-import com.example.smartapp.domain.models.CategoryModel;
 import com.example.smartapp.domain.models.ProfissionalModel;
 import com.example.smartapp.viewmodels.DashboardViewModel;
 
-import com.example.smartapp.fragments.registro.DashboardFragmentDirections;
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -47,30 +43,26 @@ public class DashboardFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        navController = NavHostFragment.findNavController(this); // 2 INSTACIA NAV CONTROLER
+        navController = NavHostFragment.findNavController(this);
+        viewModel.loadProfissionais();
 
-        mockedList();
+        setupObservers();
         setupListeners();
-        setupAdapters();
     }
 
-    //Lista de exemplos para testar
-    private void mockedList() {
-
-        profissionalList = List.of(
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5")
-
-        );
+    private void setupObservers() {
+        viewModel.profissionais.observe(getViewLifecycleOwner(), lista -> {
+            if (lista != null && !lista.isEmpty()) {
+                profissionalList = lista.stream().map(response -> new ProfissionalModel(
+                        response.getId_profissional(),
+                        response.getName(),
+                        "especialidade?",
+                        "5"
+                )).collect(Collectors.toList());
+                setupAdapters();
+            }
+        });
     }
-
     private void setupAdapters() {
         profissionalAdapter = new ProfissionalAdapter(
                 profissionalList,

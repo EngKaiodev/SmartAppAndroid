@@ -84,14 +84,7 @@ public class CadastrarClienteViewModel extends ViewModel {
             return false;
         }
 
-        String cpfCnpjLimpo = CpfCnpj.replaceAll("[^0-9]", "");
-        if (cpfCnpjLimpo.length() == 11) {
-            if (!validarCPF(cpfCnpjLimpo)) return false;
-        } else if (cpfCnpjLimpo.length() == 14) {
-            if (!validarCNPJ(cpfCnpjLimpo)) return false;
-        } else {
-            return false;
-        }
+
 
         return true;
     }

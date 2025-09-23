@@ -94,6 +94,8 @@ dependencies {
 
     // Retrofit + RxJava
     implementation(libs.adapter.rxjava2)
+    implementation(libs.logging.interceptor)
+
     // RxJava
     implementation(libs.rxjava)
     implementation(libs.rxandroid)
