@@ -64,7 +64,7 @@ public class CadastrarProfissionalFragment extends Fragment {
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(response -> {
-                        if (response.isSuccessful()) {
+                        if (response.isSuccessful() && response.code() == 200) {
                             navController.navigate(CadastrarProfissionalFragmentDirections.cadastrarServicoFragment());
                         } else {
                             ErrorModel error = ErroHelper.getErrorModel(response);
@@ -102,6 +102,7 @@ public class CadastrarProfissionalFragment extends Fragment {
                                 String endereco = logradouro + " - " + bairro + " - " + cidade + " / " + uf;
 
                                 binding.edtProfendereco.setText(endereco);
+                                binding.edtProfnumero.requestFocus();
 
                             }, throwable -> {
                                 Toast.makeText(getContext(), "Erro ao buscar CEP", Toast.LENGTH_SHORT).show();
