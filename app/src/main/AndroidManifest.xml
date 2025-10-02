@@ -2,7 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissões -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Android 13+ exige permissão em tempo de execução; declarar no manifest é necessário -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" tools:targetApi="s" />
 
     <application
         android:name=".MyApplication"
@@ -15,18 +18,40 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SmartApp"
         tools:targetApi="31">
+
+        <!-- Ative o serviço que recebe eventos do FCM -->
+        <service
+            android:name=".fcm.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- ícone de notificação padrão (usado se a mensagem não especificar) -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/ic_stat_ic_notification" />
+
+        <!-- id de canal padrão (você pode usar o mesmo id em NotificationHelper) -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="smartapp_default_channel" />
+
+        <!-- Atividades -->
         <activity
             android:name=".activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name="com.example.smartapp.activities.MainActivity" />
         <activity android:name="com.example.smartapp.activities.RegisterActivity" />
         <activity android:name="com.example.smartapp.activities.ForgotActivity" />
+
     </application>
 
 </manifest>

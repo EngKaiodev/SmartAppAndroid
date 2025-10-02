@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "164578587928",
+    "project_id": "smartapp-70628",
+    "storage_bucket": "smartapp-70628.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:164578587928:android:51046c0b6c35727826da6d",
+        "android_client_info": {
+          "package_name": "com.example.smartapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCTnjoOEOZhjf8X0bbszQkV6hZ1sL5DGVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

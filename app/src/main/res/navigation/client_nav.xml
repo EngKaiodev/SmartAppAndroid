@@ -42,6 +42,9 @@
         android:label="PerfilFragment"
         tools:layout="@layout/perfil">
         <action
+            android:id="@+id/action_calendario_fragment"
+            app:destination="@id/calendario_fragment"/>
+        <action
             android:id="@+id/editar_cliente_fragment"
             app:destination="@id/editar_cliente_fragment" />
         <action
@@ -59,6 +62,12 @@
 
 
     </fragment>
+
+    <fragment
+        android:id="@+id/calendario_fragment"
+        android:name="com.example.smartapp.fragments.registro.CalendarioFragment"
+        android:label="CalendarioFragment"
+        tools:layout="@layout/gerenciar_horarios"/>
     <fragment
         android:id="@id/historico_servico_fragment"
         android:name="com.example.smartapp.fragments.registro.HistoricoServicoFragment"

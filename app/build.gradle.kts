@@ -6,6 +6,9 @@ plugins {
     alias(libs.plugins.kotlin.application)
     alias(libs.plugins.ksp)
     alias(libs.plugins.dagger.hilt.android)
+
+    // Plugin do Google Services para Firebase
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -36,6 +39,7 @@ android {
 
     buildFeatures {
         buildConfig = true
+        viewBinding = true
     }
 
     buildTypes {
@@ -47,19 +51,14 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
     }
-
-
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
-
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.stdlib.jdk8)
     implementation(libs.androidx.core.ktx)
@@ -84,8 +83,6 @@ dependencies {
     ksp(libs.room.compiler)
     androidTestImplementation(libs.room.testing)
 
-    implementation(libs.room.runtime)
-    ksp(libs.room.compiler)
     implementation(libs.androidx.room.paging)
     implementation(libs.androidx.room.rxjava2)
 
@@ -94,7 +91,19 @@ dependencies {
 
     // Retrofit + RxJava
     implementation(libs.adapter.rxjava2)
-    // RxJava
     implementation(libs.rxjava)
     implementation(libs.rxandroid)
+
+    // -----------------------
+    // Firebase
+    // -----------------------
+    // Firebase BoM: gerencia versões das libs Firebase
+    implementation(platform("com.google.firebase:firebase-bom:32.2.0"))
+
+    // Firebase Cloud Messaging
+    implementation("com.google.firebase:firebase-messaging")
+
+    // Firebase Analytics e utilitários KTX
+    implementation("com.google.firebase:firebase-analytics-ktx")
+    implementation("com.google.firebase:firebase-common-ktx")
 }

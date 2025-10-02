@@ -81,6 +81,13 @@ public class PerfilFragment extends Fragment {
             }
         });
 
+        binding.btnGerenciarHorarios.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                navController.navigate(PerfilFragmentDirections.actionCalendarioFragment());
+            }
+        });
+
     }
 
     @Override
