@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +18,10 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.smartapp.activities.MainActivity;
+import com.example.smartapp.core.ErroHelper;
 import com.example.smartapp.databinding.CadastrarClienteBinding;
 import com.example.smartapp.databinding.CadastrarServicoBinding;
+import com.example.smartapp.domain.models.ErrorModel;
 import com.example.smartapp.viewmodels.CadastrarClienteViewModel;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -52,20 +55,28 @@ public class CadastrarClienteFragment extends Fragment {
 
     private void setupListeners() {
         binding.btnfinalizarCliente.setOnClickListener(v -> {
-            if (viewModel.validatedField(
-                    binding.etFullName.getText().toString(),
-                    binding.etEmailRegister.getText().toString(),
-                    binding.edttelefone.getText().toString(),
-                    binding.edtCpfCnpj.getText().toString(),
-                    binding.edtCep.getText().toString(),
-                    binding.edtEndenreco.getText().toString(),
-                    binding.edtSenha.getText().toString(),
-                    binding.edtConfirmarSenha.getText().toString(),
-                    binding.edtNumero.getText().toString()
-            )){
-                Intent intent = new Intent(getContext(), MainActivity.class);
-                startActivity(intent);
-            }else {
+            if (fieldToValidated()) {
+                Disposable disposable = viewModel.register(
+                        binding.etFullName.getText().toString(),
+                        binding.edtSenha.getText().toString(),
+                        binding.edttelefone.getText().toString(),
+                        binding.etEmailRegister.getText().toString(),
+                        binding.edtCpfCnpj.getText().toString(),
+                        2).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(response -> {
+                    if (response.isSuccessful()) {
+                        Intent intent = new Intent(getContext(), MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    } else {
+                        ErrorModel error = ErroHelper.getErrorModel(response);
+                        binding.tvError.setText(error.getMessage());
+                        binding.erroContainer.setVisibility(View.VISIBLE);
+                    }
+                }, throwable -> {
+                    // erro → exibir Toast, dialog, etc.
+                    Toast.makeText(this.getContext(), "Erro ao registrar", Toast.LENGTH_SHORT).show();
+                });
+            } else {
                 binding.erroContainer.setVisibility(View.VISIBLE);
             }
         });
@@ -78,24 +89,22 @@ public class CadastrarClienteFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() > 7){
-                    Disposable disposable = viewModel.buscarCep(charSequence.toString())
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(viaCepResponse -> {
-                                String logradouro = viaCepResponse.getLogradouro();
-                                String bairro = viaCepResponse.getBairro();
-                                String cidade = viaCepResponse.getLocalidade();
-                                String uf = viaCepResponse.getUf();
+                if (charSequence.length() > 7) {
+                    Disposable disposable = viewModel.buscarCep(charSequence.toString()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(viaCepResponse -> {
+                        String logradouro = viaCepResponse.getLogradouro();
+                        String bairro = viaCepResponse.getBairro();
+                        String cidade = viaCepResponse.getLocalidade();
+                        String uf = viaCepResponse.getUf();
 
-                                String endereco = logradouro + " - " + bairro + " - " + cidade + " / " + uf;
+                        String endereco = logradouro + " - " + bairro + " - " + cidade + " / " + uf;
 
-                                binding.edtEndenreco.setText(endereco);
+                        binding.edtEndenreco.setText(endereco);
+                        binding.edtNumero.requestFocus();
 
-                            }, throwable -> {
-                                Toast.makeText(getContext(), "Erro ao buscar CEP", Toast.LENGTH_SHORT).show();
-                                throwable.printStackTrace();
-                            });
+                    }, throwable -> {
+                        Toast.makeText(getContext(), "Erro ao buscar CEP", Toast.LENGTH_SHORT).show();
+                        throwable.printStackTrace();
+                    });
                 }
             }
 
@@ -111,5 +120,9 @@ public class CadastrarClienteFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         binding = null;
+    }
+
+    public boolean fieldToValidated() {
+        return viewModel.validatedField(binding.etFullName.getText().toString(), binding.etEmailRegister.getText().toString(), binding.edttelefone.getText().toString(), binding.edtCep.getText().toString(), binding.edtEndenreco.getText().toString(), binding.edtNumero.getText().toString(), binding.edtSenha.getText().toString(), binding.edtConfirmarSenha.getText().toString(), binding.edtCpfCnpj.getText().toString());
     }
 }

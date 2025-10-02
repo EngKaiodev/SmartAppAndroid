@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.smartapp.adapters.AgendamentoAdapter;
 import com.example.smartapp.adapters.ServicoAdapter;
+import com.example.smartapp.core.domain.response.ServicoResponse;
 import com.example.smartapp.databinding.GerenciarServicoBinding;
 import com.example.smartapp.domain.models.AgendamentoModel;
 import com.example.smartapp.domain.models.CategoryModel;
@@ -32,7 +33,7 @@ public class GerenciarServicoFragment extends Fragment {
     private GerenciarServicoViewModel viewModel;
     private NavController navController;
 
-    private List<ServicoModel> servicoList;
+    private List<ServicoResponse> servicoList;
     private ServicoAdapter servicoAdapter;
 
 
@@ -56,12 +57,12 @@ public class GerenciarServicoFragment extends Fragment {
 
     private void mockedList(){
         servicoList = List.of(
-                new ServicoModel(1, "Paula","manicure", "R$30,00")
+                new ServicoResponse(1,1, "Paula","manicure", 30f, 30)
         );
     }
 
     private void setupAdapters(){
-        servicoAdapter = new ServicoAdapter(servicoList);
+        servicoAdapter = new ServicoAdapter(servicoList, true);
         binding.rvServico.setAdapter(servicoAdapter);
         binding.rvServico.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     }

@@ -51,7 +51,6 @@ android {
             )
         }
     }
-
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -59,6 +58,7 @@ android {
 }
 
 dependencies {
+
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.stdlib.jdk8)
     implementation(libs.androidx.core.ktx)
@@ -83,6 +83,8 @@ dependencies {
     ksp(libs.room.compiler)
     androidTestImplementation(libs.room.testing)
 
+    implementation(libs.room.runtime)
+    ksp(libs.room.compiler)
     implementation(libs.androidx.room.paging)
     implementation(libs.androidx.room.rxjava2)
 
@@ -91,6 +93,9 @@ dependencies {
 
     // Retrofit + RxJava
     implementation(libs.adapter.rxjava2)
+    implementation(libs.logging.interceptor)
+
+    // RxJava
     implementation(libs.rxjava)
     implementation(libs.rxandroid)
 

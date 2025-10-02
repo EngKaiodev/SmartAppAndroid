@@ -12,18 +12,15 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.smartapp.adapters.CategoryAdapter;
 import com.example.smartapp.adapters.ProfissionalAdapter;
+import com.example.smartapp.core.domain.response.ProfissionalResponse;
 import com.example.smartapp.databinding.DashboardBinding;
-import com.example.smartapp.domain.models.CategoryModel;
 import com.example.smartapp.domain.models.ProfissionalModel;
 import com.example.smartapp.viewmodels.DashboardViewModel;
 
-import com.example.smartapp.fragments.registro.DashboardFragmentDirections;
-
 import java.util.List;
+import java.util.stream.Collectors;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -32,7 +29,7 @@ public class DashboardFragment extends Fragment {
     private DashboardBinding binding;
     private DashboardViewModel viewModel;
     private NavController navController;
-    private List<ProfissionalModel> profissionalList;
+    private List<ProfissionalResponse> profissionalList;
     private ProfissionalAdapter profissionalAdapter;
 
     @Nullable
@@ -47,30 +44,27 @@ public class DashboardFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        navController = NavHostFragment.findNavController(this); // 2 INSTACIA NAV CONTROLER
+        navController = NavHostFragment.findNavController(this);
+        viewModel.loadProfissionais();
 
-        mockedList();
+        setupObservers();
         setupListeners();
-        setupAdapters();
+        setupView();
+
     }
 
-    //Lista de exemplos para testar
-    private void mockedList() {
-
-        profissionalList = List.of(
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5"),
-                new ProfissionalModel(1, "joao tonho", "cabelereiro", "5")
-
-        );
+    private void setupView() {
+        binding.name.setText(viewModel.getUserName());
     }
 
+    private void setupObservers() {
+        viewModel.profissionais.observe(getViewLifecycleOwner(), lista -> {
+            if (lista != null && !lista.isEmpty()) {
+                profissionalList = lista;
+                setupAdapters();
+            }
+        });
+    }
     private void setupAdapters() {
         profissionalAdapter = new ProfissionalAdapter(
                 profissionalList,
@@ -78,7 +72,7 @@ public class DashboardFragment extends Fragment {
                     navController.navigate(DashboardFragmentDirections.actionAgendarServico());
                 },
                 s -> {
-                    navController.navigate(DashboardFragmentDirections.actionHomeToPrestadorPerfil());
+                    navController.navigate(DashboardFragmentDirections.actionHomeToPrestadorPerfil(s.getId_profissional()));
                 });
         binding.rvCatProfissional.setAdapter(profissionalAdapter);
         binding.rvCatProfissional.setLayoutManager(new GridLayoutManager(getContext(), 2));

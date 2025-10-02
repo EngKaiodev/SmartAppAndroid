@@ -131,6 +131,7 @@
         android:name="com.example.smartapp.fragments.registro.PesquisarProfissionaisFragment"
         android:label="BuscarProfissionalFragment"
         tools:layout="@layout/pesquisar_profissional">
+
         <action
             android:id="@+id/perfil_prestador_fragment"
             app:destination="@id/perfil_prestador_fragment" />
@@ -141,6 +142,9 @@
         android:name="com.example.smartapp.fragments.registro.PerfilPrestadorFragment"
         android:label="PerfilPrestadorFragment"
         tools:layout="@layout/perfil_prestador">
+        <argument
+            android:name="proId"
+            app:argType="integer"/>
         <action
             android:id="@+id/agendar_servico_fragment"
             app:destination="@id/agendar_servico_fragment" />

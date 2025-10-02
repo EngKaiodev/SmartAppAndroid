@@ -1,21 +1,32 @@
 package com.example.smartapp.adapters;
 
+import static android.view.View.GONE;
+import static android.view.View.INVISIBLE;
+import static android.view.View.VISIBLE;
+
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.smartapp.core.domain.response.ServicoResponse;
 import com.example.smartapp.databinding.ServicoCategoryBinding;
 import com.example.smartapp.domain.models.ServicoModel;
 
+import java.text.NumberFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class ServicoAdapter extends RecyclerView.Adapter<ServicoAdapter.ViewHolder> {
 
-    private final List<ServicoModel> sList;
+    private final List<ServicoResponse> sList;
+    private final boolean isEditing;
 
-    public ServicoAdapter(List<ServicoModel> sList){this.sList = sList;}
+    public ServicoAdapter(List<ServicoResponse> sList, boolean isEditing){
+        this.sList = sList;
+        this.isEditing = isEditing;
+    }
 
     @NonNull
     @Override
@@ -27,8 +38,8 @@ public class ServicoAdapter extends RecyclerView.Adapter<ServicoAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ServicoAdapter.ViewHolder holder, int position) {
-        ServicoModel pitem = sList.get(position);
-        holder.bind(pitem);
+        ServicoResponse pitem = sList.get(position);
+        holder.bind(pitem, isEditing);
 
     }
 
@@ -44,11 +55,20 @@ public class ServicoAdapter extends RecyclerView.Adapter<ServicoAdapter.ViewHold
             this.binding = binding;
         }
 
-        public void bind(ServicoModel servico){
+        public void bind(ServicoResponse servico, boolean isEditing){
             binding.servicoNome.setText(servico.getName());
-            binding.servicovalor.setText(servico.getValor());
-            binding.tiposervico.setText(servico.getServico());
 
+            NumberFormat formato = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+            String precoFormatado = formato.format(servico.getPrice());
+
+            binding.servicovalor.setText(precoFormatado);
+            binding.tiposervico.setText(servico.getDescription());
+
+            if (isEditing){
+                binding.actionButtons.setVisibility(VISIBLE);
+            } else {
+                binding.actionButtons.setVisibility(INVISIBLE);
+            }
         }
     }
 }

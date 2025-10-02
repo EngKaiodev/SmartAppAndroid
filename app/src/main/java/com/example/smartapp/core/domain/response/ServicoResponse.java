@@ -4,67 +4,67 @@ import java.io.Serializable;
 
 public class ServicoResponse implements Serializable {
 
-    private int id_servico;
-    private ProfissionalResponse profissional;
-    private String nome;
-    private  String descricao;
-    private  float preco;
-    private int duracao;
+    private int id;
+    private int proId;
+    private String name;
+    private  String description;
+    private  float price;
+    private int duration;
 
-    public ServicoResponse(int id_servico, ProfissionalResponse profissional, String nome, String descricao, float preco, int duracao) {
-        this.id_servico = id_servico;
-        this.profissional = profissional;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.preco = preco;
-        this.duracao = duracao;
+    public ServicoResponse(int id, int proId, String name, String description, float price, int duration) {
+        this.id = id;
+        this.proId = proId;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.duration = duration;
     }
 
-    public int getId_servico() {
-        return id_servico;
+    public int getId() {
+        return id;
     }
 
-    public void setId_servico(int id_servico) {
-        this.id_servico = id_servico;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public ProfissionalResponse getProfissional() {
-        return profissional;
+    public int getProId() {
+        return proId;
     }
 
-    public void setProfissional(ProfissionalResponse profissional) {
-        this.profissional = profissional;
+    public void setProId(int proId) {
+        this.proId = proId;
     }
 
-    public String getNome() {
-        return nome;
+    public String getName() {
+        return name;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDescricao() {
-        return descricao;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public float getPreco() {
-        return preco;
+    public float getPrice() {
+        return price;
     }
 
-    public void setPreco(float preco) {
-        this.preco = preco;
+    public void setPrice(float price) {
+        this.price = price;
     }
 
-    public int getDuracao() {
-        return duracao;
+    public int getDuration() {
+        return duration;
     }
 
-    public void setDuracao(int duracao) {
-        this.duracao = duracao;
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 }

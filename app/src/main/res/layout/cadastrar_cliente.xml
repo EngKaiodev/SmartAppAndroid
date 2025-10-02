@@ -263,7 +263,7 @@
                     android:layout_height="wrap_content"
                     android:textAlignment="center"
                     android:textColor="#F44336"
-                    android:text="Verifique os campos novamente"/>
+                    android:text="Verifique os campos e tente novamente"/>
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton

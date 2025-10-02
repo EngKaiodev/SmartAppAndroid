@@ -1,5 +1,6 @@
 package com.example.smartapp.fragments.registro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,8 @@ import androidx.navigation.NavController;
 import androidx.navigation.NavHostController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.smartapp.activities.LoginActivity;
+import com.example.smartapp.activities.MainActivity;
 import com.example.smartapp.databinding.PerfilBinding;
 import com.example.smartapp.viewmodels.PerfilViewModel;
 
@@ -74,11 +77,13 @@ public class PerfilFragment extends Fragment {
         });
 
 
-        binding.btnNotificoes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(PerfilFragmentDirections.gerenciarNotificacoesFragment());
-            }
+        binding.btnNotificoes.setOnClickListener(v -> navController.navigate(PerfilFragmentDirections.gerenciarNotificacoesFragment()));
+
+        binding.logoutOption.setOnClickListener(view -> {
+            viewModel.doLogout();
+            Intent intent = new Intent(getContext(), LoginActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         });
 
         binding.btnGerenciarHorarios.setOnClickListener(new View.OnClickListener() {
