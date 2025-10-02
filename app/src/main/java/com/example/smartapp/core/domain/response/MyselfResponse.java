@@ -7,17 +7,27 @@ public class MyselfResponse {
     private String email;
     private String document;
     private int type;
+    private AddressResponse address;
 
     public MyselfResponse() {
     }
 
-    public MyselfResponse(int id, String completeName, String phone, String email, String document, int type) {
+    public AddressResponse getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressResponse address) {
+        this.address = address;
+    }
+
+    public MyselfResponse(int id, String completeName, String phone, String email, String document, int type, AddressResponse address) {
         this.id = id;
         this.completeName = completeName;
         this.phone = phone;
         this.email = email;
         this.document = document;
         this.type = type;
+        this.address = address;
     }
 
     public int getId() {

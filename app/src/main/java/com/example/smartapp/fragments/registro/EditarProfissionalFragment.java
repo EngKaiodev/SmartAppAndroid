@@ -56,6 +56,9 @@ public class EditarProfissionalFragment extends Fragment {
         binding.edtEmailPro.setText(response.getEmail());
         binding.edtTelefonePro.setText(response.getPhone());
         binding.edtCpfCnpjPro.setText(response.getDocument());
+        binding.edtCepPro.setText(response.getAddress().getZipCode());
+        binding.edtEnderecoPro.setText(response.getAddress().getAddress());
+        binding.edtNumeroPro.setText(response.getAddress().getNumber());
     }
 
     private void setupListeners() {
