@@ -8,16 +8,36 @@ public class ProfissionalResponse implements Serializable {
 
     @SerializedName("id")
     private int id_profissional;
-    @SerializedName("complete_name")
+    @SerializedName("completeName")
     private String name;
     @SerializedName("phone")
     private String contato;
-    private String email;
-    public ProfissionalResponse(int id_profissional, String name, String contato, String email) {
+    private Double rate;
+
+    private int reviewsCount;
+
+    public ProfissionalResponse(int id_profissional, String name, String contato, Double rate, int reviewsCount) {
         this.id_profissional = id_profissional;
         this.name = name;
         this.contato = contato;
-        this.email = email;
+        this.rate = rate;
+        this.reviewsCount = reviewsCount;
+    }
+
+    public Double getRate() {
+        return rate;
+    }
+
+    public void setRate(Double rate) {
+        this.rate = rate;
+    }
+
+    public int getReviewsCount() {
+        return reviewsCount;
+    }
+
+    public void setReviewsCount(int reviewsCount) {
+        this.reviewsCount = reviewsCount;
     }
 
     public int getId_profissional() {
@@ -42,13 +62,5 @@ public class ProfissionalResponse implements Serializable {
 
     public void setContato(String contato) {
         this.contato = contato;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 }

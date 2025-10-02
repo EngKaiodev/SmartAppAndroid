@@ -3,6 +3,7 @@ package com.example.smartapp.domain.repository;
 import android.util.Log;
 
 import com.example.smartapp.core.domain.request.ProfissionalRequest;
+import com.example.smartapp.core.domain.response.ProfissionalDetailResponse;
 import com.example.smartapp.core.domain.response.ProfissionalResponse;
 import com.example.smartapp.core.network.service.ProfissionalService;
 
@@ -31,11 +32,15 @@ public class ProfissionalRepository {
         });
     }
 
-    public ProfissionalResponse getById(int id) throws Exception {
+    public Single<Response<ProfissionalDetailResponse>> getDetailById(int id) throws Exception {
         if (id <= 0) {
             throw new Exception("O id deve ser maior que 0");
         }
-        return profissionalService.GetById(id);
+        return profissionalService.GetDetailById(id).subscribeOn(Schedulers.io()).doOnSuccess(response -> {
+            Log.i("ProfissionalRepository", "Detalhes recuperados com sucesso: " + response.body());
+        }).doOnError(error -> {
+            Log.i("ProfissionalRepository", "Erro ao recuperar detalhes: " + error.getLocalizedMessage());
+        });
     }
 
     public ProfissionalResponse insert(ProfissionalRequest profissionalRequest) throws Exception {

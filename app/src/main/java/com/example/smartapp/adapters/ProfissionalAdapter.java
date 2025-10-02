@@ -7,20 +7,22 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.smartapp.core.domain.response.ProfissionalResponse;
 import com.example.smartapp.databinding.ProfissionalCategoryBinding;
 import com.example.smartapp.domain.models.ProfissionalModel;
 
 
 import java.util.List;
+import java.util.Locale;
 import java.util.function.Consumer;
 
 public class ProfissionalAdapter extends RecyclerView.Adapter<ProfissionalAdapter.ViewHolder> {
 
-    private final List<ProfissionalModel> pList;
-    private final Consumer<ProfissionalModel> onAgendarClick;
-    private final Consumer<ProfissionalModel> onProfissionalClick;
+    private final List<ProfissionalResponse> pList;
+    private final Consumer<ProfissionalResponse> onAgendarClick;
+    private final Consumer<ProfissionalResponse> onProfissionalClick;
 
-    public ProfissionalAdapter(List<ProfissionalModel> pList, Consumer<ProfissionalModel> onAgendarClick, Consumer<ProfissionalModel> onProfissionalClick) {
+    public ProfissionalAdapter(List<ProfissionalResponse> pList, Consumer<ProfissionalResponse> onAgendarClick, Consumer<ProfissionalResponse> onProfissionalClick) {
         this.pList = pList;
         this.onAgendarClick = onAgendarClick;
         this.onProfissionalClick = onProfissionalClick;
@@ -36,7 +38,7 @@ public class ProfissionalAdapter extends RecyclerView.Adapter<ProfissionalAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        ProfissionalModel pitem = pList.get(position);
+        ProfissionalResponse pitem = pList.get(position);
         holder.bind(pitem);
 
         holder.binding.btnirparaagendamento.setOnClickListener(new View.OnClickListener() {
@@ -67,13 +69,13 @@ public class ProfissionalAdapter extends RecyclerView.Adapter<ProfissionalAdapte
             this.binding = binding;
         }
 
-        public void bind(ProfissionalModel profissional) {
-            binding.avaliacao.setText(profissional.getAvaliacao());
-            binding.especialidade.setText(profissional.getEspecialidade());
+        public void bind(ProfissionalResponse profissional) {
+            binding.avaliacao.setText(
+                    String.format(Locale.US, "%.2f ( %d )", profissional.getRate(), profissional.getReviewsCount())
+            );
+            binding.especialidade.setText("Ainda não fiz");
             binding.nome.setText(profissional.getName());
         }
-
-
     }
 
 

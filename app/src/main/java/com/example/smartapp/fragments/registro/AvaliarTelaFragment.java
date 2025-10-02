@@ -14,6 +14,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 
+import com.example.smartapp.core.domain.response.ReviewSimpleResponse;
 import com.example.smartapp.databinding.AvaliarTelaBinding;
 
 import com.example.smartapp.domain.models.AvaliacaoModel;
@@ -28,7 +29,7 @@ public class AvaliarTelaFragment extends Fragment {
     private AvaliarTelaBinding binding;
     private AvaliarTelaViewModel viewModel;
     private NavController navController;
-    private List<AvaliacaoModel> avaliacaoList;
+    private List<ReviewSimpleResponse> avaliacaoList;
     private AvalicaoAdapter avalicaoAdapter;
 
 
@@ -54,8 +55,8 @@ public class AvaliarTelaFragment extends Fragment {
     private void mockedList(){
 
          avaliacaoList = List.of(
-                new AvaliacaoModel(1,"Clara santaos","", "Serviço mal feito","15/07/2025"),
-                new AvaliacaoModel(1,"Clara santos","", "Very Good","15/07/2025")
+                new ReviewSimpleResponse("Clara santaos", "Serviço mal feito","15/07/2025", 3),
+                new ReviewSimpleResponse("Clara santos", "Very Good","15/07/2025", 4)
         );
     }
 

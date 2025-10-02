@@ -37,7 +37,6 @@ public class PesquisarProfissionaisFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
-
         setupListeners();
     }
 
@@ -52,7 +51,7 @@ public class PesquisarProfissionaisFragment extends Fragment {
         binding.btnprestardorEncontrado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(PesquisarProfissionaisFragmentDirections.perfilPrestadorFragment());
+                navController.navigate(PesquisarProfissionaisFragmentDirections.perfilPrestadorFragment(0));
             }
         });
 

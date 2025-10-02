@@ -6,17 +6,21 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.smartapp.core.domain.response.ReviewSimpleResponse;
 import com.example.smartapp.databinding.AvaliarCategoryBinding;
-import com.example.smartapp.databinding.AvaliarTelaBinding;
-import com.example.smartapp.domain.models.AvaliacaoModel;
 
+import java.sql.Timestamp;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 public class AvalicaoAdapter extends  RecyclerView.Adapter<AvalicaoAdapter.ViewHolder>{
 
-    private final List<AvaliacaoModel> avList;
+    private final List<ReviewSimpleResponse> avList;
 
-    public AvalicaoAdapter(List<AvaliacaoModel> avList){this.avList = avList;}
+    public AvalicaoAdapter(List<ReviewSimpleResponse> avList){this.avList = avList;}
 
     @NonNull
     @Override
@@ -28,7 +32,7 @@ public class AvalicaoAdapter extends  RecyclerView.Adapter<AvalicaoAdapter.ViewH
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        AvaliacaoModel avitem = avList.get(position);
+        ReviewSimpleResponse avitem = avList.get(position);
         holder.bind(avitem);
 
     }
@@ -47,12 +51,22 @@ public class AvalicaoAdapter extends  RecyclerView.Adapter<AvalicaoAdapter.ViewH
             this.binding = binding;
         }
 
-        public void bind(AvaliacaoModel avaliar){
-            binding.avalianome.setText(avaliar.getNome());
-            binding.avaliacomentario.setText(avaliar.getComentario());
-            binding.avaliadata.setText((avaliar.getData()));
+        public void bind(ReviewSimpleResponse avaliar){
+            binding.avalianome.setText(avaliar.getCompleteName());
+            binding.avaliacomentario.setText(avaliar.getComment());
 
+            // Converte para LocalDate
+            LocalDate dataRegistro = Instant.ofEpochMilli(Long.parseLong(avaliar.getDate()))
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDate();
 
+            // Data de hoje
+            LocalDate hoje = LocalDate.now();
+
+            // Diferença em dias
+            long dias = ChronoUnit.DAYS.between(dataRegistro, hoje);
+
+            binding.avaliadata.setText("há " + dias + " dias.");
         }
     }
 }

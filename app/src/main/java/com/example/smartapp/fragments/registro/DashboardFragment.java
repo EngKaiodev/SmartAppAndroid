@@ -14,6 +14,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.example.smartapp.adapters.ProfissionalAdapter;
+import com.example.smartapp.core.domain.response.ProfissionalResponse;
 import com.example.smartapp.databinding.DashboardBinding;
 import com.example.smartapp.domain.models.ProfissionalModel;
 import com.example.smartapp.viewmodels.DashboardViewModel;
@@ -28,7 +29,7 @@ public class DashboardFragment extends Fragment {
     private DashboardBinding binding;
     private DashboardViewModel viewModel;
     private NavController navController;
-    private List<ProfissionalModel> profissionalList;
+    private List<ProfissionalResponse> profissionalList;
     private ProfissionalAdapter profissionalAdapter;
 
     @Nullable
@@ -59,12 +60,7 @@ public class DashboardFragment extends Fragment {
     private void setupObservers() {
         viewModel.profissionais.observe(getViewLifecycleOwner(), lista -> {
             if (lista != null && !lista.isEmpty()) {
-                profissionalList = lista.stream().map(response -> new ProfissionalModel(
-                        response.getId_profissional(),
-                        response.getName(),
-                        "especialidade?",
-                        "5"
-                )).collect(Collectors.toList());
+                profissionalList = lista;
                 setupAdapters();
             }
         });
@@ -76,7 +72,7 @@ public class DashboardFragment extends Fragment {
                     navController.navigate(DashboardFragmentDirections.actionAgendarServico());
                 },
                 s -> {
-                    navController.navigate(DashboardFragmentDirections.actionHomeToPrestadorPerfil());
+                    navController.navigate(DashboardFragmentDirections.actionHomeToPrestadorPerfil(s.getId_profissional()));
                 });
         binding.rvCatProfissional.setAdapter(profissionalAdapter);
         binding.rvCatProfissional.setLayoutManager(new GridLayoutManager(getContext(), 2));
