@@ -74,4 +74,8 @@ public class Preferences {
     public int getType(){
         return preferences.getInt(KEY_TYPE, -1);
     }
+
+    public int getId(){
+        return preferences.getInt(KEY_ID, -1);
+    }
 }

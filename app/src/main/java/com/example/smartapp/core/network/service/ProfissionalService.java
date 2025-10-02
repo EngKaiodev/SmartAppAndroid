@@ -1,6 +1,7 @@
 package com.example.smartapp.core.network.service;
 
 import com.example.smartapp.core.domain.request.ProfissionalRequest;
+import com.example.smartapp.core.domain.response.MyselfResponse;
 import com.example.smartapp.core.domain.response.ProfissionalDetailResponse;
 import com.example.smartapp.core.domain.response.ProfissionalResponse;
 
@@ -29,8 +30,6 @@ public interface ProfissionalService {
             @Body ProfissionalRequest profissionalRequest
     );
 
-    @DELETE("/Profissionais/{id}")
-    void delete(
-            @Path("id") int id
-    );
+    @GET("/profissional/myself")
+    Single<Response<MyselfResponse>> getMyself();
 }

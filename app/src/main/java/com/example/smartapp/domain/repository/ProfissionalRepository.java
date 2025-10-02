@@ -3,6 +3,7 @@ package com.example.smartapp.domain.repository;
 import android.util.Log;
 
 import com.example.smartapp.core.domain.request.ProfissionalRequest;
+import com.example.smartapp.core.domain.response.MyselfResponse;
 import com.example.smartapp.core.domain.response.ProfissionalDetailResponse;
 import com.example.smartapp.core.domain.response.ProfissionalResponse;
 import com.example.smartapp.core.network.service.ProfissionalService;
@@ -22,6 +23,15 @@ public class ProfissionalRepository {
     @Inject
     public ProfissionalRepository(ProfissionalService profissionalService) {
         this.profissionalService = profissionalService;
+    }
+
+    public Single<Response<MyselfResponse>> getMyself(){
+        return profissionalService.getMyself().subscribeOn(Schedulers.io())
+                .doOnSuccess(response -> {
+                    Log.i("ProfissionalRepository", "Informação recuperada com sucesso, com " + response.body());
+                }).doOnError(error -> {
+                    Log.i("ProfissionalRepository", "Erro ao recuperar informação: " + error.getLocalizedMessage());
+                });
     }
 
     public Single<Response<List<ProfissionalResponse>>> getAll() {
@@ -97,7 +107,7 @@ public class ProfissionalRepository {
 
     }
 
-    // Método completo para validar CNPJ com cálculo dos dígitos verificadores
+
     private boolean isValidCNPJ(String cnpj) {
         // Remove caracteres não numéricos
         cnpj = cnpj.replaceAll("[^0-9]", "");
@@ -154,17 +164,5 @@ public class ProfissionalRepository {
     private boolean isValidEmail(String email) {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         return email.matches(emailRegex);
-    }
-
-    public void delete(int id) throws Exception {
-        if (id <= 0) {
-            throw new Exception("O id deve ser maior que 0");
-        }
-        // Verifica se o profissional existe antes de tentar deletar
-        // Verifica se o profissional está ativo antes de deletar
-        // Verificação adicional de segurança - confirmação de exclusão
-        // Verifica se a exclusão foi bem-sucedida
-
-        profissionalService.delete(id);
     }
 }

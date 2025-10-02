@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.smartapp.core.domain.response.MyselfResponse;
 import com.example.smartapp.databinding.EditarProfissionalBinding;
 import com.example.smartapp.viewmodels.EditarProfissionalViewModel;
 
@@ -22,7 +23,6 @@ public class EditarProfissionalFragment extends Fragment {
 
     private EditarProfissionalBinding binding;
     private EditarProfissionalViewModel viewModel;
-
     private NavController navController;
 
     @Nullable
@@ -37,8 +37,25 @@ public class EditarProfissionalFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
+        viewModel.loadData();
 
         setupListeners();
+        setupObservers();
+    }
+
+    private void setupObservers() {
+        viewModel.myself.observe(getViewLifecycleOwner(), response -> {
+            if (response != null){
+                setupData(response);
+            }
+        });
+    }
+
+    private void setupData(MyselfResponse response) {
+        binding.edtNomePro.setText(response.getCompleteName());
+        binding.edtEmailPro.setText(response.getEmail());
+        binding.edtTelefonePro.setText(response.getPhone());
+        binding.edtCpfCnpjPro.setText(response.getDocument());
     }
 
     private void setupListeners() {
