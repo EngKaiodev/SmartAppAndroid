@@ -21,4 +21,7 @@ public class PerfilViewModel extends ViewModel {
     public void doLogout(){
         preferences.logout();
     }
+    public int getType(){
+        return preferences.getType();
+    }
 }

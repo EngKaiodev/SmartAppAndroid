@@ -1,5 +1,7 @@
 package com.example.smartapp.fragments.registro;
 
+import static android.view.View.GONE;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -26,8 +28,9 @@ public class PerfilFragment extends Fragment {
 
     private PerfilBinding binding;
     private PerfilViewModel viewModel;
-
     private NavController navController;
+
+    private int type;
 
     @Nullable
     @Override
@@ -42,8 +45,17 @@ public class PerfilFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         navController = NavHostFragment.findNavController(this);
+        type = viewModel.getType();
 
         setupListeners();
+        setupView();
+    }
+
+    private void setupView() {
+        if (type != 1){
+            binding.btnGerenciarHorarios.setVisibility(GONE);
+            binding.btnGerenciarServicos.setVisibility(GONE);
+        }
     }
 
     private void setupListeners() {
@@ -57,8 +69,11 @@ public class PerfilFragment extends Fragment {
         binding.btnEditarPerfil.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(PerfilFragmentDirections.editarClienteFragment());
-                navController.navigate(PerfilFragmentDirections.editarProfissionalFragment());
+                if (type == 1){
+                    navController.navigate(PerfilFragmentDirections.editarProfissionalFragment());
+                } else {
+                    navController.navigate(PerfilFragmentDirections.editarClienteFragment());
+                }
             }
         });
 
