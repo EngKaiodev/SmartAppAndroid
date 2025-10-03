@@ -8,8 +8,22 @@ public class MyselfResponse {
     private String document;
     private int type;
     private AddressResponse address;
+    private String alterName;
+    private String description;
 
     public MyselfResponse() {
+    }
+
+    public MyselfResponse(int id, String completeName, String phone, String email, String document, int type, AddressResponse address, String alterName, String description) {
+        this.id = id;
+        this.completeName = completeName;
+        this.phone = phone;
+        this.email = email;
+        this.document = document;
+        this.type = type;
+        this.address = address;
+        this.alterName = alterName;
+        this.description = description;
     }
 
     public AddressResponse getAddress() {
@@ -28,6 +42,22 @@ public class MyselfResponse {
         this.document = document;
         this.type = type;
         this.address = address;
+    }
+
+    public String getAlterName() {
+        return alterName;
+    }
+
+    public void setAlterName(String alterName) {
+        this.alterName = alterName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public int getId() {
