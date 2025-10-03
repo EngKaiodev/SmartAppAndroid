@@ -69,7 +69,13 @@ public class DashboardFragment extends Fragment {
         profissionalAdapter = new ProfissionalAdapter(
                 profissionalList,
                 profissionalModel -> {
-                    navController.navigate(DashboardFragmentDirections.actionAgendarServico());
+                    navController.navigate(
+                            DashboardFragmentDirections.
+                                    actionAgendarServico(
+                                            profissionalModel.getId_profissional(),
+                                            profissionalModel.getName()
+                                    )
+                    );
                 },
                 s -> {
                     navController.navigate(DashboardFragmentDirections.actionHomeToPrestadorPerfil(s.getId_profissional()));

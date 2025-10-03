@@ -32,6 +32,10 @@ public class AgendarServicoFragment extends Fragment {
     private AgendarServicoViewModel viewModel;
     private NavController navController;
 
+
+    private int proId;
+    private String proName;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -44,6 +48,10 @@ public class AgendarServicoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = NavHostFragment.findNavController(this);
+        AgendarServicoFragmentArgs args = AgendarServicoFragmentArgs.fromBundle(getArguments());
+
+        proId = args.getProId();
+        proName = args.getProName();
 
         setupSpinners();
         setupDatePicker();

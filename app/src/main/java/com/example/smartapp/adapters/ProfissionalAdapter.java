@@ -73,7 +73,6 @@ public class ProfissionalAdapter extends RecyclerView.Adapter<ProfissionalAdapte
             binding.avaliacao.setText(
                     String.format(Locale.US, "%.2f ( %d )", profissional.getRate(), profissional.getReviewsCount())
             );
-            binding.especialidade.setText("Ainda não fiz");
             binding.nome.setText(profissional.getName());
         }
     }

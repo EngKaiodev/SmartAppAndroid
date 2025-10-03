@@ -65,7 +65,7 @@
 
     <fragment
         android:id="@+id/calendario_fragment"
-        android:name="com.example.smartapp.fragments.registro.CalendarioFragment"
+        android:name="com.example.smartapp.fragments.registro.GerenciarHorariosFragment"
         android:label="CalendarioFragment"
         tools:layout="@layout/gerenciar_horarios"/>
     <fragment
@@ -167,6 +167,13 @@
         android:name="com.example.smartapp.fragments.registro.AgendarServicoFragment"
         android:label="AgendarServicoFragment"
         tools:layout="@layout/agendar_servico">
+        <argument
+            app:argType="integer"
+            android:name="proId"/>
+        <argument
+            app:argType="string"
+            android:name="proName"
+            app:nullable="true"/>
         <action
             android:id="@+id/confirmaragendamentofragment"
             app:destination="@+id/confirmaragendamentofragment" />
