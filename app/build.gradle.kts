@@ -6,8 +6,6 @@ plugins {
     alias(libs.plugins.kotlin.application)
     alias(libs.plugins.ksp)
     alias(libs.plugins.dagger.hilt.android)
-
-    // Plugin do Google Services para Firebase
     id("com.google.gms.google-services")
 }
 
@@ -90,6 +88,8 @@ dependencies {
 
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+
+    compileOnly(libs.lombok)
 
     // Retrofit + RxJava
     implementation(libs.adapter.rxjava2)

@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.smartapp.core.Preferences;
+import com.example.smartapp.core.domain.request.ProEditRequest;
 import com.example.smartapp.core.domain.response.MyselfResponse;
-import com.example.smartapp.core.domain.response.ProfissionalDetailResponse;
 import com.example.smartapp.domain.repository.ProfissionalRepository;
 
 import java.util.regex.Pattern;
@@ -34,6 +34,9 @@ public class EditarProfissionalViewModel extends ViewModel {
     private final MutableLiveData<MyselfResponse> _myself = new MutableLiveData<>();
     public LiveData<MyselfResponse> myself = _myself;
 
+    private final MutableLiveData<Boolean> _edited = new MutableLiveData<>();
+    public LiveData<Boolean> edited = _edited;
+
     public void loadData(){
         disposables.add(
                 repository.getMyself()
@@ -41,6 +44,38 @@ public class EditarProfissionalViewModel extends ViewModel {
                         .subscribe(
                                 response -> _myself.setValue(response.body()),
                                 throwable -> _myself.setValue(null)
+                        )
+        );
+    }
+
+    public void editData(
+            String completeName,
+            String email,
+            String phone,
+            String document,
+            String zipCode,
+            String address,
+            String number,
+            String altername,
+            String description
+    ){
+        ProEditRequest toEdit = new ProEditRequest(
+                completeName,
+                phone,
+                email,
+                document,
+                altername,
+                description,
+                zipCode,
+                address,
+                number
+        );
+        disposables.add(
+                repository.editMyself(toEdit)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(
+                                response -> _edited.setValue(true),
+                                throwable -> _edited.setValue(false)
                         )
         );
     }
@@ -59,11 +94,7 @@ public class EditarProfissionalViewModel extends ViewModel {
             String cpfCnpj,
             String cep,
             String endereco,
-            String numero,
-            String razaoSocial,
-            String descricao,
-            String novaSenha,
-            String confirmaSenha
+            String numero
 
     ){
         // Validar nome
@@ -102,17 +133,6 @@ public class EditarProfissionalViewModel extends ViewModel {
         // Validar número
         if (numero == null || numero.trim().isEmpty()) {
             return false;
-        }
-
-        // Validar senhas (se preenchidas)
-        if (!novaSenha.isEmpty() || !confirmaSenha.isEmpty()) {
-            if (novaSenha.length() < 6) {
-                return false;
-            }
-
-            if (!novaSenha.equals(confirmaSenha)) {
-                return false;
-            }
         }
 
         return true;

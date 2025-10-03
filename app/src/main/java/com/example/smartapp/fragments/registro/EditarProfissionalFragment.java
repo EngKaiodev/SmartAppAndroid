@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -49,6 +50,12 @@ public class EditarProfissionalFragment extends Fragment {
                 setupData(response);
             }
         });
+        viewModel.edited.observe(getViewLifecycleOwner(), response -> {
+            if (response){
+                Toast.makeText(getContext(), "Informações salvar com sucesso", Toast.LENGTH_SHORT).show();
+                navController.popBackStack();
+            }
+        });
     }
 
     private void setupData(MyselfResponse response) {
@@ -81,15 +88,19 @@ public class EditarProfissionalFragment extends Fragment {
                         binding.edtCpfCnpjPro.getText().toString(),
                         binding.edtCepPro.getText().toString(),
                         binding.edtEnderecoPro.getText().toString(),
-                        binding.edtNumeroPro.getText().toString(),
-                        binding.edtRazaoSocialPro.getText().toString(),
-                        binding.edtDescricaoPro.getText().toString(),
-                        binding.edtNovasenhaPro.getText().toString(),
-                        binding.edtConfimaNovaSenhaPro.getText().toString()
-
-
+                        binding.edtNumeroPro.getText().toString()
                 )){
-
+                    viewModel.editData(
+                            binding.edtNomePro.getText().toString(),
+                            binding.edtEmailPro.getText().toString(),
+                            binding.edtTelefonePro.getText().toString(),
+                            binding.edtCpfCnpjPro.getText().toString(),
+                            binding.edtCepPro.getText().toString(),
+                            binding.edtEnderecoPro.getText().toString(),
+                            binding.edtNumeroPro.getText().toString(),
+                            binding.edtRazaoSocialPro.getText().toString(),
+                            binding.edtDescricaoPro.getText().toString()
+                    );
                 }else {
                     binding.erroContainer.setVisibility(View.VISIBLE);
                     binding.erroContainer.setVisibility(View.GONE);

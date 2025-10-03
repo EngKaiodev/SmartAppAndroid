@@ -1,5 +1,6 @@
 package com.example.smartapp.core.network.service;
 
+import com.example.smartapp.core.domain.request.ProEditRequest;
 import com.example.smartapp.core.domain.request.ProfissionalRequest;
 import com.example.smartapp.core.domain.response.MyselfResponse;
 import com.example.smartapp.core.domain.response.ProfissionalDetailResponse;
@@ -19,17 +20,18 @@ public interface ProfissionalService {
 
     @GET("/profissional")
     Single<Response<List<ProfissionalResponse>>> getAll();
-
     @GET("/profissional/{id}")
     Single<Response<ProfissionalDetailResponse>> GetDetailById(
             @Path("id") int id
     );
-
     @POST("/profissional")
     ProfissionalResponse insert(
             @Body ProfissionalRequest profissionalRequest
     );
-
     @GET("/profissional/myself")
     Single<Response<MyselfResponse>> getMyself();
+    @POST("/profissional/myself")
+    Single<Response<MyselfResponse>> editMyself(
+            @Body ProEditRequest request
+    );
 }

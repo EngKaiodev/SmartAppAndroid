@@ -2,6 +2,7 @@ package com.example.smartapp.domain.repository;
 
 import android.util.Log;
 
+import com.example.smartapp.core.domain.request.ProEditRequest;
 import com.example.smartapp.core.domain.request.ProfissionalRequest;
 import com.example.smartapp.core.domain.response.MyselfResponse;
 import com.example.smartapp.core.domain.response.ProfissionalDetailResponse;
@@ -33,6 +34,15 @@ public class ProfissionalRepository {
                     Log.i("ProfissionalRepository", "Erro ao recuperar informação: " + error.getLocalizedMessage());
                 });
     }
+    public Single<Response<MyselfResponse>> editMyself(ProEditRequest request){
+        return profissionalService.editMyself(request).subscribeOn(Schedulers.io())
+                .doOnSuccess(response -> {
+                    Log.i("ProfissionalRepository", "Informação editada com sucesso: " + response.body());
+                })
+                .doOnError(error -> {
+                    Log.i("ProfissionalRepository", "Erro ao editar informação: " + error.getLocalizedMessage());
+                });
+    }
 
     public Single<Response<List<ProfissionalResponse>>> getAll() {
         return profissionalService.getAll().subscribeOn(Schedulers.io()).doOnSuccess(response -> {
@@ -41,7 +51,6 @@ public class ProfissionalRepository {
             Log.i("ProfissionalRepository", "Erro ao recuperar lista: " + error.getLocalizedMessage());
         });
     }
-
     public Single<Response<ProfissionalDetailResponse>> getDetailById(int id) throws Exception {
         if (id <= 0) {
             throw new Exception("O id deve ser maior que 0");
