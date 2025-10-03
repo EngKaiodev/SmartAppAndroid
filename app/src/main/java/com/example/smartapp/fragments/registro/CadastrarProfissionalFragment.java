@@ -60,7 +60,13 @@ public class CadastrarProfissionalFragment extends Fragment {
                             binding.edtProftelefone.getText().toString(),
                             binding.edtProfEmail.getText().toString(),
                             binding.edtProfCpfCnpj.getText().toString(),
-                            1)
+                            1,
+                            binding.edtProfRazaoSocial.getText().toString(),
+                            binding.edtProfdescricao.getText().toString(),
+                            binding.edtProfCep.getText().toString(),
+                            binding.edtProfendereco.getText().toString(),
+                            binding.edtProfnumero.getText().toString()
+                                    )
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(response -> {

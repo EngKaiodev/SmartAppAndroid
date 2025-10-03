@@ -13,31 +13,18 @@ public class ProfissionalResponse implements Serializable {
     @SerializedName("phone")
     private String contato;
     private Double rate;
-
     private int reviewsCount;
+    private String altername;
+    private String description;
 
-    public ProfissionalResponse(int id_profissional, String name, String contato, Double rate, int reviewsCount) {
+    public ProfissionalResponse(int id_profissional, String name, String contato, Double rate, int reviewsCount, String altername, String description) {
         this.id_profissional = id_profissional;
         this.name = name;
         this.contato = contato;
         this.rate = rate;
         this.reviewsCount = reviewsCount;
-    }
-
-    public Double getRate() {
-        return rate;
-    }
-
-    public void setRate(Double rate) {
-        this.rate = rate;
-    }
-
-    public int getReviewsCount() {
-        return reviewsCount;
-    }
-
-    public void setReviewsCount(int reviewsCount) {
-        this.reviewsCount = reviewsCount;
+        this.altername = altername;
+        this.description = description;
     }
 
     public int getId_profissional() {
@@ -62,5 +49,37 @@ public class ProfissionalResponse implements Serializable {
 
     public void setContato(String contato) {
         this.contato = contato;
+    }
+
+    public Double getRate() {
+        return rate;
+    }
+
+    public void setRate(Double rate) {
+        this.rate = rate;
+    }
+
+    public int getReviewsCount() {
+        return reviewsCount;
+    }
+
+    public void setReviewsCount(int reviewsCount) {
+        this.reviewsCount = reviewsCount;
+    }
+
+    public String getAltername() {
+        return altername;
+    }
+
+    public void setAltername(String altername) {
+        this.altername = altername;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

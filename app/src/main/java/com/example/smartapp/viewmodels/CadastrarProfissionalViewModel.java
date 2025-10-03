@@ -121,7 +121,12 @@ public class CadastrarProfissionalViewModel extends ViewModel {
             String phone,
             String email,
             String document,
-            Integer type
+            Integer type,
+            String altername,
+            String description,
+            String zipcode,
+            String address,
+            String number
     ) {
         return authRepository.register(
                 new UserRequest(
@@ -130,7 +135,12 @@ public class CadastrarProfissionalViewModel extends ViewModel {
                         phone,
                         email,
                         document,
-                        type
+                        type,
+                        altername,
+                        description,
+                        zipcode,
+                        address,
+                        number
                 )
         );
     }

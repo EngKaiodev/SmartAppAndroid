@@ -159,7 +159,10 @@ public class CadastrarClienteViewModel extends ViewModel {
             String phone,
             String email,
             String document,
-            Integer type
+            Integer type,
+            String zipcode,
+            String address,
+            String number
     ) {
         return authRepository.register(
                 new UserRequest(
@@ -168,7 +171,10 @@ public class CadastrarClienteViewModel extends ViewModel {
                         phone,
                         email,
                         document,
-                        type
+                        type,
+                        zipcode,
+                        address,
+                        number
                 )
         );
     }

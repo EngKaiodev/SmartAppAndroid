@@ -4,9 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"> <!-- Removed paddingBottom -->
-
-    <!-- Header -->
+    android:background="@color/white">
     <RelativeLayout
         android:id="@+id/headerTop"
         android:layout_width="match_parent"
@@ -74,7 +72,7 @@
                         android:id="@+id/professionalName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Maria Cabeleireira"
+                        tools:text="Maria Cabeleireira"
                         android:textColor="@android:color/black"
                         android:textSize="24sp"
                         android:textStyle="bold"
@@ -96,7 +94,7 @@
                             android:id="@+id/professionalRating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="4.9"
+                            tools:text="4.9"
                             android:textColor="@android:color/black"
                             android:textStyle="bold"
                             android:textSize="18sp"
@@ -106,7 +104,7 @@
                             android:id="@+id/professionalReviews"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="(120 avaliações)"
+                            tools:text="(120 avaliações)"
                             android:textColor="@android:color/black"
                             android:textSize="14sp"
                             android:layout_marginStart="8dp"/>
@@ -127,7 +125,7 @@
                             android:id="@+id/professionalLocation"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Rua da Beleza, 456, Bairro Estilo, Cidade, SP"
+                            tools:text="Rua da Beleza, 456, Bairro Estilo, Cidade, SP"
                             android:textColor="@android:color/black"
                             android:textSize="14sp"
                             android:layout_marginStart="4dp"/>
@@ -152,9 +150,10 @@
                     android:padding="24dp">
 
                     <TextView
+                        android:id="@+id/aboutName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Sobre a Maria Cabeleireira"
+                        tools:text="Sobre a Maria Cabeleireira"
                         android:textColor="@android:color/black"
                         android:textSize="20sp"
                         android:textStyle="bold"
@@ -164,7 +163,7 @@
                         android:id="@+id/professionalDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Cabeleireira com mais de 10 anos de experiência, especialista em cortes modernos e coloração. Oferece um atendimento personalizado e um ambiente acolhedor para que cada cliente se sinta único(a). Sua paixão é transformar o visual e elevar a autoestima."
+                        tools:text="Cabeleireira com mais de 10 anos de experiência, especialista em cortes modernos e coloração. Oferece um atendimento personalizado e um ambiente acolhedor para que cada cliente se sinta único(a). Sua paixão é transformar o visual e elevar a autoestima."
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
                         android:lineSpacingExtra="4dp"/>

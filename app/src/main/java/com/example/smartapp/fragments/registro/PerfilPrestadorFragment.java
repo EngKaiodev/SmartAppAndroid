@@ -88,9 +88,12 @@ public class PerfilPrestadorFragment extends Fragment {
     }
 
     private void setupView(ProfissionalDetailResponse pro) {
-        binding.professionalName.setText(pro.getProfissional().getName());
+        binding.professionalName.setText(pro.getProfissional().getAltername());
         binding.professionalRating.setText(pro.getProfissional().getRate().toString());
         binding.professionalReviews.setText("(" + pro.getProfissional().getReviewsCount() + " avaliações)");
+        binding.professionalLocation.setText(pro.getAddress().getAddress());
+        binding.aboutName.setText("Sobre " + pro.getProfissional().getAltername());
+        binding.professionalDescription.setText(pro.getProfissional().getDescription());
     }
 
     private void setupListeners() {
