@@ -67,11 +67,11 @@ public class CadastrarProfissionalFragment extends Fragment {
                             binding.edtProfendereco.getText().toString(),
                             binding.edtProfnumero.getText().toString()
                                     )
-                            .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe(response -> {
                         if (response.isSuccessful() && response.code() == 200) {
-                            navController.navigate(CadastrarProfissionalFragmentDirections.cadastrarServicoFragment());
+                            int proId = response.body().getId();
+                            navController.navigate(CadastrarProfissionalFragmentDirections.cadastrarServicoFragment(proId));
                         } else {
                             ErrorModel error = ErroHelper.getErrorModel(response);
                             binding.tvError.setText(error.getMessage());

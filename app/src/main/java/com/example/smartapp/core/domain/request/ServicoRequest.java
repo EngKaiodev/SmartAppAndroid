@@ -1,58 +1,73 @@
 package com.example.smartapp.core.domain.request;
 
+
+
 public class ServicoRequest {
+    private String name;
+    private String description;
+    private double price;
+    private int duration;
+    private int proId;
 
-    private int id_profissional;
-    private String nome;
-    private String descricacao;
-    private float preco;
-    private int duracao;
-
-    public ServicoRequest(int id_profissional, String nome, String descricacao, float preco, int duracao) {
-        this.id_profissional = id_profissional;
-        this.nome = nome;
-        this.descricacao = descricacao;
-        this.preco = preco;
-        this.duracao = duracao;
+    @Override
+    public String toString() {
+        return "ServicoRequest{" +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", price=" + price +
+                ", duration=" + duration +
+                ", proId=" + proId +
+                '}';
     }
 
-    public int getId_profissional() {
-        return id_profissional;
+    public String getName() {
+        return name;
     }
 
-    public void setId_profissional(int id_profissional) {
-        this.id_profissional = id_profissional;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getNome() {
-        return nome;
+    public String getDescription() {
+        return description;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getDescricacao() {
-        return descricacao;
+    public double getPrice() {
+        return price;
     }
 
-    public void setDescricacao(String descricacao) {
-        this.descricacao = descricacao;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public float getPreco() {
-        return preco;
+    public int getDuration() {
+        return duration;
     }
 
-    public void setPreco(float preco) {
-        this.preco = preco;
+    public void setDuration(int duration) {
+        this.duration = duration;
     }
 
-    public int getDuracao() {
-        return duracao;
+    public int getProId() {
+        return proId;
     }
 
-    public void setDuracao(int duracao) {
-        this.duracao = duracao;
+    public void setProId(int proId) {
+        this.proId = proId;
+    }
+
+    public ServicoRequest() {
+    }
+
+    public ServicoRequest(String name, String description, double price, int duration, int proId) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.duration = duration;
+        this.proId = proId;
     }
 }

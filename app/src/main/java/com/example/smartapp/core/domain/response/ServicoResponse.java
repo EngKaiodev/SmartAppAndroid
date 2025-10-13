@@ -2,23 +2,13 @@ package com.example.smartapp.core.domain.response;
 
 import java.io.Serializable;
 
+
 public class ServicoResponse implements Serializable {
-
     private int id;
-    private int proId;
     private String name;
-    private  String description;
-    private  float price;
+    private String description;
+    private double price;
     private int duration;
-
-    public ServicoResponse(int id, int proId, String name, String description, float price, int duration) {
-        this.id = id;
-        this.proId = proId;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.duration = duration;
-    }
 
     public int getId() {
         return id;
@@ -26,14 +16,6 @@ public class ServicoResponse implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getProId() {
-        return proId;
-    }
-
-    public void setProId(int proId) {
-        this.proId = proId;
     }
 
     public String getName() {
@@ -52,11 +34,11 @@ public class ServicoResponse implements Serializable {
         this.description = description;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -65,6 +47,17 @@ public class ServicoResponse implements Serializable {
     }
 
     public void setDuration(int duration) {
+        this.duration = duration;
+    }
+
+    public ServicoResponse() {
+    }
+
+    public ServicoResponse(int id, String name, String description, double price, int duration) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
         this.duration = duration;
     }
 }

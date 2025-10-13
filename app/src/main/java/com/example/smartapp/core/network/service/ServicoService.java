@@ -5,6 +5,8 @@ import com.example.smartapp.core.domain.response.ServicoResponse;
 
 import java.util.List;
 
+import io.reactivex.Single;
+import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
@@ -13,21 +15,26 @@ import retrofit2.http.Path;
 
 public interface ServicoService {
 
-    @GET("/Servicos")
-    public List<ServicoResponse> getAll();
+    @GET("/services")
+    Single<Response<List<ServicoResponse>>> getAll();
 
-    @GET("/Servicos/{id}")
-    public ServicoResponse getById(
+    @GET("/services/{id}")
+    Single<Response<ServicoResponse>> getById(
             @Path("id") int id
     );
 
-    @POST("/Servicos")
-    public ServicoResponse insert(
+    @POST("/services")
+    Single<Response<ServicoResponse>> insert(
             @Body ServicoRequest servicoRequest
     );
 
-    @DELETE("/Servicos/{id}")
-    public void delete(
+    @POST("/services/list")
+    Single<Response<List<ServicoResponse>>> insertList(
+            @Body List<ServicoRequest> listToAdd
+    );
+
+    @DELETE("/services/{id}")
+    Single<Response<Void>> delete(
             @Path("id") int id
     );
 }

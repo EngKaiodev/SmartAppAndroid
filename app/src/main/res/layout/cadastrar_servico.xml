@@ -1,246 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:gravity="center"
+    android:orientation="vertical"
     android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="S"
+            android:textColor="#4F46E5"
+            android:textSize="40sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="SmartServ"
+            android:textColor="@android:color/black"
+            android:textSize="32sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="Cadastre Seus Serviços"
+        android:textColor="@android:color/black"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Etapa 2 de 2: Adicione os serviços que você oferece"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="start"
+        android:text="Seus Serviços"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="410dp"
+        android:background="@color/white"
         android:fillViewport="true"
-        android:scrollbars="vertical"
-        android:background="@color/white">
+        android:scrollbars="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top"
-            android:elevation="4dp"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="24dp"
-            android:background="@color/white">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="S"
-                    android:textColor="#4F46E5"
-                    android:textSize="40sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:text="SmartServ"
-                    android:textColor="@android:color/black"
-                    android:textSize="32sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="Cadastre Seus Serviços"
-                android:textColor="@android:color/black"
-                android:textSize="22sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:text="Etapa 2 de 2: Adicione os serviços que você oferece"
-                android:textColor="@android:color/black"
-                android:textSize="14sp" />
-
-            <!-- Seção Seus Serviços -->
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvServicos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:orientation="vertical"
-                android:padding="16dp"
-                android:background="@color/white">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:text="Seus Serviços"
-                    android:textColor="@android:color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:id="@+id/servicesContainerXml"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:id="@+id/service_item_0"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
-                        android:background="@android:color/white"
-                        android:elevation="2dp"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="8dp">
-
-                            <TextView
-                                android:id="@+id/tvServiceNameLabel_0"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentStart="true"
-                                android:layout_centerVertical="true"
-                                android:layout_marginEnd="8dp"
-                                android:layout_toStartOf="@+id/btnRemoveService_0"
-                                android:text="Serviço 1"
-                                android:textColor="@android:color/black"
-                                android:textStyle="bold" />
-
-                            <ImageButton
-                                android:id="@+id/btnRemoveService_0"
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:layout_alignParentEnd="true"
-                                android:layout_centerVertical="true"
-                                android:background="?attr/selectableItemBackgroundBorderless"
-                                android:contentDescription="Remover Serviço"
-                                android:padding="8dp"
-                                android:scaleType="fitCenter" />
-                        </RelativeLayout>
-
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tilServiceName_0"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="12dp"
-                            android:hint="Nome do Serviço"
-                            android:textColorHint="@color/black"
-                            app:hintTextColor="@android:color/black"
-                            app:boxStrokeColor="@android:color/black">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edtNomeservico"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:imeOptions="actionNext"
-                                android:inputType="textCapSentences"
-                                android:textColor="@android:color/black" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tilServiceDescription_0"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="12dp"
-                            android:hint="Descrição do Serviço (Opcional)"
-                            android:textColorHint="@color/black"
-                            app:hintTextColor="@android:color/black"
-                            app:boxStrokeColor="@android:color/black">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edtDescricaoServico"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="top"
-                                android:imeOptions="actionNext"
-                                android:inputType="textMultiLine|textCapSentences"
-                                android:minLines="2"
-                                android:textColor="@android:color/black" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/tilServicePrice_0"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="Preço (R$)"
-                            app:prefixText="R$ "
-                            android:textColorHint="@color/black"
-                            app:prefixTextColor="@android:color/black"
-                            app:hintTextColor="@android:color/black"
-                            app:boxStrokeColor="@android:color/black">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/edtPrecoServico"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:imeOptions="actionDone"
-                                android:inputType="numberDecimal"
-                                android:textColor="@android:color/black" />
-                        </com.google.android.material.textfield.TextInputLayout>
-                    </LinearLayout>
-                </LinearLayout>
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnAdcionarServico"
-                    style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:backgroundTint="#E0E7FF"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:text="Adicionar Mais Serviço"
-                    android:textColor="@android:color/black"
-                    app:cornerRadius="8dp"
-                    app:iconTint="@android:color/black" />
-            </LinearLayout>
-
-            <!-- Container de erro para mostrar as mensagens de erro -->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/erro_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_marginBottom="16dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="center"
-                    android:text="Verifique os campos novamente"
-                    android:textColor="@color/red_500"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                tools:itemCount="2"
+                tools:listitem="@layout/item_servicos" />
 
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnfinalizarPro"
+                android:id="@+id/btnAdcionarServico"
+                style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:backgroundTint="#16A34A"
-                android:paddingTop="14dp"
-                android:paddingBottom="14dp"
-                android:text="Finalizar Cadastro"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                app:cornerRadius="8dp" />
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#E0E7FF"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Adicionar Mais Serviço"
+                android:textColor="@android:color/black"
+                app:cornerRadius="8dp"
+                app:iconTint="@android:color/black" />
         </LinearLayout>
     </ScrollView>
-</RelativeLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnfinalizarPro"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#16A34A"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:text="Finalizar Cadastro"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
+        app:cornerRadius="8dp" />
+</LinearLayout>

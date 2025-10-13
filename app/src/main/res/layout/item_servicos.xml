@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true"
+    android:backgroundTint="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@color/light_gray">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:id="@+id/txtServiceTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@id/btnRemoveService"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                tools:text="Serviço 1" />
+
+            <ImageButton
+                android:id="@+id/btnRemoveService"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Remover serviço"
+                android:padding="8dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/cancel_ico"
+                app:tint="@color/red_500" />
+        </RelativeLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilServiceName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome"
+            app:boxStrokeColor="@android:color/black"
+            app:hintTextColor="@android:color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtNomeServico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionNext"
+                android:inputType="textCapSentences"
+                android:textColor="@android:color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilServiceDescription"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Descrição"
+            app:boxStrokeColor="@android:color/black"
+            app:hintTextColor="@android:color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtDescricaoServico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:imeOptions="actionNext"
+                android:inputType="textMultiLine|textCapSentences"
+                android:minLines="2"
+                android:textColor="@android:color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilServicePrice"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Preço"
+            app:prefixText="R$ "
+            app:prefixTextColor="@android:color/black"
+            app:boxStrokeColor="@android:color/black"
+            app:hintTextColor="@android:color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtPrecoServico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"
+                android:textColor="@android:color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilServiceDuration"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Duração (min)"
+            app:prefixText="R$ "
+            app:prefixTextColor="@android:color/black"
+            app:boxStrokeColor="@android:color/black"
+            app:hintTextColor="@android:color/black">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtDuracaoServico"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:imeOptions="actionDone"
+                android:inputType="numberDecimal"
+                android:textColor="@android:color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

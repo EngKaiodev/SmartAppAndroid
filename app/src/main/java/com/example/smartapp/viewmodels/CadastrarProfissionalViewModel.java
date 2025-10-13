@@ -2,6 +2,7 @@ package com.example.smartapp.viewmodels;
 
 import androidx.lifecycle.ViewModel;
 
+import com.example.smartapp.core.Preferences;
 import com.example.smartapp.core.domain.request.UserRequest;
 import com.example.smartapp.core.domain.response.UserResponse;
 import com.example.smartapp.core.domain.response.ViaCepResponse;
@@ -14,6 +15,7 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import io.reactivex.Single;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Response;
 
 @HiltViewModel
@@ -21,6 +23,7 @@ public class CadastrarProfissionalViewModel extends ViewModel {
 
     private final ViaCepRepository viaCepRepository;
     private final AuthRepository authRepository;
+    private final Preferences prefs;
 
     // Padrões de regex para validação
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
@@ -31,9 +34,10 @@ public class CadastrarProfissionalViewModel extends ViewModel {
     private static final Pattern SENHA_PATTERN = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
 
     @Inject
-    public CadastrarProfissionalViewModel(ViaCepRepository viaCepRepository, AuthRepository authRepository){
+    public CadastrarProfissionalViewModel(ViaCepRepository viaCepRepository, AuthRepository authRepository, Preferences prefs){
         this.viaCepRepository = viaCepRepository;
         this.authRepository = authRepository;
+        this.prefs = prefs;
     }
 
     public boolean validateField(
@@ -142,7 +146,13 @@ public class CadastrarProfissionalViewModel extends ViewModel {
                         address,
                         number
                 )
-        );
+        ).subscribeOn(Schedulers.io())
+                .doOnSuccess(response -> {
+                    if (response.body() != null){
+                        prefs.createSession(response.body());
+                    }
+                })
+                ;
     }
 
 

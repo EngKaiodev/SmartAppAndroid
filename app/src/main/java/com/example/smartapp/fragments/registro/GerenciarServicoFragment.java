@@ -57,7 +57,7 @@ public class GerenciarServicoFragment extends Fragment {
 
     private void mockedList(){
         servicoList = List.of(
-                new ServicoResponse(1,1, "Paula","manicure", 30f, 30)
+                new ServicoResponse(1, "Paula","manicure", 30f, 30)
         );
     }
 

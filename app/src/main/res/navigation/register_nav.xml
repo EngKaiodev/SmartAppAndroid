@@ -40,7 +40,11 @@
         android:id="@+id/cadastrar_servico_fragment"
         android:name="com.example.smartapp.fragments.registro.CadastrarServicoFragment"
         android:label="CadastrarServicoFragment"
-        tools:layout="@layout/cadastrar_servico" />
+        tools:layout="@layout/cadastrar_servico">
+        <argument
+            android:name="proId"
+            app:argType="integer" />
+    </fragment>
 
 
 </navigation>
