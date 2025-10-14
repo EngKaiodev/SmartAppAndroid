@@ -17,14 +17,19 @@ import com.example.smartapp.domain.models.ServicoModel;
 import java.text.NumberFormat;
 import java.util.List;
 import java.util.Locale;
+import java.util.function.Consumer;
 
 public class ServicoAdapter extends RecyclerView.Adapter<ServicoAdapter.ViewHolder> {
 
     private final List<ServicoResponse> sList;
+    private final Consumer<ServicoResponse> onEditClick;
+    private final Consumer<ServicoResponse> onDeleteClick;
     private final boolean isEditing;
 
-    public ServicoAdapter(List<ServicoResponse> sList, boolean isEditing){
+    public ServicoAdapter(List<ServicoResponse> sList, Consumer<ServicoResponse> onEditClick, Consumer<ServicoResponse> onDeleteClick, boolean isEditing) {
         this.sList = sList;
+        this.onEditClick = onEditClick;
+        this.onDeleteClick = onDeleteClick;
         this.isEditing = isEditing;
     }
 
@@ -40,7 +45,8 @@ public class ServicoAdapter extends RecyclerView.Adapter<ServicoAdapter.ViewHold
     public void onBindViewHolder(@NonNull ServicoAdapter.ViewHolder holder, int position) {
         ServicoResponse pitem = sList.get(position);
         holder.bind(pitem, isEditing);
-
+        holder.binding.editarservico.setOnClickListener(v -> onEditClick.accept(pitem));
+        holder.binding.excluirservico.setOnClickListener(v -> onDeleteClick.accept(pitem));
     }
 
     @Override

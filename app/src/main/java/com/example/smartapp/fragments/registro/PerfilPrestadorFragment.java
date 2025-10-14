@@ -81,7 +81,7 @@ public class PerfilPrestadorFragment extends Fragment {
         binding.rvAvaliacao.setAdapter(avalicaoAdapter);
         binding.rvAvaliacao.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        servicoAdapter = new ServicoAdapter(servicos, false);
+        servicoAdapter = new ServicoAdapter(servicos, null, null,  false);
 
         binding.rvServico.setAdapter(servicoAdapter);
         binding.rvServico.setLayoutManager(new LinearLayoutManager(getContext()));

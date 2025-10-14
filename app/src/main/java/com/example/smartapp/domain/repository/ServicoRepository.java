@@ -1,5 +1,6 @@
 package com.example.smartapp.domain.repository;
 
+import com.example.smartapp.core.domain.request.ServicoEditRequest;
 import com.example.smartapp.core.domain.request.ServicoRequest;
 import com.example.smartapp.core.domain.response.ServicoResponse;
 import com.example.smartapp.core.network.service.ServicoService;
@@ -23,6 +24,10 @@ public class ServicoRepository {
 
     public Single<Response<List<ServicoResponse>>> getAll(){return servicoService.getAll().observeOn(Schedulers.io());}
 
+    public Single<Response<List<ServicoResponse>>> getAllByUserId(int id){
+        return servicoService.getAllByUserId(id).subscribeOn(Schedulers.io());
+    }
+
     public Single<Response<ServicoResponse>> getById(int id) throws Exception{
         if (id <= 0 ){
             throw new Exception("O id deve ser maior que 0");
@@ -43,5 +48,9 @@ public class ServicoRepository {
 
     public Single<Response<List<ServicoResponse>>> insertList(List<ServicoRequest> listToAdd) {
         return servicoService.insertList(listToAdd).subscribeOn(Schedulers.io());
+    }
+
+    public Single<Response<ServicoResponse>> edit(ServicoEditRequest request){
+        return servicoService.edit(request.getId(), request).subscribeOn(Schedulers.io());
     }
 }

@@ -111,7 +111,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Duração (min)"
-            app:prefixText="R$ "
+            app:suffixText="min"
             app:prefixTextColor="@android:color/black"
             app:boxStrokeColor="@android:color/black"
             app:hintTextColor="@android:color/black">
@@ -121,7 +121,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:imeOptions="actionDone"
-                android:inputType="numberDecimal"
+                android:inputType="number"
                 android:textColor="@android:color/black" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>

@@ -43,7 +43,7 @@
         tools:layout="@layout/perfil">
         <action
             android:id="@+id/action_calendario_fragment"
-            app:destination="@id/calendario_fragment"/>
+            app:destination="@id/calendario_fragment" />
         <action
             android:id="@+id/editar_cliente_fragment"
             app:destination="@id/editar_cliente_fragment" />
@@ -67,7 +67,7 @@
         android:id="@+id/calendario_fragment"
         android:name="com.example.smartapp.fragments.registro.GerenciarHorariosFragment"
         android:label="CalendarioFragment"
-        tools:layout="@layout/gerenciar_horarios"/>
+        tools:layout="@layout/gerenciar_horarios" />
     <fragment
         android:id="@id/historico_servico_fragment"
         android:name="com.example.smartapp.fragments.registro.HistoricoServicoFragment"
@@ -144,7 +144,7 @@
         tools:layout="@layout/perfil_prestador">
         <argument
             android:name="proId"
-            app:argType="integer"/>
+            app:argType="integer" />
         <action
             android:id="@+id/agendar_servico_fragment"
             app:destination="@id/agendar_servico_fragment" />
@@ -168,12 +168,12 @@
         android:label="AgendarServicoFragment"
         tools:layout="@layout/agendar_servico">
         <argument
-            app:argType="integer"
-            android:name="proId"/>
+            android:name="proId"
+            app:argType="integer" />
         <argument
-            app:argType="string"
             android:name="proName"
-            app:nullable="true"/>
+            app:argType="string"
+            app:nullable="true" />
         <action
             android:id="@+id/confirmaragendamentofragment"
             app:destination="@+id/confirmaragendamentofragment" />
@@ -208,7 +208,10 @@
         android:name="com.example.smartapp.fragments.registro.CriarServicoFragment"
         android:label="CriarServicoFragment"
         tools:layout="@layout/cria_servico">
-
+        <argument
+            android:name="servico"
+            app:argType="com.example.smartapp.core.domain.response.ServicoResponse"
+            app:nullable="true" />
     </fragment>
 
 </navigation>

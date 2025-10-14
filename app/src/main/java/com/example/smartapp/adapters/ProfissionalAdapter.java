@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartapp.core.domain.response.ProfissionalResponse;
 import com.example.smartapp.databinding.ProfissionalCategoryBinding;
-import com.example.smartapp.domain.models.ProfissionalModel;
 
 
 import java.util.List;

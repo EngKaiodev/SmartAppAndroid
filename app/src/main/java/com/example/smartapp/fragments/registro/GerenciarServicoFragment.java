@@ -1,5 +1,7 @@
 package com.example.smartapp.fragments.registro;
 
+import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,13 +15,10 @@ import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.smartapp.adapters.AgendamentoAdapter;
+import com.example.smartapp.activities.MainActivity;
 import com.example.smartapp.adapters.ServicoAdapter;
 import com.example.smartapp.core.domain.response.ServicoResponse;
 import com.example.smartapp.databinding.GerenciarServicoBinding;
-import com.example.smartapp.domain.models.AgendamentoModel;
-import com.example.smartapp.domain.models.CategoryModel;
-import com.example.smartapp.domain.models.ServicoModel;
 import com.example.smartapp.viewmodels.GerenciarServicoViewModel;
 
 import java.util.List;
@@ -34,7 +33,6 @@ public class GerenciarServicoFragment extends Fragment {
     private NavController navController;
 
     private List<ServicoResponse> servicoList;
-    private ServicoAdapter servicoAdapter;
 
 
     @Nullable
@@ -49,40 +47,46 @@ public class GerenciarServicoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = NavHostFragment.findNavController(this);
+        viewModel.loadServices();
 
-        mockedList();
         setupListeners();
-        setupAdapters();
+        setupObservers();
     }
 
-    private void mockedList(){
-        servicoList = List.of(
-                new ServicoResponse(1, "Paula","manicure", 30f, 30)
-        );
+    private void setupObservers() {
+        viewModel.services.observe(getViewLifecycleOwner(), list -> {
+            servicoList = list;
+            setupAdapters();
+        });
     }
-
     private void setupAdapters(){
-        servicoAdapter = new ServicoAdapter(servicoList, true);
+        ServicoAdapter servicoAdapter = new ServicoAdapter(servicoList,
+                clicked -> navController.navigate(GerenciarServicoFragmentDirections.actionCriarServicoFragment(clicked)),
+                toDelete -> tryDelete(toDelete),
+                true
+                );
         binding.rvServico.setAdapter(servicoAdapter);
         binding.rvServico.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     }
 
-
+    private void tryDelete(ServicoResponse toDelete) {
+        new AlertDialog.Builder(getContext())
+                .setTitle("Atenção")
+                .setMessage("Deseja realmente deletar este serviço? \n Essa ação não poderá ser desfeita.")
+                .setPositiveButton("Sim", (dialog, which) -> {
+                    viewModel.deleteService(toDelete.getId());
+                })
+                .setNegativeButton("Não", (dialog, which) -> {
+                    dialog.dismiss();
+                })
+                .setCancelable(false)
+                .show();
+    }
 
     private void setupListeners() {
-        binding.btnVoltarServico.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.popBackStack();
-            }
-        });
+        binding.btnVoltarServico.setOnClickListener(v -> navController.popBackStack());
 
-        binding.btnAdcionarServico.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(GerenciarServicoFragmentDirections.actionCriarServicoFragment());
-            }
-        });
+        binding.btnAdcionarServico.setOnClickListener(v -> navController.navigate(GerenciarServicoFragmentDirections.actionCriarServicoFragment(null)));
     }
 
     @Override

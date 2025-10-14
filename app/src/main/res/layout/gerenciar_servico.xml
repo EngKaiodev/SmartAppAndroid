@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="#F0F2F5">
 
     <!-- Header com botão de voltar -->
@@ -11,30 +11,30 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:background="#4F46E5"
-        android:padding="16dp"
-        android:layout_alignParentTop="true">
+        android:padding="16dp">
 
         <ImageButton
             android:id="@+id/btnVoltarServico"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_alignParentStart="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="gere2"
-            android:src="@drawable/ic_arrow_back"
-            android:layout_alignParentStart="true"/>
+            android:src="@drawable/ic_arrow_back" />
 
         <TextView
             android:id="@+id/logoTextHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@id/btnVoltarServico"
             android:layout_marginStart="8dp"
+            android:layout_toEndOf="@id/btnVoltarServico"
             android:text="SmartServ"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/headerTitle"
@@ -43,11 +43,11 @@
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:text="Gerenciar Serviços"
             android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:maxLines="1"
-            android:ellipsize="end"/>
+            android:textSize="16sp" />
     </RelativeLayout>
 
     <!-- Card Principal -->
@@ -56,9 +56,9 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/header"
         android:layout_margin="16dp"
+        app:cardBackgroundColor="@android:color/white"
         app:cardCornerRadius="12dp"
-        app:cardElevation="8dp"
-        app:cardBackgroundColor="@android:color/white">
+        app:cardElevation="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,14 +70,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="24dp">
+                android:layout_marginBottom="24dp"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:gravity="center_vertical"
+                    android:orientation="horizontal"
                     android:weightSum="1">
 
                     <LinearLayout
@@ -92,7 +92,7 @@
                             android:text="Seus Serviços Cadastrados"
                             android:textColor="#1F2937"
                             android:textSize="18sp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="match_parent"
@@ -100,27 +100,27 @@
                             android:layout_marginTop="4dp"
                             android:text="Edite, remova ou adicione novos serviços à sua lista."
                             android:textColor="#6B7280"
-                            android:textSize="14sp"/>
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                     <Button
                         android:id="@+id/btnAdcionarServico"
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:layout_weight="0.3"
                         android:layout_marginStart="16dp"
+                        android:layout_weight="0.3"
+                        android:background="@drawable/rounded_button"
+                        android:backgroundTint="#4F46E5"
                         android:drawableStart="@drawable/ic_add"
-                        android:drawableTint="@android:color/white"
                         android:drawablePadding="4dp"
+                        android:drawableTint="@android:color/white"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:minHeight="40dp"
                         android:paddingStart="8dp"
                         android:paddingEnd="8dp"
                         android:text="Adicionar"
-                        android:textColor="@android:color/white"
-                        android:backgroundTint="#4F46E5"
-                        android:background="@drawable/rounded_button"
-                        android:minHeight="40dp"
-                        android:maxLines="1"
-                        android:ellipsize="end"/>
+                        android:textColor="@android:color/white" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -128,31 +128,26 @@
             <LinearLayout
                 android:id="@+id/serviceList"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                >
-                <!-- Item de Serviço 1 -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvServico"
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/service_item_background"
-                    android:padding="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    tools:listitem="@layout/servico_category"
-                    app:spanCount="1"
-                    tools:itemCount="1"
-                    />
-            </ScrollView>
+                    android:layout_height="match_parent">
 
-                <!-- Item de Serviço 2 -->
-
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvServico"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/service_item_background"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="16dp"
+                        app:spanCount="1"
+                        tools:itemCount="8"
+                        tools:listitem="@layout/servico_category" />
+                </ScrollView>
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
