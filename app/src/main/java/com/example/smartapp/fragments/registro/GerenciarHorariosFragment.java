@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.smartapp.core.domain.request.HoursRequest;
 import com.example.smartapp.databinding.ConfiguracaoMensagemBinding;
@@ -29,6 +31,7 @@ public class GerenciarHorariosFragment extends Fragment {
 
     private GerenciarHorariosBinding binding;
     private GerenciarHorariosViewModel viewModel;
+    private NavController navController;
 
     @Nullable
     @Override
@@ -41,6 +44,7 @@ public class GerenciarHorariosFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        navController = NavHostFragment.findNavController(this);
 
         setupView();
         setupObservers();
@@ -49,8 +53,9 @@ public class GerenciarHorariosFragment extends Fragment {
 
     private void setupObservers() {
         viewModel.add.observe(getViewLifecycleOwner(), response -> {
-            if (response){
+            if (response) {
                 Toast.makeText(getContext(), "Horários inseridos com sucesso!", Toast.LENGTH_SHORT).show();
+                navController.popBackStack();
             } else {
                 Toast.makeText(getContext(), "Algo deu errado, tente de novo mais tarde.", Toast.LENGTH_SHORT).show();
             }
@@ -58,11 +63,8 @@ public class GerenciarHorariosFragment extends Fragment {
     }
 
     private void setupListeners() {
-        binding.btnSalvarHorario.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
+        binding.btnSalvarHorario.setOnClickListener(view -> {
+            viewModel.insertHourList(getHours());
         });
     }
 
@@ -83,7 +85,7 @@ public class GerenciarHorariosFragment extends Fragment {
         binding.timeFimTarde.setMinute(0);
     }
 
-    /*private List<HoursRequest> getHours(){
+    private List<HoursRequest> getHours() {
         List<Integer> selectedDays = new ArrayList<>();
         List<HoursRequest> hours = new ArrayList<>();
 
@@ -97,21 +99,28 @@ public class GerenciarHorariosFragment extends Fragment {
                 binding.checkDomingo
         ));
         int count = 1;
-        for (CheckBox check: checks){
-            if (check.isChecked()){
+        for (CheckBox check : checks) {
+            if (check.isChecked()) {
                 selectedDays.add(count);
             }
             count++;
         }
 
-        for(Integer day : selectedDays){
+        for (Integer day : selectedDays) {
             hours.add(new HoursRequest(
-                 day,
-                 binding.timeInicioManha.getHour(),
-                 binding.timeFimManha.getHour(),
-                 binding.timeInicioTarde.getHour(),
-                 binding.
-            ))
+                    viewModel.getId(),
+                    day,
+                    binding.timeInicioManha.getHour(),
+                    binding.timeInicioManha.getMinute(),
+                    binding.timeFimManha.getHour(),
+                    binding.timeFimManha.getMinute(),
+                    binding.timeInicioTarde.getHour(),
+                    binding.timeInicioTarde.getMinute(),
+                    binding.timeFimTarde.getHour(),
+                    binding.timeFimTarde.getMinute()
+            ));
         }
-    }*/
+
+        return hours;
+    }
 }

@@ -16,7 +16,7 @@ public interface HourService {
     Single<Response<HourResponse>> insertHour(
             @Body HoursRequest request
             );
-    @POST("/hour")
+    @POST("/hour/list")
     Single<Response<List<HourResponse>>> insertHourList(
             @Body List<HoursRequest> requestList
     );
