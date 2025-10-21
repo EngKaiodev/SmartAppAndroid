@@ -107,7 +107,7 @@ public class PerfilPrestadorFragment extends Fragment {
         binding.btnAgendarServ.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(PerfilPrestadorFragmentDirections.agendarServicoFragment(id, null));
+                navController.navigate(PerfilPrestadorFragmentDirections.agendarServicoFragment(null));
             }
         });
 

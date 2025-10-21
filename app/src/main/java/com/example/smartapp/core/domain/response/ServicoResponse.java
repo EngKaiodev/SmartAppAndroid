@@ -1,6 +1,9 @@
 package com.example.smartapp.core.domain.response;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
+import java.util.Locale;
 
 
 public class ServicoResponse implements Serializable {
@@ -59,5 +62,11 @@ public class ServicoResponse implements Serializable {
         this.description = description;
         this.price = price;
         this.duration = duration;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name + " - R$ " + String.format(Locale.getDefault(), "%.2f", price) ;
     }
 }

@@ -1,37 +1,30 @@
 package com.example.smartapp.core.domain.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import java.time.LocalDateTime;
 
 
 public class HoursRequest {
     private Integer userId;
-    private Integer day; // 1 = segunda ... 7 = domingo
-    private int initHourMorning;
-    private int initMinuteMorning;
-    private int endHourMorning;
-    private int endMinuteMorning;
-    private int initHourAfternoon;
-    private int initMinuteAfternoon;
-    private int endHourAfternoon;
-    private int endMinuteAfternoon;
+    private LocalDateTime initHour;
+    private LocalDateTime endHour;
+    private String status;
 
     public HoursRequest() {
     }
 
-    public HoursRequest(Integer userId, Integer day, int initHourMorning, int initMinuteMorning, int endHourMorning, int endMinuteMorning, int initHourAfternoon, int initMinuteAfternoon, int endHourAfternoon, int endMinuteAfternoon) {
+    public HoursRequest(Integer userId, LocalDateTime initHour, LocalDateTime endHour, String status) {
         this.userId = userId;
-        this.day = day;
-        this.initHourMorning = initHourMorning;
-        this.initMinuteMorning = initMinuteMorning;
-        this.endHourMorning = endHourMorning;
-        this.endMinuteMorning = endMinuteMorning;
-        this.initHourAfternoon = initHourAfternoon;
-        this.initMinuteAfternoon = initMinuteAfternoon;
-        this.endHourAfternoon = endHourAfternoon;
-        this.endMinuteAfternoon = endMinuteAfternoon;
+        this.initHour = initHour;
+        this.endHour = endHour;
+        this.status = status;
+    }
+
+    public LocalDateTime getInitHour() {
+        return initHour;
+    }
+
+    public void setInitHour(LocalDateTime initHour) {
+        this.initHour = initHour;
     }
 
     public Integer getUserId() {
@@ -42,75 +35,29 @@ public class HoursRequest {
         this.userId = userId;
     }
 
-    public Integer getDay() {
-        return day;
+    public LocalDateTime getEndHour() {
+        return endHour;
     }
 
-    public void setDay(Integer day) {
-        this.day = day;
+    public void setEndHour(LocalDateTime endHour) {
+        this.endHour = endHour;
     }
 
-    public int getInitHourMorning() {
-        return initHourMorning;
+    public String getStatus() {
+        return status;
     }
 
-    public void setInitHourMorning(int initHourMorning) {
-        this.initHourMorning = initHourMorning;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public int getInitMinuteMorning() {
-        return initMinuteMorning;
-    }
-
-    public void setInitMinuteMorning(int initMinuteMorning) {
-        this.initMinuteMorning = initMinuteMorning;
-    }
-
-    public int getEndHourMorning() {
-        return endHourMorning;
-    }
-
-    public void setEndHourMorning(int endHourMorning) {
-        this.endHourMorning = endHourMorning;
-    }
-
-    public int getEndMinuteMorning() {
-        return endMinuteMorning;
-    }
-
-    public void setEndMinuteMorning(int endMinuteMorning) {
-        this.endMinuteMorning = endMinuteMorning;
-    }
-
-    public int getInitHourAfternoon() {
-        return initHourAfternoon;
-    }
-
-    public void setInitHourAfternoon(int initHourAfternoon) {
-        this.initHourAfternoon = initHourAfternoon;
-    }
-
-    public int getInitMinuteAfternoon() {
-        return initMinuteAfternoon;
-    }
-
-    public void setInitMinuteAfternoon(int initMinuteAfternoon) {
-        this.initMinuteAfternoon = initMinuteAfternoon;
-    }
-
-    public int getEndHourAfternoon() {
-        return endHourAfternoon;
-    }
-
-    public void setEndHourAfternoon(int endHourAfternoon) {
-        this.endHourAfternoon = endHourAfternoon;
-    }
-
-    public int getEndMinuteAfternoon() {
-        return endMinuteAfternoon;
-    }
-
-    public void setEndMinuteAfternoon(int endMinuteAfternoon) {
-        this.endMinuteAfternoon = endMinuteAfternoon;
+    @Override
+    public String toString() {
+        return "HoursRequest{" +
+                "userId=" + userId +
+                ", initHour=" + initHour +
+                ", endHour=" + endHour +
+                ", status='" + status + '\'' +
+                '}';
     }
 }

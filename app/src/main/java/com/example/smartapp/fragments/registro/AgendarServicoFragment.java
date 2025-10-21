@@ -1,5 +1,8 @@
 package com.example.smartapp.fragments.registro;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,15 +14,20 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.smartapp.R;
+import com.example.smartapp.core.domain.response.HourResponse;
+import com.example.smartapp.core.domain.response.ProfissionalResponse;
+import com.example.smartapp.core.domain.response.ServicoResponse;
 import com.example.smartapp.databinding.AgendarServicoBinding;
 import com.example.smartapp.viewmodels.AgendarServicoViewModel;
 
-import java.util.Arrays;
+import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.List;
 
@@ -33,8 +41,7 @@ public class AgendarServicoFragment extends Fragment {
     private NavController navController;
 
 
-    private int proId;
-    private String proName;
+    private ProfissionalResponse profissionalSelected;
 
     @Nullable
     @Override
@@ -44,65 +51,71 @@ public class AgendarServicoFragment extends Fragment {
         return binding.getRoot();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         navController = NavHostFragment.findNavController(this);
         AgendarServicoFragmentArgs args = AgendarServicoFragmentArgs.fromBundle(getArguments());
 
-        proId = args.getProId();
-        proName = args.getProName();
+        profissionalSelected = args.getPro();
 
-        setupSpinners();
+        setupObservers();
         setupDatePicker();
         setupListeners();
-        setupObservers();
+
+        setupView();
     }
 
-    private void setupSpinners() {
-        // Configurar spinner de serviços
-        List<String> servicos = Arrays.asList(
-                "Selecione um serviço",
-                "Corte de Cabelo",
-                "Coloração",
-                "Manicure",
-                "Pedicure",
-                "Massagem",
-                "Limpeza de Pele"
-        );
+    private void setupView() {
+        if (profissionalSelected != null){
+            viewModel.loadServicos(profissionalSelected.getId_profissional());
+            binding.edtnomeagend.setText(profissionalSelected.getName());
+        }
+    }
 
-        ArrayAdapter<String> servicosAdapter = new ArrayAdapter<>(
+    private void setupSpinners(List<ServicoResponse> servicos) {
+        ArrayAdapter<ServicoResponse> servicosAdapter = new ArrayAdapter<>(
                 requireContext(),
-                android.R.layout.simple_spinner_item,
+                R.layout.spinner_item,
                 servicos
         );
-        servicosAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        servicosAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         binding.servicosSpinner.setAdapter(servicosAdapter);
-
-        // Configurar spinner de horários
-        List<String> horarios = Arrays.asList(
-                "Selecione um horário",
-                "08:00", "09:00", "10:00", "11:00",
-                "13:00", "14:00", "15:00", "16:00", "17:00"
-        );
-
-        ArrayAdapter<String> horariosAdapter = new ArrayAdapter<>(
-                requireContext(),
-                android.R.layout.simple_spinner_item,
-                horarios
-        );
-        horariosAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        binding.horarioSpinner.setAdapter(horariosAdapter);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void setupDatePicker() {
-        // Configurar data mínima como hoje
-        Calendar calendar = Calendar.getInstance();
-        binding.edtpickerdata.setMinDate(calendar.getTimeInMillis());
+        LocalDate today = LocalDate.now();
+        binding.edtpickerdata.init(
+                today.getYear(),
+                today.getMonthValue() - 1,
+                today.getDayOfMonth(),
+                (view, year, monthOfYear, dayOfMonth) -> {
+                    LocalDate date = LocalDate.of(year, monthOfYear + 1, dayOfMonth);
+                    viewModel.loadHours(profissionalSelected.getId_profissional(), date);
+                }
+        );
 
-        // Configurar data máxima como 60 dias a partir de hoje
-        calendar.add(Calendar.DAY_OF_MONTH, 60);
-        binding.edtpickerdata.setMaxDate(calendar.getTimeInMillis());
+    }
+
+    private void setupHourPicker(List<HourResponse> hours) {
+        if (hours.isEmpty()){
+            binding.errorHours.setVisibility(VISIBLE);
+            binding.horarioSpinner.setVisibility(GONE);
+        } else {
+            ArrayAdapter<HourResponse> horariosAdapter = new ArrayAdapter<>(
+                    requireContext(),
+                    R.layout.spinner_item,
+                    hours
+            );
+            horariosAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+            binding.horarioSpinner.setAdapter(horariosAdapter);
+
+            binding.errorHours.setVisibility(GONE);
+            binding.horarioSpinner.setVisibility(VISIBLE);
+        }
+        atualizarResumo();
     }
 
     private void setupListeners() {
@@ -128,12 +141,6 @@ public class AgendarServicoFragment extends Fragment {
             }
         });
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            binding.edtpickerdata.setOnDateChangedListener((view, year, monthOfYear, dayOfMonth) -> {
-                atualizarResumo();
-            });
-        }
-
         binding.horarioSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -147,7 +154,11 @@ public class AgendarServicoFragment extends Fragment {
     }
 
     private void setupObservers() {
-        // Observar mudanças no ViewModel se necessário
+        viewModel.servicos.observe(getViewLifecycleOwner(), services -> {
+            setupSpinners(services);
+            atualizarResumo();
+        });
+        viewModel.hours.observe(getViewLifecycleOwner(), this::setupHourPicker);
     }
 
     private boolean validarFormulario() {
@@ -155,10 +166,10 @@ public class AgendarServicoFragment extends Fragment {
 
         // Validar serviço
         if (binding.servicosSpinner.getSelectedItemPosition() == 0) {
-            binding.serviceError.setVisibility(View.VISIBLE);
+            binding.serviceError.setVisibility(VISIBLE);
             valido = false;
         } else {
-            binding.serviceError.setVisibility(View.GONE);
+            binding.serviceError.setVisibility(GONE);
         }
 
         // Validar data (sempre terá uma data selecionada devido ao DatePicker)
@@ -177,18 +188,18 @@ public class AgendarServicoFragment extends Fragment {
 
         if (selectedDate.before(today)) {
             binding.dateError.setText("Por favor, selecione uma data futura.");
-            binding.dateError.setVisibility(View.VISIBLE);
+            binding.dateError.setVisibility(VISIBLE);
             valido = false;
         } else {
-            binding.dateError.setVisibility(View.GONE);
+            binding.dateError.setVisibility(GONE);
         }
 
         // Validar horário
         if (binding.horarioSpinner.getSelectedItemPosition() == 0) {
-            binding.timeError.setVisibility(View.VISIBLE);
+            binding.timeError.setVisibility(VISIBLE);
             valido = false;
         } else {
-            binding.timeError.setVisibility(View.GONE);
+            binding.timeError.setVisibility(GONE);
         }
 
         if (!valido) {
@@ -199,40 +210,26 @@ public class AgendarServicoFragment extends Fragment {
     }
 
     private void atualizarResumo() {
-        // Atualizar serviço no resumo
-        if (binding.servicosSpinner.getSelectedItemPosition() > 0) {
-            String servicoSelecionado = binding.servicosSpinner.getSelectedItem().toString();
-            binding.edtagendaServiconome.setText(servicoSelecionado);
+        if (binding.servicosSpinner.getSelectedItem() != null) {
+            ServicoResponse servicoSelecionado = (ServicoResponse) binding.servicosSpinner.getSelectedItem();
+            binding.edtagendaServiconome.setText(servicoSelecionado.toString());
 
-            // Atualizar preço baseado no serviço (exemplo)
-            double preco = obterPrecoServico(servicoSelecionado);
+            double preco = servicoSelecionado.getPrice();
             binding.edtagendaPreco.setText(String.format("R$ %.2f", preco));
+
+            int duration = servicoSelecionado.getDuration();
+            binding.summaryDuration.setText(duration + "min");
         }
 
-        // Atualizar data no resumo
         String dataSelecionada = String.format("%02d/%02d/%d",
                 binding.edtpickerdata.getDayOfMonth(),
                 binding.edtpickerdata.getMonth() + 1, // Month é 0-based
                 binding.edtpickerdata.getYear());
         binding.summaryDate.setText(dataSelecionada);
 
-        // Atualizar horário no resumo
-        if (binding.horarioSpinner.getSelectedItemPosition() > 0) {
+        if (binding.horarioSpinner.getSelectedItem() != null) {
             String horarioSelecionado = binding.horarioSpinner.getSelectedItem().toString();
             binding.summaryTime.setText(horarioSelecionado);
-        }
-    }
-
-    private double obterPrecoServico(String servico) {
-        // Lógica para obter preço baseado no serviço (exemplo)
-        switch (servico) {
-            case "Corte de Cabelo": return 30.00;
-            case "Coloração": return 80.00;
-            case "Manicure": return 25.00;
-            case "Pedicure": return 30.00;
-            case "Massagem": return 70.00;
-            case "Limpeza de Pele": return 60.00;
-            default: return 0.00;
         }
     }
 

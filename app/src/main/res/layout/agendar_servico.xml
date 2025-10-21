@@ -11,30 +11,30 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:background="@color/indigo_600"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:padding="16dp"
-        android:layout_alignParentTop="true">
+        android:orientation="horizontal"
+        android:padding="16dp">
 
         <ImageButton
             android:id="@+id/btnvoltaragendconfirma"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:contentDescription="btnvoltar"
-            android:src="@drawable/ic_arrow_back"
             android:background="?selectableItemBackgroundBorderless"
-            android:padding="8dp"/>
+            android:contentDescription="btnvoltar"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="SmartServ"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,7 +42,7 @@
             android:text="Agendar Serviço"
             android:textColor="@android:color/white"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <!-- Main Content -->
@@ -50,25 +50,25 @@
         android:id="@+id/mainScrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/header"
         android:layout_above="@id/btnconfirmarAgendamento2"
-        android:padding="16dp"
-        android:fillViewport="true">
+        android:layout_below="@id/header"
+        android:fillViewport="true"
+        android:padding="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:orientation="vertical">
 
             <!-- Professional Info Card -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/white">
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -82,24 +82,24 @@
                         android:text="Agendando com:"
                         android:textColor="@android:color/black"
                         android:textSize="18sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/edtnomeagend"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
                         android:text="Maria Cabeleireira"
                         android:textColor="@android:color/black"
-                        android:textSize="18sp"
-                        android:layout_marginTop="4dp"/>
+                        android:textSize="18sp" />
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:text="Selecione o serviço, a data e o horário desejados."
                         android:textColor="@android:color/black"
-                        android:textSize="14sp"
-                        android:layout_marginTop="8dp"/>
+                        android:textSize="14sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -108,9 +108,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/white">
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -121,11 +121,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:text="1. Selecione o Serviço"
                         android:textColor="@android:color/black"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="8dp"/>
+                        android:textStyle="bold" />
 
                     <!-- Spinner para seleção de serviços -->
                     <Spinner
@@ -133,18 +133,19 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/spinner_border"
+                        android:padding="12dp"
                         android:spinnerMode="dropdown"
-                        android:padding="12dp"/>
+                        android:textColor="@android:color/black" />
 
                     <TextView
                         android:id="@+id/serviceError"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:text="Por favor, selecione um serviço."
                         android:textColor="@color/error_red"
                         android:textSize="14sp"
-                        android:visibility="gone"
-                        android:layout_marginTop="8dp"/>
+                        android:visibility="gone" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -153,9 +154,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/white">
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -166,32 +167,32 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
                         android:text="2. Selecione a Data"
                         android:textColor="@android:color/black"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="16dp"/>
+                        android:textStyle="bold" />
 
                     <!-- Calendário (DatePicker) com cores melhoradas -->
                     <DatePicker
                         android:id="@+id/edtpickerdata"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:datePickerMode="spinner"
-                        android:calendarViewShown="false"
-                        android:spinnersShown="true"
                         android:layout_marginBottom="8dp"
-                        android:theme="@style/DatePickerStyle"/>
+                        android:calendarViewShown="false"
+                        android:datePickerMode="spinner"
+                        android:spinnersShown="true"
+                        android:theme="@style/DatePickerStyle" />
 
                     <TextView
                         android:id="@+id/dateError"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:text="Por favor, selecione uma data."
                         android:textColor="@color/error_red"
                         android:textSize="14sp"
-                        android:visibility="gone"
-                        android:layout_marginTop="8dp"/>
+                        android:visibility="gone" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -200,9 +201,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/white">
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -214,42 +215,51 @@
                         android:id="@+id/edtdata"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:text="3. Selecione o Horário"
                         android:textColor="@android:color/black"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="8dp"/>
+                        android:textStyle="bold" />
 
                     <!-- Spinner para seleção de horário -->
                     <Spinner
                         android:id="@+id/horarioSpinner"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:background="@drawable/spinner_border"
-                        android:spinnerMode="dropdown"
                         android:padding="12dp"
-                        android:layout_marginBottom="8dp"/>
+                        android:spinnerMode="dropdown"
+                        android:textColor="@android:color/black"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/errorHours"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Nenhum horário encontrado"
+                        android:visibility="visible" />
 
                     <TextView
                         android:id="@+id/timeError"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:text="Por favor, selecione um horário."
                         android:textColor="@color/error_red"
                         android:textSize="14sp"
-                        android:visibility="gone"
-                        android:layout_marginTop="8dp"/>
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/noTimesMessage"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
                         android:text="Nenhum horário disponível para a data selecionada."
                         android:textColor="@android:color/black"
                         android:textSize="14sp"
-                        android:visibility="gone"
-                        android:gravity="center"
-                        android:layout_marginTop="16dp"/>
+                        android:visibility="gone" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -257,9 +267,9 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/white">
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -270,122 +280,122 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
                         android:text="Resumo do Agendamento"
                         android:textColor="@android:color/black"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="8dp"/>
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="4dp">
+                        android:layout_marginBottom="4dp"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Serviço:"
                             android:textColor="@android:color/black"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/edtagendaServiconome"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="N/A"
+                            android:gravity="end"
                             android:textColor="@android:color/black"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            android:gravity="end"/>
+                            tools:text="N/A" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="4dp">
+                        android:layout_marginBottom="4dp"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Data:"
                             android:textColor="@android:color/black"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/summaryDate"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="N/A"
+                            android:gravity="end"
                             android:textColor="@android:color/black"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            android:gravity="end"/>
+                            tools:text="N/A" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="4dp">
+                        android:layout_marginBottom="4dp"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Horário:"
                             android:textColor="@android:color/black"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/summaryTime"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="N/A"
+                            android:gravity="end"
                             android:textColor="@android:color/black"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            android:gravity="end"/>
+                            tools:text="N/A" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginBottom="16dp">
+                        android:layout_marginBottom="16dp"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Duração:"
                             android:textColor="@android:color/black"
-                            android:textSize="16sp"/>
+                            android:textSize="16sp" />
 
                         <TextView
                             android:id="@+id/summaryDuration"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="N/A"
+                            android:gravity="end"
                             android:textColor="@android:color/black"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            android:gravity="end"/>
+                            tools:text="N/A" />
                     </LinearLayout>
 
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
-                        android:background="?android:attr/dividerHorizontal"/>
+                        android:background="?android:attr/dividerHorizontal" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="16dp">
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -393,18 +403,18 @@
                             android:text="Total:"
                             android:textColor="@android:color/black"
                             android:textSize="18sp"
-                            android:textStyle="bold"/>
+                            android:textStyle="bold" />
 
                         <TextView
                             android:id="@+id/edtagendaPreco"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:gravity="end"
                             android:text="R$ 0,00"
                             android:textColor="@android:color/black"
                             android:textSize="20sp"
-                            android:textStyle="bold"
-                            android:gravity="end"/>
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -417,6 +427,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
         android:backgroundTint="@color/success_green"
         android:drawableStart="@drawable/ic_calendar_check"
         android:drawablePadding="8dp"

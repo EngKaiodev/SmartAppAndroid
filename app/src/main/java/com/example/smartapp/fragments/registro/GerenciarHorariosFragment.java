@@ -1,6 +1,8 @@
 package com.example.smartapp.fragments.registro;
 
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,9 @@ import com.example.smartapp.databinding.GerenciarHorariosBinding;
 import com.example.smartapp.viewmodels.ConfigurarMensagemViewModel;
 import com.example.smartapp.viewmodels.GerenciarHorariosViewModel;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -66,6 +71,7 @@ public class GerenciarHorariosFragment extends Fragment {
         binding.btnSalvarHorario.setOnClickListener(view -> {
             viewModel.insertHourList(getHours());
         });
+        binding.btnVoltarHorarios.setOnClickListener(v -> navController.popBackStack());
     }
 
     private void setupView() {
@@ -89,7 +95,7 @@ public class GerenciarHorariosFragment extends Fragment {
         List<Integer> selectedDays = new ArrayList<>();
         List<HoursRequest> hours = new ArrayList<>();
 
-        List<CheckBox> checks = new ArrayList<>(Arrays.asList(
+        List<CheckBox> checks = Arrays.asList(
                 binding.checkSegunda,
                 binding.checkTerca,
                 binding.checkQuarta,
@@ -97,7 +103,8 @@ public class GerenciarHorariosFragment extends Fragment {
                 binding.checkSexta,
                 binding.checkSabado,
                 binding.checkDomingo
-        ));
+        );
+
         int count = 1;
         for (CheckBox check : checks) {
             if (check.isChecked()) {
@@ -106,21 +113,68 @@ public class GerenciarHorariosFragment extends Fragment {
             count++;
         }
 
-        for (Integer day : selectedDays) {
-            hours.add(new HoursRequest(
-                    viewModel.getId(),
-                    day,
-                    binding.timeInicioManha.getHour(),
-                    binding.timeInicioManha.getMinute(),
-                    binding.timeFimManha.getHour(),
-                    binding.timeFimManha.getMinute(),
-                    binding.timeInicioTarde.getHour(),
-                    binding.timeInicioTarde.getMinute(),
-                    binding.timeFimTarde.getHour(),
-                    binding.timeFimTarde.getMinute()
-            ));
+        if (selectedDays.isEmpty()) {
+            return hours;
         }
 
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            return hours;
+        }
+
+        LocalDate today = LocalDate.now();
+        int todayWeekday = today.getDayOfWeek().getValue();
+
+        int initHourMorning = binding.timeInicioManha.getHour();
+        int initMinuteMorning = binding.timeInicioManha.getMinute();
+
+        int endHourMorning = binding.timeFimManha.getHour();
+        int endMinuteMorning = binding.timeFimManha.getMinute();
+
+        int initHourAfternoon = binding.timeInicioTarde.getHour();
+        int initMinuteAfternoon = binding.timeInicioTarde.getMinute();
+
+        int endHourAfternoon = binding.timeFimTarde.getHour();
+        int endMinuteAfternoon = binding.timeFimTarde.getMinute();
+
+        for (Integer day : selectedDays) {
+            int diff = day - todayWeekday;
+            if (diff <= 0) diff = diff + 7;
+            LocalDate date = today.plusDays(diff);
+
+            // Manhã
+            LocalDateTime initMorning = LocalDateTime.of(date, LocalTime.of(initHourMorning, initMinuteMorning));
+            LocalDateTime endMorning = LocalDateTime.of(date, LocalTime.of(endHourMorning, endMinuteMorning));
+
+            while (!initMorning.isAfter(endMorning.minusMinutes(30))) {
+                LocalDateTime slotEnd = initMorning.plusMinutes(30);
+                hours.add(new HoursRequest(
+                        viewModel.getId(),
+                        initMorning,
+                        slotEnd,
+                        "opened"
+                ));
+                initMorning = slotEnd;
+            }
+
+            // Tarde
+            LocalDateTime initAfternoon = LocalDateTime.of(date, LocalTime.of(initHourAfternoon, initMinuteAfternoon));
+            LocalDateTime endAfternoon = LocalDateTime.of(date, LocalTime.of(endHourAfternoon, endMinuteAfternoon));
+
+            while (!initAfternoon.isAfter(endAfternoon.minusMinutes(30))) {
+                LocalDateTime slotEnd = initAfternoon.plusMinutes(30);
+                hours.add(new HoursRequest(
+                        viewModel.getId(),
+                        initAfternoon,
+                        slotEnd,
+                        "opened"
+                ));
+                initAfternoon = slotEnd;
+            }
+        }
+        for (HoursRequest h : hours) {
+            Log.i("Vendo lista", h.toString());
+        }
         return hours;
     }
+
 }

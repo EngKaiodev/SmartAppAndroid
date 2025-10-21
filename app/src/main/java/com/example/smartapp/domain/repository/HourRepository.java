@@ -6,6 +6,7 @@ import com.example.smartapp.core.domain.request.HoursRequest;
 import com.example.smartapp.core.domain.response.HourResponse;
 import com.example.smartapp.core.network.service.HourService;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -41,5 +42,9 @@ public class HourRepository {
                 .doOnError(error -> {
                     Log.e("HourRepository", "Erro ao inserir horário: " + error.getLocalizedMessage());
                 });
+    }
+
+    public Single<Response<List<HourResponse>>> getByUserIdAndDate(int id, LocalDate date){
+        return hourService.getByUserIdAndDateOpened(id, date).subscribeOn(Schedulers.io());
     }
 }

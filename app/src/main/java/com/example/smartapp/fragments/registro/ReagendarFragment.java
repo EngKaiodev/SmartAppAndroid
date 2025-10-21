@@ -52,7 +52,7 @@ public class ReagendarFragment extends Fragment {
         binding.btnreagendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                navController.navigate(ReagendarFragmentDirections.agendarServicoFragment(0, null));
+                navController.navigate(ReagendarFragmentDirections.agendarServicoFragment( null));
             }
         });
 
