@@ -161,23 +161,15 @@
                     android:gravity="center"/>
             </LinearLayout>
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvAgendamentosCategories"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/light_gray"
-                android:padding="8dp">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvAgendamentosCategories"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/item_agendamento"
-                    tools:itemCount="1"
-                    app:spanCount="1"
-                    tools:layoutManager="LinearLayoutManager"
-                    tools:orientation="vertical"/>
-            </LinearLayout>
+                tools:listitem="@layout/item_agendamento"
+                tools:itemCount="10"
+                app:spanCount="1"
+                tools:layoutManager="LinearLayoutManager"
+                tools:orientation="vertical"/>
 
             <!-- Botão Reagendar - Estilo arredondado e próximo ao card -->
             <androidx.cardview.widget.CardView

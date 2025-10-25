@@ -92,8 +92,8 @@ public class GerenciarAgendamentoFragment extends Fragment {
     }
 
     private void setupAdapters(List<ScheduleResponse> schedules) {
-        agendamentoAdapter = new AgendamentoAdapter(schedules, agendamentoModel -> {
-            navController.navigate(GerenciarAgendamentoFragmentDirections.reagendarFragment());
+        agendamentoAdapter = new AgendamentoAdapter(schedules, selectedSchedule -> {
+            navController.navigate(GerenciarAgendamentoFragmentDirections.reagendarFragment(selectedSchedule));
         });
 
         binding.rvAgendamentosCategories.setAdapter(agendamentoAdapter);

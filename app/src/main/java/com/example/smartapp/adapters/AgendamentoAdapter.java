@@ -1,13 +1,17 @@
 package com.example.smartapp.adapters;
 
+import android.annotation.SuppressLint;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.smartapp.R;
 import com.example.smartapp.core.domain.response.ScheduleResponse;
 import com.example.smartapp.databinding.ItemAgendamentoBinding;
 
@@ -39,7 +43,7 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.
         holder.binding(aitem);
 
         //Colocar o click no botão aqui
-        holder.binding.btnReagendar.setOnClickListener(v -> {
+        holder.binding.btnAction.setOnClickListener(v -> {
             if (onAgendarClick != null) {
                 onAgendarClick.accept(aitem);
             }
@@ -56,6 +60,7 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.
             this.binding = binding;
         }
 
+        @SuppressLint("ResourceAsColor")
         @RequiresApi(api = Build.VERSION_CODES.O)
         public void binding(ScheduleResponse agendamento) {
             binding.nome.setText(agendamento.getProfissional().getName());
@@ -63,6 +68,32 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.
             binding.data.setText(agendamento.getHour().getString());
             binding.valor.setText(String.format("Valor: R$ %.2f", agendamento.getServico().getPrice()));
             binding.hora.setText(agendamento.getHour().toString());
+
+            ScheduleResponse.StatusInfo info = agendamento.getStatusInfo();
+
+            binding.status.setTextColor(info.getColor());
+            binding.status.setText(info.getLabel());
+
+            binding.statusIco.setImageResource(info.getIconRes());
+            binding.statusIco.setColorFilter(info.getColor());
+
+            switch (agendamento.getStatus()){
+                case 0: {
+                    binding.btnAction.setText("Confirmar");
+                    binding.btnAction.setBackgroundColor(
+                            ContextCompat.getColor(binding.getRoot().getContext(), R.color.success_green)
+                    );
+                    break;
+                }
+                case 1: {
+                    binding.btnAction.setText("Reagendar");
+                    break;
+                }
+                case 2: {
+                    binding.btnAction.setVisibility(ViewGroup.GONE);
+                    break;
+                }
+            }
         }
     }
 

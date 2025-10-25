@@ -22,6 +22,9 @@
         <action
             android:id="@+id/agendar_servico_fragment"
             app:destination="@id/agendar_servico_fragment" />
+        <argument
+            android:name="schedule"
+            app:argType="com.example.smartapp.core.domain.response.ScheduleResponse" />
 
     </fragment>
     <fragment

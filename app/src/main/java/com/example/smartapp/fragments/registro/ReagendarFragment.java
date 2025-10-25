@@ -7,11 +7,14 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.smartapp.R;
+import com.example.smartapp.core.domain.response.ScheduleResponse;
 import com.example.smartapp.databinding.ReagendarBinding;
 import com.example.smartapp.viewmodels.ReagendarViewModel;
 
@@ -24,6 +27,8 @@ public class ReagendarFragment extends Fragment {
     private ReagendarViewModel viewModel;
 
     private NavController navController;
+
+    private ScheduleResponse selectedSchedule;
 
     @Nullable
     @Override
@@ -38,29 +43,40 @@ public class ReagendarFragment extends Fragment {
         navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
 
+        ReagendarFragmentArgs args = ReagendarFragmentArgs.fromBundle(getArguments());
+        selectedSchedule = args.getSchedule();
+
         setupListeners();
+        setupView();
+    }
+
+    private void setupView() {
+        if (selectedSchedule != null){
+            binding.name.setText(selectedSchedule.getProfissional().getName());
+            binding.service.setText(selectedSchedule.getServico().getName());
+            binding.date.setText(selectedSchedule.getHour().getString());
+            binding.hour.setText(selectedSchedule.getHour().toString());
+            binding.price.setText(selectedSchedule.getServico().returnPrice());
+
+            ScheduleResponse.StatusInfo status = selectedSchedule.getStatusInfo();
+
+            binding.statusLabel.setTextColor(status.getColor());
+            binding.status.setTextColor(status.getColor());
+            binding.status.setText(status.getLabel());
+
+            if (selectedSchedule.getStatus() == 1){
+                binding.btnConfirm.setVisibility(View.GONE);
+            }
+        }
     }
 
     private void setupListeners() {
-        binding.btnvoltardetalheag.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.popBackStack();
-            }
-        });
+        binding.btnvoltardetalheag.setOnClickListener(v -> navController.popBackStack());
 
-        binding.btnreagendar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(ReagendarFragmentDirections.agendarServicoFragment( null));
-            }
-        });
+        binding.btnReagendar.setOnClickListener(v -> navController.navigate(ReagendarFragmentDirections.agendarServicoFragment( null)));
 
-        binding.btncancelar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // cancelar agendamento
-            }
+        binding.btncancelar.setOnClickListener(v -> {
+            // cancelar agendamento
         });
     }
 

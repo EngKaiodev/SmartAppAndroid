@@ -69,4 +69,8 @@ public class ServicoResponse implements Serializable {
     public String toString() {
         return name + " - R$ " + String.format(Locale.getDefault(), "%.2f", price) ;
     }
+
+    public String returnPrice(){
+        return "R$ " + String.format(Locale.getDefault(), "%.2f", price);
+    }
 }
