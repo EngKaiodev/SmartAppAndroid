@@ -10,7 +10,7 @@ public class ScheduleResponse implements Serializable {
     private ServicoResponse servico;
     private HourResponse hour;
 
-    private int status; // 0 - aguardando confirmação 1 - confirmado 2 - cancelado
+    private int status; // 0 - aguardando confirmação 1 - confirmado 2 - cancelado 3 - Realizado
 
     public ScheduleResponse() {
     }
@@ -77,6 +77,10 @@ public class ScheduleResponse implements Serializable {
                 return new StatusInfo("Cancelado",
                         0xFFF44336,
                         R.drawable.ic_close);
+            case 3:
+                return new StatusInfo("Realizado",
+                        0xFF4F46E5,
+                        R.drawable.ic_briefcase);
             default:
                 return new StatusInfo("Desconhecido",
                         0xFF9E9E9E,

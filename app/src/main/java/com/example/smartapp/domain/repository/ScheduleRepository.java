@@ -32,4 +32,12 @@ public class ScheduleRepository {
     public Single<Response<List<ScheduleResponse>>> getAllByProId(int id) {
         return service.getAllByProId(id).subscribeOn(Schedulers.io());
     }
+
+    public Single<Response<Boolean>> confirmScheduleById(int id){
+        return service.confirmScheduleById(id).subscribeOn(Schedulers.io());
+    }
+
+    public Single<Response<Boolean>> cancelScheduleById(int id){
+        return service.cancelScheduleById(id).subscribeOn(Schedulers.io());
+    }
 }

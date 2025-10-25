@@ -283,12 +283,26 @@
                             android:id="@+id/btncancelar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
                             android:backgroundTint="#EF4444"
                             android:drawableLeft="@drawable/ic_trash"
                             android:drawablePadding="8dp"
                             android:paddingVertical="12dp"
                             android:text="Cancelar Agendamento"
                             android:textColor="#FFFFFF"
+                            android:textStyle="bold" />
+
+                        <Button
+                            android:id="@+id/btnReview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#E6CC19"
+                            android:drawableLeft="@drawable/ic_review"
+                            android:drawablePadding="8dp"
+                            android:drawableTint="@color/black"
+                            android:paddingVertical="12dp"
+                            android:text="Avaliar serviço"
+                            android:textColor="@color/black"
                             android:textStyle="bold" />
                     </LinearLayout>
                 </LinearLayout>

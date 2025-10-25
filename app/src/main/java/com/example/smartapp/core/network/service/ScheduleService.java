@@ -28,4 +28,14 @@ public interface ScheduleService {
     Single<Response<List<ScheduleResponse>>> getAllByProId(
             @Path("id") int id
     );
+
+    @POST("/schedules/{id}/confirm")
+    Single<Response<Boolean>> confirmScheduleById(
+            @Path("id") int id
+    );
+
+    @POST("/schedules/{id}/cancel")
+    Single<Response<Boolean>> cancelScheduleById(
+            @Path("id") int id
+    );
 }
