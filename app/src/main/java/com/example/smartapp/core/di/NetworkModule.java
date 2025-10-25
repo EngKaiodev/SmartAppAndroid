@@ -11,6 +11,7 @@ import com.example.smartapp.core.network.service.AuthService;
 import com.example.smartapp.core.network.service.EnderecoService;
 import com.example.smartapp.core.network.service.HourService;
 import com.example.smartapp.core.network.service.ProfissionalService;
+import com.example.smartapp.core.network.service.ScheduleService;
 import com.example.smartapp.core.network.service.ServicoService;
 import com.example.smartapp.domain.repository.AuthRepository;
 import com.google.gson.Gson;
@@ -130,5 +131,11 @@ public class NetworkModule {
     @Singleton
     public static ServicoService provideServicoService(@Named("defaultRetrofit") Retrofit retrofit) {
         return retrofit.create(ServicoService.class);
+    }
+
+    @Provides
+    @Singleton
+    public static ScheduleService provideScheduleService(@Named("defaultRetrofit") Retrofit retrofit){
+        return retrofit.create(ScheduleService.class);
     }
 }

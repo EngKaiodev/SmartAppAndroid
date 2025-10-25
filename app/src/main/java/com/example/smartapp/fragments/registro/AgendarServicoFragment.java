@@ -28,7 +28,6 @@ import com.example.smartapp.databinding.AgendarServicoBinding;
 import com.example.smartapp.viewmodels.AgendarServicoViewModel;
 
 import java.time.LocalDate;
-import java.util.Calendar;
 import java.util.List;
 
 import dagger.hilt.android.AndroidEntryPoint;
@@ -68,7 +67,7 @@ public class AgendarServicoFragment extends Fragment {
     }
 
     private void setupView() {
-        if (profissionalSelected != null){
+        if (profissionalSelected != null) {
             viewModel.loadServicos(profissionalSelected.getId_profissional());
             binding.edtnomeagend.setText(profissionalSelected.getName());
         }
@@ -100,7 +99,7 @@ public class AgendarServicoFragment extends Fragment {
     }
 
     private void setupHourPicker(List<HourResponse> hours) {
-        if (hours.isEmpty()){
+        if (hours.isEmpty()) {
             binding.errorHours.setVisibility(VISIBLE);
             binding.horarioSpinner.setVisibility(GONE);
         } else {
@@ -119,13 +118,15 @@ public class AgendarServicoFragment extends Fragment {
     }
 
     private void setupListeners() {
-        binding.btnvoltaragendconfirma.setOnClickListener(v -> {
-            navController.popBackStack();
-        });
+        binding.btnvoltaragendconfirma.setOnClickListener(v -> navController.popBackStack());
 
         binding.btnconfirmarAgendamento2.setOnClickListener(v -> {
             if (validarFormulario()) {
-                navController.navigate(AgendarServicoFragmentDirections.confirmaragendamentofragment());
+                viewModel.saveSchedule(
+                        profissionalSelected.getId_profissional(),
+                        (ServicoResponse) binding.servicosSpinner.getSelectedItem(),
+                        (HourResponse) binding.horarioSpinner.getSelectedItem()
+                );
             }
         });
 
@@ -159,54 +160,21 @@ public class AgendarServicoFragment extends Fragment {
             atualizarResumo();
         });
         viewModel.hours.observe(getViewLifecycleOwner(), this::setupHourPicker);
+
+        viewModel.added.observe(getViewLifecycleOwner(), response -> {
+            if (response) {
+                Toast.makeText(getContext(), "Agendado com sucesso", Toast.LENGTH_SHORT).show();
+                navController.popBackStack();
+            }
+        });
     }
 
     private boolean validarFormulario() {
-        boolean valido = true;
-
-        // Validar serviço
-        if (binding.servicosSpinner.getSelectedItemPosition() == 0) {
-            binding.serviceError.setVisibility(VISIBLE);
-            valido = false;
-        } else {
-            binding.serviceError.setVisibility(GONE);
-        }
-
-        // Validar data (sempre terá uma data selecionada devido ao DatePicker)
-        Calendar selectedDate = Calendar.getInstance();
-        selectedDate.set(
-                binding.edtpickerdata.getYear(),
-                binding.edtpickerdata.getMonth(),
-                binding.edtpickerdata.getDayOfMonth()
-        );
-
-        Calendar today = Calendar.getInstance();
-        today.set(Calendar.HOUR_OF_DAY, 0);
-        today.set(Calendar.MINUTE, 0);
-        today.set(Calendar.SECOND, 0);
-        today.set(Calendar.MILLISECOND, 0);
-
-        if (selectedDate.before(today)) {
-            binding.dateError.setText("Por favor, selecione uma data futura.");
-            binding.dateError.setVisibility(VISIBLE);
-            valido = false;
-        } else {
-            binding.dateError.setVisibility(GONE);
-        }
-
-        // Validar horário
-        if (binding.horarioSpinner.getSelectedItemPosition() == 0) {
-            binding.timeError.setVisibility(VISIBLE);
-            valido = false;
-        } else {
-            binding.timeError.setVisibility(GONE);
-        }
-
-        if (!valido) {
-            Toast.makeText(requireContext(), "Por favor, preencha todos os campos corretamente.", Toast.LENGTH_SHORT).show();
-        }
-
-        return valido;
+        return
+                binding.servicosSpinner.getSelectedItem() != null &&
+                        binding.horarioSpinner.getSelectedItem() != null &&
+                        profissionalSelected != null
+                ;
     }
 
     private void atualizarResumo() {

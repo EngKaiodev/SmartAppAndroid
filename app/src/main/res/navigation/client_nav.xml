@@ -1,4 +1,4 @@
- <navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/client_nav"
@@ -180,7 +180,11 @@
         android:id="@+id/confirmaragendamentofragment"
         android:name="com.example.smartapp.fragments.registro.ConfirmarAgendamentoFragment"
         android:label="ConfirmarAgendamentoFragment"
-        tools:layout="@layout/confirmar_agendamento" />
+        tools:layout="@layout/confirmar_agendamento">
+        <argument
+            android:name="schedule"
+            app:argType="com.example.smartapp.core.domain.response.ScheduleResponse" />
+    </fragment>
 
     <fragment
         android:id="@+id/buscar_servico_fragment"

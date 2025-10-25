@@ -1,24 +1,26 @@
 package com.example.smartapp.adapters;
 
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.smartapp.core.domain.response.ScheduleResponse;
 import com.example.smartapp.databinding.ItemAgendamentoBinding;
-import com.example.smartapp.domain.models.AgendamentoModel;
 
 import java.util.List;
 
 public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.ViewHolder> {
 
-    private final List<AgendamentoModel> aList;
-    private java.util.function.Consumer<AgendamentoModel> onAgendarClick; //Criar variavel
+    private final List<ScheduleResponse> aList;
+    private java.util.function.Consumer<ScheduleResponse> onAgendarClick; //Criar variavel
 
-    public AgendamentoAdapter(List<AgendamentoModel> aList, java.util.function.Consumer<AgendamentoModel> onAgendarClick) {
+    public AgendamentoAdapter(List<ScheduleResponse> aList, java.util.function.Consumer<ScheduleResponse> onAgendarClick) {
         this.aList = aList;
-        this.onAgendarClick = onAgendarClick; // Colocar no construtor
+        this.onAgendarClick = onAgendarClick;
     }
 
 
@@ -33,7 +35,7 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull AgendamentoAdapter.ViewHolder holder, int position) {
-        AgendamentoModel aitem = aList.get(position);
+        ScheduleResponse aitem = aList.get(position);
         holder.binding(aitem);
 
         //Colocar o click no botão aqui
@@ -54,13 +56,13 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.
             this.binding = binding;
         }
 
-        public void binding(AgendamentoModel agendamento) {
-            binding.nome.setText(agendamento.getName());
-            binding.servico.setText(agendamento.getServico());
-            binding.data.setText(agendamento.getData());
-            binding.hora.setText(agendamento.getHora());
-            binding.valor.setText(agendamento.getValor());
-
+        @RequiresApi(api = Build.VERSION_CODES.O)
+        public void binding(ScheduleResponse agendamento) {
+            binding.nome.setText(agendamento.getProfissional().getName());
+            binding.servico.setText(agendamento.getServico().getName());
+            binding.data.setText(agendamento.getHour().getString());
+            binding.valor.setText(String.format("Valor: R$ %.2f", agendamento.getServico().getPrice()));
+            binding.hora.setText(agendamento.getHour().toString());
         }
     }
 

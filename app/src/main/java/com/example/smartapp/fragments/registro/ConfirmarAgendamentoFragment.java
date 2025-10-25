@@ -43,12 +43,8 @@ public class ConfirmarAgendamentoFragment extends Fragment {
     }
 
     private void setupListeners() {
-        binding.btnvoltaragendaconf.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.popBackStack();
-            }
-        });
+        binding.btnvoltaragendaconf.setOnClickListener(v -> navController.popBackStack());
+        binding.btnrejeitar.setOnClickListener(v -> navController.popBackStack());
 
     }
 

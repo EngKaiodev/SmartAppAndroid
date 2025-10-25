@@ -61,4 +61,9 @@ public class HourResponse {
         return initHour.toLocalTime().format(java.time.format.DateTimeFormatter.ofPattern("HH:mm"));
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    public String getString() {
+        if (initHour == null) return "";
+        return initHour.format(java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    }
 }

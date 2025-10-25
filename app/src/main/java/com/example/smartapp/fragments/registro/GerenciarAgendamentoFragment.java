@@ -16,11 +16,10 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.smartapp.adapters.AgendamentoAdapter;
+import com.example.smartapp.core.domain.response.ScheduleResponse;
 import com.example.smartapp.databinding.GerenciarAgendamentoBinding;
-import com.example.smartapp.domain.models.AgendamentoModel;
 import com.example.smartapp.viewmodels.GerenciarAgendamentoViewModel;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,9 +31,6 @@ public class GerenciarAgendamentoFragment extends Fragment {
     private GerenciarAgendamentoBinding binding;
     private GerenciarAgendamentoViewModel viewModel;
     private AgendamentoAdapter agendamentoAdapter;
-    private List<AgendamentoModel> agendamentoList;
-    private List<AgendamentoModel> filteredList;
-
     private NavController navController;
 
     @Nullable
@@ -49,21 +45,17 @@ public class GerenciarAgendamentoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
+        viewModel.loadSchedulers();
 
-        mockedList();
+        setupObservers();
+
         setupSpinners();
-        setupAdapters();
         setupListeners();
-        updateEmptyState();
+//        updateEmptyState();
     }
 
-    private void mockedList() {
-        agendamentoList = Arrays.asList(
-                new AgendamentoModel(1, "jose carlos", "Corte e Barba", "22/07/25", "14:35", "R$60,00"),
-                new AgendamentoModel(2, "maria silva", "Manicure", "23/07/25", "10:00", "R$25,00"),
-                new AgendamentoModel(3, "joão santos", "Corte de Cabelo", "24/07/25", "15:30", "R$30,00")
-        );
-        filteredList = new ArrayList<>(agendamentoList);
+    private void setupObservers() {
+        viewModel.schedules.observe(getViewLifecycleOwner(), this::setupAdapters);
     }
 
     private void setupSpinners() {
@@ -99,9 +91,8 @@ public class GerenciarAgendamentoFragment extends Fragment {
         binding.periodFilter.setAdapter(periodAdapter);
     }
 
-    private void setupAdapters() {
-        agendamentoAdapter = new AgendamentoAdapter(filteredList, agendamentoModel -> {
-            // Navegar para a tela de reagendamento
+    private void setupAdapters(List<ScheduleResponse> schedules) {
+        agendamentoAdapter = new AgendamentoAdapter(schedules, agendamentoModel -> {
             navController.navigate(GerenciarAgendamentoFragmentDirections.reagendarFragment());
         });
 
@@ -112,7 +103,7 @@ public class GerenciarAgendamentoFragment extends Fragment {
     private void setupListeners() {
         binding.btnvoltaragendamento.setOnClickListener(v -> navController.popBackStack());
 
-        binding.clearFilterButton.setOnClickListener(v -> clearFilters());
+        /*binding.clearFilterButton.setOnClickListener(v -> clearFilters());
 
         binding.statusFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -123,9 +114,9 @@ public class GerenciarAgendamentoFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
-        });
+        });*/
 
-        binding.periodFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        /*binding.periodFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 applyFilters();
@@ -134,17 +125,17 @@ public class GerenciarAgendamentoFragment extends Fragment {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
-        });
+        });*/
     }
 
-    private void applyFilters() {
+    /*private void applyFilters() {
         String statusSelecionado = binding.statusFilter.getSelectedItem().toString();
         String periodoSelecionado = binding.periodFilter.getSelectedItem().toString();
 
         filteredList.clear();
 
         // Filtro simplificado já que não temos status no modelo
-        for (AgendamentoModel agendamento : agendamentoList) {
+        for (ScheduleResponse agendamento : agendamentoList) {
             boolean matchesFilter = true;
 
             // Filtro por período (exemplo simplificado)
@@ -161,9 +152,9 @@ public class GerenciarAgendamentoFragment extends Fragment {
 
         agendamentoAdapter.notifyDataSetChanged();
         updateEmptyState();
-    }
+    }*/
 
-    private void clearFilters() {
+    /*private void clearFilters() {
         binding.statusFilter.setSelection(0);
         binding.periodFilter.setSelection(0);
         applyFilters();
@@ -177,7 +168,7 @@ public class GerenciarAgendamentoFragment extends Fragment {
             binding.emptyState.setVisibility(View.GONE);
             binding.rvAgendamentosCategories.setVisibility(View.VISIBLE);
         }
-    }
+    }*/
 
     @Override
     public void onDestroy() {
