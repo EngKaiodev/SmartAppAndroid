@@ -29,7 +29,7 @@ public class ReagendarViewModel extends ViewModel {
 
     public void confirmSchedule(int id) {
         disposable.add(
-                repository.confirmScheduleById(id).subscribeOn(AndroidSchedulers.mainThread()).subscribe(
+                repository.confirmScheduleById(id).observeOn(AndroidSchedulers.mainThread()).subscribe(
                         response -> {
                             if (response.isSuccessful() && response.code() == 200) {
                                 _changed.postValue(response.body());
@@ -43,7 +43,7 @@ public class ReagendarViewModel extends ViewModel {
 
     public void cancelSchedule(int id){
         disposable.add(
-                repository.cancelScheduleById(id).subscribeOn(AndroidSchedulers.mainThread()).subscribe(
+                repository.cancelScheduleById(id).observeOn(AndroidSchedulers.mainThread()).subscribe(
                         response -> {
                             if (response.isSuccessful() && response.code() == 200) {
                                 _changed.postValue(response.body());

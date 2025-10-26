@@ -56,7 +56,7 @@ public class ReagendarFragment extends Fragment {
 
     private void setupObservers() {
         viewModel.changed.observe(getViewLifecycleOwner(), changed -> {
-            if (changed){
+            if (changed) {
                 navController.popBackStack();
             }
         });
@@ -81,7 +81,7 @@ public class ReagendarFragment extends Fragment {
                 binding.btnReview.setVisibility(View.GONE);
             }
 
-            if (selectedSchedule.getStatus() == 3){
+            if (selectedSchedule.getStatus() == 3) {
                 binding.btncancelar.setVisibility(View.GONE);
                 binding.btnReagendar.setVisibility(View.GONE);
                 binding.btnConfirm.setVisibility(View.GONE);
@@ -107,6 +107,8 @@ public class ReagendarFragment extends Fragment {
                 .show());
 
         binding.btnConfirm.setOnClickListener(v -> viewModel.confirmSchedule(selectedSchedule.getId()));
+
+        binding.btnReview.setOnClickListener(v -> navController.navigate(ReagendarFragmentDirections.actionToReview(selectedSchedule)));
     }
 
     @Override

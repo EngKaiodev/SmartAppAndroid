@@ -25,6 +25,9 @@
         <argument
             android:name="schedule"
             app:argType="com.example.smartapp.core.domain.response.ScheduleResponse" />
+        <action
+            android:id="@+id/action_to_review"
+            app:destination="@id/avaliar_prestardor_fragment" />
 
     </fragment>
     <fragment
@@ -163,7 +166,11 @@
         android:id="@id/avaliar_prestardor_fragment"
         android:name="com.example.smartapp.fragments.registro.AvaliarServicoFragment"
         android:label="AvaliarPrestadorFragment"
-        tools:layout="@layout/avaliar_servico" />
+        tools:layout="@layout/avaliar_servico">
+        <argument
+            android:name="schedule"
+            app:argType="com.example.smartapp.core.domain.response.ScheduleResponse" />
+    </fragment>
 
     <fragment
         android:id="@+id/agendar_servico_fragment"

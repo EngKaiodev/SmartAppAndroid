@@ -1,42 +1,62 @@
 package com.example.smartapp.viewmodels;
 
+import android.util.Log;
+
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.example.smartapp.core.Preferences;
+import com.example.smartapp.core.domain.request.ReviewRequest;
+import com.example.smartapp.domain.repository.ReviewRepository;
+
+import java.time.LocalDateTime;
 
 import javax.inject.Inject;
 
 import dagger.hilt.android.lifecycle.HiltViewModel;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.CompositeDisposable;
 
 @HiltViewModel
 public class AvaliarServicoViewModel extends ViewModel {
 
-    @Inject
-    public AvaliarServicoViewModel(){
+    private final ReviewRepository reviewRepository;
+    private final Preferences preferences;
 
+    private final CompositeDisposable disposable = new CompositeDisposable();
+
+    private final MutableLiveData<Boolean> _sent = new MutableLiveData<>();
+    public LiveData<Boolean> sent = _sent;
+
+    @Inject
+    public AvaliarServicoViewModel(ReviewRepository reviewRepository, Preferences preferences) {
+        this.reviewRepository = reviewRepository;
+        this.preferences = preferences;
     }
 
-    public boolean validateField(
-        String prestador,
-        String servicoRealizado,
-        String data,
-        String comentario
-    ){
-        // Validar se o prestador foi informado
-        if (prestador == null || prestador.trim().isEmpty()) {
-            return false;
-        }
+    public void sendReview(
+            int proId,
+            int rating,
+            String comment
+    ) {
+        disposable.add(
+                reviewRepository.save(new ReviewRequest(
+                                proId,
+                                preferences.getId(),
+                                rating,
+                                comment,
+                                LocalDateTime.now()
+                        )
+                ).observeOn(AndroidSchedulers.mainThread()).subscribe(
+                        response -> {
+                            if (response.isSuccessful() && response.code() == 201){
+                                _sent.postValue(response.body());
+                            }
+                        },
+                        error -> Log.e("ReviewViewModel", "Erro ao enviar review", error)
 
-        // Validar se o serviço realizado foi informado
-        if (servicoRealizado == null || servicoRealizado.trim().isEmpty()) {
-            return false;
-        }
-
-        // Validar se a data foi informada
-        if (data == null || data.trim().isEmpty()) {
-            return false;
-        }
-
-        // O comentário é opcional, então não precisa de validação
-
-        return true;
+                )
+        );
     }
 }

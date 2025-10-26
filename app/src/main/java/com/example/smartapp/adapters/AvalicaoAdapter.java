@@ -2,6 +2,7 @@ package com.example.smartapp.adapters;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,11 +10,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.smartapp.core.domain.response.ReviewSimpleResponse;
 import com.example.smartapp.databinding.AvaliarCategoryBinding;
 
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AvalicaoAdapter extends  RecyclerView.Adapter<AvalicaoAdapter.ViewHolder>{
@@ -55,18 +54,44 @@ public class AvalicaoAdapter extends  RecyclerView.Adapter<AvalicaoAdapter.ViewH
             binding.avalianome.setText(avaliar.getCompleteName());
             binding.avaliacomentario.setText(avaliar.getComment());
 
-            // Converte para LocalDate
-            LocalDate dataRegistro = Instant.ofEpochMilli(Long.parseLong(avaliar.getDate()))
-                    .atZone(ZoneId.systemDefault())
-                    .toLocalDate();
+            long dias = ChronoUnit.DAYS.between(
+                    avaliar.getDate().toLocalDate(),
+                    LocalDate.now()
+            );
 
-            // Data de hoje
-            LocalDate hoje = LocalDate.now();
+            String message = "há " + dias + " dias.";
 
-            // Diferença em dias
-            long dias = ChronoUnit.DAYS.between(dataRegistro, hoje);
+            if (dias == 0) message = "Hoje";
+            else if (dias > 7 && dias < 30){
+                int weeks = Math.toIntExact(dias / 7);
+                if (weeks == 1) message = "há " + weeks + " semana.";
+                else message = "há " + weeks + " semanas.";
+            }
+            else if (dias > 30 && dias < 365){
+                int months = Math.toIntExact(dias / 30);
+                if (months == 1) message = "há " + months + " mês.";
+                else message = "há " + months + " meses.";
+            }
+            else if (dias > 365){
+                int years = Math.toIntExact(dias / 365);
+                if (years == 1) message = "há " + years + " ano.";
+                else message = "há " + years + " anos.";
+            }
 
-            binding.avaliadata.setText("há " + dias + " dias.");
+            binding.avaliadata.setText(message);
+
+            ImageView[] stars = new ImageView[]{
+                binding.avaliaEstrela1,
+                binding.avaliaEstrela2,
+                binding.avaliaEstrela3,
+                binding.avaliaEstrela4,
+                binding.avaliaEstrela5
+            };
+
+            for (int i = 0; i < avaliar.getReview(); i++){
+                ImageView start = stars[i];
+                start.setVisibility(ViewGroup.VISIBLE);
+            }
         }
     }
 }

@@ -53,11 +53,6 @@ public class AvaliarTelaFragment extends Fragment {
     }
 
     private void mockedList(){
-
-         avaliacaoList = List.of(
-                new ReviewSimpleResponse("Clara santaos", "Serviço mal feito","15/07/2025", 3),
-                new ReviewSimpleResponse("Clara santos", "Very Good","15/07/2025", 4)
-        );
     }
 
     private void setupAdapters(){

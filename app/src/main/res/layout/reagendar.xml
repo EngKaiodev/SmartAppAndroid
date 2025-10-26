@@ -301,7 +301,7 @@
                             android:drawablePadding="8dp"
                             android:drawableTint="@color/black"
                             android:paddingVertical="12dp"
-                            android:text="Avaliar serviço"
+                            android:text="Avaliar profissional"
                             android:textColor="@color/black"
                             android:textStyle="bold" />
                     </LinearLayout>

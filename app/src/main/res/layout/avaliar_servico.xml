@@ -25,7 +25,7 @@
             android:background="?selectableItemBackgroundBorderless"
             android:contentDescription="btnvoltar"
             android:padding="8dp"
-            android:src="@drawable/ic_arrow_back"/>
+            android:src="@drawable/ic_arrow_back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -109,31 +109,36 @@
                     android:id="@+id/star1"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                     />
+                    android:src="@drawable/ic_star"
+                    app:tint="@color/yellow_400" />
 
                 <ImageView
                     android:id="@+id/star2"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                     />
+                    android:src="@drawable/ic_star"
+                    app:tint="@color/yellow_400" />
 
                 <ImageView
                     android:id="@+id/star3"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                     />
+                    android:src="@drawable/ic_star"
+                    app:tint="@color/yellow_400" />
 
                 <ImageView
                     android:id="@+id/star4"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                     />
+                    android:src="@drawable/ic_star"
+                    app:tint="@color/yellow_400" />
 
                 <ImageView
                     android:id="@+id/star5"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                     />
+                    android:src="@drawable/ic_star"
+                    app:tint="@color/yellow_400" />
             </LinearLayout>
 
             <TextView
@@ -157,7 +162,8 @@
                 android:background="@drawable/edittext_background"
                 android:gravity="top"
                 android:hint="Descreva sua experiência (opcional)"
-                android:padding="12dp" />
+                android:padding="12dp"
+                android:textColor="@color/black" />
 
             <Button
                 android:id="@+id/btnSubmit"
@@ -193,7 +199,7 @@
                 android:id="@+id/ivModalIcon"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true" />
 
             <TextView
                 android:id="@+id/tvModalTitle"
