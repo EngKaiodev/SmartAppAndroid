@@ -2,6 +2,7 @@ package com.example.smartapp.domain.repository;
 
 import com.example.smartapp.core.domain.request.ServicoEditRequest;
 import com.example.smartapp.core.domain.request.ServicoRequest;
+import com.example.smartapp.core.domain.response.ServiceCompleteResponse;
 import com.example.smartapp.core.domain.response.ServicoResponse;
 import com.example.smartapp.core.network.service.ServicoService;
 
@@ -22,7 +23,7 @@ public class ServicoRepository {
         this.servicoService = servicoService;
     }
 
-    public Single<Response<List<ServicoResponse>>> getAll(){return servicoService.getAll().observeOn(Schedulers.io());}
+    public Single<Response<List<ServiceCompleteResponse>>> getAll(){return servicoService.getAll().observeOn(Schedulers.io());}
 
     public Single<Response<List<ServicoResponse>>> getAllByUserId(int id){
         return servicoService.getAllByUserId(id).subscribeOn(Schedulers.io());

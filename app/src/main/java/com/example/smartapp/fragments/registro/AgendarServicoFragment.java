@@ -23,6 +23,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import com.example.smartapp.R;
 import com.example.smartapp.core.domain.response.HourResponse;
 import com.example.smartapp.core.domain.response.ProfissionalResponse;
+import com.example.smartapp.core.domain.response.ScheduleResponse;
 import com.example.smartapp.core.domain.response.ServicoResponse;
 import com.example.smartapp.databinding.AgendarServicoBinding;
 import com.example.smartapp.viewmodels.AgendarServicoViewModel;
@@ -41,6 +42,7 @@ public class AgendarServicoFragment extends Fragment {
 
 
     private ProfissionalResponse profissionalSelected;
+    private ScheduleResponse scheduleResponse;
 
     @Nullable
     @Override
@@ -58,6 +60,7 @@ public class AgendarServicoFragment extends Fragment {
         AgendarServicoFragmentArgs args = AgendarServicoFragmentArgs.fromBundle(getArguments());
 
         profissionalSelected = args.getPro();
+        scheduleResponse = args.getSchedule();
 
         setupObservers();
         setupDatePicker();
@@ -81,21 +84,41 @@ public class AgendarServicoFragment extends Fragment {
         );
         servicosAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         binding.servicosSpinner.setAdapter(servicosAdapter);
+
+        if (scheduleResponse != null) {
+            int index = -1;
+            for (int i = 0; i < servicos.size(); i++) {
+                if (servicos.get(i).getId() == scheduleResponse.getServico().getId()) {
+                    index = i;
+                    break;
+                }
+            }
+            if (index >= 0) {
+                binding.servicosSpinner.setSelection(index);
+                binding.servicosSpinner.setEnabled(false);
+            }
+        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     private void setupDatePicker() {
         LocalDate today = LocalDate.now();
+        binding.edtpickerdata.setMinDate(System.currentTimeMillis() - 1000);
+        LocalDate selectedDate = today;
+        if (scheduleResponse != null){
+            selectedDate = scheduleResponse.getHour().getInitHour().toLocalDate();
+            viewModel.loadHours(profissionalSelected.getId_profissional(), selectedDate);
+        }
+
         binding.edtpickerdata.init(
-                today.getYear(),
-                today.getMonthValue() - 1,
-                today.getDayOfMonth(),
+                selectedDate.getYear(),
+                selectedDate.getMonthValue() - 1,
+                selectedDate.getDayOfMonth(),
                 (view, year, monthOfYear, dayOfMonth) -> {
                     LocalDate date = LocalDate.of(year, monthOfYear + 1, dayOfMonth);
                     viewModel.loadHours(profissionalSelected.getId_profissional(), date);
                 }
         );
-
     }
 
     private void setupHourPicker(List<HourResponse> hours) {

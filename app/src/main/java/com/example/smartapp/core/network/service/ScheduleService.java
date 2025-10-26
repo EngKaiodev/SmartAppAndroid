@@ -38,4 +38,14 @@ public interface ScheduleService {
     Single<Response<Boolean>> cancelScheduleById(
             @Path("id") int id
     );
+
+    @POST("/schedules/{id}/review")
+    Single<Response<Boolean>> reviewScheduleById(
+            @Path("id") int id
+    );
+
+    @POST("/schedules/{id}/finish")
+    Single<Response<Boolean>> finishScheduleById(
+            @Path("id") int id
+    );
 }

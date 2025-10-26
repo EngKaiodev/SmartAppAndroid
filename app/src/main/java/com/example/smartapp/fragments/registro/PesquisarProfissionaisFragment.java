@@ -11,9 +11,15 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.smartapp.adapters.ProfissionalListAdapter;
+import com.example.smartapp.core.domain.response.ProfissionalResponse;
 import com.example.smartapp.databinding.PesquisarProfissionalBinding;
 import com.example.smartapp.viewmodels.PesquisarProfissioanaisViewModel;
+
+import java.util.List;
+import java.util.function.Consumer;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -22,8 +28,8 @@ public class PesquisarProfissionaisFragment extends Fragment {
 
     private PesquisarProfissionalBinding binding;
     private PesquisarProfissioanaisViewModel viewModel;
-
     private NavController navController;
+    private ProfissionalListAdapter adapter;
 
     @Nullable
     @Override
@@ -37,24 +43,29 @@ public class PesquisarProfissionaisFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
+        viewModel.loadPros();
+
         setupListeners();
+        setupObservers();
+    }
+
+    private void setupObservers() {
+        viewModel.pros.observe(getViewLifecycleOwner(), profissionais -> {
+            setupAdapter(profissionais);
+        });
+    }
+
+    private void setupAdapter(List<ProfissionalResponse> profissionais) {
+        adapter = new ProfissionalListAdapter(profissionais, profissionalResponse -> {
+            navController.navigate(PesquisarProfissionaisFragmentDirections.perfilPrestadorFragment(profissionalResponse.getId_profissional()));
+        });
+
+        binding.rvPros.setAdapter(adapter);
+        binding.rvPros.setLayoutManager(new LinearLayoutManager(requireContext()));
     }
 
     private void setupListeners() {
-        binding.btnvoltarprest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.popBackStack();
-            }
-        });
-
-        binding.btnprestardorEncontrado.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(PesquisarProfissionaisFragmentDirections.perfilPrestadorFragment(0));
-            }
-        });
-
+        binding.btnvoltarprest.setOnClickListener(v -> navController.popBackStack());
     }
 
     @Override

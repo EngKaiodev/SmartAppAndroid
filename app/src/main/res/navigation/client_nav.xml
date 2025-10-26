@@ -180,6 +180,10 @@
         <argument
             android:name="pro"
             app:argType="com.example.smartapp.core.domain.response.ProfissionalResponse"
+            app:nullable="false" />
+        <argument
+            android:name="schedule"
+            app:argType="com.example.smartapp.core.domain.response.ScheduleResponse"
             app:nullable="true" />
         <action
             android:id="@+id/confirmaragendamentofragment"
@@ -202,8 +206,8 @@
         android:label="BuscarServicoFragment"
         tools:layout="@layout/buscar_servico">
         <action
-            android:id="@+id/action_ir_prestador"
-            app:destination="@id/buscar_profissional_fragment" />
+            android:id="@+id/action_agendar"
+            app:destination="@id/agendar_servico_fragment" />
     </fragment>
 
     <fragment

@@ -11,31 +11,31 @@
         android:id="@+id/header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:background="@color/indigo_600"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:padding="16dp"
-        android:layout_alignParentTop="true">
+        android:orientation="horizontal"
+        android:padding="16dp">
 
         <ImageButton
             android:id="@+id/btnvoltarbs"
             android:layout_width="48dp"
             android:layout_height="48dp"
-            android:contentDescription="btnvoltar"
-            android:src="@drawable/ic_arrow_back"
             android:background="?selectableItemBackgroundBorderless"
+            android:backgroundTint="@color/white"
+            android:contentDescription="btnvoltar"
             android:padding="8dp"
-            android:backgroundTint="@color/white"/>
+            android:src="@drawable/ic_arrow_back" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="SmartServ"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:gravity="center"/>
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
             android:text="Buscar Serviços"
             android:textColor="@android:color/white"
             android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <!-- Conteúdo Principal -->
@@ -51,54 +51,54 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/header"
-        android:padding="16dp"
+        android:background="@color/white"
         android:fillViewport="true"
-        android:background="@color/white">
+        android:padding="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:orientation="vertical">
 
             <!-- Search Bar -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
 
                 <EditText
                     android:id="@+id/searchQuery"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Buscar por nome, serviço ou especialidade..."
-                    android:padding="16dp"
-                    android:textColorHint="@color/gray_600"
                     android:background="@drawable/edittext_rounded"
                     android:drawableStart="@drawable/ic_search"
                     android:drawablePadding="8dp"
+                    android:hint="Buscar por nome, serviço ou especialidade..."
+                    android:imeOptions="actionSearch"
+                    android:padding="16dp"
                     android:textColor="@android:color/black"
-                    android:imeOptions="actionSearch"/>
+                    android:textColorHint="@color/gray_600" />
 
                 <ImageButton
                     android:id="@+id/btnSearch"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:src="@drawable/ic_search"
+                    android:layout_marginStart="8dp"
                     android:background="?selectableItemBackgroundBorderless"
-                    android:layout_marginStart="8dp"/>
+                    android:src="@drawable/ic_search" />
             </LinearLayout>
 
-            <!-- Filter Section -->
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
-                app:cardBackgroundColor="@color/white">
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -109,101 +109,101 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
                         android:text="Filtros"
                         android:textColor="@android:color/black"
                         android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="16dp"/>
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginBottom="16dp">
+                        android:layout_marginBottom="16dp"
+                        android:orientation="vertical">
 
                         <!-- Category Filter -->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
                             android:text="Categoria"
                             android:textColor="@android:color/black"
-                            android:textSize="14sp"
-                            android:layout_marginBottom="8dp"/>
+                            android:textSize="14sp" />
 
                         <Spinner
                             android:id="@+id/categoryFilter"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
-                            android:background="@drawable/spinner_border"/>
+                            android:background="@drawable/spinner_border" />
 
                         <!-- Location Filter -->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="8dp"
                             android:text="Localização"
                             android:textColor="@android:color/black"
-                            android:textSize="14sp"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginBottom="8dp"/>
+                            android:textSize="14sp" />
 
                         <EditText
                             android:id="@+id/locationFilter"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
-                            android:hint="Ex: Centro, Araçatuba"
-                            android:textColorHint="@color/gray_600"
                             android:background="@drawable/edittext_background"
+                            android:hint="Ex: Centro, Araçatuba"
+                            android:padding="12dp"
                             android:textColor="@android:color/black"
-                            android:padding="12dp"/>
+                            android:textColorHint="@color/gray_600" />
 
                         <!-- Rating Filter -->
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="8dp"
                             android:text="Avaliação Mínima"
                             android:textColor="@android:color/black"
-                            android:textSize="14sp"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginBottom="8dp"/>
+                            android:textSize="14sp" />
 
                         <Spinner
                             android:id="@+id/ratingFilter"
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
-                            android:background="@drawable/spinner_border"/>
+                            android:background="@drawable/spinner_border" />
                     </LinearLayout>
 
                     <!-- Filter Buttons -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="end">
+                        android:gravity="end"
+                        android:orientation="horizontal">
 
                         <Button
                             android:id="@+id/clearFiltersBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Limpar Filtros"
-                            android:textColor="@android:color/black"
+                            android:layout_marginEnd="8dp"
                             android:backgroundTint="@color/gray_100"
                             android:paddingStart="24dp"
-                            android:paddingEnd="24dp"
                             android:paddingTop="12dp"
+                            android:paddingEnd="24dp"
                             android:paddingBottom="12dp"
-                            android:layout_marginEnd="8dp"/>
+                            android:text="Limpar Filtros"
+                            android:textColor="@android:color/black" />
 
                         <Button
                             android:id="@+id/applyFiltersBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Aplicar Filtros"
-                            android:textColor="@android:color/white"
                             android:backgroundTint="@color/indigo_600"
                             android:paddingStart="24dp"
-                            android:paddingEnd="24dp"
                             android:paddingTop="12dp"
-                            android:paddingBottom="12dp"/>
+                            android:paddingEnd="24dp"
+                            android:paddingBottom="12dp"
+                            android:text="Aplicar Filtros"
+                            android:textColor="@android:color/white" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -213,57 +213,56 @@
                 android:id="@+id/resultsTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:text="Resultados da Busca"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp"/>
+                android:textStyle="bold" />
 
             <!-- Empty State -->
             <LinearLayout
                 android:id="@+id/emptyState"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:gravity="center"
+                android:orientation="vertical"
                 android:padding="32dp"
                 android:visibility="gone">
 
                 <ImageView
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:src="@drawable/ic_search_empty"
+                    android:layout_marginBottom="16dp"
                     android:contentDescription="Nenhum resultado encontrado"
-                    android:layout_marginBottom="16dp"/>
+                    android:src="@drawable/ic_search_empty" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
                     android:text="Nenhum resultado encontrado"
                     android:textColor="@color/gray_600"
-                    android:textSize="16sp"
-                    android:gravity="center"
-                    android:layout_marginBottom="8dp"/>
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="Tente ajustar os filtros ou usar termos de busca diferentes"
                     android:textColor="@color/gray_500"
-                    android:textSize="14sp"
-                    android:gravity="center"/>
+                    android:textSize="14sp" />
             </LinearLayout>
 
-            <!-- Professionals List -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvtlistaservico"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/historico_category"
+                android:layout_height="match_parent"
                 android:background="@color/light_gray"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="4dp"
-                tools:itemCount="2"/>
+                tools:itemCount="4"
+                tools:listitem="@layout/item_service_list" />
         </LinearLayout>
     </ScrollView>
 </RelativeLayout>

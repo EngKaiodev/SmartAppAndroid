@@ -267,6 +267,19 @@
                             android:textStyle="bold" />
 
                         <Button
+                            android:id="@+id/btnDone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:backgroundTint="#10B981"
+                            android:drawableLeft="@drawable/ic_check_circle"
+                            android:drawablePadding="8dp"
+                            android:paddingVertical="12dp"
+                            android:text="Finalizar Agendamento"
+                            android:textColor="#FFFFFF"
+                            android:textStyle="bold" />
+
+                        <Button
                             android:id="@+id/btnReagendar"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

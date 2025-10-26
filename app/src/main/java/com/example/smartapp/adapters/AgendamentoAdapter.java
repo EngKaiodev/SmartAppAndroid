@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,7 +19,7 @@ import java.util.List;
 public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.ViewHolder> {
 
     private final List<ScheduleResponse> aList;
-    private java.util.function.Consumer<ScheduleResponse> onAgendarClick; //Criar variavel
+    private java.util.function.Consumer<ScheduleResponse> onAgendarClick;
 
     public AgendamentoAdapter(List<ScheduleResponse> aList, java.util.function.Consumer<ScheduleResponse> onAgendarClick) {
         this.aList = aList;

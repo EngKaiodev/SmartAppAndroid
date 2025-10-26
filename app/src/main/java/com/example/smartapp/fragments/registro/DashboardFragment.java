@@ -72,7 +72,7 @@ public class DashboardFragment extends Fragment {
                 profissionalModel -> {
                     navController.navigate(
                             DashboardFragmentDirections.
-                                    actionAgendarServico(profissionalModel)
+                                    actionAgendarServico(profissionalModel, null)
                     );
                 },
                 s -> {

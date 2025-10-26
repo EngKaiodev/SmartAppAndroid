@@ -54,4 +54,18 @@ public class ReagendarViewModel extends ViewModel {
                 )
         );
     }
+
+    public void finishSchedule(int id){
+        disposable.add(
+                repository.finishScheduleById(id).observeOn(AndroidSchedulers.mainThread()).subscribe(
+                        response -> {
+                            if (response.isSuccessful() && response.code() == 200) {
+                                _changed.postValue(response.body());
+                            }
+                        },
+                        error -> {
+                        }
+                )
+        );
+    }
 }

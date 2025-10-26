@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.smartapp.adapters.AvalicaoAdapter;
 import com.example.smartapp.adapters.ServicoAdapter;
 import com.example.smartapp.core.domain.response.ProfissionalDetailResponse;
+import com.example.smartapp.core.domain.response.ProfissionalResponse;
 import com.example.smartapp.core.domain.response.ReviewSimpleResponse;
 import com.example.smartapp.core.domain.response.ServicoResponse;
 import com.example.smartapp.databinding.PerfilPrestadorBinding;
@@ -40,6 +41,7 @@ public class PerfilPrestadorFragment extends Fragment {
 
     private ServicoAdapter servicoAdapter;
     private List<ServicoResponse> servicos;
+    private ProfissionalResponse profissionalResponse;
 
     @Nullable
     @Override
@@ -67,6 +69,7 @@ public class PerfilPrestadorFragment extends Fragment {
     private void setupObservers(){
         viewModel.profissional.observe(getViewLifecycleOwner(), pro -> {
             if (pro != null){
+                profissionalResponse = pro.getProfissional();
                 setupView(pro);
                 reviews = pro.getReviews();
                 servicos = pro.getServicos();
@@ -102,27 +105,11 @@ public class PerfilPrestadorFragment extends Fragment {
     }
 
     private void setupListeners() {
-        binding.btnvoltarpro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.popBackStack();
-            }
-        });
+        binding.btnvoltarpro.setOnClickListener(v -> navController.popBackStack());
 
-        binding.btnAgendarServ.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.navigate(PerfilPrestadorFragmentDirections.agendarServicoFragment(null));
-            }
-        });
+        binding.btnAgendarServ.setOnClickListener(v -> navController.navigate(PerfilPrestadorFragmentDirections.agendarServicoFragment(profissionalResponse, null)));
 
-        binding.btnAvaliacao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                navController.navigate(PerfilPrestadorFragmentDirections.actionAvaliarTela());
-            }
-        });
-
+        binding.btnAvaliacao.setOnClickListener(view -> navController.navigate(PerfilPrestadorFragmentDirections.actionAvaliarTela()));
     }
 
     @Override

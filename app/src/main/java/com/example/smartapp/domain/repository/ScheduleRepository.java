@@ -40,4 +40,10 @@ public class ScheduleRepository {
     public Single<Response<Boolean>> cancelScheduleById(int id){
         return service.cancelScheduleById(id).subscribeOn(Schedulers.io());
     }
+    public Single<Response<Boolean>> reviewScheduleById(int id){
+        return service.reviewScheduleById(id).subscribeOn(Schedulers.io());
+    }
+    public Single<Response<Boolean>> finishScheduleById(int id){
+        return service.finishScheduleById(id).subscribeOn(Schedulers.io());
+    }
 }

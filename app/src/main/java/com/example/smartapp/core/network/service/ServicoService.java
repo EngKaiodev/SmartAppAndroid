@@ -2,6 +2,7 @@ package com.example.smartapp.core.network.service;
 
 import com.example.smartapp.core.domain.request.ServicoEditRequest;
 import com.example.smartapp.core.domain.request.ServicoRequest;
+import com.example.smartapp.core.domain.response.ServiceCompleteResponse;
 import com.example.smartapp.core.domain.response.ServicoResponse;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import retrofit2.http.Path;
 public interface ServicoService {
 
     @GET("/services")
-    Single<Response<List<ServicoResponse>>> getAll();
+    Single<Response<List<ServiceCompleteResponse>>> getAll();
 
     @GET("/services/{id}")
     Single<Response<ServicoResponse>> getById(

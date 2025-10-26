@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white">
+
     <RelativeLayout
         android:id="@+id/headerTop"
         android:layout_width="match_parent"
@@ -16,10 +17,10 @@
             android:id="@+id/btnvoltarpro"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_alignParentStart="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="btn2"
-            android:src="@drawable/ic_arrow_back"
-            android:layout_alignParentStart="true"/>
+            android:src="@drawable/ic_arrow_back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,11 +32,11 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
-    <!-- ScrollView para todo o conteúdo -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/headerTop"
+        android:layout_marginBottom="50dp"
         android:padding="16dp">
 
         <LinearLayout
@@ -47,88 +48,88 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
-                app:cardUseCompatPadding="true"
-                android:layout_marginBottom="16dp">
+                app:cardUseCompatPadding="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="24dp"
                     android:background="@color/light_gray"
-                    android:gravity="center_horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="24dp">
 
                     <ImageView
                         android:id="@+id/btnPerfil"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
-                        android:src="@drawable/profile_placeholder"
+                        android:background="@drawable/profile_image_border"
                         android:scaleType="centerCrop"
-                        android:background="@drawable/profile_image_border"/>
+                        android:src="@drawable/profile_placeholder" />
 
                     <TextView
                         android:id="@+id/professionalName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        tools:text="Maria Cabeleireira"
+                        android:layout_marginTop="16dp"
                         android:textColor="@android:color/black"
                         android:textSize="24sp"
                         android:textStyle="bold"
-                        android:layout_marginTop="16dp"/>
+                        tools:text="Maria Cabeleireira" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginTop="8dp"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_star"/>
+                            android:src="@drawable/ic_star" />
 
                         <TextView
                             android:id="@+id/professionalRating"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="4.9"
+                            android:layout_marginStart="4dp"
                             android:textColor="@android:color/black"
-                            android:textStyle="bold"
                             android:textSize="18sp"
-                            android:layout_marginStart="4dp"/>
+                            android:textStyle="bold"
+                            tools:text="4.9" />
 
                         <TextView
                             android:id="@+id/professionalReviews"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="(120 avaliações)"
+                            android:layout_marginStart="8dp"
                             android:textColor="@android:color/black"
                             android:textSize="14sp"
-                            android:layout_marginStart="8dp"/>
+                            tools:text="(120 avaliações)" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_marginTop="8dp"
-                        android:gravity="center">
+                        android:gravity="center"
+                        android:orientation="horizontal">
 
                         <ImageView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
+                            android:layout_height="wrap_content" />
 
                         <TextView
                             android:id="@+id/professionalLocation"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            tools:text="Rua da Beleza, 456, Bairro Estilo, Cidade, SP"
+                            android:layout_marginStart="4dp"
                             android:textColor="@android:color/black"
                             android:textSize="14sp"
-                            android:layout_marginStart="4dp"/>
+                            tools:text="Rua da Beleza, 456, Bairro Estilo, Cidade, SP" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -137,36 +138,36 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
-                app:cardUseCompatPadding="true"
-                android:layout_marginBottom="16dp">
+                app:cardUseCompatPadding="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:background="@color/light_gray"
+                    android:orientation="vertical"
                     android:padding="24dp">
 
                     <TextView
                         android:id="@+id/aboutName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:text="Sobre a Maria Cabeleireira"
+                        android:layout_marginBottom="16dp"
                         android:textColor="@android:color/black"
                         android:textSize="20sp"
                         android:textStyle="bold"
-                        android:layout_marginBottom="16dp"/>
+                        tools:text="Sobre a Maria Cabeleireira" />
 
                     <TextView
                         android:id="@+id/professionalDescription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:text="Cabeleireira com mais de 10 anos de experiência, especialista em cortes modernos e coloração. Oferece um atendimento personalizado e um ambiente acolhedor para que cada cliente se sinta único(a). Sua paixão é transformar o visual e elevar a autoestima."
+                        android:lineSpacingExtra="4dp"
                         android:textColor="@android:color/black"
                         android:textSize="16sp"
-                        android:lineSpacingExtra="4dp"/>
+                        tools:text="Cabeleireira com mais de 10 anos de experiência, especialista em cortes modernos e coloração. Oferece um atendimento personalizado e um ambiente acolhedor para que cada cliente se sinta único(a). Sua paixão é transformar o visual e elevar a autoestima." />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -174,40 +175,41 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@color/light_gray"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
-                android:background="@color/light_gray"
-                app:cardUseCompatPadding="true"
-                android:layout_marginBottom="16dp">
+                app:cardUseCompatPadding="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:background="@color/light_gray"
+                    android:orientation="vertical"
                     android:padding="24dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
                         android:text="Serviços Oferecidos"
                         android:textColor="@android:color/black"
                         android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="16dp"/>
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:id="@+id/servicesList"
-                        android:background="@color/light_gray"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/light_gray"
                         android:orientation="vertical">
+
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rvServico"
                             android:layout_width="match_parent"
                             android:layout_height="300dp"
                             tools:itemCount="3"
-                            tools:listitem="@layout/servico_category"/>
+                            tools:listitem="@layout/servico_category" />
                     </LinearLayout>
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -216,27 +218,27 @@
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@color/light_gray"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="4dp"
-                android:background="@color/light_gray"
-                app:cardUseCompatPadding="true"
-                android:layout_marginBottom="16dp">
+                app:cardUseCompatPadding="true">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:background="@color/light_gray"
+                    android:orientation="vertical"
                     android:padding="24dp">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
                         android:text="Avaliações Recentes"
                         android:textColor="@android:color/black"
                         android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="16dp"/>
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -257,28 +259,29 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:background="@drawable/button_border"
+                        android:padding="12dp"
                         android:text="Ver Todas as Avaliações"
-                        android:textColor="@android:color/white"
                         android:textAllCaps="false"
-                        android:textSize="16sp"
-                        android:padding="12dp"/>
+                        android:textColor="@android:color/white"
+                        android:textSize="16sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
-
-            <!-- Botão Agendar Serviço (moved to end) -->
-            <Button
-                android:id="@+id/btnAgendarServ"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="#4CAF50"
-                android:text="Agendar Serviço"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:padding="16dp"
-                android:drawableStart="@drawable/ic_calendar"
-                android:drawablePadding="8dp"/>
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/btnAgendarServ"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dp"
+        android:background="#4CAF50"
+        android:drawableStart="@drawable/ic_calendar"
+        android:drawablePadding="8dp"
+        android:padding="16dp"
+        android:text="Agendar Serviço"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 </RelativeLayout>

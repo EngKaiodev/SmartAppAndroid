@@ -65,6 +65,11 @@ public class AvaliarServicoFragment extends Fragment {
     private void setupObservers() {
         viewModel.sent.observe(getViewLifecycleOwner(), sent -> {
             if (sent){
+                viewModel.reviewSchedule(schedule.getId());
+            }
+        });
+        viewModel.reviwed.observe(getViewLifecycleOwner(), reviewed -> {
+            if (reviewed){
                 navController.popBackStack(navController.getGraph().getStartDestinationId(), false);
             }
         });
@@ -85,6 +90,7 @@ public class AvaliarServicoFragment extends Fragment {
                 viewModel.sendReview(
                         schedule.getProfissional().getId_profissional(),
                         rating,
+                        schedule.getId(),
                         comment
                 );
             }

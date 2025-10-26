@@ -21,6 +21,8 @@ import com.example.smartapp.core.domain.response.ScheduleResponse;
 import com.example.smartapp.databinding.ReagendarBinding;
 import com.example.smartapp.viewmodels.ReagendarViewModel;
 
+import java.time.LocalDateTime;
+
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
@@ -76,15 +78,29 @@ public class ReagendarFragment extends Fragment {
             binding.status.setTextColor(status.getColor());
             binding.status.setText(status.getLabel());
 
-            if (selectedSchedule.getStatus() == 1) {
-                binding.btnConfirm.setVisibility(View.GONE);
-                binding.btnReview.setVisibility(View.GONE);
+            switch (selectedSchedule.getStatus()) {
+                case 0: {
+                    binding.btnReview.setVisibility(View.GONE);
+                    binding.btnDone.setVisibility(View.GONE);
+                    break;
+                }
+                case 1: {
+                    binding.btnConfirm.setVisibility(View.GONE);
+                    binding.btnReview.setVisibility(View.GONE);
+                    break;
+                }
+                case 3: {
+                    binding.btncancelar.setVisibility(View.GONE);
+                    binding.btnReagendar.setVisibility(View.GONE);
+                    binding.btnConfirm.setVisibility(View.GONE);
+                    binding.btnDone.setVisibility(View.GONE);
+                    break;
+                }
             }
 
-            if (selectedSchedule.getStatus() == 3) {
+            if (selectedSchedule.getHour().getInitHour().isBefore(LocalDateTime.now())){
                 binding.btncancelar.setVisibility(View.GONE);
                 binding.btnReagendar.setVisibility(View.GONE);
-                binding.btnConfirm.setVisibility(View.GONE);
             }
         }
     }
@@ -92,7 +108,15 @@ public class ReagendarFragment extends Fragment {
     private void setupListeners() {
         binding.btnvoltardetalheag.setOnClickListener(v -> navController.popBackStack());
 
-        binding.btnReagendar.setOnClickListener(v -> navController.navigate(ReagendarFragmentDirections.agendarServicoFragment(null)));
+        binding.btnReagendar.setOnClickListener(v -> navController
+                .navigate(
+                        ReagendarFragmentDirections
+                                .agendarServicoFragment(
+                                        selectedSchedule.getProfissional(),
+                                        selectedSchedule
+                                )
+                )
+        );
 
         binding.btncancelar.setOnClickListener(v -> new AlertDialog.Builder(getContext())
                 .setTitle("Atenção")
@@ -109,6 +133,18 @@ public class ReagendarFragment extends Fragment {
         binding.btnConfirm.setOnClickListener(v -> viewModel.confirmSchedule(selectedSchedule.getId()));
 
         binding.btnReview.setOnClickListener(v -> navController.navigate(ReagendarFragmentDirections.actionToReview(selectedSchedule)));
+
+        binding.btnDone.setOnClickListener(v -> new AlertDialog.Builder(getContext())
+                .setTitle("Atenção")
+                .setMessage("Deseja realmente finalizar seu serviço? \n Essa ação NÃO pode ser desfeita.")
+                .setPositiveButton("Sim", (dialog, which) -> {
+                    viewModel.finishSchedule(selectedSchedule.getId());
+                })
+                .setNegativeButton("Não", (dialog, which) -> {
+                    dialog.dismiss();
+                })
+                .setCancelable(false)
+                .show());
     }
 
     @Override
