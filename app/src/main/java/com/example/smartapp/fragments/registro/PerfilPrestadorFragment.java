@@ -90,10 +90,15 @@ public class PerfilPrestadorFragment extends Fragment {
     private void setupView(ProfissionalDetailResponse pro) {
         binding.professionalName.setText(pro.getProfissional().getAltername());
         binding.professionalRating.setText(pro.getProfissional().getRate().toString());
-        binding.professionalReviews.setText("(" + pro.getProfissional().getReviewsCount() + " avaliações)");
         binding.professionalLocation.setText(pro.getAddress().getAddress());
         binding.aboutName.setText("Sobre " + pro.getProfissional().getAltername());
         binding.professionalDescription.setText(pro.getProfissional().getDescription());
+
+        if (pro.getProfissional().getReviewsCount() > 99){
+            binding.professionalReviews.setText("(+99 avaliações)");
+        } else {
+            binding.professionalReviews.setText("(" + pro.getProfissional().getReviewsCount() + " avaliações)");
+        }
     }
 
     private void setupListeners() {

@@ -69,10 +69,16 @@ public class ProfissionalAdapter extends RecyclerView.Adapter<ProfissionalAdapte
         }
 
         public void bind(ProfissionalResponse profissional) {
-            binding.avaliacao.setText(
-                    String.format(Locale.US, "%.2f ( %d )", profissional.getRate(), profissional.getReviewsCount())
-            );
             binding.nome.setText(profissional.getName());
+            if (profissional.getReviewsCount() > 99){
+                binding.avaliacao.setText(
+                        String.format(Locale.US, "%.2f ( +99 )", profissional.getRate())
+                );
+            } else {
+                binding.avaliacao.setText(
+                        String.format(Locale.US, "%.2f ( %d )", profissional.getRate(), profissional.getReviewsCount())
+                );
+            }
         }
     }
 
