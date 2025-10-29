@@ -50,39 +50,36 @@ public class CadastrarProfissionalFragment extends Fragment {
     }
 
     private void setupListeners() {
-        binding.btnproximoPro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (fieldsToValidade()) {
-                    Disposable disposable = viewModel.register(
-                            binding.edtProfNome.getText().toString(),
-                            binding.edtSenha.getText().toString(),
-                            binding.edtProftelefone.getText().toString(),
-                            binding.edtProfEmail.getText().toString(),
-                            binding.edtProfCpfCnpj.getText().toString(),
-                            1,
-                            binding.edtProfRazaoSocial.getText().toString(),
-                            binding.edtProfdescricao.getText().toString(),
-                            binding.edtProfCep.getText().toString(),
-                            binding.edtProfendereco.getText().toString(),
-                            binding.edtProfnumero.getText().toString()
-                                    )
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(response -> {
-                        if (response.isSuccessful() && response.code() == 200) {
-                            int proId = response.body().getId();
-                            navController.navigate(CadastrarProfissionalFragmentDirections.cadastrarServicoFragment(proId));
-                        } else {
-                            ErrorModel error = ErroHelper.getErrorModel(response);
-                            binding.tvError.setText(error.getMessage());
-                            binding.erroContainer.setVisibility(View.VISIBLE);
-                        }
-                    }, throwable -> {
-                        Toast.makeText(getContext(), "Erro ao registrar", Toast.LENGTH_SHORT).show();
-                    });
-                } else {
-                    binding.erroContainer.setVisibility(View.VISIBLE);
-                }
+        binding.btnproximoPro.setOnClickListener(v -> {
+            if (fieldsToValidade()) {
+                Disposable disposable = viewModel.register(
+                        binding.edtProfNome.getText().toString(),
+                        binding.edtSenha.getText().toString(),
+                        binding.edtProftelefone.getText().toString(),
+                        binding.edtProfEmail.getText().toString(),
+                        binding.edtProfCpfCnpj.getText().toString(),
+                        1,
+                        binding.edtProfRazaoSocial.getText().toString(),
+                        binding.edtProfdescricao.getText().toString(),
+                        binding.edtProfCep.getText().toString(),
+                        binding.edtProfendereco.getText().toString(),
+                        binding.edtProfnumero.getText().toString()
+                                )
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(response -> {
+                    if (response.isSuccessful() && response.code() == 200) {
+                        int proId = response.body().getId();
+                        navController.navigate(CadastrarProfissionalFragmentDirections.cadastrarServicoFragment(proId));
+                    } else {
+                        ErrorModel error = ErroHelper.getErrorModel(response);
+                        binding.tvError.setText(error.getMessage());
+                        binding.erroContainer.setVisibility(View.VISIBLE);
+                    }
+                }, throwable -> {
+                    Toast.makeText(getContext(), "Erro ao registrar", Toast.LENGTH_SHORT).show();
+                });
+            } else {
+                binding.erroContainer.setVisibility(View.VISIBLE);
             }
         });
 

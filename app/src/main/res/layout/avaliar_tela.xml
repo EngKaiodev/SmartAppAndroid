@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/white">
 
-    <!-- Header -->
     <RelativeLayout
         android:id="@+id/headerTop"
         android:layout_width="match_parent"
@@ -18,10 +17,10 @@
             android:id="@+id/btnVoltaraval"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_alignParentStart="true"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:contentDescription="Voltar"
-            android:src="@drawable/ic_arrow_back"
-            android:layout_alignParentStart="true"/>
+            android:src="@drawable/ic_arrow_back" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,340 +32,319 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
-    <!-- ScrollView para listar todas as avaliações -->
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@id/headerTop"
-        android:padding="16dp">
+        android:orientation="vertical">
 
-        <LinearLayout
+        <!-- Resumo das avaliações -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="4dp"
+            app:cardUseCompatPadding="true">
 
-            <!-- Resumo das avaliações -->
-            <androidx.cardview.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
-                app:cardUseCompatPadding="true"
-                android:layout_marginBottom="16dp">
+                android:background="@color/light_gray"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="24dp">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@color/light_gray"
-                    android:padding="24dp"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/totalRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4.9"
+                        android:textColor="@android:color/black"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/totalRating"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="4.9"
-                            android:textColor="@android:color/black"
-                            android:textSize="32sp"
-                            android:textStyle="bold"/>
+                        android:layout_marginStart="16dp"
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:layout_marginStart="16dp">
+                            android:orientation="horizontal">
 
-                            <LinearLayout
+                            <ImageView
+                                android:id="@+id/star1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                                android:src="@drawable/ic_star" />
 
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/ic_star"/>
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/ic_star"/>
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/ic_star"/>
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:src="@drawable/ic_star"/>
-
-                                <ImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    />
-                            </LinearLayout>
-
-                            <TextView
-                                android:id="@+id/totalReviews"
+                            <ImageView
+                                android:id="@+id/star2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Baseado em 120 avaliações"
-                                android:textColor="@android:color/black"
-                                android:textSize="14sp"
-                                android:layout_marginTop="4dp"/>
+                                android:src="@drawable/ic_star" />
+
+                            <ImageView
+                                android:id="@+id/star3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star" />
+
+                            <ImageView
+                                android:id="@+id/star4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star" />
+
+                            <ImageView
+                                android:id="@+id/star5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_star" />
                         </LinearLayout>
-                    </LinearLayout>
 
-                    <!-- Distribuição de avaliações -->
+                        <TextView
+                            android:id="@+id/totalReviews"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Baseado em 120 avaliações"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Distribuição de avaliações -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="vertical">
+
+                    <!-- 5 estrelas -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginTop="16dp">
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                        <!-- 5 estrelas -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginBottom="8dp">
+                            android:text="5"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="5"
-                                android:textColor="@android:color/black"
-                                android:textSize="14sp"/>
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_star"
-                                android:layout_marginStart="4dp"/>
-
-                            <ProgressBar
-                                android:id="@+id/progress5"
-                                style="@android:style/Widget.ProgressBar.Horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="8dp"
-                                android:layout_weight="1"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginEnd="8dp"
-                                android:progress="90"
-                                />
-
-                            <TextView
-                                android:id="@+id/count5"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="108"
-                                android:textColor="@android:color/black"
-                                android:textSize="14sp"/>
-                        </LinearLayout>
-
-                        <!-- 4 estrelas -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <ImageView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginBottom="8dp">
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="4"
-                                android:textColor="@android:color/black"
-                                android:textSize="14sp"/>
+                        <ProgressBar
+                            android:id="@+id/progress5"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:progress="90" />
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_star"
-                                android:layout_marginStart="4dp"/>
-
-                            <ProgressBar
-                                android:id="@+id/progress4"
-                                style="@android:style/Widget.ProgressBar.Horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="8dp"
-                                android:layout_weight="1"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginEnd="8dp"
-                                android:progress="8"
-                               />
-
-                            <TextView
-                                android:id="@+id/count4"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="10"
-                                android:textColor="@android:color/black"
-                                android:textSize="14sp"/>
-                        </LinearLayout>
-
-                        <!-- 3 estrelas -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/count5"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginBottom="8dp">
+                            android:text="108"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp" />
+                    </LinearLayout>
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="3"
-                                android:textColor="@android:color/black"
-                                android:textSize="14sp"/>
+                    <!-- 4 estrelas -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_star"
-                                android:layout_marginStart="4dp"/>
-
-                            <ProgressBar
-                                android:id="@+id/progress3"
-                                style="@android:style/Widget.ProgressBar.Horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="8dp"
-                                android:layout_weight="1"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginEnd="8dp"
-                                android:progress="1"
-                                />
-
-                            <TextView
-                                android:id="@+id/count3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="2"
-                                android:textColor="@android:color/black"
-                                android:textSize="14sp"/>
-                        </LinearLayout>
-
-                        <!-- 2 estrelas -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginBottom="8dp">
+                            android:text="4"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="2"
-                                android:textColor="@android:color/black"
-                                android:textSize="14sp"/>
-
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_star"
-                                android:layout_marginStart="4dp"/>
-
-                            <ProgressBar
-                                android:id="@+id/progress2"
-                                style="@android:style/Widget.ProgressBar.Horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="8dp"
-                                android:layout_weight="1"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginEnd="8dp"
-                                android:progress="0"
-                                />
-
-                            <TextView
-                                android:id="@+id/count2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="0"
-                                android:textColor="@android:color/black"
-                                android:textSize="14sp"/>
-                        </LinearLayout>
-
-                        <!-- 1 estrela -->
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <ImageView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:gravity="center_vertical"
-                            android:layout_marginBottom="8dp">
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star" />
 
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="1"
-                                android:textColor="@android:color/black"
-                                android:textSize="14sp"/>
+                        <ProgressBar
+                            android:id="@+id/progress4"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:progress="8" />
 
-                            <ImageView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/ic_star"
-                                android:layout_marginStart="4dp"/>
+                        <TextView
+                            android:id="@+id/count4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="10"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp" />
+                    </LinearLayout>
 
-                            <ProgressBar
-                                android:id="@+id/progress1"
-                                style="@android:style/Widget.ProgressBar.Horizontal"
-                                android:layout_width="0dp"
-                                android:layout_height="8dp"
-                                android:layout_weight="1"
-                                android:layout_marginStart="8dp"
-                                android:layout_marginEnd="8dp"
-                                android:progress="0"
-                                />
+                    <!-- 3 estrelas -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                            <TextView
-                                android:id="@+id/count1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="0"
-                                android:textColor="@android:color/black"
-                                android:textSize="14sp"/>
-                        </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star" />
+
+                        <ProgressBar
+                            android:id="@+id/progress3"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:progress="1" />
+
+                        <TextView
+                            android:id="@+id/count3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!-- 2 estrelas -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star" />
+
+                        <ProgressBar
+                            android:id="@+id/progress2"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:progress="0" />
+
+                        <TextView
+                            android:id="@+id/count2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <!-- 1 estrela -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="1"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:src="@drawable/ic_star" />
+
+                        <ProgressBar
+                            android:id="@+id/progress1"
+                            style="@android:style/Widget.ProgressBar.Horizontal"
+                            android:layout_width="0dp"
+                            android:layout_height="8dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:progress="0" />
+
+                        <TextView
+                            android:id="@+id/count1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp" />
                     </LinearLayout>
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <!-- Lista de avaliações -->
-            <LinearLayout
-                android:id="@+id/reviewsList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <!-- Avaliação 1 -->
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvAvaliacliente"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="2dp"
-                    android:background="@color/light_gray"
-                    app:cardUseCompatPadding="true"
-                    android:layout_marginBottom="16dp"
-                    tools:listitem="@layout/avaliar_category"
-                    tools:itemCount="3"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:spanCount="3"/>
-
-
-
-                <!-- Mais avaliações seriam adicionadas aqui dinamicamente -->
-
             </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAvaliacliente"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:background="@color/light_gray"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="2dp"
+            app:cardUseCompatPadding="true"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:spanCount="3"
+            tools:itemCount="3"
+            tools:listitem="@layout/avaliar_category" />
+    </LinearLayout>
 </RelativeLayout>

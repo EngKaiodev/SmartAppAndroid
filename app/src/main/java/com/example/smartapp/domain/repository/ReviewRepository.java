@@ -1,6 +1,7 @@
 package com.example.smartapp.domain.repository;
 
 import com.example.smartapp.core.domain.request.ReviewRequest;
+import com.example.smartapp.core.domain.response.AllReviewResponse;
 import com.example.smartapp.core.network.service.ReviewService;
 
 import javax.inject.Inject;
@@ -20,5 +21,9 @@ public class ReviewRepository {
 
     public Single<Response<Boolean>> save(ReviewRequest request){
         return service.save(request).subscribeOn(Schedulers.io());
+    }
+
+    public Single<Response<AllReviewResponse>> getAllReview(int proId){
+        return service.getReviewToAll(proId).subscribeOn(Schedulers.io());
     }
 }

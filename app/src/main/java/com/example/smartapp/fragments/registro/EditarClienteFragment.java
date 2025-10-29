@@ -42,32 +42,24 @@ public class EditarClienteFragment extends Fragment {
     }
 
     private void setupListeners() {
-        binding.btnvoltarcliente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.popBackStack();
-            }
-        });
+        binding.btnvoltarcliente.setOnClickListener(v -> navController.popBackStack());
 
-        binding.btnSalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(viewModel.validateFragment(
-                        binding.edtNomecliente.getText().toString(),
-                        binding.edtEmailcliente.getText().toString(),
-                        binding.edtTelefonecliente.getText().toString(),
-                        binding.edtCfpCnpjCliente.getText().toString(),
-                        binding.edtCepcliente.getText().toString(),
-                        binding.edtEnderecocliente.getText().toString(),
-                        binding.edtNomecliente.getText().toString(),
-                        binding.edtnovasenha.getText().toString(),
-                        binding.edtConfimarnovasenha.getText().toString()
-                )){
+        binding.btnSalvar.setOnClickListener(v -> {
+            if(viewModel.validateFragment(
+                    binding.edtNomecliente.getText().toString(),
+                    binding.edtEmailcliente.getText().toString(),
+                    binding.edtTelefonecliente.getText().toString(),
+                    binding.edtCfpCnpjCliente.getText().toString(),
+                    binding.edtCepcliente.getText().toString(),
+                    binding.edtEnderecocliente.getText().toString(),
+                    binding.edtNomecliente.getText().toString(),
+                    binding.edtnovasenha.getText().toString(),
+                    binding.edtConfimarnovasenha.getText().toString()
+            )){
 
-                }else {
-                    binding.erroContainer.setVisibility(View.VISIBLE);
-                    binding.erroContainer.setVisibility(View.GONE);
-                }
+            }else {
+                binding.erroContainer.setVisibility(View.VISIBLE);
+                binding.erroContainer.setVisibility(View.GONE);
             }
         });
 

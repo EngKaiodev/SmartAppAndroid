@@ -61,26 +61,6 @@ public class EditarClienteViewModel extends ViewModel {
             return false;
         }
 
-        // Validar CPF/CNPJ (apenas formato)
-        String cpfCnpjDigits = cpfCnpj.replaceAll("[^0-9]", "");
-        if (cpfCnpjDigits.length() == 11) {
-            if (!CPF_PATTERN.matcher(cpfCnpj).matches()) {
-                return false;
-            }
-        } else if (cpfCnpjDigits.length() == 14) {
-            if (!CNPJ_PATTERN.matcher(cpfCnpj).matches()) {
-                return false;
-            }
-        } else {
-            return false;
-        }
-
-        // Validar CEP
-        String cepDigits = cep.replaceAll("[^0-9]", "");
-        if (cepDigits.length() != 8 || !CEP_PATTERN.matcher(cep).matches()) {
-            return false;
-        }
-
         // Validar endereço
         if (endereco == null || endereco.trim().isEmpty()) {
             return false;

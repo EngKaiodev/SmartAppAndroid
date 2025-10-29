@@ -71,40 +71,32 @@ public class EditarProfissionalFragment extends Fragment {
     }
 
     private void setupListeners() {
-        binding.btnvoltarProfisional.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.popBackStack();
-            }
-        });
+        binding.btnvoltarProfisional.setOnClickListener(v -> navController.popBackStack());
 
-        binding.btnSalvarPro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(viewModel.validateField(
+        binding.btnSalvarPro.setOnClickListener(v -> {
+            if(viewModel.validateField(
+                    binding.edtNomePro.getText().toString(),
+                    binding.edtEmailPro.getText().toString(),
+                    binding.edtTelefonePro.getText().toString(),
+                    binding.edtCpfCnpjPro.getText().toString(),
+                    binding.edtCepPro.getText().toString(),
+                    binding.edtEnderecoPro.getText().toString(),
+                    binding.edtNumeroPro.getText().toString()
+            )){
+                viewModel.editData(
                         binding.edtNomePro.getText().toString(),
                         binding.edtEmailPro.getText().toString(),
                         binding.edtTelefonePro.getText().toString(),
                         binding.edtCpfCnpjPro.getText().toString(),
                         binding.edtCepPro.getText().toString(),
                         binding.edtEnderecoPro.getText().toString(),
-                        binding.edtNumeroPro.getText().toString()
-                )){
-                    viewModel.editData(
-                            binding.edtNomePro.getText().toString(),
-                            binding.edtEmailPro.getText().toString(),
-                            binding.edtTelefonePro.getText().toString(),
-                            binding.edtCpfCnpjPro.getText().toString(),
-                            binding.edtCepPro.getText().toString(),
-                            binding.edtEnderecoPro.getText().toString(),
-                            binding.edtNumeroPro.getText().toString(),
-                            binding.edtRazaoSocialPro.getText().toString(),
-                            binding.edtDescricaoPro.getText().toString()
-                    );
-                }else {
-                    binding.erroContainer.setVisibility(View.VISIBLE);
-                    binding.erroContainer.setVisibility(View.GONE);
-                }
+                        binding.edtNumeroPro.getText().toString(),
+                        binding.edtRazaoSocialPro.getText().toString(),
+                        binding.edtDescricaoPro.getText().toString()
+                );
+            }else {
+                binding.erroContainer.setVisibility(View.VISIBLE);
+                binding.erroContainer.setVisibility(View.GONE);
             }
         });
     }

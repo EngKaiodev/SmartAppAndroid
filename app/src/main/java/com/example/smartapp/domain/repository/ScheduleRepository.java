@@ -1,6 +1,7 @@
 package com.example.smartapp.domain.repository;
 
 import com.example.smartapp.core.domain.request.ScheduleRequest;
+import com.example.smartapp.core.domain.response.HistoricResponse;
 import com.example.smartapp.core.domain.response.ScheduleResponse;
 import com.example.smartapp.core.network.service.ScheduleService;
 
@@ -45,5 +46,9 @@ public class ScheduleRepository {
     }
     public Single<Response<Boolean>> finishScheduleById(int id){
         return service.finishScheduleById(id).subscribeOn(Schedulers.io());
+    }
+
+    public Single<Response<List<HistoricResponse>>> getHistoric(String type, int id){
+        return service.getHistoric(type, id).subscribeOn(Schedulers.io());
     }
 }

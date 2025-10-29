@@ -14,6 +14,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.smartapp.adapters.HistoricoAdapter;
+import com.example.smartapp.core.domain.response.HistoricResponse;
 import com.example.smartapp.databinding.HistoricoServicoBinding;
 import com.example.smartapp.domain.models.HistoricoModel;
 import com.example.smartapp.viewmodels.HistoricoServicoViewModel;
@@ -30,7 +31,7 @@ public class HistoricoServicoFragment extends Fragment {
 
     private NavController navController;
 
-    private List<HistoricoModel> historicoList;
+    private List<HistoricResponse> historicoList;
     private HistoricoAdapter historicoAdapter;
 
     @Nullable
@@ -45,16 +46,17 @@ public class HistoricoServicoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
+        viewModel.loadHistoricos();
 
-        mockedList();
         setupListeners();
-        setupAdapters();
+        setupObservers();
     }
 
-    private void mockedList(){
-        historicoList = List.of(
-                new HistoricoModel(1, "jõao", "corte e barba","R$80,00", "14/07/2025", "5")
-        );
+    private void setupObservers() {
+        viewModel.historicos.observe(getViewLifecycleOwner(), historicos -> {
+            historicoList = historicos;
+            setupAdapters();
+        });
     }
 
     private void setupAdapters(){
@@ -66,11 +68,7 @@ public class HistoricoServicoFragment extends Fragment {
     }
 
     private void setupListeners() {
-        binding.btnvoltarhist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.popBackStack();            }
-        });
+        binding.btnvoltarhist.setOnClickListener(v -> navController.popBackStack());
 
     }
 

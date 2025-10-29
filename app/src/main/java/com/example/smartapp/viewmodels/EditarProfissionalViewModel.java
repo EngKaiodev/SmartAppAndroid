@@ -113,18 +113,6 @@ public class EditarProfissionalViewModel extends ViewModel {
             return false;
         }
 
-        // Validar CPF/CNPJ (apenas verificar se tem 11 ou 14 dígitos)
-        String cpfCnpjDigits = cpfCnpj.replaceAll("[^0-9]", "");
-        if (cpfCnpjDigits.length() != 11 && cpfCnpjDigits.length() != 14) {
-            return false;
-        }
-
-        // Validar CEP
-        String cepDigits = cep.replaceAll("[^0-9]", "");
-        if (cepDigits.length() != 8) {
-            return false;
-        }
-
         // Validar endereço
         if (endereco == null || endereco.trim().isEmpty()) {
             return false;

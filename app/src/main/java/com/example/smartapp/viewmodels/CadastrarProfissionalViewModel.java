@@ -86,11 +86,6 @@ public class CadastrarProfissionalViewModel extends ViewModel {
             return false;
         }
 
-        // Validação de CEP (apenas 8 dígitos)
-        String cepLimpo = (cep == null) ? "" : cep.replaceAll("[^0-9]", "");
-        if (cepLimpo.isEmpty() || !CEP_PATTERN.matcher(cepLimpo).matches()) {
-            return false;
-        }
 
         // Validação de Endereço
         if (endereco == null || endereco.trim().isEmpty() || endereco.trim().length() < 5) {

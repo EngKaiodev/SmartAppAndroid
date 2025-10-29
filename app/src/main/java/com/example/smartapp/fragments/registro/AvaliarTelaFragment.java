@@ -14,7 +14,10 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 
+import com.example.smartapp.R;
+import com.example.smartapp.core.domain.response.ReviewData;
 import com.example.smartapp.core.domain.response.ReviewSimpleResponse;
+import com.example.smartapp.core.domain.response.ReviewToList;
 import com.example.smartapp.databinding.AvaliarTelaBinding;
 
 import com.example.smartapp.domain.models.AvaliacaoModel;
@@ -23,15 +26,17 @@ import com.example.smartapp.viewmodels.AvaliarTelaViewModel;
 import com.example.smartapp.adapters.AvalicaoAdapter;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class AvaliarTelaFragment extends Fragment {
 
     private AvaliarTelaBinding binding;
     private AvaliarTelaViewModel viewModel;
     private NavController navController;
     private List<ReviewSimpleResponse> avaliacaoList;
-    private AvalicaoAdapter avalicaoAdapter;
-
 
 
     @Nullable
@@ -46,30 +51,70 @@ public class AvaliarTelaFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
+        AvaliarTelaFragmentArgs args = AvaliarTelaFragmentArgs.fromBundle(getArguments());
 
-        mockedList();
+        viewModel.loadReviews(args.getProId());
+
         setupListeners();
-        setupAdapters();
+        setupObservers();
     }
 
-    private void mockedList(){
+    private void setupObservers() {
+        viewModel.reviews.observe(getViewLifecycleOwner(), data -> {
+            List<ReviewSimpleResponse> responses = data.getReviewsList()
+                    .stream()
+                    .map(ReviewToList::toResponse)
+                    .toList();
+
+            avaliacaoList = responses;
+
+            setupAdapters();
+            setupView(data.getData());
+
+        });
     }
+
+    private void setupView(ReviewData data) {
+        // Média das avaliações
+        binding.totalRating.setText(String.format("%.2f", data.getMedia_avaliacoes()));
+
+        // Definir estrelas cheias de acordo com a média
+        int mediaInt = (int) Math.round(data.getMedia_avaliacoes());
+        binding.star1.setImageResource(mediaInt >= 1 ? R.drawable.ic_star : R.drawable.ic_star_empty);
+        binding.star2.setImageResource(mediaInt >= 2 ? R.drawable.ic_star : R.drawable.ic_star_empty);
+        binding.star3.setImageResource(mediaInt >= 3 ? R.drawable.ic_star : R.drawable.ic_star_empty);
+        binding.star4.setImageResource(mediaInt >= 4 ? R.drawable.ic_star : R.drawable.ic_star_empty);
+        binding.star5.setImageResource(mediaInt >= 5 ? R.drawable.ic_star : R.drawable.ic_star_empty);
+
+        // Contagens de cada nota
+        binding.count5.setText(String.valueOf(data.getNota_5()));
+        binding.count4.setText(String.valueOf(data.getNota_4()));
+        binding.count3.setText(String.valueOf(data.getNota_3()));
+        binding.count2.setText(String.valueOf(data.getNota_2()));
+        binding.count1.setText(String.valueOf(data.getNota_1()));
+
+        // Total de avaliações
+        binding.totalReviews.setText("Baseado em " + data.getTotal_avaliacoes() + " avaliações");
+
+        // Atualizar progress bars
+        long total = data.getTotal_avaliacoes() > 0 ? data.getTotal_avaliacoes() : 1; // evitar divisão por zero
+        binding.progress5.setProgress((int) (data.getNota_5() * 100 / total));
+        binding.progress4.setProgress((int) (data.getNota_4() * 100 / total));
+        binding.progress3.setProgress((int) (data.getNota_3() * 100 / total));
+        binding.progress2.setProgress((int) (data.getNota_2() * 100 / total));
+        binding.progress1.setProgress((int) (data.getNota_1() * 100 / total));
+    }
+
+
 
     private void setupAdapters(){
-        avalicaoAdapter = new AvalicaoAdapter(avaliacaoList);
+        AvalicaoAdapter avalicaoAdapter = new AvalicaoAdapter(avaliacaoList);
         binding.rvAvaliacliente.setAdapter(avalicaoAdapter);
         binding.rvAvaliacliente.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     }
 
     private void setupListeners(){
-        binding.btnVoltaraval.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navController.popBackStack();
-            }
-        });
-
-
+        binding.btnVoltaraval.setOnClickListener(v -> navController.popBackStack());
     }
 
     @Override

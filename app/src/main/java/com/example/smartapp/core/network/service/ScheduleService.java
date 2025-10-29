@@ -1,6 +1,7 @@
 package com.example.smartapp.core.network.service;
 
 import com.example.smartapp.core.domain.request.ScheduleRequest;
+import com.example.smartapp.core.domain.response.HistoricResponse;
 import com.example.smartapp.core.domain.response.ScheduleResponse;
 
 import java.util.List;
@@ -46,6 +47,12 @@ public interface ScheduleService {
 
     @POST("/schedules/{id}/finish")
     Single<Response<Boolean>> finishScheduleById(
+            @Path("id") int id
+    );
+
+    @GET("/schedules/{type}/{id}/historic")
+    Single<Response<List<HistoricResponse>>> getHistoric(
+            @Path("type") String type,
             @Path("id") int id
     );
 }
