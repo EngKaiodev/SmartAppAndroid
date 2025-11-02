@@ -153,7 +153,6 @@ public class AgendarServicoFragment extends Fragment {
             }
         });
 
-        // Atualizar resumo quando os dados mudarem
         binding.servicosSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -214,7 +213,7 @@ public class AgendarServicoFragment extends Fragment {
 
         String dataSelecionada = String.format("%02d/%02d/%d",
                 binding.edtpickerdata.getDayOfMonth(),
-                binding.edtpickerdata.getMonth() + 1, // Month é 0-based
+                binding.edtpickerdata.getMonth() + 1,
                 binding.edtpickerdata.getYear());
         binding.summaryDate.setText(dataSelecionada);
 
