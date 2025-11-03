@@ -76,7 +76,7 @@
                     android:background="@drawable/edittext_rounded"
                     android:drawableStart="@drawable/ic_search"
                     android:drawablePadding="8dp"
-                    android:hint="Buscar por nome, serviço ou especialidade..."
+                    android:hint="Buscar por serviço..."
                     android:imeOptions="actionSearch"
                     android:padding="16dp"
                     android:textColor="@android:color/black"

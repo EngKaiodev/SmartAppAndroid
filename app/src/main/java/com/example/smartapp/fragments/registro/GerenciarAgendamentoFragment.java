@@ -51,7 +51,6 @@ public class GerenciarAgendamentoFragment extends Fragment {
 
         setupSpinners();
         setupListeners();
-//        updateEmptyState();
     }
 
     private void setupObservers() {
@@ -59,11 +58,11 @@ public class GerenciarAgendamentoFragment extends Fragment {
     }
 
     private void setupSpinners() {
-        // Configurar spinner de status (simplificado sem status)
         List<String> statusOptions = Arrays.asList(
-                "Todos os agendamentos",
-                "Agendamentos ativos",
-                "Agendamentos concluídos"
+                "TODOS",
+                "A CONFIRMAR",
+                "CONCLUIDOS",
+                "CANCELADOS"
         );
 
         ArrayAdapter<String> statusAdapter = new ArrayAdapter<>(
@@ -89,7 +88,55 @@ public class GerenciarAgendamentoFragment extends Fragment {
         );
         periodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         binding.periodFilter.setAdapter(periodAdapter);
+
+        binding.statusFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                applyFilters();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        binding.periodFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                applyFilters();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        binding.clearFilterButton.setOnClickListener(v -> {
+            binding.statusFilter.setSelection(0);
+            binding.periodFilter.setSelection(0);
+            applyFilters();
+        });
     }
+
+    private void applyFilters() {
+        if (agendamentoAdapter != null){
+            String selectedStatus = binding.statusFilter.getSelectedItem().toString();
+            String selectedPeriod = binding.periodFilter.getSelectedItem().toString();
+
+            agendamentoAdapter.filter(selectedStatus, selectedPeriod);
+        }
+    }
+
+    private void cleanFilter(){
+        if (agendamentoAdapter != null){
+            binding.statusFilter.setSelection(0);
+            binding.periodFilter.setSelection(0);
+            applyFilters();
+        }
+    }
+
 
     private void setupAdapters(List<ScheduleResponse> schedules) {
         agendamentoAdapter = new AgendamentoAdapter(schedules, selectedSchedule -> {
@@ -103,72 +150,8 @@ public class GerenciarAgendamentoFragment extends Fragment {
     private void setupListeners() {
         binding.btnvoltaragendamento.setOnClickListener(v -> navController.popBackStack());
 
-        /*binding.clearFilterButton.setOnClickListener(v -> clearFilters());
-
-        binding.statusFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                applyFilters();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });*/
-
-        /*binding.periodFilter.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                applyFilters();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });*/
+        binding.clearFilterButton.setOnClickListener(v -> cleanFilter());
     }
-
-    /*private void applyFilters() {
-        String statusSelecionado = binding.statusFilter.getSelectedItem().toString();
-        String periodoSelecionado = binding.periodFilter.getSelectedItem().toString();
-
-        filteredList.clear();
-
-        // Filtro simplificado já que não temos status no modelo
-        for (ScheduleResponse agendamento : agendamentoList) {
-            boolean matchesFilter = true;
-
-            // Filtro por período (exemplo simplificado)
-            if (!periodoSelecionado.equals("Todos os períodos")) {
-                // Aqui você implementaria a lógica real de filtro por data
-                // Por enquanto, vamos apenas incluir todos os itens
-                matchesFilter = true;
-            }
-
-            if (matchesFilter) {
-                filteredList.add(agendamento);
-            }
-        }
-
-        agendamentoAdapter.notifyDataSetChanged();
-        updateEmptyState();
-    }*/
-
-    /*private void clearFilters() {
-        binding.statusFilter.setSelection(0);
-        binding.periodFilter.setSelection(0);
-        applyFilters();
-    }
-
-    private void updateEmptyState() {
-        if (filteredList.isEmpty()) {
-            binding.emptyState.setVisibility(View.VISIBLE);
-            binding.rvAgendamentosCategories.setVisibility(View.GONE);
-        } else {
-            binding.emptyState.setVisibility(View.GONE);
-            binding.rvAgendamentosCategories.setVisibility(View.VISIBLE);
-        }
-    }*/
 
     @Override
     public void onDestroy() {

@@ -100,10 +100,14 @@ public class CadastrarClienteFragment extends Fragment {
                         String cidade = viaCepResponse.getLocalidade();
                         String uf = viaCepResponse.getUf();
 
-                        String endereco = logradouro + " - " + bairro + " - " + cidade + " / " + uf;
+                        if (logradouro == null){
+                            binding.edtEndenreco.requestFocus();
+                        } else {
+                            String endereco = logradouro + " - " + bairro + " - " + cidade + " / " + uf;
 
-                        binding.edtEndenreco.setText(endereco);
-                        binding.edtNumero.requestFocus();
+                            binding.edtEndenreco.setText(endereco);
+                            binding.edtNumero.requestFocus();
+                        }
 
                     }, throwable -> {
                         Toast.makeText(getContext(), "Erro ao buscar CEP", Toast.LENGTH_SHORT).show();

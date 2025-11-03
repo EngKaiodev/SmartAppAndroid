@@ -49,6 +49,10 @@ public class BuscarServicoViewModel extends ViewModel {
         );
     }
 
+    public void clearProfissional() {
+        _pro.postValue(null);
+    }
+
     public void loadPro(int id) throws Exception {
         disposable.add(
                 profissionalRepository.getDetailById(id).subscribeOn(AndroidSchedulers.mainThread()).subscribe(

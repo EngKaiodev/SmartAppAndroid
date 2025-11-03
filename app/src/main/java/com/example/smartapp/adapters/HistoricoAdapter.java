@@ -10,19 +10,24 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartapp.R;
 import com.example.smartapp.core.domain.response.HistoricResponse;
+import com.example.smartapp.core.domain.response.ProfissionalResponse;
 import com.example.smartapp.databinding.HistoricoCategoryBinding;
 import com.example.smartapp.domain.models.HistoricoModel;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.function.Consumer;
 
 public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.ViewHolder> {
 
-    private final List<HistoricResponse> hList;
+    private final List<HistoricResponse> originalList;
+    private final List<HistoricResponse> filteredList;
     private Consumer<HistoricResponse> onHistoryClick;
 
-    public HistoricoAdapter(List<HistoricResponse> hList, Consumer<HistoricResponse> onHistoryClick){
-        this.hList = hList;
+    public HistoricoAdapter(List<HistoricResponse> originalList, Consumer<HistoricResponse> onHistoryClick){
+        this.originalList = new ArrayList<>(originalList);
+        this.filteredList = new ArrayList<>(originalList);
         this.onHistoryClick = onHistoryClick;
     }
 
@@ -37,7 +42,7 @@ public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.View
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        HistoricResponse hitem = hList.get(position);
+        HistoricResponse hitem = filteredList.get(position);
         holder.bind(hitem);
 
         holder.itemView.setOnClickListener(view -> onHistoryClick.accept(hitem));
@@ -45,7 +50,29 @@ public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.View
     }
 
     @Override
-    public int getItemCount() {return hList != null ? hList.size(): 0; }
+    public int getItemCount() {return filteredList.size(); }
+
+    public void filter(String nome, String servico) {
+        filteredList.clear();
+
+        if (nome != null && !nome.trim().isEmpty()){
+            String lowerQuery = nome.toLowerCase(Locale.ROOT);
+            for (HistoricResponse s : originalList) {
+                if (s.getProfissional().getName().toLowerCase(Locale.ROOT).contains(lowerQuery)) {
+                    filteredList.add(s);
+                }
+            }
+        } else {
+            filteredList.addAll(originalList);
+        }
+
+        if (servico != null && !servico.trim().isEmpty()){
+            String lowerQuery = servico.toLowerCase(Locale.ROOT);
+            filteredList.removeIf(s -> !s.getServico().getName().toLowerCase(Locale.ROOT).contains(lowerQuery));
+        }
+
+        notifyDataSetChanged();
+    }
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         private HistoricoCategoryBinding binding;

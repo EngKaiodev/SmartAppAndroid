@@ -1,6 +1,8 @@
 package com.example.smartapp.fragments.registro;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +35,9 @@ public class HistoricoServicoFragment extends Fragment {
 
     private List<HistoricResponse> historicoList;
     private HistoricoAdapter historicoAdapter;
+
+    private String filterPro;
+    private String filterServ;
 
     @Nullable
     @Override
@@ -70,6 +75,41 @@ public class HistoricoServicoFragment extends Fragment {
     private void setupListeners() {
         binding.btnvoltarhist.setOnClickListener(v -> navController.popBackStack());
 
+        binding.filterByProfessionalEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterPro = s.toString();
+                historicoAdapter.filter(filterPro, filterServ);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        binding.filterByServiceEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterServ = s.toString();
+                historicoAdapter.filter(filterPro, filterServ);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     @Override
