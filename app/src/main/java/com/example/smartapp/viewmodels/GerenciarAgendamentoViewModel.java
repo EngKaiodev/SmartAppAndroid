@@ -60,4 +60,12 @@ public class GerenciarAgendamentoViewModel extends ViewModel {
         }
 
     }
+
+    public int getType() {
+        return prefs.getType();
+    }
+
+    public int getId() {
+        return prefs.getId();
+    }
 }

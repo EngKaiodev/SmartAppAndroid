@@ -20,10 +20,14 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.
 
     private final List<ScheduleResponse> aList;
     private java.util.function.Consumer<ScheduleResponse> onAgendarClick;
+    private int myID;
+    private int type;
 
-    public AgendamentoAdapter(List<ScheduleResponse> aList, java.util.function.Consumer<ScheduleResponse> onAgendarClick) {
+    public AgendamentoAdapter(int myID, int type, List<ScheduleResponse> aList, java.util.function.Consumer<ScheduleResponse> onAgendarClick) {
         this.aList = aList;
         this.onAgendarClick = onAgendarClick;
+        this.myID = myID;
+        this.type = type;
     }
 
 
@@ -39,7 +43,7 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.
     @Override
     public void onBindViewHolder(@NonNull AgendamentoAdapter.ViewHolder holder, int position) {
         ScheduleResponse aitem = aList.get(position);
-        holder.binding(aitem);
+        holder.binding(aitem, myID, type);
 
         //Colocar o click no botão aqui
         holder.binding.btnAction.setOnClickListener(v -> {
@@ -61,7 +65,7 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.
 
         @SuppressLint("ResourceAsColor")
         @RequiresApi(api = Build.VERSION_CODES.O)
-        public void binding(ScheduleResponse agendamento) {
+        public void binding(ScheduleResponse agendamento, int myID, int type) {
             binding.nome.setText(agendamento.getProfissional().getName());
             binding.servico.setText(agendamento.getServico().getName());
             binding.data.setText(agendamento.getHour().getString());
@@ -82,6 +86,7 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.
                     binding.btnAction.setBackgroundColor(
                             ContextCompat.getColor(binding.getRoot().getContext(), R.color.success_green)
                     );
+                    if (type == 2) binding.btnAction.setVisibility(ViewGroup.GONE);
                     break;
                 }
                 case 1: {
@@ -96,6 +101,7 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.
                     binding.btnAction.setBackgroundColor(
                             ContextCompat.getColor(binding.getRoot().getContext(), R.color.notification_yellow)
                     );
+                    if (agendamento.getProfissional().getId_profissional() == myID) binding.btnAction.setVisibility(ViewGroup.GONE);
                     break;
                 }
                 default: {
