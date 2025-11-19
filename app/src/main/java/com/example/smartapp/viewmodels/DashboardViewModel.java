@@ -37,7 +37,17 @@ public class DashboardViewModel extends ViewModel {
             profissionalRepository.getAll()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
-                        response -> _profissionais.setValue(response.body()),
+                        response -> {
+                            List<ProfissionalResponse> original = response.body();
+                            if (prefs.getType() == 1){
+                                original = original.stream().filter( x ->
+                                    x.getId_profissional() != prefs.getId()
+                                ).toList();
+                            }
+
+                            _profissionais.postValue(original);
+
+                        },
                         throwable -> {
                             _profissionais.setValue(List.of());
                         }

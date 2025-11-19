@@ -25,6 +25,10 @@ public class ScheduleRepository {
         return service.save(request).subscribeOn(Schedulers.io());
     }
 
+    public Single<Response<Boolean>> update(int schedule, int hourId) {
+        return service.update(schedule, hourId).subscribeOn(Schedulers.io());
+    }
+
     public Single<Response<List<ScheduleResponse>>> getAllByUserId(int id) {
         return service.getAllByUserId(id).subscribeOn(Schedulers.io());
     }

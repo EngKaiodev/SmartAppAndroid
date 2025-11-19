@@ -19,6 +19,12 @@ public interface ScheduleService {
             @Body ScheduleRequest request
     );
 
+    @POST("/schedules/{schedule}/{hour}")
+    Single<Response<Boolean>> update(
+            @Path("schedule") int schedule,
+            @Path("hour") int hourId
+    );
+
     @GET("/schedules/user/{id}")
     Single<Response<List<ScheduleResponse>>> getAllByUserId(
             @Path("id") int id
