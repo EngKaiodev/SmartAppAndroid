@@ -153,7 +153,6 @@ public class AgendarServicoFragment extends Fragment {
             }
         });
 
-        // Atualizar resumo quando os dados mudarem
         binding.servicosSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -187,7 +186,7 @@ public class AgendarServicoFragment extends Fragment {
         viewModel.added.observe(getViewLifecycleOwner(), response -> {
             if (response) {
                 Toast.makeText(getContext(), "Agendado com sucesso", Toast.LENGTH_SHORT).show();
-                navController.popBackStack();
+                navController.popBackStack(R.id.gerenciar_agendamento_fragment, false);
             }
         });
     }
