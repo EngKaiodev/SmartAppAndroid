@@ -8,6 +8,7 @@ import com.example.smartapp.BuildConfig;
 import com.example.smartapp.core.Preferences;
 import com.example.smartapp.core.network.AuthInterceptor;
 import com.example.smartapp.core.network.service.AuthService;
+import com.example.smartapp.core.network.service.ClienteService;
 import com.example.smartapp.core.network.service.EnderecoService;
 import com.example.smartapp.core.network.service.HourService;
 import com.example.smartapp.core.network.service.ProfissionalService;
@@ -144,5 +145,11 @@ public class NetworkModule {
     @Singleton
     public static ReviewService provideReviewService(@Named("defaultRetrofit") Retrofit retrofit){
         return retrofit.create(ReviewService.class);
+    }
+
+    @Provides
+    @Singleton
+    public static ClienteService provideClienteService(@Named("defaultRetrofit") Retrofit retrofit){
+        return retrofit.create(ClienteService.class);
     }
 }

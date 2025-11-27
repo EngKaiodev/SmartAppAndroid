@@ -74,6 +74,7 @@ public class CriarServicoFragment extends Fragment {
             binding.edtDescricaoSer.setText(serviceToAdd.getDescription());
             binding.edtSerpreco.setText(String.valueOf(serviceToAdd.getPrice()));
             binding.edtTempo.setText(String.valueOf(serviceToAdd.getDuration()));
+            binding.txtTitle.setText("Editar serviço existente");
 
             binding.btnconfirmarServico.setText("Salvar serviço");
             binding.btnconfirmarServico.setBackgroundTintList(
