@@ -19,6 +19,8 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.smartapp.activities.MainActivity;
 import com.example.smartapp.core.ErroHelper;
+import com.example.smartapp.core.Mask;
+import com.example.smartapp.core.watcher.SimpleTextWatcher;
 import com.example.smartapp.databinding.CadastrarClienteBinding;
 import com.example.smartapp.databinding.CadastrarServicoBinding;
 import com.example.smartapp.domain.models.ErrorModel;
@@ -84,17 +86,16 @@ public class CadastrarClienteFragment extends Fragment {
                 binding.erroContainer.setVisibility(View.VISIBLE);
             }
         });
+        binding.edtCep.addTextChangedListener(new SimpleTextWatcher() {
 
-        binding.edtCep.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
+            boolean updating = false;
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() > 7) {
-                    Disposable disposable = viewModel.buscarCep(charSequence.toString()).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(viaCepResponse -> {
+                String cep = Mask.unmask(charSequence.toString());
+
+                if (cep.length() > 7) {
+                    Disposable disposable = viewModel.buscarCep(cep).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(viaCepResponse -> {
                         String logradouro = viaCepResponse.getLogradouro();
                         String bairro = viaCepResponse.getBairro();
                         String cidade = viaCepResponse.getLocalidade();
@@ -113,8 +114,54 @@ public class CadastrarClienteFragment extends Fragment {
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
+            public void afterTextChanged(Editable s) {
+                if (updating) return;
 
+                String original = s.toString();
+                String masked = Mask.applyMaskCep(original);
+
+                if (!original.equals(masked)) {
+                    updating = true;
+                    binding.edtCep.setText(masked);
+                    binding.edtCep.setSelection(masked.length());
+                    updating = false;
+                }
+            }
+        });
+        binding.edtCpfCnpj.addTextChangedListener(new SimpleTextWatcher() {
+            boolean isUpdating = false;
+            @Override
+            public void afterTextChanged(Editable s) {
+                super.afterTextChanged(s);
+                if (isUpdating) return;
+
+                String raw = s.toString();
+                String formatted = Mask.maskDocument(raw);
+
+                if (!raw.equals(formatted)) {
+                    isUpdating = true;
+                    binding.edtCpfCnpj.setText(formatted);
+                    binding.edtCpfCnpj.setSelection(formatted.length());
+                    isUpdating = false;
+                }
+            }
+        });
+        binding.edttelefone.addTextChangedListener(new SimpleTextWatcher() {
+            boolean updating = false;
+            @Override
+            public void afterTextChanged(Editable editable) {
+                super.afterTextChanged(editable);
+                if (updating) return;
+
+                String original = editable.toString();
+                String masked = Mask.applyMaskTelefone(original);
+
+                if (!original.equals(masked)) {
+                    updating = true;
+                    binding.edttelefone.setText(masked);
+                    binding.edttelefone.setSelection(masked.length());
+                    updating = false;
+                }
             }
         });
 
