@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.smartapp.core.Mask;
 import com.example.smartapp.core.Preferences;
 import com.example.smartapp.core.domain.request.ProEditRequest;
 import com.example.smartapp.core.domain.response.MyselfResponse;
@@ -81,12 +82,12 @@ public class EditarProfissionalViewModel extends ViewModel {
     ) {
         ProEditRequest toEdit = new ProEditRequest(
                 completeName,
-                phone,
+                Mask.unmask(phone),
                 email,
-                document,
+                Mask.unmask(document),
                 altername,
                 description,
-                zipCode,
+                Mask.unmask(zipCode),
                 address,
                 number
         );

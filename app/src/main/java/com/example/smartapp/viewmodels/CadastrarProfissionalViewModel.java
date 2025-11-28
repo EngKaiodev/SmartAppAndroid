@@ -2,6 +2,7 @@ package com.example.smartapp.viewmodels;
 
 import androidx.lifecycle.ViewModel;
 
+import com.example.smartapp.core.Mask;
 import com.example.smartapp.core.Preferences;
 import com.example.smartapp.core.domain.request.UserRequest;
 import com.example.smartapp.core.domain.response.UserResponse;
@@ -34,7 +35,7 @@ public class CadastrarProfissionalViewModel extends ViewModel {
     private static final Pattern SENHA_PATTERN = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
 
     @Inject
-    public CadastrarProfissionalViewModel(ViaCepRepository viaCepRepository, AuthRepository authRepository, Preferences prefs){
+    public CadastrarProfissionalViewModel(ViaCepRepository viaCepRepository, AuthRepository authRepository, Preferences prefs) {
         this.viaCepRepository = viaCepRepository;
         this.authRepository = authRepository;
         this.prefs = prefs;
@@ -53,7 +54,7 @@ public class CadastrarProfissionalViewModel extends ViewModel {
             String password,
             String verifyPassword
 
-    ){
+    ) {
 
         // Validação de Nome
         if (nome == null || nome.trim().isEmpty() || nome.trim().length() < 3) {
@@ -133,22 +134,22 @@ public class CadastrarProfissionalViewModel extends ViewModel {
             String number
     ) {
         return authRepository.register(
-                new UserRequest(
-                        completeName,
-                        password,
-                        phone,
-                        email,
-                        document,
-                        type,
-                        altername,
-                        description,
-                        zipcode,
-                        address,
-                        number
-                )
-        ).subscribeOn(Schedulers.io())
+                        new UserRequest(
+                                completeName,
+                                password,
+                                Mask.unmask(phone),
+                                email,
+                                Mask.unmask(document),
+                                type,
+                                altername,
+                                description,
+                                Mask.unmask(zipcode),
+                                address,
+                                number
+                        )
+                ).subscribeOn(Schedulers.io())
                 .doOnSuccess(response -> {
-                    if (response.body() != null){
+                    if (response.body() != null) {
                         prefs.createSession(response.body());
                     }
                 })

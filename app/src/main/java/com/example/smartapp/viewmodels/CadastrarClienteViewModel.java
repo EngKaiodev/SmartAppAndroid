@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.smartapp.core.Mask;
 import com.example.smartapp.core.domain.request.UserRequest;
 import com.example.smartapp.core.domain.response.UserResponse;
 import com.example.smartapp.core.domain.response.ViaCepResponse;
@@ -39,10 +40,11 @@ public class CadastrarClienteViewModel extends ViewModel {
     private static final Pattern CNPJ_PATTERN = Pattern.compile("^[0-9]{14}$");
 
     @Inject
-    public CadastrarClienteViewModel(ViaCepRepository viaCepRepository, AuthRepository authRepository){
+    public CadastrarClienteViewModel(ViaCepRepository viaCepRepository, AuthRepository authRepository) {
         this.viaCepRepository = viaCepRepository;
         this.authRepository = authRepository;
     }
+
     public Boolean validatedField(
             String nome,
             String email,
@@ -53,7 +55,7 @@ public class CadastrarClienteViewModel extends ViewModel {
             String password,
             String verifyPassword,
             String CpfCnpj
-    ){
+    ) {
         if (nome == null || nome.isBlank() || nome.length() < 3) {
             return false;
         }
@@ -85,7 +87,6 @@ public class CadastrarClienteViewModel extends ViewModel {
         }
 
 
-
         return true;
     }
 
@@ -108,11 +109,11 @@ public class CadastrarClienteViewModel extends ViewModel {
                 new UserRequest(
                         completeName,
                         password,
-                        phone,
+                        Mask.unmask(phone),
                         email,
-                        document,
+                        Mask.unmask(document),
                         type,
-                        zipcode,
+                        Mask.unmask(zipcode),
                         address,
                         number
                 )
