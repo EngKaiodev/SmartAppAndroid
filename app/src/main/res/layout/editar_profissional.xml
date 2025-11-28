@@ -9,8 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:orientation="vertical">
 
         <!-- Header (unchanged as requested) -->
         <LinearLayout
@@ -25,10 +25,10 @@
                 android:id="@+id/btnvoltarProfisional"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
+                android:layout_alignParentStart="true"
                 android:background="?attr/selectableItemBackgroundBorderless"
                 android:contentDescription="gere2"
-                android:src="@drawable/ic_arrow_back"
-                android:layout_alignParentStart="true"/>
+                android:src="@drawable/ic_arrow_back" />
 
             <TextView
                 android:layout_width="0dp"
@@ -54,44 +54,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="12dp"
-            app:cardElevation="4dp"
-            app:cardBackgroundColor="@color/white">
+            app:cardElevation="4dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/light_gray"
                 android:orientation="vertical"
-                android:padding="24dp"
-                android:background="@color/light_gray">
-
-                <!-- Profile Photo -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="24dp"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:id="@+id/profileImage"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp"
-                        android:contentDescription="Foto de perfil"
-                        android:scaleType="centerCrop"
-                        android:src="?android:attr/textSelectHandle" /> <!-- Placeholder -->
-
-                    <Button
-                        android:id="@+id/changePhotoButton"
-                        style="@style/Widget.AppCompat.Button.Borderless"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:drawablePadding="8dp"
-                        android:text="Alterar Foto"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp" />
-                </LinearLayout>
+                android:padding="24dp">
 
                 <!-- Form Fields -->
                 <LinearLayout
@@ -220,6 +192,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:layout_marginBottom="4dp"
+                        android:maxLines="3"
                         android:text="Endereço"
                         android:textColor="@android:color/black"
                         android:textSize="14sp" />
@@ -227,8 +200,9 @@
                     <EditText
                         android:id="@+id/edtEnderecoPro"
                         android:layout_width="match_parent"
-                        android:layout_height="48dp"
+                        android:layout_height="wrap_content"
                         android:background="?android:attr/editTextBackground"
+                        android:maxLines="3"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:text="Rua da Beleza, Bairro Estilo, Cidade, SP"
@@ -373,54 +347,32 @@
                         android:id="@+id/erro_container"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         android:layout_marginTop="16dp"
-                        android:layout_marginBottom="16dp">
+                        android:layout_marginBottom="16dp"
+                        android:visibility="gone">
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textAlignment="center"
                             android:text="Verifique os campos novamente"
+                            android:textAlignment="center"
                             android:textColor="@color/red_500"
-                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"/>
+                            app:layout_constraintTop_toTopOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <!-- Buttons -->
-                    <LinearLayout
+                    <Button
+                        android:id="@+id/btnSalvarPro"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:gravity="end"
-                        android:orientation="horizontal">
-
-                        <Button
-                            android:id="@+id/btnCancelarpro"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="16dp"
-                            android:backgroundTint="?android:attr/colorButtonNormal"
-                            android:paddingStart="24dp"
-                            android:paddingTop="12dp"
-                            android:paddingEnd="24dp"
-                            android:paddingBottom="12dp"
-                            android:text="Voltar"
-                            android:textColor="@android:color/black" />
-
-                        <Button
-                            android:id="@+id/btnSalvarPro"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:backgroundTint="#16A34A"
-                            android:paddingStart="24dp"
-                            android:paddingTop="12dp"
-                            android:paddingEnd="24dp"
-                            android:paddingBottom="12dp"
-                            android:text="Salvar Alterações"
-                            android:textColor="@android:color/black" />
-                    </LinearLayout>
+                        android:backgroundTint="#16A34A"
+                        android:paddingStart="24dp"
+                        android:paddingTop="12dp"
+                        android:paddingEnd="24dp"
+                        android:paddingBottom="12dp"
+                        android:text="Salvar Alterações"
+                        android:textColor="@android:color/black" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>

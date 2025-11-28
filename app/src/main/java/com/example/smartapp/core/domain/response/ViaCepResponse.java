@@ -57,4 +57,9 @@ public class ViaCepResponse {
     public void setUf(String uf) {
         this.uf = uf;
     }
+
+    @Override
+    public String toString() {
+        return logradouro + " - " + bairro + " - " + localidade + " / " + uf;
+    }
 }

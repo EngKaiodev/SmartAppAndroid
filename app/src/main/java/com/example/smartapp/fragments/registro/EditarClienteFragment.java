@@ -1,9 +1,12 @@
 package com.example.smartapp.fragments.registro;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +15,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.smartapp.core.domain.response.MyselfResponse;
+import com.example.smartapp.core.domain.response.ViaCepResponse;
 import com.example.smartapp.databinding.EditarClienteBinding;
 import com.example.smartapp.viewmodels.EditarClienteViewModel;
 
@@ -38,39 +43,94 @@ public class EditarClienteFragment extends Fragment {
         navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
 
+        viewModel.loadData();
+
+        setupObservers();
         setupListeners();
     }
 
-    private void setupListeners() {
-        binding.btnvoltarcliente.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    private void setupObservers() {
+        viewModel.myself.observe(getViewLifecycleOwner(), this::setupView);
+
+        viewModel.edited.observe(getViewLifecycleOwner(), response -> {
+            if (response){
+                Toast.makeText(getContext(), "Informações salvar com sucesso", Toast.LENGTH_SHORT).show();
                 navController.popBackStack();
             }
         });
 
-        binding.btnSalvar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(viewModel.validateFragment(
+        viewModel.address.observe(getViewLifecycleOwner(), address -> {
+            if (address != null){
+                setupAddress(address);
+            }
+        });
+    }
+
+    private void setupAddress(ViaCepResponse address) {
+        binding.edtEnderecocliente.setText(address.toString());
+        binding.edtNumerocliente.requestFocus();
+    }
+
+    private void setupView(MyselfResponse response) {
+        if (response != null){
+            binding.edtNomecliente.setText(response.getCompleteName());
+            binding.edtEmailcliente.setText(response.getEmail());
+            binding.edtTelefonecliente.setText(response.getPhone());
+            binding.edtCfpCnpjCliente.setText(response.getDocument());
+            binding.edtCepcliente.setText(response.getAddress().getZipCode());
+            binding.edtEnderecocliente.setText(response.getAddress().getAddress());
+            binding.edtNumerocliente.setText(response.getAddress().getNumber());
+        }
+    }
+
+    private void setupListeners() {
+        binding.btnvoltarcliente.setOnClickListener(v -> navController.popBackStack());
+
+        binding.btnSalvar.setOnClickListener(v -> {
+            if(viewModel.validateFragment(
+                    binding.edtNomecliente.getText().toString(),
+                    binding.edtEmailcliente.getText().toString(),
+                    binding.edtTelefonecliente.getText().toString(),
+                    binding.edtCfpCnpjCliente.getText().toString(),
+                    binding.edtCepcliente.getText().toString(),
+                    binding.edtEnderecocliente.getText().toString(),
+                    binding.edtNomecliente.getText().toString(),
+                    binding.edtnovasenha.getText().toString(),
+                    binding.edtConfimarnovasenha.getText().toString()
+            )){
+                viewModel.editData(
                         binding.edtNomecliente.getText().toString(),
                         binding.edtEmailcliente.getText().toString(),
                         binding.edtTelefonecliente.getText().toString(),
                         binding.edtCfpCnpjCliente.getText().toString(),
                         binding.edtCepcliente.getText().toString(),
                         binding.edtEnderecocliente.getText().toString(),
-                        binding.edtNomecliente.getText().toString(),
-                        binding.edtnovasenha.getText().toString(),
-                        binding.edtConfimarnovasenha.getText().toString()
-                )){
-
-                }else {
-                    binding.erroContainer.setVisibility(View.VISIBLE);
-                    binding.erroContainer.setVisibility(View.GONE);
-                }
+                        binding.edtNomecliente.getText().toString()
+                );
+            }else {
+                binding.erroContainer.setVisibility(View.VISIBLE);
+                binding.erroContainer.setVisibility(View.GONE);
             }
         });
 
+        binding.edtCepcliente.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if (charSequence.length() > 7){
+                    viewModel.tryCep(charSequence.toString());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
     }
 
     @Override
