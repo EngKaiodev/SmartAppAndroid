@@ -1,6 +1,7 @@
 package com.example.smartapp.fragments.registro;
 
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,9 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.smartapp.core.Mask;
 import com.example.smartapp.core.domain.response.MyselfResponse;
+import com.example.smartapp.core.watcher.SimpleTextWatcher;
 import com.example.smartapp.databinding.EditarProfissionalBinding;
 import com.example.smartapp.viewmodels.EditarProfissionalViewModel;
 
@@ -56,6 +59,14 @@ public class EditarProfissionalFragment extends Fragment {
                 navController.popBackStack();
             }
         });
+        viewModel.address.observe(getViewLifecycleOwner(), address -> {
+            if (address != null){
+                binding.edtEnderecoPro.setText(address.toString());
+                binding.edtNumeroPro.requestFocus();
+            } else {
+                Toast.makeText(getContext(), "Erro ao buscar CEP", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void setupData(MyselfResponse response) {
@@ -72,7 +83,6 @@ public class EditarProfissionalFragment extends Fragment {
 
     private void setupListeners() {
         binding.btnvoltarProfisional.setOnClickListener(v -> navController.popBackStack());
-
         binding.btnSalvarPro.setOnClickListener(v -> {
             if(viewModel.validateField(
                     binding.edtNomePro.getText().toString(),
@@ -97,6 +107,70 @@ public class EditarProfissionalFragment extends Fragment {
             }else {
                 binding.erroContainer.setVisibility(View.VISIBLE);
                 binding.erroContainer.setVisibility(View.GONE);
+            }
+        });
+        binding.edtCepPro.addTextChangedListener(new SimpleTextWatcher() {
+            boolean updating = false;
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                super.onTextChanged(s, start, before, count);
+                String cep = Mask.unmask(s.toString());
+
+                if (cep.length() > 7){
+                    viewModel.loadAddress(cep);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                super.afterTextChanged(editable);
+                if (updating) return;
+
+                String original = editable.toString();
+                String masked = Mask.applyMaskCep(original);
+
+                if (!original.equals(masked)) {
+                    updating = true;
+                    binding.edtCepPro.setText(masked);
+                    binding.edtCepPro.setSelection(masked.length());
+                    updating = false;
+                }
+            }
+        });
+        binding.edtTelefonePro.addTextChangedListener(new SimpleTextWatcher() {
+            boolean updating = false;
+            @Override
+            public void afterTextChanged(Editable editable) {
+                super.afterTextChanged(editable);
+                if (updating) return;
+
+                String original = editable.toString();
+                String masked = Mask.applyMaskTelefone(original);
+
+                if (!original.equals(masked)) {
+                    updating = true;
+                    binding.edtTelefonePro.setText(masked);
+                    binding.edtTelefonePro.setSelection(masked.length());
+                    updating = false;
+                }
+            }
+        });
+        binding.edtCpfCnpjPro.addTextChangedListener(new SimpleTextWatcher() {
+            boolean isUpdating = false;
+            @Override
+            public void afterTextChanged(Editable editable) {
+                super.afterTextChanged(editable);
+                if (isUpdating) return;
+
+                String raw = editable.toString();
+                String formatted = Mask.maskDocument(raw);
+
+                if (!raw.equals(formatted)) {
+                    isUpdating = true;
+                    binding.edtCpfCnpjPro.setText(formatted);
+                    binding.edtCpfCnpjPro.setSelection(formatted.length());
+                    isUpdating = false;
+                }
             }
         });
     }

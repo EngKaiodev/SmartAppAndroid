@@ -10,18 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:fillViewport="true"
-        android:background="@color/white">
+        android:background="@color/white"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
+            android:background="@color/white"
             android:elevation="4dp"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="24dp"
-            android:background="@color/white">
+            android:padding="24dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -64,9 +64,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:hint="Nome Completo"
-                app:hintTextColor="@android:color/black"
+                android:textColorHint="@color/black"
                 app:boxStrokeColor="@android:color/black"
-                android:textColorHint="@color/black">
+                app:hintTextColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etFullName"
@@ -85,8 +85,8 @@
                 android:layout_marginBottom="16dp"
                 android:hint="E-mail"
                 android:textColorHint="@color/black"
-                app:hintTextColor="@android:color/black"
-                app:boxStrokeColor="@android:color/black">
+                app:boxStrokeColor="@android:color/black"
+                app:hintTextColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/etEmailRegister"
@@ -105,8 +105,8 @@
                 android:layout_marginBottom="16dp"
                 android:hint="Telefone (XX) XXXXX-XXXX"
                 android:textColorHint="@color/black"
-                app:hintTextColor="@android:color/black"
-                app:boxStrokeColor="@android:color/black">
+                app:boxStrokeColor="@android:color/black"
+                app:hintTextColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edttelefone"
@@ -125,10 +125,10 @@
                 android:layout_marginBottom="16dp"
                 android:hint="CPF ou CNPJ"
                 android:textColorHint="@color/black"
+                app:boxStrokeColor="@android:color/black"
                 app:helperText="Para pessoa física (CPF) ou jurídica (CNPJ)"
                 app:helperTextTextColor="@android:color/black"
-                app:hintTextColor="@android:color/black"
-                app:boxStrokeColor="@android:color/black">
+                app:hintTextColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtCpfCnpj"
@@ -147,8 +147,8 @@
                 android:layout_marginBottom="16dp"
                 android:hint="CEP"
                 android:textColorHint="@color/black"
-                app:hintTextColor="@android:color/black"
-                app:boxStrokeColor="@android:color/black">
+                app:boxStrokeColor="@android:color/black"
+                app:hintTextColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtCep"
@@ -167,10 +167,10 @@
                 android:layout_marginBottom="16dp"
                 android:hint="Endereço"
                 android:textColorHint="@color/black"
+                app:boxStrokeColor="@android:color/black"
                 app:helperText="Rua, bairro, cidade, estado"
                 app:helperTextTextColor="@android:color/black"
-                app:hintTextColor="@android:color/black"
-                app:boxStrokeColor="@android:color/black">
+                app:hintTextColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtEndenreco"
@@ -178,6 +178,7 @@
                     android:layout_height="wrap_content"
                     android:imeOptions="actionNext"
                     android:inputType="textPostalAddress|textCapSentences"
+                    android:maxLines="3"
                     android:textColor="@android:color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -189,8 +190,8 @@
                 android:layout_marginBottom="16dp"
                 android:hint="Número"
                 android:textColorHint="@color/black"
-                app:hintTextColor="@android:color/black"
-                app:boxStrokeColor="@android:color/black">
+                app:boxStrokeColor="@android:color/black"
+                app:hintTextColor="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtNumero"
@@ -209,12 +210,12 @@
                 android:layout_marginBottom="16dp"
                 android:hint="Senha"
                 android:textColorHint="@color/black"
+                app:boxStrokeColor="@android:color/black"
                 app:helperText="Mínimo de 6 caracteres"
                 app:helperTextTextColor="@android:color/black"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@android:color/black"
                 app:hintTextColor="@android:color/black"
-                app:boxStrokeColor="@android:color/black">
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtSenha"
@@ -233,10 +234,10 @@
                 android:layout_marginBottom="16dp"
                 android:hint="Confirmar Senha"
                 android:textColorHint="@color/black"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@android:color/black"
+                app:boxStrokeColor="@android:color/black"
                 app:hintTextColor="@android:color/black"
-                app:boxStrokeColor="@android:color/black">
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@android:color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtConfirmarSenha"
@@ -252,18 +253,18 @@
                 android:id="@+id/erro_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
+                android:layout_marginBottom="16dp"
                 android:orientation="vertical"
                 android:padding="8dp"
-                android:layout_marginBottom="16dp">
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tvError"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="Verifique os campos e tente novamente"
                     android:textAlignment="center"
-                    android:textColor="#F44336"
-                    android:text="Verifique os campos e tente novamente"/>
+                    android:textColor="#F44336" />
             </LinearLayout>
 
             <com.google.android.material.button.MaterialButton

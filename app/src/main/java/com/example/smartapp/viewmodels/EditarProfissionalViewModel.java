@@ -7,7 +7,9 @@ import androidx.lifecycle.ViewModel;
 import com.example.smartapp.core.Preferences;
 import com.example.smartapp.core.domain.request.ProEditRequest;
 import com.example.smartapp.core.domain.response.MyselfResponse;
+import com.example.smartapp.core.domain.response.ViaCepResponse;
 import com.example.smartapp.domain.repository.ProfissionalRepository;
+import com.example.smartapp.domain.repository.ViaCepRepository;
 
 import java.util.regex.Pattern;
 
@@ -23,10 +25,13 @@ public class EditarProfissionalViewModel extends ViewModel {
     private Preferences preferences;
     private ProfissionalRepository repository;
 
+    private ViaCepRepository viaCepRepository;
+
     @Inject
-    public EditarProfissionalViewModel (Preferences preferences, ProfissionalRepository repository){
+    public EditarProfissionalViewModel(Preferences preferences, ProfissionalRepository repository, ViaCepRepository viaCepRepository) {
         this.preferences = preferences;
         this.repository = repository;
+        this.viaCepRepository = viaCepRepository;
     }
 
     private final CompositeDisposable disposables = new CompositeDisposable();
@@ -37,13 +42,28 @@ public class EditarProfissionalViewModel extends ViewModel {
     private final MutableLiveData<Boolean> _edited = new MutableLiveData<>();
     public LiveData<Boolean> edited = _edited;
 
-    public void loadData(){
+    private final MutableLiveData<ViaCepResponse> _address = new MutableLiveData<>();
+    public LiveData<ViaCepResponse> address = _address;
+
+    public void loadData() {
         disposables.add(
                 repository.getMyself()
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
                                 response -> _myself.setValue(response.body()),
                                 throwable -> _myself.setValue(null)
+                        )
+        );
+    }
+
+    public void loadAddress(String cep) {
+        disposables.add(
+                viaCepRepository
+                        .buscarEnderecoPorCep(cep)
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe((viaCepResponse, throwable) -> {
+                                    _address.postValue(viaCepResponse);
+                                }
                         )
         );
     }
@@ -58,7 +78,7 @@ public class EditarProfissionalViewModel extends ViewModel {
             String number,
             String altername,
             String description
-    ){
+    ) {
         ProEditRequest toEdit = new ProEditRequest(
                 completeName,
                 phone,
@@ -87,6 +107,7 @@ public class EditarProfissionalViewModel extends ViewModel {
     private static final Pattern PHONE_PATTERN = Pattern.compile(
             "^\\([0-9]{2}\\) [0-9]{4,5}-[0-9]{4}$"
     );
+
     public boolean validateField(
             String nome,
             String email,
@@ -96,7 +117,7 @@ public class EditarProfissionalViewModel extends ViewModel {
             String endereco,
             String numero
 
-    ){
+    ) {
         // Validar nome
         if (nome == null || nome.trim().isEmpty()) {
             return false;

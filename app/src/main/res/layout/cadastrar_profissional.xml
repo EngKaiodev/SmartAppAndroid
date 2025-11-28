@@ -10,19 +10,19 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         android:fillViewport="true"
-        android:scrollbars="vertical"
-        android:background="@color/white">
+        android:scrollbars="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
+            android:background="@color/white"
             android:elevation="4dp"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:padding="24dp"
-            android:background="@color/white">
+            android:padding="24dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -70,9 +70,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
+                android:background="@color/white"
                 android:orientation="vertical"
-                android:padding="16dp"
-                android:background="@color/white">
+                android:padding="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -92,8 +92,8 @@
                     android:layout_marginBottom="16dp"
                     android:hint="Nome Completo"
                     android:textColorHint="@color/black"
-                    app:hintTextColor="@android:color/black"
-                    app:boxStrokeColor="@android:color/black">
+                    app:boxStrokeColor="@android:color/black"
+                    app:hintTextColor="@android:color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtProfNome"
@@ -113,8 +113,8 @@
                     android:layout_marginBottom="16dp"
                     android:hint="E-mail"
                     android:textColorHint="@color/black"
-                    app:hintTextColor="@android:color/black"
-                    app:boxStrokeColor="@android:color/black">
+                    app:boxStrokeColor="@android:color/black"
+                    app:hintTextColor="@android:color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtProfEmail"
@@ -134,8 +134,8 @@
                     android:layout_marginBottom="16dp"
                     android:hint="Telefone"
                     android:textColorHint="@color/black"
-                    app:hintTextColor="@android:color/black"
-                    app:boxStrokeColor="@android:color/black">
+                    app:boxStrokeColor="@android:color/black"
+                    app:hintTextColor="@android:color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtProftelefone"
@@ -155,10 +155,10 @@
                     android:layout_marginBottom="16dp"
                     android:hint="CPF ou CNPJ"
                     android:textColorHint="@color/black"
+                    app:boxStrokeColor="@android:color/black"
                     app:helperText="Pessoa física ou jurídica"
                     app:helperTextTextColor="@android:color/black"
-                    app:hintTextColor="@android:color/black"
-                    app:boxStrokeColor="@android:color/black">
+                    app:hintTextColor="@android:color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtProfCpfCnpj"
@@ -178,8 +178,8 @@
                     android:layout_marginBottom="16dp"
                     android:hint="CEP"
                     android:textColorHint="@color/black"
-                    app:hintTextColor="@android:color/black"
-                    app:boxStrokeColor="@android:color/black">
+                    app:boxStrokeColor="@android:color/black"
+                    app:hintTextColor="@android:color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtProfCep"
@@ -199,10 +199,10 @@
                     android:layout_marginBottom="16dp"
                     android:hint="Endereço"
                     android:textColorHint="@color/black"
+                    app:boxStrokeColor="@android:color/black"
                     app:helperText="Rua, bairro, cidade, estado"
                     app:helperTextTextColor="@android:color/black"
-                    app:hintTextColor="@android:color/black"
-                    app:boxStrokeColor="@android:color/black">
+                    app:hintTextColor="@android:color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtProfendereco"
@@ -210,6 +210,7 @@
                         android:layout_height="wrap_content"
                         android:imeOptions="actionNext"
                         android:inputType="textPostalAddress|textCapSentences"
+                        android:maxLines="3"
                         android:textColor="@android:color/black" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -222,8 +223,8 @@
                     android:layout_marginBottom="16dp"
                     android:hint="Número"
                     android:textColorHint="@color/black"
-                    app:hintTextColor="@android:color/black"
-                    app:boxStrokeColor="@android:color/black">
+                    app:boxStrokeColor="@android:color/black"
+                    app:hintTextColor="@android:color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtProfnumero"
@@ -243,8 +244,8 @@
                     android:layout_marginBottom="16dp"
                     android:hint="Razão Social (Opcional, se CNPJ)"
                     android:textColorHint="@color/black"
-                    app:hintTextColor="@android:color/black"
-                    app:boxStrokeColor="@android:color/black">
+                    app:boxStrokeColor="@android:color/black"
+                    app:hintTextColor="@android:color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtProfRazaoSocial"
@@ -264,8 +265,8 @@
                     android:layout_marginBottom="16dp"
                     android:hint="Sobre Você/Sua Empresa"
                     android:textColorHint="@color/black"
-                    app:hintTextColor="@android:color/black"
-                    app:boxStrokeColor="@android:color/black">
+                    app:boxStrokeColor="@android:color/black"
+                    app:hintTextColor="@android:color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtProfdescricao"
@@ -287,12 +288,12 @@
                     android:layout_marginBottom="16dp"
                     android:hint="Senha"
                     android:textColorHint="@color/black"
+                    app:boxStrokeColor="@android:color/black"
                     app:helperText="Mínimo 6 caracteres"
                     app:helperTextTextColor="@android:color/black"
-                    app:passwordToggleEnabled="true"
-                    app:passwordToggleTint="@android:color/black"
                     app:hintTextColor="@android:color/black"
-                    app:boxStrokeColor="@android:color/black">
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@android:color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtSenha"
@@ -312,10 +313,10 @@
                     android:layout_marginBottom="16dp"
                     android:hint="Confirmar Senha"
                     android:textColorHint="@color/black"
-                    app:passwordToggleEnabled="true"
-                    app:passwordToggleTint="@android:color/black"
+                    app:boxStrokeColor="@android:color/black"
                     app:hintTextColor="@android:color/black"
-                    app:boxStrokeColor="@android:color/black">
+                    app:passwordToggleEnabled="true"
+                    app:passwordToggleTint="@android:color/black">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/edtProfConfSenha"
@@ -332,19 +333,19 @@
                 android:id="@+id/erro_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:layout_marginBottom="16dp">
+                android:layout_marginBottom="16dp"
+                android:visibility="gone">
 
                 <TextView
                     android:id="@+id/tvError"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
                     android:text="Verifique os campos novamente"
+                    android:textAlignment="center"
                     android:textColor="@color/red_500"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <com.google.android.material.button.MaterialButton
