@@ -15,8 +15,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.smartapp.core.Mask;
 import com.example.smartapp.core.domain.response.MyselfResponse;
 import com.example.smartapp.core.domain.response.ViaCepResponse;
+import com.example.smartapp.core.watcher.SimpleTextWatcher;
 import com.example.smartapp.databinding.EditarClienteBinding;
 import com.example.smartapp.viewmodels.EditarClienteViewModel;
 
@@ -85,7 +87,6 @@ public class EditarClienteFragment extends Fragment {
 
     private void setupListeners() {
         binding.btnvoltarcliente.setOnClickListener(v -> navController.popBackStack());
-
         binding.btnSalvar.setOnClickListener(v -> {
             if(viewModel.validateFragment(
                     binding.edtNomecliente.getText().toString(),
@@ -112,23 +113,66 @@ public class EditarClienteFragment extends Fragment {
                 binding.erroContainer.setVisibility(View.GONE);
             }
         });
-
-        binding.edtCepcliente.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
+        binding.edtCepcliente.addTextChangedListener(new SimpleTextWatcher() {
+            boolean updating = false;
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() > 7){
-                    viewModel.tryCep(charSequence.toString());
+                String cep = Mask.unmask(charSequence.toString());
+                if (cep.length() > 7){
+                    viewModel.tryCep(cep);
                 }
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
+                if (updating) return;
 
+                String original = editable.toString();
+                String masked = Mask.applyMaskCep(original);
+
+                if (!original.equals(masked)) {
+                    updating = true;
+                    binding.edtCepcliente.setText(masked);
+                    binding.edtCepcliente.setSelection(masked.length());
+                    updating = false;
+                }
+            }
+        });
+        binding.edtCfpCnpjCliente.addTextChangedListener(new SimpleTextWatcher() {
+            boolean isUpdating = false;
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                super.afterTextChanged(editable);
+                if (isUpdating) return;
+
+                String raw = editable.toString();
+                String formatted = Mask.maskDocument(raw);
+
+                if (!raw.equals(formatted)) {
+                    isUpdating = true;
+                    binding.edtCfpCnpjCliente.setText(formatted);
+                    binding.edtCfpCnpjCliente.setSelection(formatted.length());
+                    isUpdating = false;
+                }
+            }
+        });
+        binding.edtTelefonecliente.addTextChangedListener(new SimpleTextWatcher() {
+            boolean updating = false;
+            @Override
+            public void afterTextChanged(Editable editable) {
+                super.afterTextChanged(editable);
+                if (updating) return;
+
+                String original = editable.toString();
+                String masked = Mask.applyMaskTelefone(original);
+
+                if (!original.equals(masked)) {
+                    updating = true;
+                    binding.edtTelefonecliente.setText(masked);
+                    binding.edtTelefonecliente.setSelection(masked.length());
+                    updating = false;
+                }
             }
         });
     }
