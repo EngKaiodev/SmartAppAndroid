@@ -1,56 +1,62 @@
 package com.example.smartapp.fcm;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.os.Build;
 import android.util.Log;
 
-import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
 
-import com.example.smartapp.utils.NotificationHelper;
+import com.example.smartapp.R;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-
-
-import java.util.Map;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private static final String TAG = "MyFirebaseMsgService";
 
     @Override
-    public void onNewToken(@NonNull String token) {
+    public void onNewToken(String token) {
         super.onNewToken(token);
         Log.d(TAG, "FCM token refreshed: " + token);
-        // TODO: envie esse token para o seu servidor para armazenar e poder mandar push
         sendRegistrationToServer(token);
     }
 
     @Override
-    public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
+    public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
         Log.d(TAG, "From: " + remoteMessage.getFrom());
 
-        // Verifica payload de dados
-        if (remoteMessage.getData() != null && !remoteMessage.getData().isEmpty()) {
-            Map<String, String> data = remoteMessage.getData();
-            Log.d(TAG, "Message data payload: " + data.toString());
-
-            // Exemplo: se você enviar título e body em data, use-os. Caso contrário, use RemoteMessage.notification
-            String title = data.containsKey("title") ? data.get("title") : "SmartApp";
-            String body = data.containsKey("body") ? data.get("body") : data.toString();
-
-            // Exibe notificação customizada (útil em foreground)
-            NotificationHelper.showNotification(getApplicationContext(), title, body);
-        }
-
-        // Se há payload de notificação (notification payload)
         if (remoteMessage.getNotification() != null) {
-            String title = remoteMessage.getNotification().getTitle();
-            String body = remoteMessage.getNotification().getBody();
+            String titulo = remoteMessage.getNotification().getTitle();
+            String corpo = remoteMessage.getNotification().getBody();
 
-            // Se o app estiver em foreground, o sistema não mostra automaticamente:
-            // chamamos nosso helper para exibir
-            NotificationHelper.showNotification(getApplicationContext(),
-                    title != null ? title : "SmartApp",
-                    body != null ? body : "");
+            mostrarNotificacao(titulo, corpo);
         }
+    }
+
+    private void mostrarNotificacao(String title, String messageBody) {
+        String channelId = "agendamentos_channel";
+        NotificationManager notificationManager =
+                (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // Criar canal de notificação (Obrigatório para Android 8+)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(
+                    channelId,
+                    "Notificações de Agendamento",
+                    NotificationManager.IMPORTANCE_HIGH);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, channelId)
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentTitle(title)
+                .setContentText(messageBody)
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_HIGH);
+
+        notificationManager.notify(0, builder.build());
     }
 
     private void sendRegistrationToServer(String token) {

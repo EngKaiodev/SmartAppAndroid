@@ -86,7 +86,12 @@ public class AgendamentoAdapter extends RecyclerView.Adapter<AgendamentoAdapter.
                     binding.btnAction.setBackgroundColor(
                             ContextCompat.getColor(binding.getRoot().getContext(), R.color.success_green)
                     );
-                    if (type == 2) binding.btnAction.setVisibility(ViewGroup.GONE);
+                    if (type == 2) {
+                        binding.btnAction.setText("Reagendar");
+                        binding.btnAction.setBackgroundColor(
+                                ContextCompat.getColor(binding.getRoot().getContext(), R.color.indigo_600)
+                        );
+                    }
                     break;
                 }
                 case 1: {

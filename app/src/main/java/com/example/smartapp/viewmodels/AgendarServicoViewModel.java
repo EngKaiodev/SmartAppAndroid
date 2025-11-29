@@ -101,8 +101,13 @@ public class AgendarServicoViewModel extends ViewModel {
     }
 
     public void updateSchedule(ScheduleResponse scheduleResponse, HourResponse selectedItem) {
+
         disposable.add(
-                scheduleRepository.update(scheduleResponse.getId(), selectedItem.getId())
+                scheduleRepository.update(
+                                scheduleResponse.getId(),
+                                selectedItem.getId(),
+                                prefs.getType()
+                        )
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
                                 response -> {

@@ -18,21 +18,23 @@ public class LoginViewModel extends ViewModel {
 
     private final Preferences preferences;
     private final AuthRepository authRepository;
+
     @Inject
     public LoginViewModel(Preferences preferences, AuthRepository authRepository) {
         this.preferences = preferences;
         this.authRepository = authRepository;
     }
 
-    public Boolean validateFieds( String email, String password){
+    public Boolean validateFieds(String email, String password) {
         return email != null && password != null && !email.isEmpty() && !password.isEmpty();
     }
 
-    public Single<Response<UserResponse>> tryLogin(String email, String password){
+    public Single<Response<UserResponse>> tryLogin(String email, String password, String tokenFCM) {
         return authRepository.login(
                 new LoginRequest(
-                    email,
-                    password
+                        email,
+                        password,
+                        tokenFCM
                 )
         );
     }

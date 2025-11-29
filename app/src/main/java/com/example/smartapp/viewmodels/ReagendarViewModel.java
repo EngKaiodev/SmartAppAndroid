@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.smartapp.core.Preferences;
 import com.example.smartapp.domain.repository.ScheduleRepository;
 
 import javax.inject.Inject;
@@ -16,6 +17,7 @@ import io.reactivex.disposables.CompositeDisposable;
 public class ReagendarViewModel extends ViewModel {
 
     private final ScheduleRepository repository;
+    private final Preferences prefs;
 
     private final CompositeDisposable disposable = new CompositeDisposable();
 
@@ -23,8 +25,9 @@ public class ReagendarViewModel extends ViewModel {
     public LiveData<Boolean> changed = _changed;
 
     @Inject
-    public ReagendarViewModel(ScheduleRepository repository) {
+    public ReagendarViewModel(ScheduleRepository repository, Preferences prefs) {
         this.repository = repository;
+        this.prefs = prefs;
     }
 
     public void confirmSchedule(int id) {
@@ -43,7 +46,10 @@ public class ReagendarViewModel extends ViewModel {
 
     public void cancelSchedule(int id){
         disposable.add(
-                repository.cancelScheduleById(id).observeOn(AndroidSchedulers.mainThread()).subscribe(
+                repository.cancelScheduleById(
+                        id,
+                        prefs.getType()
+                        ).observeOn(AndroidSchedulers.mainThread()).subscribe(
                         response -> {
                             if (response.isSuccessful() && response.code() == 200) {
                                 _changed.postValue(response.body());
@@ -57,7 +63,10 @@ public class ReagendarViewModel extends ViewModel {
 
     public void finishSchedule(int id){
         disposable.add(
-                repository.finishScheduleById(id).observeOn(AndroidSchedulers.mainThread()).subscribe(
+                repository.finishScheduleById(
+                        id,
+                        prefs.getType()
+                ).observeOn(AndroidSchedulers.mainThread()).subscribe(
                         response -> {
                             if (response.isSuccessful() && response.code() == 200) {
                                 _changed.postValue(response.body());
@@ -67,5 +76,9 @@ public class ReagendarViewModel extends ViewModel {
                         }
                 )
         );
+    }
+
+    public int getType(){
+        return prefs.getType();
     }
 }

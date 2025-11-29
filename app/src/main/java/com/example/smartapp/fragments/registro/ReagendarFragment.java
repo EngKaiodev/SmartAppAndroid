@@ -82,6 +82,10 @@ public class ReagendarFragment extends Fragment {
                 case 0: {
                     binding.btnReview.setVisibility(View.GONE);
                     binding.btnDone.setVisibility(View.GONE);
+
+                    if (viewModel.getType() == 2){
+                        binding.btnConfirm.setVisibility(View.GONE);
+                    }
                     break;
                 }
                 case 1: {

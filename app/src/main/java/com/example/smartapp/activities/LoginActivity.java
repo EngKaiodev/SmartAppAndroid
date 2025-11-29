@@ -6,6 +6,7 @@ import static java.security.AccessController.getContext;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ import com.example.smartapp.core.Preferences;
 import com.example.smartapp.databinding.LoginActivityBinding;
 import com.example.smartapp.domain.models.ErrorModel;
 import com.example.smartapp.viewmodels.LoginViewModel;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import javax.inject.Inject;
 
@@ -63,26 +65,36 @@ public class LoginActivity extends AppCompatActivity {
                         binding.edtEmail.getText().toString(),
                         binding.edtPassword.getText().toString()
                 )) {
-                    Disposable disposable = loginViewModel.tryLogin(
-                                    binding.edtEmail.getText().toString(),
-                                    binding.edtPassword.getText().toString()
-                            )
-                            .subscribeOn(Schedulers.io())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(response -> {
-                        if (response.isSuccessful() && response.code() == 200) {
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            ErrorModel error = ErroHelper.getErrorModel(response);
-                            binding.tvError.setText(error.getMessage());
-                            binding.erroContainer.setVisibility(View.VISIBLE);
-                        }
-                    }, throwable -> {
-                        Toast.makeText(LoginActivity.this, "Erro ao registrar", Toast.LENGTH_SHORT).show();
-                    });
+                    FirebaseMessaging.getInstance().getToken()
+                            .addOnCompleteListener(task -> {
+                                if (!task.isSuccessful()) {
+                                    Log.w("FCM", "Falha ao pegar token", task.getException());
+                                    return;
+                                }
+                                String token = task.getResult();
+
+                                Disposable disposable = loginViewModel.tryLogin(
+                                                binding.edtEmail.getText().toString(),
+                                                binding.edtPassword.getText().toString(),
+                                                token
+                                        )
+                                        .subscribeOn(Schedulers.io())
+                                        .observeOn(AndroidSchedulers.mainThread())
+                                        .subscribe(response -> {
+                                            if (response.isSuccessful() && response.code() == 200) {
+                                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                startActivity(intent);
+                                                finish();
+                                            } else {
+                                                ErrorModel error = ErroHelper.getErrorModel(response);
+                                                binding.tvError.setText(error.getMessage());
+                                                binding.erroContainer.setVisibility(View.VISIBLE);
+                                            }
+                                        }, throwable -> {
+                                            Toast.makeText(LoginActivity.this, "Erro ao registrar", Toast.LENGTH_SHORT).show();
+                                        });
+                            });
                 } else {
                     binding.erroContainer.setVisibility(VISIBLE);
                 }
