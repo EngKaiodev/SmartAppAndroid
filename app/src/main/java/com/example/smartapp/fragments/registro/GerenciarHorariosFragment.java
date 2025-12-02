@@ -113,16 +113,10 @@ public class GerenciarHorariosFragment extends Fragment {
             count++;
         }
 
-        if (selectedDays.isEmpty()) {
-            return hours;
-        }
-
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-            return hours;
-        }
+        if (selectedDays.isEmpty()) return hours;
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) return hours;
 
         LocalDate today = LocalDate.now();
-        int todayWeekday = today.getDayOfWeek().getValue();
 
         int initHourMorning = binding.timeInicioManha.getHour();
         int initMinuteMorning = binding.timeInicioManha.getMinute();
@@ -136,10 +130,12 @@ public class GerenciarHorariosFragment extends Fragment {
         int endHourAfternoon = binding.timeFimTarde.getHour();
         int endMinuteAfternoon = binding.timeFimTarde.getMinute();
 
-        for (Integer day : selectedDays) {
-            int diff = day - todayWeekday;
-            if (diff <= 0) diff = diff + 7;
-            LocalDate date = today.plusDays(diff);
+        // 🔥 Alteração principal: iterar pelos próximos 60 dias
+        for (int i = 1; i <= 60; i++) {
+            LocalDate date = today.plusDays(i);
+            int weekday = date.getDayOfWeek().getValue(); // 1 = Segunda ... 7 = Domingo
+
+            if (!selectedDays.contains(weekday)) continue;
 
             // Manhã
             LocalDateTime initMorning = LocalDateTime.of(date, LocalTime.of(initHourMorning, initMinuteMorning));
@@ -171,10 +167,9 @@ public class GerenciarHorariosFragment extends Fragment {
                 initAfternoon = slotEnd;
             }
         }
-        for (HoursRequest h : hours) {
-            Log.i("Vendo lista", h.toString());
-        }
+
         return hours;
     }
+
 
 }
