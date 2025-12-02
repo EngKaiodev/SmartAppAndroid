@@ -75,6 +75,7 @@ public class AvaliarTelaFragment extends Fragment {
     }
 
     private void setupView(ReviewData data) {
+        if (data == null) return;
         // Média das avaliações
         binding.totalRating.setText(String.format("%.2f", data.getMedia_avaliacoes()));
 

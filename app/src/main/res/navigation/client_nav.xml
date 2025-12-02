@@ -78,7 +78,11 @@
         android:id="@id/historico_servico_fragment"
         android:name="com.example.smartapp.fragments.registro.HistoricoServicoFragment"
         android:label="HistoricoServicoFragment"
-        tools:layout="@layout/historico_servico" />
+        tools:layout="@layout/historico_servico">
+        <action
+            android:id="@+id/action_to_avaliacao"
+            app:destination="@id/action_avaliar_tela" />
+    </fragment>
     <fragment
         android:id="@+id/gerenciar_servico_fragment"
         android:name="com.example.smartapp.fragments.registro.GerenciarServicoFragment"

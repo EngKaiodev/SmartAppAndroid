@@ -47,4 +47,12 @@ public class HistoricoServicoViewModel extends ViewModel {
                         )
         );
     }
+
+    public int getId() {
+        return prefs.getId();
+    }
+
+    public int getType() {
+        return prefs.getType();
+    }
 }

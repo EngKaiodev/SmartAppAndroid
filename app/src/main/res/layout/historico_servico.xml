@@ -7,7 +7,6 @@
     android:background="@color/white"
     android:orientation="vertical">
 
-    <!-- Header (mantido inalterado) -->
     <LinearLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -34,7 +33,7 @@
             android:text="Histórico de Serviços"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <!-- Conteúdo Principal -->
@@ -42,99 +41,141 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="16dp"
+        android:background="@color/white"
         android:fillViewport="true"
-        android:background="@color/white">
+        android:padding="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/white">
+            android:background="@color/white"
+            android:orientation="vertical">
 
-            <!-- Card de Filtros -->
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardFilter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="4dp"
+                android:layout_marginBottom="16dp"
                 app:cardBackgroundColor="@color/white"
-                android:layout_marginBottom="16dp">
+                app:cardCornerRadius="12dp"
+                app:cardElevation="4dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@color/light_gray"
                     android:orientation="vertical"
-                    android:padding="16dp"
-                    android:background="@color/light_gray">
+                    android:padding="16dp">
 
-                    <TextView
+                    <LinearLayout
+                        android:id="@+id/headerFilter"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Filtrar Histórico:"
-                        android:textColor="@android:color/black"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="12dp"/>
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
 
-                    <!-- Filtro por prestador -->
-                    <TextView
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Filtrar Histórico"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/iconArrow"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_arrow_down" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/filterContent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Prestador:"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp"/>
+                        android:orientation="vertical"
+                        android:visibility="gone">
 
-                    <EditText
-                        android:id="@+id/filterByProfessionalEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:hint="Digite o nome do prestador..."
-                        android:background="?android:attr/editTextBackground"
-                        android:padding="12dp"
-                        android:textColorHint="@color/black"
-                        android:textColor="@android:color/black"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="12dp"
+                            android:text="Filtrar Histórico:"
+                            android:textColor="@android:color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
 
-                    <!-- Filtro por serviço -->
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Serviço:"
-                        android:textColor="@android:color/black"
-                        android:textSize="14sp"/>
+                        <!-- Filtro por prestador -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Prestador:"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp" />
 
-                    <EditText
-                        android:id="@+id/filterByServiceEditText"
-                        android:layout_width="match_parent"
-                        android:layout_height="48dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginBottom="8dp"
-                        android:hint="Digite o nome do serviço..."
-                        android:textColorHint="@color/black"
-                        android:padding="12dp"
-                        android:textColor="@android:color/black"/>
+                        <EditText
+                            android:id="@+id/filterByProfessionalEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="?android:attr/editTextBackground"
+                            android:hint="Digite o nome do prestador..."
+                            android:padding="12dp"
+                            android:textColor="@android:color/black"
+                            android:textColorHint="@color/black" />
+
+                        <!-- Filtro por serviço -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Serviço:"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp" />
+
+                        <EditText
+                            android:id="@+id/filterByServiceEditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="4dp"
+                            android:layout_marginBottom="8dp"
+                            android:hint="Digite o nome do serviço..."
+                            android:padding="12dp"
+                            android:textColor="@android:color/black"
+                            android:textColorHint="@color/black" />
+                    </LinearLayout>
+
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_avaliacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:background="@color/design_default_color_primary"
+                android:text="VER AVALIAÇÕES"
+                android:textColor="@color/white" />
 
             <!-- Título da Lista -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
                 android:text="Seus Serviços Anteriores:"
                 android:textColor="@android:color/black"
                 android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="16dp"/>
+                android:textStyle="bold" />
 
             <!-- Lista de Histórico -->
             <LinearLayout
                 android:id="@+id/serviceHistoryList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@color/white">
+                android:background="@color/white"
+                android:orientation="vertical">
 
                 <!-- RecyclerView para lista de histórico -->
                 <androidx.recyclerview.widget.RecyclerView
@@ -145,7 +186,7 @@
                     android:background="@color/white"
                     app:spanCount="2"
                     tools:itemCount="2"
-                    tools:listitem="@layout/historico_category"/>
+                    tools:listitem="@layout/historico_category" />
             </LinearLayout>
 
             <!-- Mensagem quando não há histórico -->
@@ -153,12 +194,12 @@
                 android:id="@+id/noHistoryMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="32dp"
                 android:text="Nenhum serviço encontrado no seu histórico."
                 android:textColor="@android:color/black"
                 android:textSize="16sp"
-                android:gravity="center"
-                android:padding="32dp"
-                android:visibility="gone"/>
+                android:visibility="gone" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -65,7 +65,7 @@
                         android:id="@+id/totalRating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="4.9"
+                        android:text="5.0"
                         android:textColor="@android:color/black"
                         android:textSize="32sp"
                         android:textStyle="bold" />
@@ -117,7 +117,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="Baseado em 120 avaliações"
+                            android:text="Baseado em 0 avaliações"
                             android:textColor="@android:color/black"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -159,13 +159,13 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginEnd="8dp"
                             android:layout_weight="1"
-                            android:progress="90" />
+                            android:progress="0" />
 
                         <TextView
                             android:id="@+id/count5"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="108"
+                            android:text="0"
                             android:textColor="@android:color/black"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -199,13 +199,13 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginEnd="8dp"
                             android:layout_weight="1"
-                            android:progress="8" />
+                            android:progress="0" />
 
                         <TextView
                             android:id="@+id/count4"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="10"
+                            android:text="0"
                             android:textColor="@android:color/black"
                             android:textSize="14sp" />
                     </LinearLayout>
@@ -239,13 +239,13 @@
                             android:layout_marginStart="8dp"
                             android:layout_marginEnd="8dp"
                             android:layout_weight="1"
-                            android:progress="1" />
+                            android:progress="0" />
 
                         <TextView
                             android:id="@+id/count3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="2"
+                            android:text="0"
                             android:textColor="@android:color/black"
                             android:textSize="14sp" />
                     </LinearLayout>

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.smartapp.adapters.HistoricoAdapter;
 import com.example.smartapp.core.domain.response.HistoricResponse;
+import com.example.smartapp.core.watcher.SimpleTextWatcher;
 import com.example.smartapp.databinding.HistoricoServicoBinding;
 import com.example.smartapp.domain.models.HistoricoModel;
 import com.example.smartapp.viewmodels.HistoricoServicoViewModel;
@@ -55,6 +56,13 @@ public class HistoricoServicoFragment extends Fragment {
 
         setupListeners();
         setupObservers();
+        setupView();
+    }
+
+    private void setupView() {
+        if (viewModel.getType() != 1){
+            binding.btnAvaliacao.setVisibility(View.GONE);
+        }
     }
 
     private void setupObservers() {
@@ -74,40 +82,37 @@ public class HistoricoServicoFragment extends Fragment {
 
     private void setupListeners() {
         binding.btnvoltarhist.setOnClickListener(v -> navController.popBackStack());
+        binding.btnAvaliacao.setOnClickListener(v -> navController.navigate(HistoricoServicoFragmentDirections.actionToAvaliacao(viewModel.getId())));
 
-        binding.filterByProfessionalEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
+        binding.filterByProfessionalEditText.addTextChangedListener(new SimpleTextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 filterPro = s.toString();
                 historicoAdapter.filter(filterPro, filterServ);
             }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
         });
 
-        binding.filterByServiceEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
+        binding.filterByServiceEditText.addTextChangedListener(new SimpleTextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 filterServ = s.toString();
                 historicoAdapter.filter(filterPro, filterServ);
             }
+        });
 
+        binding.headerFilter.setOnClickListener(new View.OnClickListener() {
+            boolean expanded = false;
             @Override
-            public void afterTextChanged(Editable s) {
+            public void onClick(View view) {
+                expanded = !expanded;
 
+                if (expanded) {
+                    binding.filterContent.setVisibility(View.VISIBLE);
+                    binding.iconArrow.animate().rotation(180f).setDuration(200).start();
+                } else {
+                    binding.filterContent.setVisibility(View.GONE);
+                    binding.iconArrow.animate().rotation(0f).setDuration(200).start();
+                }
             }
         });
     }
