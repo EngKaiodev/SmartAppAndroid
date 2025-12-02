@@ -103,7 +103,6 @@ public class ReagendarFragment extends Fragment {
             }
 
             if (selectedSchedule.getHour().getInitHour().isBefore(LocalDateTime.now())){
-                binding.btncancelar.setVisibility(View.GONE);
                 binding.btnReagendar.setVisibility(View.GONE);
             }
         }

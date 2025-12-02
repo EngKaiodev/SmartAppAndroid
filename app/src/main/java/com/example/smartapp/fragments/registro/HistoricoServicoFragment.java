@@ -1,8 +1,6 @@
 package com.example.smartapp.fragments.registro;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +17,6 @@ import com.example.smartapp.adapters.HistoricoAdapter;
 import com.example.smartapp.core.domain.response.HistoricResponse;
 import com.example.smartapp.core.watcher.SimpleTextWatcher;
 import com.example.smartapp.databinding.HistoricoServicoBinding;
-import com.example.smartapp.domain.models.HistoricoModel;
 import com.example.smartapp.viewmodels.HistoricoServicoViewModel;
 
 import java.util.List;
@@ -62,6 +59,8 @@ public class HistoricoServicoFragment extends Fragment {
     private void setupView() {
         if (viewModel.getType() != 1) {
             binding.btnAvaliacao.setVisibility(View.GONE);
+        } else {
+            binding.txtPretOrCli.setText("Cliente:");
         }
     }
 
@@ -89,7 +88,7 @@ public class HistoricoServicoFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 filterPro = s.toString();
-                historicoAdapter.filter(filterPro, filterServ);
+                historicoAdapter.filter(filterPro, filterServ, viewModel.getType());
             }
         });
 
@@ -97,7 +96,7 @@ public class HistoricoServicoFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 filterServ = s.toString();
-                historicoAdapter.filter(filterPro, filterServ);
+                historicoAdapter.filter(filterPro, filterServ, viewModel.getType());
             }
         });
 

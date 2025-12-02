@@ -88,10 +88,10 @@ public class ScheduleResponse implements Serializable {
                         0xFFF44336,
                         R.drawable.ic_close);
             case 3:
-                return new StatusInfo("Realizado",
+                return new StatusInfo("Finalizado",
                         0xFF4F46E5,
                         R.drawable.ic_briefcase);
-            case 4: return new StatusInfo("Finalizado",
+            case 4: return new StatusInfo("Avaliado",
                     0xFF4F46E5,
                     R.drawable.ic_briefcase);
             default:

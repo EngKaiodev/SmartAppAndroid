@@ -147,11 +147,20 @@ public class AgendarServicoFragment extends Fragment {
 
         binding.btnconfirmarAgendamento2.setOnClickListener(v -> {
             if (validarFormulario()) {
-                viewModel.saveSchedule(
-                        profissionalSelected.getId_profissional(),
-                        (ServicoResponse) binding.servicosSpinner.getSelectedItem(),
-                        (HourResponse) binding.horarioSpinner.getSelectedItem()
-                );
+                if (scheduleResponse != null){
+                    viewModel.updateSchedule(
+                            scheduleResponse,
+                            (HourResponse) binding.horarioSpinner.getSelectedItem()
+                    );
+                } else {
+                    viewModel.saveSchedule(
+                            profissionalSelected.getId_profissional(),
+                            (ServicoResponse) binding.servicosSpinner.getSelectedItem(),
+                            (HourResponse) binding.horarioSpinner.getSelectedItem()
+                    );
+                }
+            } else {
+                Toast.makeText(requireContext(), "Selecione o horário desejado", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -189,6 +198,13 @@ public class AgendarServicoFragment extends Fragment {
             if (response) {
                 Toast.makeText(getContext(), "Agendado com sucesso", Toast.LENGTH_SHORT).show();
                 navController.popBackStack();
+            }
+        });
+
+        viewModel.upgraded.observe(getViewLifecycleOwner(), response -> {
+            if (response) {
+                Toast.makeText(getContext(), "Reagendado com sucesso", Toast.LENGTH_SHORT).show();
+                navController.popBackStack(R.id.gerenciar_agendamento_fragment, false);
             }
         });
     }

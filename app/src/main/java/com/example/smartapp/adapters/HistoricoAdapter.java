@@ -47,18 +47,31 @@ public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.View
         return filteredList.size();
     }
 
-    public void filter(String nome, String servico) {
+    public void filter(String nome, String servico, int type) {
         filteredList.clear();
 
-        if (nome != null && !nome.trim().isEmpty()) {
-            String lowerQuery = nome.toLowerCase(Locale.ROOT);
-            for (HistoricResponse s : originalList) {
-                if (s.getProfissional().getName().toLowerCase(Locale.ROOT).contains(lowerQuery)) {
-                    filteredList.add(s);
+        if (type == 1) {
+            if (nome != null && !nome.trim().isEmpty()) {
+                String lowerQuery = nome.toLowerCase(Locale.ROOT);
+                for (HistoricResponse s : originalList) {
+                    if (s.getCliente().getCompleteName().toLowerCase(Locale.ROOT).contains(lowerQuery)) {
+                        filteredList.add(s);
+                    }
                 }
+            } else {
+                filteredList.addAll(originalList);
             }
         } else {
-            filteredList.addAll(originalList);
+            if (nome != null && !nome.trim().isEmpty()) {
+                String lowerQuery = nome.toLowerCase(Locale.ROOT);
+                for (HistoricResponse s : originalList) {
+                    if (s.getProfissional().getName().toLowerCase(Locale.ROOT).contains(lowerQuery)) {
+                        filteredList.add(s);
+                    }
+                }
+            } else {
+                filteredList.addAll(originalList);
+            }
         }
 
         if (servico != null && !servico.trim().isEmpty()) {

@@ -20,6 +20,13 @@ public interface ScheduleService {
             @Body ScheduleRequest request
     );
 
+    @POST("/schedules/{schedule}/{hour}/{notId}")
+    Single<Response<Boolean>> update(
+            @Path("schedule") int schedule,
+            @Path("hour") int hourId,
+            @Path ("notId") int notId
+    );
+
     @GET("/schedules/user/{id}")
     Single<Response<List<ScheduleResponse>>> getAllByUserId(
             @Path("id") int id
@@ -35,9 +42,10 @@ public interface ScheduleService {
             @Path("id") int id
     );
 
-    @POST("/schedules/{id}/cancel")
+    @POST("/schedules/{id}/cancel/{notifyId}")
     Single<Response<Boolean>> cancelScheduleById(
-            @Path("id") int id
+            @Path("id") int id,
+            @Path("notifyId") int notifyId
     );
 
     @POST("/schedules/{id}/review")
@@ -45,9 +53,10 @@ public interface ScheduleService {
             @Path("id") int id
     );
 
-    @POST("/schedules/{id}/finish")
+    @POST("/schedules/{id}/finish/{notifyId}")
     Single<Response<Boolean>> finishScheduleById(
-            @Path("id") int id
+            @Path("id") int id,
+            @Path("notifyId") int notifyId
     );
 
     @GET("/schedules/{type}/{id}/historic")

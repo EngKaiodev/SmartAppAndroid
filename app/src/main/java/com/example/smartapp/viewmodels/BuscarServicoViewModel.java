@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
+import com.example.smartapp.core.Preferences;
 import com.example.smartapp.core.domain.response.ProfissionalResponse;
 import com.example.smartapp.core.domain.response.ServiceCompleteResponse;
 import com.example.smartapp.domain.repository.ProfissionalRepository;
@@ -23,11 +24,13 @@ public class BuscarServicoViewModel extends ViewModel {
 
     private final ServicoRepository servicoRepository;
     private final ProfissionalRepository profissionalRepository;
+    private final Preferences prefs;
 
     @Inject
-    public BuscarServicoViewModel(ServicoRepository servicoRepository, ProfissionalRepository profissionalRepository) {
+    public BuscarServicoViewModel(ServicoRepository servicoRepository, ProfissionalRepository profissionalRepository, Preferences prefs) {
         this.servicoRepository = servicoRepository;
         this.profissionalRepository = profissionalRepository;
+        this.prefs = prefs;
     }
 
     private CompositeDisposable disposable = new CompositeDisposable();
@@ -42,7 +45,14 @@ public class BuscarServicoViewModel extends ViewModel {
                 servicoRepository.getAll().subscribeOn(AndroidSchedulers.mainThread()).subscribe(
                         response -> {
                             if (response.isSuccessful()){
-                                _services.postValue(response.body());
+
+                                List<ServiceCompleteResponse> original = response.body();
+                                if (prefs.getType() == 1 && original != null){
+                                    original = original.stream().filter( x ->
+                                            x.getProfissionalId() != prefs.getId()
+                                    ).toList();
+                                }
+                                _services.postValue(original);
                             }
                         }
                 )

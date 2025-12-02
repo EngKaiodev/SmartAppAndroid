@@ -96,9 +96,10 @@ public class EditarProfissionalViewModel extends ViewModel {
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
                                 response -> {
-                                    _edited.setValue(true);
-                                    assert response.body() != null;
-                                    preferences.setName(response.body().getCompleteName());
+                                    if(response.body() != null){
+                                        preferences.setName(response.body().getCompleteName());
+                                        _edited.setValue(true);
+                                    }
                                 },
                                 throwable -> _edited.setValue(false)
                         )
