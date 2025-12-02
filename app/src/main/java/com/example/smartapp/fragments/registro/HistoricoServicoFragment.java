@@ -60,7 +60,7 @@ public class HistoricoServicoFragment extends Fragment {
     }
 
     private void setupView() {
-        if (viewModel.getType() != 1){
+        if (viewModel.getType() != 1) {
             binding.btnAvaliacao.setVisibility(View.GONE);
         }
     }
@@ -72,10 +72,11 @@ public class HistoricoServicoFragment extends Fragment {
         });
     }
 
-    private void setupAdapters(){
-        historicoAdapter = new HistoricoAdapter(historicoList, historicoModel -> {
-            //todo inserir aqui onde vai
-        });
+    private void setupAdapters() {
+        historicoAdapter = new HistoricoAdapter(
+                viewModel.getType(),
+                historicoList
+        );
         binding.rvhistoricoServico.setAdapter(historicoAdapter);
         binding.rvhistoricoServico.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
     }
@@ -102,6 +103,7 @@ public class HistoricoServicoFragment extends Fragment {
 
         binding.headerFilter.setOnClickListener(new View.OnClickListener() {
             boolean expanded = false;
+
             @Override
             public void onClick(View view) {
                 expanded = !expanded;

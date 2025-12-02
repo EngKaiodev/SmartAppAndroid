@@ -1,7 +1,6 @@
 package com.example.smartapp.adapters;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
@@ -10,25 +9,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartapp.R;
 import com.example.smartapp.core.domain.response.HistoricResponse;
-import com.example.smartapp.core.domain.response.ProfissionalResponse;
 import com.example.smartapp.databinding.HistoricoCategoryBinding;
-import com.example.smartapp.domain.models.HistoricoModel;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.function.Consumer;
 
 public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.ViewHolder> {
 
     private final List<HistoricResponse> originalList;
     private final List<HistoricResponse> filteredList;
-    private Consumer<HistoricResponse> onHistoryClick;
+    private int type;
 
-    public HistoricoAdapter(List<HistoricResponse> originalList, Consumer<HistoricResponse> onHistoryClick){
+    public HistoricoAdapter(int type, List<HistoricResponse> originalList) {
         this.originalList = new ArrayList<>(originalList);
         this.filteredList = new ArrayList<>(originalList);
-        this.onHistoryClick = onHistoryClick;
+        this.type = type;
     }
 
 
@@ -43,19 +39,18 @@ public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         HistoricResponse hitem = filteredList.get(position);
-        holder.bind(hitem);
-
-        holder.itemView.setOnClickListener(view -> onHistoryClick.accept(hitem));
-
+        holder.bind(hitem, type);
     }
 
     @Override
-    public int getItemCount() {return filteredList.size(); }
+    public int getItemCount() {
+        return filteredList.size();
+    }
 
     public void filter(String nome, String servico) {
         filteredList.clear();
 
-        if (nome != null && !nome.trim().isEmpty()){
+        if (nome != null && !nome.trim().isEmpty()) {
             String lowerQuery = nome.toLowerCase(Locale.ROOT);
             for (HistoricResponse s : originalList) {
                 if (s.getProfissional().getName().toLowerCase(Locale.ROOT).contains(lowerQuery)) {
@@ -66,7 +61,7 @@ public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.View
             filteredList.addAll(originalList);
         }
 
-        if (servico != null && !servico.trim().isEmpty()){
+        if (servico != null && !servico.trim().isEmpty()) {
             String lowerQuery = servico.toLowerCase(Locale.ROOT);
             filteredList.removeIf(s -> !s.getServico().getName().toLowerCase(Locale.ROOT).contains(lowerQuery));
         }
@@ -74,24 +69,30 @@ public class HistoricoAdapter extends RecyclerView.Adapter<HistoricoAdapter.View
         notifyDataSetChanged();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder{
+    static class ViewHolder extends RecyclerView.ViewHolder {
         private HistoricoCategoryBinding binding;
 
-        public ViewHolder(HistoricoCategoryBinding binding){
+        public ViewHolder(HistoricoCategoryBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
 
-        public void bind(HistoricResponse historico){
+        public void bind(HistoricResponse historico, int type) {
             setRatingStars(historico.getRate());
-            binding.nomeprof.setText((historico.getProfissional().getName()));
+
+            if (type == 1) {
+                binding.nomeprof.setText(historico.getCliente().getCompleteName());
+            } else {
+                binding.nomeprof.setText((historico.getProfissional().getName()));
+            }
+
             binding.servicodata.setText(historico.getHour().getString());
             binding.nomeservico.setText(historico.getServico().getName());
             binding.servicovalor.setText(String.format("Valor: R$ %.2f", historico.getServico().getPrice()));
         }
 
         private void setRatingStars(float rate) {
-            ImageView[] stars = new ImageView[] {
+            ImageView[] stars = new ImageView[]{
                     binding.star1,
                     binding.star2,
                     binding.star3,

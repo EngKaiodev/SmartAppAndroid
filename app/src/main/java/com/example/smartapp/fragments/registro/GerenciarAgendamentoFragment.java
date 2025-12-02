@@ -143,9 +143,7 @@ public class GerenciarAgendamentoFragment extends Fragment {
                 schedules,
                 viewModel.getId(),
                 viewModel.getType(),
-                selectedSchedule -> {
-            navController.navigate(GerenciarAgendamentoFragmentDirections.reagendarFragment(selectedSchedule));
-        });
+                selectedSchedule -> navController.navigate(GerenciarAgendamentoFragmentDirections.reagendarFragment(selectedSchedule)));
 
         binding.rvAgendamentosCategories.setAdapter(agendamentoAdapter);
         binding.rvAgendamentosCategories.setLayoutManager(new LinearLayoutManager(getContext()));
