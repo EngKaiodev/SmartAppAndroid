@@ -71,6 +71,12 @@ public class Preferences {
         return preferences.getString(KEY_NAME, "Sem nome");
     }
 
+    public void setName(String name){
+        editor.putString(KEY_NAME, name);
+        editor.commit();
+        editor.apply();
+    }
+
     public int getType(){
         return preferences.getInt(KEY_TYPE, -1);
     }

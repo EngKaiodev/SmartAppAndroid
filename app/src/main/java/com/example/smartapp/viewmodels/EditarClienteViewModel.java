@@ -80,7 +80,11 @@ public class EditarClienteViewModel extends ViewModel {
                 repository.editMyself(toEdit)
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(
-                                response -> _edited.setValue(true),
+                                response -> {
+                                    _edited.setValue(true);
+                                    assert response.body() != null;
+                                    prefs.setName(response.body().getCompleteName());
+                                },
                                 throwable -> _edited.setValue(false)
                         )
         );
