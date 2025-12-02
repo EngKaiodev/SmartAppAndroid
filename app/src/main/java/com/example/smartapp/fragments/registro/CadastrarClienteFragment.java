@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.smartapp.activities.LoginActivity;
 import com.example.smartapp.activities.MainActivity;
 import com.example.smartapp.core.ErroHelper;
 import com.example.smartapp.core.Mask;
@@ -25,6 +26,7 @@ import com.example.smartapp.databinding.CadastrarClienteBinding;
 import com.example.smartapp.databinding.CadastrarServicoBinding;
 import com.example.smartapp.domain.models.ErrorModel;
 import com.example.smartapp.viewmodels.CadastrarClienteViewModel;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -58,30 +60,40 @@ public class CadastrarClienteFragment extends Fragment {
     private void setupListeners() {
         binding.btnfinalizarCliente.setOnClickListener(v -> {
             if (fieldToValidated()) {
-                Disposable disposable = viewModel.register(
-                        binding.etFullName.getText().toString(),
-                        binding.edtSenha.getText().toString(),
-                        binding.edttelefone.getText().toString(),
-                        binding.etEmailRegister.getText().toString(),
-                        binding.edtCpfCnpj.getText().toString(),
-                        2,
-                        binding.edtCep.getText().toString(),
-                        binding.edtEndenreco.getText().toString(),
-                        binding.edtNumero.getText().toString()
-                        ).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(response -> {
-                    if (response.isSuccessful()) {
-                        Intent intent = new Intent(getContext(), MainActivity.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
-                    } else {
-                        ErrorModel error = ErroHelper.getErrorModel(response);
-                        binding.tvError.setText(error.getMessage());
-                        binding.erroContainer.setVisibility(View.VISIBLE);
-                    }
-                }, throwable -> {
-                    // erro → exibir Toast, dialog, etc.
-                    Toast.makeText(this.getContext(), "Erro ao registrar", Toast.LENGTH_SHORT).show();
-                });
+                FirebaseMessaging.getInstance().getToken()
+                        .addOnCompleteListener(task -> {
+                            if (!task.isSuccessful()) {
+                                Log.w("FCM", "Falha ao pegar token", task.getException());
+                                return;
+                            }
+                            String token = task.getResult();
+
+                            Disposable disposable = viewModel.register(
+                                    binding.etFullName.getText().toString(),
+                                    binding.edtSenha.getText().toString(),
+                                    binding.edttelefone.getText().toString(),
+                                    binding.etEmailRegister.getText().toString(),
+                                    binding.edtCpfCnpj.getText().toString(),
+                                    2,
+                                    binding.edtCep.getText().toString(),
+                                    binding.edtEndenreco.getText().toString(),
+                                    binding.edtNumero.getText().toString(),
+                                    token
+                            ).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(response -> {
+                                if (response.isSuccessful()) {
+                                    Intent intent = new Intent(getContext(), MainActivity.class);
+                                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+                                } else {
+                                    ErrorModel error = ErroHelper.getErrorModel(response);
+                                    binding.tvError.setText(error.getMessage());
+                                    binding.erroContainer.setVisibility(View.VISIBLE);
+                                }
+                            }, throwable -> {
+                                // erro → exibir Toast, dialog, etc.
+                                Toast.makeText(this.getContext(), "Erro ao registrar", Toast.LENGTH_SHORT).show();
+                            });
+                        });
             } else {
                 binding.erroContainer.setVisibility(View.VISIBLE);
             }

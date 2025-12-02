@@ -15,13 +15,14 @@ public class UserRequest {
     private String zipcode;
     private String address;
     private String number;
+    private String tokenFCM;
 
 
 
     public UserRequest() {
     }
 
-    public UserRequest(String complete_name, String password, String phone, String email, String document, Integer type, String alterName, String description, String zipcode, String address, String number) {
+    public UserRequest(String complete_name, String password, String phone, String email, String document, Integer type, String alterName, String description, String zipcode, String address, String number, String tokenFCM) {
         this.complete_name = complete_name;
         this.password = password;
         this.phone = phone;
@@ -33,9 +34,10 @@ public class UserRequest {
         this.zipcode = zipcode;
         this.address = address;
         this.number = number;
+        this.tokenFCM = tokenFCM;
     }
 
-    public UserRequest(String complete_name, String password, String phone, String email, String document, Integer type, String zipcode, String address, String number) {
+    public UserRequest(String complete_name, String password, String phone, String email, String document, Integer type, String zipcode, String address, String number, String tokenFCM) {
         this.complete_name = complete_name;
         this.password = password;
         this.phone = phone;
@@ -45,6 +47,7 @@ public class UserRequest {
         this.zipcode = zipcode;
         this.address = address;
         this.number = number;
+        this.tokenFCM = tokenFCM;
     }
 
     public String getComplete_name() {
@@ -87,8 +90,18 @@ public class UserRequest {
         this.document = document;
     }
 
+    public String getTokenFCM() {
+        return tokenFCM;
+    }
+
+    public void setTokenFCM(String tokenFCM) {
+        this.tokenFCM = tokenFCM;
+    }
+
     public Integer getType() {
         return type;
+
+
     }
 
     public void setType(Integer type) {

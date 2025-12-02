@@ -131,7 +131,8 @@ public class CadastrarProfissionalViewModel extends ViewModel {
             String description,
             String zipcode,
             String address,
-            String number
+            String number,
+            String token
     ) {
         return authRepository.register(
                         new UserRequest(
@@ -145,7 +146,8 @@ public class CadastrarProfissionalViewModel extends ViewModel {
                                 description,
                                 Mask.unmask(zipcode),
                                 address,
-                                number
+                                number,
+                                token
                         )
                 ).subscribeOn(Schedulers.io())
                 .doOnSuccess(response -> {

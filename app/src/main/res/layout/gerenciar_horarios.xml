@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#f0f2f5"
     android:orientation="vertical">
 
@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#4F46E5"
-        android:orientation="horizontal"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:padding="16dp">
 
         <ImageButton
@@ -26,27 +26,30 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Gerenciar Horários"
             android:textColor="@android:color/white"
             android:textSize="20sp"
-            android:textStyle="bold"
-            android:gravity="center" />
+            android:textStyle="bold" />
     </LinearLayout>
 
     <!-- Conteúdo -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardBackgroundColor="@color/white"
-        android:layout_margin="16dp">
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/white">
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_margin="16dp">
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -58,63 +61,63 @@
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scrollbars="none"
-                    android:layout_marginTop="8dp">
+                    android:layout_marginTop="8dp"
+                    android:scrollbars="none">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
                         <CheckBox
                             android:id="@+id/checkSegunda"
                             android:layout_width="wrap_content"
-                            android:textColor="@color/black"
                             android:layout_height="wrap_content"
-                            android:text="Seg" />
+                            android:text="Seg"
+                            android:textColor="@color/black" />
 
                         <CheckBox
                             android:id="@+id/checkTerca"
                             android:layout_width="wrap_content"
-                            android:textColor="@color/black"
                             android:layout_height="wrap_content"
-                            android:text="Ter" />
+                            android:text="Ter"
+                            android:textColor="@color/black" />
 
                         <CheckBox
                             android:id="@+id/checkQuarta"
                             android:layout_width="wrap_content"
-                            android:textColor="@color/black"
                             android:layout_height="wrap_content"
-                            android:text="Qua" />
+                            android:text="Qua"
+                            android:textColor="@color/black" />
 
                         <CheckBox
                             android:id="@+id/checkQuinta"
                             android:layout_width="wrap_content"
-                            android:textColor="@color/black"
                             android:layout_height="wrap_content"
-                            android:text="Qui" />
+                            android:text="Qui"
+                            android:textColor="@color/black" />
 
                         <CheckBox
                             android:id="@+id/checkSexta"
                             android:layout_width="wrap_content"
-                            android:textColor="@color/black"
                             android:layout_height="wrap_content"
-                            android:text="Sex" />
+                            android:text="Sex"
+                            android:textColor="@color/black" />
 
                         <CheckBox
                             android:id="@+id/checkSabado"
                             android:layout_width="wrap_content"
-                            android:textColor="@color/black"
                             android:layout_height="wrap_content"
-                            android:text="Sab" />
+                            android:text="Sab"
+                            android:textColor="@color/black" />
 
                         <CheckBox
                             android:id="@+id/checkDomingo"
                             android:layout_width="wrap_content"
-                            android:textColor="@color/black"
                             android:layout_height="wrap_content"
-                            android:text="Dom" />
+                            android:text="Dom"
+                            android:textColor="@color/black" />
                     </LinearLayout>
                 </HorizontalScrollView>
 
@@ -131,15 +134,16 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:weightSum="2"
-                    android:gravity="center_vertical">
+                    android:weightSum="2">
 
                     <TimePicker
                         android:id="@+id/timeInicioManha"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:theme="@style/DatePickerStyle"
                         android:timePickerMode="spinner" />
 
                     <TimePicker
@@ -147,6 +151,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:theme="@style/DatePickerStyle"
                         android:timePickerMode="spinner" />
                 </LinearLayout>
 
@@ -163,15 +168,17 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
                     android:orientation="horizontal"
-                    android:weightSum="2"
-                    android:gravity="center_vertical">
+                    android:theme="@style/DatePickerStyle"
+                    android:weightSum="2">
 
                     <TimePicker
                         android:id="@+id/timeInicioTarde"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:theme="@style/DatePickerStyle"
                         android:timePickerMode="spinner" />
 
                     <TimePicker
@@ -187,11 +194,11 @@
                     android:id="@+id/btnSalvarHorario"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:backgroundTint="#4F46E5"
                     android:text="Salvar Horários"
                     android:textAllCaps="false"
-                    android:backgroundTint="#4F46E5"
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="24dp" />
+                    android:textColor="@android:color/white" />
 
             </LinearLayout>
         </ScrollView>

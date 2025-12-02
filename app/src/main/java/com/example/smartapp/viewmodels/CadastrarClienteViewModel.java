@@ -103,7 +103,8 @@ public class CadastrarClienteViewModel extends ViewModel {
             Integer type,
             String zipcode,
             String address,
-            String number
+            String number,
+            String token
     ) {
         return authRepository.register(
                 new UserRequest(
@@ -115,7 +116,8 @@ public class CadastrarClienteViewModel extends ViewModel {
                         type,
                         Mask.unmask(zipcode),
                         address,
-                        number
+                        number,
+                        token
                 )
         );
     }

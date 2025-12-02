@@ -1,8 +1,10 @@
 package com.example.smartapp.fragments.registro;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +17,14 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.smartapp.activities.MainActivity;
 import com.example.smartapp.core.ErroHelper;
 import com.example.smartapp.core.Mask;
 import com.example.smartapp.core.watcher.SimpleTextWatcher;
 import com.example.smartapp.databinding.CadastrarProfissionalBinding;
 import com.example.smartapp.domain.models.ErrorModel;
 import com.example.smartapp.viewmodels.CadastrarProfissionalViewModel;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -54,32 +58,43 @@ public class CadastrarProfissionalFragment extends Fragment {
     private void setupListeners() {
         binding.btnproximoPro.setOnClickListener(v -> {
             if (fieldsToValidade()) {
-                Disposable disposable = viewModel.register(
-                        binding.edtProfNome.getText().toString(),
-                        binding.edtSenha.getText().toString(),
-                        binding.edtProftelefone.getText().toString(),
-                        binding.edtProfEmail.getText().toString(),
-                        binding.edtProfCpfCnpj.getText().toString(),
-                        1,
-                        binding.edtProfRazaoSocial.getText().toString(),
-                        binding.edtProfdescricao.getText().toString(),
-                        binding.edtProfCep.getText().toString(),
-                        binding.edtProfendereco.getText().toString(),
-                        binding.edtProfnumero.getText().toString()
-                                )
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(response -> {
-                    if (response.isSuccessful() && response.code() == 200) {
-                        int proId = response.body().getId();
-                        navController.navigate(CadastrarProfissionalFragmentDirections.cadastrarServicoFragment(proId));
-                    } else {
-                        ErrorModel error = ErroHelper.getErrorModel(response);
-                        binding.tvError.setText(error.getMessage());
-                        binding.erroContainer.setVisibility(View.VISIBLE);
-                    }
-                }, throwable -> {
-                    Toast.makeText(getContext(), "Erro ao registrar", Toast.LENGTH_SHORT).show();
-                });
+                FirebaseMessaging.getInstance().getToken()
+                        .addOnCompleteListener(task -> {
+                            if (!task.isSuccessful()) {
+                                Log.w("FCM", "Falha ao pegar token", task.getException());
+                                return;
+                            }
+                            String token = task.getResult();
+
+                            Disposable disposable = viewModel.register(
+                                            binding.edtProfNome.getText().toString(),
+                                            binding.edtSenha.getText().toString(),
+                                            binding.edtProftelefone.getText().toString(),
+                                            binding.edtProfEmail.getText().toString(),
+                                            binding.edtProfCpfCnpj.getText().toString(),
+                                            1,
+                                            binding.edtProfRazaoSocial.getText().toString(),
+                                            binding.edtProfdescricao.getText().toString(),
+                                            binding.edtProfCep.getText().toString(),
+                                            binding.edtProfendereco.getText().toString(),
+                                            binding.edtProfnumero.getText().toString(),
+                                            token
+                                    )
+                                    .observeOn(AndroidSchedulers.mainThread())
+                                    .subscribe(response -> {
+                                        if (response.isSuccessful() && response.code() == 200) {
+                                            int proId = response.body().getId();
+                                            navController.navigate(CadastrarProfissionalFragmentDirections.cadastrarServicoFragment(proId));
+                                        } else {
+                                            ErrorModel error = ErroHelper.getErrorModel(response);
+                                            binding.tvError.setText(error.getMessage());
+                                            binding.erroContainer.setVisibility(View.VISIBLE);
+                                        }
+                                    }, throwable -> {
+                                        Toast.makeText(getContext(), "Erro ao registrar", Toast.LENGTH_SHORT).show();
+                                    });
+                        });
+
             } else {
                 binding.erroContainer.setVisibility(View.VISIBLE);
             }
@@ -100,7 +115,7 @@ public class CadastrarProfissionalFragment extends Fragment {
 
                                 String logradouro = viaCepResponse.getLogradouro();
 
-                                if (logradouro == null){
+                                if (logradouro == null) {
                                     Toast.makeText(getContext(), "Erro ao buscar CEP", Toast.LENGTH_SHORT).show();
                                     binding.edtProfendereco.requestFocus();
                                 } else {
@@ -154,6 +169,7 @@ public class CadastrarProfissionalFragment extends Fragment {
 
         binding.edtProftelefone.addTextChangedListener(new SimpleTextWatcher() {
             boolean updating = false;
+
             @Override
             public void afterTextChanged(Editable s) {
                 super.afterTextChanged(s);
