@@ -60,4 +60,8 @@ public class BuscarServicoViewModel extends ViewModel {
                 )
         );
     }
+
+    public void clearPro(){
+        _pro.postValue(null);
+    }
 }

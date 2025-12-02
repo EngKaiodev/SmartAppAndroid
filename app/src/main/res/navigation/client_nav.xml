@@ -215,6 +215,9 @@
         android:name="com.example.smartapp.fragments.registro.AvaliarTelaFragment"
         android:label="AvaliarTelaFragment"
         tools:layout="@layout/avaliar_tela">
+        <argument
+            android:name="proId"
+            app:argType="integer" />
 
     </fragment>
 

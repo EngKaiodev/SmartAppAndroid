@@ -97,14 +97,16 @@ public class CadastrarClienteFragment extends Fragment {
                 if (cep.length() > 7) {
                     Disposable disposable = viewModel.buscarCep(cep).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(viaCepResponse -> {
                         String logradouro = viaCepResponse.getLogradouro();
-                        String bairro = viaCepResponse.getBairro();
-                        String cidade = viaCepResponse.getLocalidade();
-                        String uf = viaCepResponse.getUf();
 
-                        String endereco = logradouro + " - " + bairro + " - " + cidade + " / " + uf;
+                        if (logradouro == null){
+                            Toast.makeText(getContext(), "Erro ao buscar CEP", Toast.LENGTH_SHORT).show();
+                            binding.edtEndenreco.requestFocus();
+                        } else {
+                            String endereco = viaCepResponse.toString();
 
-                        binding.edtEndenreco.setText(endereco);
-                        binding.edtNumero.requestFocus();
+                            binding.edtEndenreco.setText(endereco);
+                            binding.edtNumero.requestFocus();
+                        }
 
                     }, throwable -> {
                         Toast.makeText(getContext(), "Erro ao buscar CEP", Toast.LENGTH_SHORT).show();

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.smartapp.adapters.ServiceListAdapter;
 import com.example.smartapp.core.domain.response.ServiceCompleteResponse;
+import com.example.smartapp.core.watcher.SimpleTextWatcher;
 import com.example.smartapp.databinding.BuscarServicoBinding;
 import com.example.smartapp.viewmodels.BuscarServicoViewModel;
 
@@ -68,12 +69,24 @@ public class BuscarServicoFragment extends Fragment {
 
     private void setupListeners() {
         binding.btnvoltarbs.setOnClickListener(v -> navController.popBackStack());
+
+        binding.searchQuery.addTextChangedListener(new SimpleTextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (adapter != null){
+                    adapter.filter(s.toString());
+                }
+            }
+        });
     }
 
     private void setupObservers() {
         viewModel.servicos.observe(getViewLifecycleOwner(), this::setupAdapters);
         viewModel.pro.observe(getViewLifecycleOwner(), profissional -> {
+            if (profissional == null) return;
             navController.navigate(BuscarServicoFragmentDirections.actionAgendar(profissional, null));
+            viewModel.clearPro();
         });
     }
 

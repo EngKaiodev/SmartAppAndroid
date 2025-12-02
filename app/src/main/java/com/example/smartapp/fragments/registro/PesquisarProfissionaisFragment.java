@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.smartapp.adapters.ProfissionalListAdapter;
 import com.example.smartapp.core.domain.response.ProfissionalResponse;
+import com.example.smartapp.core.watcher.SimpleTextWatcher;
 import com.example.smartapp.databinding.PesquisarProfissionalBinding;
 import com.example.smartapp.viewmodels.PesquisarProfissioanaisViewModel;
 
@@ -66,6 +67,15 @@ public class PesquisarProfissionaisFragment extends Fragment {
 
     private void setupListeners() {
         binding.btnvoltarprest.setOnClickListener(v -> navController.popBackStack());
+
+        binding.searchInput.addTextChangedListener(new SimpleTextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (adapter != null){
+                    adapter.filter(s.toString());
+                }
+            }
+        });
     }
 
     @Override

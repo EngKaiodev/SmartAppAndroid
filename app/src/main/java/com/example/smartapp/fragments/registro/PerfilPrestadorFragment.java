@@ -109,7 +109,7 @@ public class PerfilPrestadorFragment extends Fragment {
 
         binding.btnAgendarServ.setOnClickListener(v -> navController.navigate(PerfilPrestadorFragmentDirections.agendarServicoFragment(profissionalResponse, null)));
 
-        binding.btnAvaliacao.setOnClickListener(view -> navController.navigate(PerfilPrestadorFragmentDirections.actionAvaliarTela()));
+        binding.btnAvaliacao.setOnClickListener(view -> navController.navigate(PerfilPrestadorFragmentDirections.actionAvaliarTela(profissionalResponse.getId_profissional())));
     }
 
     @Override

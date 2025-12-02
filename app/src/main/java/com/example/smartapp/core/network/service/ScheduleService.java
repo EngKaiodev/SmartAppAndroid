@@ -1,6 +1,7 @@
 package com.example.smartapp.core.network.service;
 
 import com.example.smartapp.core.domain.request.ScheduleRequest;
+import com.example.smartapp.core.domain.response.HistoricResponse;
 import com.example.smartapp.core.domain.response.ScheduleResponse;
 
 import java.util.List;
@@ -19,13 +20,6 @@ public interface ScheduleService {
             @Body ScheduleRequest request
     );
 
-    @POST("/schedules/{schedule}/{hour}/{notId}")
-    Single<Response<Boolean>> update(
-            @Path("schedule") int schedule,
-            @Path("hour") int hourId,
-            @Path ("notId") int notId
-    );
-
     @GET("/schedules/user/{id}")
     Single<Response<List<ScheduleResponse>>> getAllByUserId(
             @Path("id") int id
@@ -41,10 +35,9 @@ public interface ScheduleService {
             @Path("id") int id
     );
 
-    @POST("/schedules/{id}/cancel/{notifyId}")
+    @POST("/schedules/{id}/cancel")
     Single<Response<Boolean>> cancelScheduleById(
-            @Path("id") int id,
-            @Path("notifyId") int notifyId
+            @Path("id") int id
     );
 
     @POST("/schedules/{id}/review")
@@ -52,9 +45,14 @@ public interface ScheduleService {
             @Path("id") int id
     );
 
-    @POST("/schedules/{id}/finish/{notifyId}")
+    @POST("/schedules/{id}/finish")
     Single<Response<Boolean>> finishScheduleById(
-            @Path("id") int id,
-            @Path("notifyId") int notifyId
+            @Path("id") int id
+    );
+
+    @GET("/schedules/{type}/{id}/historic")
+    Single<Response<List<HistoricResponse>>> getHistoric(
+            @Path("type") String type,
+            @Path("id") int id
     );
 }

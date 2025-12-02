@@ -99,14 +99,16 @@ public class CadastrarProfissionalFragment extends Fragment {
                             .subscribe(viaCepResponse -> {
 
                                 String logradouro = viaCepResponse.getLogradouro();
-                                String bairro = viaCepResponse.getBairro();
-                                String cidade = viaCepResponse.getLocalidade();
-                                String uf = viaCepResponse.getUf();
 
-                                String endereco = logradouro + " - " + bairro + " - " + cidade + " / " + uf;
+                                if (logradouro == null){
+                                    Toast.makeText(getContext(), "Erro ao buscar CEP", Toast.LENGTH_SHORT).show();
+                                    binding.edtProfendereco.requestFocus();
+                                } else {
+                                    String endereco = viaCepResponse.toString();
 
-                                binding.edtProfendereco.setText(endereco);
-                                binding.edtProfnumero.requestFocus();
+                                    binding.edtProfendereco.setText(endereco);
+                                    binding.edtProfnumero.requestFocus();
+                                }
 
                             }, throwable -> {
                                 Toast.makeText(getContext(), "Erro ao buscar CEP", Toast.LENGTH_SHORT).show();

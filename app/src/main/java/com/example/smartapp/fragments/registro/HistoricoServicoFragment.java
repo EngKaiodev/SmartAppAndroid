@@ -1,6 +1,8 @@
 package com.example.smartapp.fragments.registro;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.smartapp.adapters.HistoricoAdapter;
+import com.example.smartapp.core.domain.response.HistoricResponse;
 import com.example.smartapp.databinding.HistoricoServicoBinding;
 import com.example.smartapp.domain.models.HistoricoModel;
 import com.example.smartapp.viewmodels.HistoricoServicoViewModel;
@@ -30,8 +33,11 @@ public class HistoricoServicoFragment extends Fragment {
 
     private NavController navController;
 
-    private List<HistoricoModel> historicoList;
+    private List<HistoricResponse> historicoList;
     private HistoricoAdapter historicoAdapter;
+
+    private String filterPro;
+    private String filterServ;
 
     @Nullable
     @Override
@@ -45,16 +51,17 @@ public class HistoricoServicoFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         navController = NavHostFragment.findNavController(this);
         super.onViewCreated(view, savedInstanceState);
+        viewModel.loadHistoricos();
 
-        mockedList();
         setupListeners();
-        setupAdapters();
+        setupObservers();
     }
 
-    private void mockedList(){
-        historicoList = List.of(
-                new HistoricoModel(1, "jõao", "corte e barba","R$80,00", "14/07/2025", "5")
-        );
+    private void setupObservers() {
+        viewModel.historicos.observe(getViewLifecycleOwner(), historicos -> {
+            historicoList = historicos;
+            setupAdapters();
+        });
     }
 
     private void setupAdapters(){
@@ -66,12 +73,43 @@ public class HistoricoServicoFragment extends Fragment {
     }
 
     private void setupListeners() {
-        binding.btnvoltarhist.setOnClickListener(new View.OnClickListener() {
+        binding.btnvoltarhist.setOnClickListener(v -> navController.popBackStack());
+
+        binding.filterByProfessionalEditText.addTextChangedListener(new TextWatcher() {
             @Override
-            public void onClick(View v) {
-                navController.popBackStack();            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterPro = s.toString();
+                historicoAdapter.filter(filterPro, filterServ);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
         });
 
+        binding.filterByServiceEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                filterServ = s.toString();
+                historicoAdapter.filter(filterPro, filterServ);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
     }
 
     @Override

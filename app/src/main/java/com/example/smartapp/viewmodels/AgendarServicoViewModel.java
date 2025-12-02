@@ -9,7 +9,6 @@ import androidx.lifecycle.ViewModel;
 import com.example.smartapp.core.Preferences;
 import com.example.smartapp.core.domain.request.ScheduleRequest;
 import com.example.smartapp.core.domain.response.HourResponse;
-import com.example.smartapp.core.domain.response.ScheduleResponse;
 import com.example.smartapp.core.domain.response.ServicoResponse;
 import com.example.smartapp.domain.repository.HourRepository;
 import com.example.smartapp.domain.repository.ScheduleRepository;
@@ -41,9 +40,6 @@ public class AgendarServicoViewModel extends ViewModel {
 
     private MutableLiveData<Boolean> _added = new MutableLiveData<>();
     public LiveData<Boolean> added = _added;
-
-    private MutableLiveData<Boolean> _upgraded = new MutableLiveData<>();
-    public LiveData<Boolean> upgraded = _upgraded;
 
     @Inject
     public AgendarServicoViewModel(ServicoRepository servicoRepository, HourRepository hourRepository, ScheduleRepository scheduleRepository, Preferences prefs) {
@@ -92,27 +88,6 @@ public class AgendarServicoViewModel extends ViewModel {
                                 response -> {
                                     if (response.isSuccessful() && response.code() == 201) {
                                         _added.postValue(true);
-                                    }
-                                },
-                                error -> {
-                                }
-                        )
-        );
-    }
-
-    public void updateSchedule(ScheduleResponse scheduleResponse, HourResponse selectedItem) {
-
-        disposable.add(
-                scheduleRepository.update(
-                                scheduleResponse.getId(),
-                                selectedItem.getId(),
-                                prefs.getType()
-                        )
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(
-                                response -> {
-                                    if (response.isSuccessful()) {
-                                        _upgraded.postValue(true);
                                     }
                                 },
                                 error -> {

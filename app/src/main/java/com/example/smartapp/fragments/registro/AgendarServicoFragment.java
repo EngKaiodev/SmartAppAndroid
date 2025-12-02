@@ -125,7 +125,6 @@ public class AgendarServicoFragment extends Fragment {
         if (hours.isEmpty()) {
             binding.errorHours.setVisibility(VISIBLE);
             binding.horarioSpinner.setVisibility(GONE);
-            binding.horarioSpinner.setSelection(-1);
         } else {
             ArrayAdapter<HourResponse> horariosAdapter = new ArrayAdapter<>(
                     requireContext(),
@@ -142,24 +141,17 @@ public class AgendarServicoFragment extends Fragment {
     }
 
     private void setupListeners() {
-        binding.btnvoltaragendconfirma.setOnClickListener(v -> navController.popBackStack());
+        binding.btnvoltaragendconfirma.setOnClickListener(v -> {
+            navController.popBackStack();
+        });
 
         binding.btnconfirmarAgendamento2.setOnClickListener(v -> {
             if (validarFormulario()) {
-                if (scheduleResponse != null){
-                    viewModel.updateSchedule(
-                            scheduleResponse,
-                            (HourResponse) binding.horarioSpinner.getSelectedItem()
-                    );
-                } else {
-                    viewModel.saveSchedule(
-                            profissionalSelected.getId_profissional(),
-                            (ServicoResponse) binding.servicosSpinner.getSelectedItem(),
-                            (HourResponse) binding.horarioSpinner.getSelectedItem()
-                    );
-                }
-            } else {
-                Toast.makeText(requireContext(), "Selecione o horário desejado", Toast.LENGTH_SHORT).show();
+                viewModel.saveSchedule(
+                        profissionalSelected.getId_profissional(),
+                        (ServicoResponse) binding.servicosSpinner.getSelectedItem(),
+                        (HourResponse) binding.horarioSpinner.getSelectedItem()
+                );
             }
         });
 
@@ -199,12 +191,6 @@ public class AgendarServicoFragment extends Fragment {
                 navController.popBackStack();
             }
         });
-        viewModel.upgraded.observe(getViewLifecycleOwner(), response -> {
-            if (response) {
-                Toast.makeText(getContext(), "Reagendado com sucesso", Toast.LENGTH_SHORT).show();
-                navController.popBackStack(R.id.gerenciar_agendamento_fragment, false);
-            }
-        });
     }
 
     private boolean validarFormulario() {
@@ -229,7 +215,7 @@ public class AgendarServicoFragment extends Fragment {
 
         String dataSelecionada = String.format("%02d/%02d/%d",
                 binding.edtpickerdata.getDayOfMonth(),
-                binding.edtpickerdata.getMonth() + 1, // Month é 0-based
+                binding.edtpickerdata.getMonth() + 1,
                 binding.edtpickerdata.getYear());
         binding.summaryDate.setText(dataSelecionada);
 

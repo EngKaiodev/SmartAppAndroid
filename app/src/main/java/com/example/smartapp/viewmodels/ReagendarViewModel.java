@@ -46,10 +46,7 @@ public class ReagendarViewModel extends ViewModel {
 
     public void cancelSchedule(int id){
         disposable.add(
-                repository.cancelScheduleById(
-                        id,
-                        prefs.getType()
-                        ).observeOn(AndroidSchedulers.mainThread()).subscribe(
+                repository.cancelScheduleById(id).observeOn(AndroidSchedulers.mainThread()).subscribe(
                         response -> {
                             if (response.isSuccessful() && response.code() == 200) {
                                 _changed.postValue(response.body());
@@ -63,10 +60,7 @@ public class ReagendarViewModel extends ViewModel {
 
     public void finishSchedule(int id){
         disposable.add(
-                repository.finishScheduleById(
-                        id,
-                        prefs.getType()
-                ).observeOn(AndroidSchedulers.mainThread()).subscribe(
+                repository.finishScheduleById(id).observeOn(AndroidSchedulers.mainThread()).subscribe(
                         response -> {
                             if (response.isSuccessful() && response.code() == 200) {
                                 _changed.postValue(response.body());

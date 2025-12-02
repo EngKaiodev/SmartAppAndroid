@@ -1,6 +1,7 @@
 package com.example.smartapp.domain.repository;
 
 import com.example.smartapp.core.domain.request.ScheduleRequest;
+import com.example.smartapp.core.domain.response.HistoricResponse;
 import com.example.smartapp.core.domain.response.ScheduleResponse;
 import com.example.smartapp.core.network.service.ScheduleService;
 
@@ -25,10 +26,6 @@ public class ScheduleRepository {
         return service.save(request).subscribeOn(Schedulers.io());
     }
 
-    public Single<Response<Boolean>> update(int schedule, int hourId, int notId) {
-        return service.update(schedule, hourId, notId).subscribeOn(Schedulers.io());
-    }
-
     public Single<Response<List<ScheduleResponse>>> getAllByUserId(int id) {
         return service.getAllByUserId(id).subscribeOn(Schedulers.io());
     }
@@ -41,13 +38,17 @@ public class ScheduleRepository {
         return service.confirmScheduleById(id).subscribeOn(Schedulers.io());
     }
 
-    public Single<Response<Boolean>> cancelScheduleById(int id, int notifyId){
-        return service.cancelScheduleById(id, notifyId).subscribeOn(Schedulers.io());
+    public Single<Response<Boolean>> cancelScheduleById(int id){
+        return service.cancelScheduleById(id).subscribeOn(Schedulers.io());
     }
     public Single<Response<Boolean>> reviewScheduleById(int id){
         return service.reviewScheduleById(id).subscribeOn(Schedulers.io());
     }
-    public Single<Response<Boolean>> finishScheduleById(int id, int notifyId){
-        return service.finishScheduleById(id, notifyId).subscribeOn(Schedulers.io());
+    public Single<Response<Boolean>> finishScheduleById(int id){
+        return service.finishScheduleById(id).subscribeOn(Schedulers.io());
+    }
+
+    public Single<Response<List<HistoricResponse>>> getHistoric(String type, int id){
+        return service.getHistoric(type, id).subscribeOn(Schedulers.io());
     }
 }
