@@ -9,18 +9,20 @@ public class ScheduleResponse implements Serializable {
     private ProfissionalResponse profissional;
     private ServicoResponse servico;
     private HourResponse hour;
+    private ClienteSimpleResponse cliente;
 
     private int status; // 0 - aguardando confirmação 1 - confirmado 2 - cancelado 3 - Realizado 4 - Avaliado
 
     public ScheduleResponse() {
     }
 
-    public ScheduleResponse(int id, ProfissionalResponse profissional, ServicoResponse servico, HourResponse hour, int status) {
+    public ScheduleResponse(int id, ProfissionalResponse profissional, ServicoResponse servico, HourResponse hour, int status, ClienteSimpleResponse cliente) {
         this.id = id;
         this.profissional = profissional;
         this.servico = servico;
         this.hour = hour;
         this.status = status;
+        this.cliente = cliente;
     }
 
     public int getStatus() {
@@ -61,6 +63,14 @@ public class ScheduleResponse implements Serializable {
 
     public void setHour(HourResponse hour) {
         this.hour = hour;
+    }
+
+    public ClienteSimpleResponse getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteSimpleResponse cliente) {
+        this.cliente = cliente;
     }
 
     public StatusInfo getStatusInfo() {

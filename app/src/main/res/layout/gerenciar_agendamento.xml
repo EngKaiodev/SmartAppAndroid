@@ -39,149 +39,132 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingTop="16dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <!-- Filter Card -->
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="8dp"
+            app:cardBackgroundColor="#FFFFFF">
 
-            <!-- Filter Card -->
-            <androidx.cardview.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="8dp"
-                app:cardBackgroundColor="#FFFFFF">
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Filtrar Agendamentos:"
+                    android:textColor="#374151"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="12dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:orientation="horizontal"
+                    android:weightSum="2">
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Filtrar Agendamentos:"
-                        android:textColor="#374151"
-                        android:textSize="18sp"
-                        android:textStyle="bold"
-                        android:layout_marginBottom="12dp"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:weightSum="2">
-
-                        <Spinner
-                            android:id="@+id/statusFilter"
-                            android:layout_width="0dp"
-                            android:layout_height="48dp"
-                            android:layout_weight="1"
-                            android:paddingStart="12dp"
-                            android:paddingEnd="12dp"
-                            android:background="@drawable/spinner_border"
-                            android:spinnerMode="dropdown"/>
-
-                        <Spinner
-                            android:id="@+id/periodFilter"
-                            android:layout_width="0dp"
-                            android:layout_height="48dp"
-                            android:layout_weight="1"
-                            android:paddingStart="12dp"
-                            android:paddingEnd="12dp"
-                            android:layout_marginStart="8dp"
-                            android:background="@drawable/spinner_border"
-                            android:spinnerMode="dropdown"/>
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/clearFilterButton"
-                        android:layout_width="match_parent"
+                    <Spinner
+                        android:id="@+id/statusFilter"
+                        android:layout_width="0dp"
                         android:layout_height="48dp"
-                        android:layout_marginTop="8dp"
-                        android:background="#E5E7EB"
-                        android:text="Limpar Filtros"
-                        android:textColor="#4B5563"
-                        android:drawableStart="@drawable/ic_eraser"
-                        android:drawableTint="#4B5563"
-                        android:drawablePadding="8dp"/>
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:layout_weight="1"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:background="@drawable/spinner_border"
+                        android:spinnerMode="dropdown"/>
 
-            <!-- Appointment List -->
+                    <Spinner
+                        android:id="@+id/periodFilter"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_weight="1"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/spinner_border"
+                        android:spinnerMode="dropdown"/>
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/clearFilterButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:background="#E5E7EB"
+                    android:text="Limpar Filtros"
+                    android:textColor="#4B5563"
+                    android:drawableStart="@drawable/ic_eraser"
+                    android:drawableTint="#4B5563"
+                    android:drawablePadding="8dp"/>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Appointment List -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lista de Agendamentos:"
+            android:textColor="#374151"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="12dp"/>
+
+        <!-- Empty State -->
+        <LinearLayout
+            android:id="@+id/emptyState"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="32dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/ic_calendar_empty"
+                android:contentDescription="Nenhum agendamento"
+                android:layout_marginBottom="16dp"/>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lista de Agendamentos:"
-                android:textColor="#374151"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:layout_marginBottom="12dp"/>
-
-            <!-- Empty State -->
-            <LinearLayout
-                android:id="@+id/emptyState"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:text="Nenhum agendamento encontrado"
+                android:textColor="#6B7280"
+                android:textSize="16sp"
                 android:gravity="center"
-                android:padding="32dp"
-                android:visibility="gone">
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/ic_calendar_empty"
-                    android:contentDescription="Nenhum agendamento"
-                    android:layout_marginBottom="16dp"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nenhum agendamento encontrado"
-                    android:textColor="#6B7280"
-                    android:textSize="16sp"
-                    android:gravity="center"
-                    android:layout_marginBottom="8dp"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tente ajustar os filtros ou faça um novo agendamento"
-                    android:textColor="#9CA3AF"
-                    android:textSize="14sp"
-                    android:gravity="center"/>
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvAgendamentosCategories"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:listitem="@layout/item_agendamento"
-                tools:itemCount="10"
-                app:spanCount="1"
-                tools:layoutManager="LinearLayoutManager"
-                tools:orientation="vertical"/>
-
-            <!-- Botão Reagendar - Estilo arredondado e próximo ao card -->
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="50dp"
-                app:cardElevation="2dp"
-                android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"/>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tente ajustar os filtros ou faça um novo agendamento"
+                android:textColor="#9CA3AF"
+                android:textSize="14sp"
+                android:gravity="center"/>
         </LinearLayout>
-    </ScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAgendamentosCategories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_agendamento"
+            tools:itemCount="10"
+            app:spanCount="1"
+            tools:layoutManager="LinearLayoutManager"
+            tools:orientation="vertical"/>
+    </LinearLayout>
 
     <!-- Message Modal -->
     <androidx.cardview.widget.CardView
