@@ -111,6 +111,7 @@ public class EditarProfissionalFragment extends Fragment {
         });
         binding.edtCepPro.addTextChangedListener(new SimpleTextWatcher() {
             boolean updating = false;
+
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 super.onTextChanged(s, start, before, count);
@@ -139,6 +140,12 @@ public class EditarProfissionalFragment extends Fragment {
         });
         binding.edtTelefonePro.addTextChangedListener(new SimpleTextWatcher() {
             boolean updating = false;
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                super.beforeTextChanged(s, start, count, after);
+            }
+
             @Override
             public void afterTextChanged(Editable editable) {
                 super.afterTextChanged(editable);

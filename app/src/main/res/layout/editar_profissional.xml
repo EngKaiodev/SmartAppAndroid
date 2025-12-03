@@ -182,6 +182,7 @@
                         android:layout_height="48dp"
                         android:background="?android:attr/editTextBackground"
                         android:inputType="number"
+                        android:maxLength="9"
                         android:paddingStart="16dp"
                         android:paddingEnd="16dp"
                         android:text="98765-432"

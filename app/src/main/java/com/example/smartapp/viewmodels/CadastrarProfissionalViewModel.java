@@ -79,10 +79,6 @@ public class CadastrarProfissionalViewModel extends ViewModel {
         } else if (docLimpo.length() == 11) {
             // CPF (aqui só checamos tamanho; validação dos dígitos verificadores pode ser adicionada)
         } else if (docLimpo.length() == 14) {
-            // CNPJ: exige razão social
-            if (razaoSocial == null || razaoSocial.trim().isEmpty() || razaoSocial.trim().length() < 3) {
-                return false;
-            }
         } else {
             return false;
         }
